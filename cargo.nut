@@ -344,7 +344,7 @@ function DefineCargosBySettings()
 			::CargoPermille <- [60,25,20,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(18): // NARS 1.0.6 - North America
+		case(18): // NAIS 1.0.6 - North America
 			::CargoCat <- [[0,2],
 				       [10,12,15,17,21,25],
 				       [4,13,14,18,20,24],

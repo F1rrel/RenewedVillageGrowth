@@ -62,7 +62,7 @@ class MainClass extends GSInfo
 					_15 = "FIRS 3.0.12: Steeltown",
 					_16 = "FIRS 3.0.12: In A Hot Country",
 					_17 = "FIRS 3.0.12: Extreme",
-					_18 = "NARS 1.0.6: North America" });
+					_18 = "NAIS 1.0.6: North America" });
 
 		AddSetting({ name = "goal_scale_factor",
 				description = "Difficulty level (easy = 60, normal = 100, hard = 140)",
