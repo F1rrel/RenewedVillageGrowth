@@ -1,5 +1,8 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 4
+- modified: added easy, medium and hard values to pax and mail requirement
+
 Version 3 (2020/05/17)
 - modified: support for any combination of ECS 1.2 vectors
 - modified: added parameter to game script settings "Town info display mode" to change the mode of 
