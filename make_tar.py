@@ -6,6 +6,7 @@ import platform
 from shutil import copy2, rmtree, copytree
 from glob import iglob
 import tarfile
+import zipfile
 
 # ----------------------------------
 # Definitions:
@@ -52,6 +53,13 @@ if platform.system() == 'Linux':
                 tar_handle.add(os.path.join(root, file))
 
     rmtree(tmp_dir)
+
+    with tarfile.open(tar_name + '.gz', "w:gz") as tar_handle:
+        tar_handle.add(tar_name)
+
+    zout = zipfile.ZipFile(tmp_dir + '.zip', "w", zipfile.ZIP_DEFLATED)
+    zout.write(tar_name)
+    zout.close()
 
 elif platform.system() == 'Windows':
     dir_name = gs_name + "-v" + version

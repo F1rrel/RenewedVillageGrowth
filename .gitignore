@@ -1,2 +1,4 @@
 .vscode
 *.tar
+*.tar.gz
+*.zip
