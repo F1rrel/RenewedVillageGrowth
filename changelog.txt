@@ -1,0 +1,28 @@
+*** Renewed Village Growth GS Changelog ***
+
+Version 3 (2020/05/17)
+- modified: support for any combination of ECS 1.2 vectors
+- modified: added parameter to game script settings "Town info display mode" to change the mode of 
+displaying town information (Automatic, Cargo information, Limiter information)
+- modified: automatic town info mode is now switching pages every 3 seconds instead of scrolling
+- modified: updated YETI to version 0.1.6
+- fix: towns will now properly stop to be monitored after one year without passanger service
+
+Version 2 (2020/05/13)
+- modified: "Expert: slowest TGR if requirements are not met" changed to max 880 as it is maximum 
+possible TGR 
+- modified: changed "Eternal love" default value to off
+- modified: updated ECS vector to version 1.2
+- fix: issue with scrambled story book text after loading game
+- fix: display town growth is not limited by the script message when pax and mail requirements changed to 
+0 mid game
+- fix: town categories in town info screen now scroll when there are more than can fit
+- fix: removed duplicite cargo printing
+- removed: french translation
+
+Version 1 (2020/03/08)
+- combination of Renewed City Growth by Keoz, City Growth Limiter by Sylf
+- new: added support for FIRS 3.0.12 economies
+- new: added support for NAIS: North America economy
+- new: eternal love from towns
+- fix: towns under 100 population will always grow as normal
