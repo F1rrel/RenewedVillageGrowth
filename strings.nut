@@ -118,10 +118,10 @@ function DebugCargoLabels()
 }
 
 /* Debug function: print supplied cargo. */
-function GoalTown::DebugCargoSupplied(i)
+function GoalTown::DebugCargoSupplied(i, supplied)
 {
-	Log.Info(GSTown.GetName(this.id)+": supplied "+GSCargo.GetCargoLabel(CargoList[i])+"="
-		 +town_supplied[i], Log.LVL_DEBUG);
+	Log.Info(GSTown.GetName(this.id)+": supplied "+GSCargo.GetCargoLabel(i)+"="
+		 +supplied, Log.LVL_DEBUG);
 }
 
 /* Debug function: print stockpiled/supplied/goal per cargo category. */

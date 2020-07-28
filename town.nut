@@ -8,8 +8,7 @@ class GoalTown
 	sign_id = null;             // Id for extra text under town name
 	is_monitored = null;        // Whether the town is already under monitoring. True if town exchanges pax.
 	last_pax_delivery = null;   // Date of last pax delivery from or to the town
-	town_supplied = null;       // Last monthly supply per cargo type
-	town_cargo_cat = null;
+	town_cargo_cat = null;		// Monthly supply per category
 	town_goals_cat = null;      // Town goals per cargo category
 	town_supplied_cat = null;   // Last monthly supply per cargo category (for categories: see InitCargoLists())
 	town_stockpiled_cat = null; // Stockpiled cargos per cargo category
@@ -42,7 +41,6 @@ class GoalTown
 			this.sign_id = -1;
 			this.is_monitored = false;
 			this.last_pax_delivery = null;
-			this.town_supplied = array(::CargoTypeNum, 0);
 			this.town_goals_cat = array(::CargoCatNum, 0);
 			this.town_supplied_cat = array(::CargoCatNum, 0);
 			this.town_stockpiled_cat = array(::CargoCatNum, 0);
@@ -55,7 +53,6 @@ class GoalTown
 			this.sign_id = ::TownDataTable[this.id].sign_id;
 			this.is_monitored = ::TownDataTable[this.id].is_monitored;
 			this.last_pax_delivery = ::TownDataTable[this.id].last_pax_delivery;
-			this.town_supplied = ::TownDataTable[this.id].town_supplied;
 			this.town_goals_cat = ::TownDataTable[this.id].town_goals_cat;
 			this.town_supplied_cat = ::TownDataTable[this.id].town_supplied_cat;
 			this.town_stockpiled_cat = ::TownDataTable[this.id].town_stockpiled_cat;
@@ -103,7 +100,6 @@ function GoalTown::SavingTownData()
 	town_data.sign_id <- this.sign_id;
 	town_data.is_monitored <- this.is_monitored;
 	town_data.last_pax_delivery <- this.last_pax_delivery;
-	town_data.town_supplied <- this.town_supplied;
 	town_data.town_goals_cat <- this.town_goals_cat;
 	town_data.town_supplied_cat <- this.town_supplied_cat;
 	town_data.town_stockpiled_cat <- this.town_stockpiled_cat;
@@ -128,7 +124,6 @@ function GoalTown::MonthlyManageTown()
 	local sup_imp_part = GSController.GetSetting("supply_impacting_part") / 100.0;
 	local lowest_tgr = GSController.GetSetting("lowest_town_growth_rate");
 	// Clearing the arrays
-	this.town_supplied = array(::CargoTypeNum, 0);
 	this.town_supplied_cat = array(::CargoCatNum, 0);
 	this.town_goals_cat = array(::CargoCatNum, 0);
 	
@@ -149,44 +144,20 @@ function GoalTown::MonthlyManageTown()
 	if (!this.is_monitored && !this.CheckMonitoring(false)) return;
 
 	// Checking cargo delivery
-	for (local i = 0; i < ::CargoTypeNum; i++) {
-		for (local cid = GSCompany.COMPANY_FIRST; cid <= GSCompany.COMPANY_LAST; cid++) {
-			if (GSCompany.ResolveCompanyID(cid) != GSCompany.COMPANY_INVALID) {
-				town_supplied[i] += GSCargoMonitor.GetTownDeliveryAmount
-					(cid, ::CargoList[i], this.id, true);
-				if (town_supplied[i] > 0) this.DebugCargoSupplied(i); // Debug info: cargo supplied
+	local passangers_supplied = 0;
+	foreach (index, category in this.town_cargo_cat) {
+		foreach (cargo in category) {
+			for (local cid = GSCompany.COMPANY_FIRST; cid <= GSCompany.COMPANY_LAST; cid++) {
+				if (GSCompany.ResolveCompanyID(cid) != GSCompany.COMPANY_INVALID) {
+					local cargo_supplied = GSCargoMonitor.GetTownDeliveryAmount(cid, cargo, this.id, true);
+					this.DebugCargoSupplied(cargo, cargo_supplied);
+					town_supplied_cat[index] += cargo_supplied;
+					if (cargo == 0) 
+						passangers_supplied += cargo_supplied;
+				}
 			}
-		}
-
-		// On first iteration, if there isn't pax supply, check whether we stop monitoring
-		if (i == 0) {
-			if (town_supplied[i] == 0 && !this.CheckMonitoring(true)) {
+			if (cargo == 0 && passangers_supplied == 0 && !this.CheckMonitoring(true)) 
 				return;
-			}
-		}
-
-		// Summing up cargo supply per each cargo categories.
-		if (this.town_supplied[i] > 0) {
-			local is_found = false;
-			while (parsed_cat < ::CargoCatNum) {  // On parse les groupes un par un.
-				for (local k = 0; k < ::CargoCat[parsed_cat].len(); k++) {
-					if (::CargoList[i] == ::CargoCat[parsed_cat][k]) {
-						this.town_supplied_cat[parsed_cat] += this.town_supplied[i];
-						is_found = true;
-						if ((k+1) == ::CargoCat[parsed_cat].len()) {
-							parsed_cat++;
-						}
-
-						break;
-					}
-				}
-
-				if (is_found == true) {
-					break;
-				}
-
-				parsed_cat++;
-			}
 		}
 	}
 
@@ -391,7 +362,6 @@ function GoalTown::CheckMonitoring(monitored)
 		} else {
 			GSTown.SetGrowthRate(this.id, GSTown.TOWN_GROWTH_NONE);
 			this.is_monitored = false;
-			this.town_supplied = array(::CargoTypeNum, 0);
 			this.town_stockpiled_cat = array(::CargoCatNum, 0);
 			this.tgr_array = array(tgr_array_len, 0);
 			this.tgr_average = null;
