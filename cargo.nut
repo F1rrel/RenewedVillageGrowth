@@ -578,7 +578,11 @@ function Randomize1()
 	local cargo_cat = array(::CargoCat.len());
 	foreach (index, cat in ::CargoCat)
 	{
-		cargo_cat[index] = [cat[GSBase.RandRange(cat.len())]];
+		if (index == 0) {
+			cargo_cat[index] = cat;
+		} else {
+			cargo_cat[index] = [cat[GSBase.RandRange(cat.len())]];
+		}
 	}
 
 	return cargo_cat;

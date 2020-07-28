@@ -42,13 +42,33 @@ function GoalTown::TownTextCategories()
 	
 	// Building substrings. Labels depend on categories number.
 	// Adding numeric parameters and building the final string
-	local text_townbox = GSText(GSText["STR_TOWNBOX_"+max_cat]);
-	for (local i = 0; i <= max_cat; i++) {
-		local text_townbox_cargocat = GSText(GSText["STR_TOWNBOX_CAT_"+::CargoCatList[i]]);
-		text_townbox_cargocat.AddParam(this.town_goals_cat[i]);
-		text_townbox_cargocat.AddParam(this.town_supplied_cat[i]);
-		text_townbox_cargocat.AddParam(this.town_stockpiled_cat[i]);
-		text_townbox.AddParam(text_townbox_cargocat);
+	local text_townbox = null;
+	switch (::SettingsTable.randomization) {
+		case 2: // 1 per category
+			text_townbox = GSText(GSText["STR_RANDOM_"+max_cat]);
+			local text_townbox_cargocat = GSText(GSText.STR_TOWNBOX_CAT_0);
+			text_townbox_cargocat.AddParam(this.town_goals_cat[0]);
+			text_townbox_cargocat.AddParam(this.town_supplied_cat[0]);
+			text_townbox_cargocat.AddParam(this.town_stockpiled_cat[0]);
+			text_townbox.AddParam(text_townbox_cargocat);
+			for (local i = 1; i <= max_cat; i++) {
+				text_townbox_cargocat = GSText(GSText["STR_RANDOM_CAT_"+::CargoCatList[i]]);
+				text_townbox_cargocat.AddParam(1 << this.town_cargo_cat[i][0]);
+				text_townbox_cargocat.AddParam(this.town_goals_cat[i]);
+				text_townbox_cargocat.AddParam(this.town_supplied_cat[i]);
+				text_townbox_cargocat.AddParam(this.town_stockpiled_cat[i]);
+				text_townbox.AddParam(text_townbox_cargocat);
+			}
+			break;
+		default:
+			text_townbox = GSText(GSText["STR_TOWNBOX_"+max_cat]);
+			for (local i = 0; i <= max_cat; i++) {
+				local text_townbox_cargocat = GSText(GSText["STR_TOWNBOX_CAT_"+::CargoCatList[i]]);
+				text_townbox_cargocat.AddParam(this.town_goals_cat[i]);
+				text_townbox_cargocat.AddParam(this.town_supplied_cat[i]);
+				text_townbox_cargocat.AddParam(this.town_stockpiled_cat[i]);
+				text_townbox.AddParam(text_townbox_cargocat);
+			}
 	}
 	
 	return text_townbox;

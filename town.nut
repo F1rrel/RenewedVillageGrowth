@@ -468,9 +468,6 @@ function GoalTown::UpdateTownText(info_mode)
 function GoalTown::Randomization()
 {
 	switch (::SettingsTable.randomization) {
-		case 1: // None
-			this.town_cargo_cat = ::CargoCat;
-			break;
 		case 2: // 1 per category
 			this.town_cargo_cat = Randomize1();
 			this.DebugCargoTable(this.town_cargo_cat);
