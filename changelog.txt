@@ -2,6 +2,7 @@
 
 Version 4
 - modified: added easy, medium and hard values to pax and mail requirement
+- fix: funding towns working
 
 Version 3 (2020/05/17)
 - modified: support for any combination of ECS 1.2 vectors

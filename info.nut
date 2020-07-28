@@ -64,6 +64,19 @@ class MainClass extends GSInfo
 					_17 = "FIRS 3.0.12: Extreme",
 					_18 = "NAIS 1.0.6: North America" });
 
+		AddSetting({ name = "cargo_randomization",
+				description = "Cargo randomization type",
+				easy_value = 1,
+				medium_value = 1,
+				hard_value = 1,
+				custom_value = 1,
+				flags = CONFIG_NONE, min_value = 1, max_value = 4 });
+		AddLabels("cargo_randomization", { 
+					_1 = "None",
+					_2 = "1 per category",
+					_3 = "1-2 per category",
+					_4 = "1-3 per category" });
+
 		AddSetting({ name = "goal_scale_factor",
 				description = "Difficulty level (easy = 60, normal = 100, hard = 140)",
 				easy_value = 60,

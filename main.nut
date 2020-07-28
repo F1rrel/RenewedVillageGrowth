@@ -175,7 +175,8 @@ function MainClass::Save()
 	 * editor, do not save anything.
 	 */
 	if ((::SettingsTable.industry_NewGRF != GSController.GetSetting("industry_NewGRF")) ||
-	    (::SettingsTable.use_town_sign != GSController.GetSetting("use_town_sign"))) {
+	    (::SettingsTable.use_town_sign != GSController.GetSetting("use_town_sign")) ||
+		(::SettingsTable.randomization != GSController.GetSetting("cargo_randomization"))) {
 		Log.Info("Some permanent setting changed. Not saving town data.", Log.LVL_INFO);
 		return save_table;
 	}
