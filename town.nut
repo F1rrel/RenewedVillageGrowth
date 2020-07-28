@@ -9,6 +9,7 @@ class GoalTown
 	is_monitored = null;        // Whether the town is already under monitoring. True if town exchanges pax.
 	last_pax_delivery = null;   // Date of last pax delivery from or to the town
 	town_supplied = null;       // Last monthly supply per cargo type
+	town_cargo_cat = null;
 	town_goals_cat = null;      // Town goals per cargo category
 	town_supplied_cat = null;   // Last monthly supply per cargo category (for categories: see InitCargoLists())
 	town_stockpiled_cat = null; // Stockpiled cargos per cargo category
@@ -22,6 +23,7 @@ class GoalTown
 	text_number = null;
 	allowGrowth = null;			// limits growth requirement fulfilled
 	town_text_scroll = null;	// scroll town text when more than 3 categories are to be displayed
+	cargo_hash = null;
 
 	constructor(town_id, load_town_data, limit_growth) {
 		this.id = town_id;
@@ -32,6 +34,7 @@ class GoalTown
 		this.allowGrowth = true;
 		this.text1 = GSText(GSText.STR_TOWNS_NOT_LIMITED);
 		this.town_text_scroll = 0;
+
 		/* If there isn't saved data for the towns, we
 		 * initialize them. Otherwise, we load saved data.
 		 */
@@ -44,6 +47,7 @@ class GoalTown
 			this.town_supplied_cat = array(::CargoCatNum, 0);
 			this.town_stockpiled_cat = array(::CargoCatNum, 0);
 			this.tgr_array = array(tgr_array_len, 0);
+			this.Randomization();
 			this.DisableOrigCargoGoal();
 			GSTown.SetGrowthRate(this.id, GSTown.TOWN_GROWTH_NONE);
 			GSTown.SetText(this.id, TownBoxText(false, 0));
@@ -56,6 +60,8 @@ class GoalTown
 			this.town_supplied_cat = ::TownDataTable[this.id].town_supplied_cat;
 			this.town_stockpiled_cat = ::TownDataTable[this.id].town_stockpiled_cat;
 			this.tgr_array = ::TownDataTable[this.id].tgr_array;
+			this.town_cargo_cat = GetCargoTable(::TownDataTable[this.id].cargo_hash);
+			this.DebugCargoTable(this.town_cargo_cat);
 			
 			this.UpdateTownText(GSController.GetSetting("town_info_mode"));
 		}
@@ -102,6 +108,7 @@ function GoalTown::SavingTownData()
 	town_data.town_supplied_cat <- this.town_supplied_cat;
 	town_data.town_stockpiled_cat <- this.town_stockpiled_cat;
 	town_data.tgr_array <- this.tgr_array;
+	town_data.cargo_hash <- this.cargo_hash;
 	return town_data;
 }
 
@@ -456,4 +463,22 @@ function GoalTown::UpdateTownText(info_mode)
 	if (this.is_monitored) {
 		GSTown.SetText(this.id, this.TownBoxText(true, info_mode));
 	}
+}
+
+function GoalTown::Randomization()
+{
+	switch (::SettingsTable.randomization) {
+		case 1: // None
+			this.town_cargo_cat = ::CargoCat;
+			break;
+		case 2: // 1 per category
+			this.town_cargo_cat = Randomize1();
+			this.DebugCargoTable(this.town_cargo_cat);
+			break;
+		default:
+			this.town_cargo_cat = ::CargoCat;
+	}
+
+	this.cargo_hash = GetCargoHash(this.town_cargo_cat);
+	this.DebugCargoHash(this.cargo_hash);
 }

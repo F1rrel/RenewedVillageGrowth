@@ -571,3 +571,50 @@ function InitCargoLists()
 	::CargoTypeNum <- ::CargoList.len();
 	::CargoCatNum <- ::CargoCat.len();
 }
+
+/* Randomize cargo to one per category and return cargo table. */
+function Randomize1()
+{
+	local cargo_cat = array(::CargoCat.len());
+	foreach (index, cat in ::CargoCat)
+	{
+		cargo_cat[index] = [cat[GSBase.RandRange(cat.len())]];
+	}
+
+	return cargo_cat;
+}
+
+/* Calculate cargo hash from cargo table */
+function GetCargoHash(cargo_cat)
+{
+	local hash = 0;
+	foreach (cat in cargo_cat)
+	{
+		foreach (cargo in cat)
+		{
+			hash = hash | (1 << cargo);
+		}
+	}
+
+	return hash;
+}
+
+/* Create cargo table from cargo hash */
+function GetCargoTable(hash)
+{
+	local cargo_cat = array(::CargoCat.len());
+
+	foreach (index, cat in ::CargoCat)
+	{
+		cargo_cat[index] = [];
+		foreach (cargo in cat)
+		{
+			if (hash & (1 << cargo))
+			{
+				cargo_cat[index].append(cargo);
+			}
+		}
+	}
+
+	return cargo_cat;
+}

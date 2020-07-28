@@ -36,7 +36,8 @@ class MainClass extends GSController
 		::TownDataTable <- {};
 		::SettingsTable <- {
 			industry_NewGRF = GSController.GetSetting("industry_NewGRF"),
-			use_town_sign = GSController.GetSetting("use_town_sign")
+			use_town_sign = GSController.GetSetting("use_town_sign"),
+			randomization = GSController.GetSetting("cargo_randomization")
 		}
 	}
 }

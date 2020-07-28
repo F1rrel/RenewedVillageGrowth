@@ -129,3 +129,27 @@ function GoalTown::DebugTgrArray()
 	}
 	Log.Info(GSTown.GetName(this.id)+": "+array_text+"Average="+this.tgr_average, Log.LVL_DEBUG);
 }
+
+function GoalTown::DebugCargoHash(hash)
+{
+	local cargo_text = "";
+	for (local i = 0; i < 32; i++)
+	{
+		if (hash & (1 << i)) {
+			cargo_text += GSCargo.GetCargoLabel(i) + ",";
+		}
+	}
+	Log.Info(GSTown.GetName(this.id) + ": " + cargo_text, Log.LVL_DEBUG);
+}
+
+function GoalTown::DebugCargoTable(cargo_table)
+{
+	local cargo_text = "";
+	foreach (index, cat in cargo_table) {
+		cargo_text += "  " + index + ": ";
+		foreach (cargo in cat) {
+			cargo_text += GSCargo.GetCargoLabel(cargo) + ",";
+		}
+	}
+	Log.Info(GSTown.GetName(this.id) + ": " + cargo_text, Log.LVL_DEBUG);
+}
