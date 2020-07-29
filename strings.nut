@@ -46,18 +46,12 @@ function GoalTown::TownTextCategories()
 	switch (::SettingsTable.randomization) {
 		case 2: // 1 per category
 			text_townbox = GSText(GSText["STR_RANDOM_"+max_cat]);
-			local text_townbox_cargocat = GSText(GSText.STR_TOWNBOX_CAT_0);
-			text_townbox_cargocat.AddParam(this.town_goals_cat[0]);
-			text_townbox_cargocat.AddParam(this.town_supplied_cat[0]);
-			text_townbox_cargocat.AddParam(this.town_stockpiled_cat[0]);
-			text_townbox.AddParam(text_townbox_cargocat);
-			for (local i = 1; i <= max_cat; i++) {
-				text_townbox_cargocat = GSText(GSText["STR_RANDOM_CAT_"+::CargoCatList[i]]);
-				text_townbox_cargocat.AddParam(1 << this.town_cargo_cat[i][0]);
-				text_townbox_cargocat.AddParam(this.town_goals_cat[i]);
-				text_townbox_cargocat.AddParam(this.town_supplied_cat[i]);
-				text_townbox_cargocat.AddParam(this.town_stockpiled_cat[i]);
-				text_townbox.AddParam(text_townbox_cargocat);
+			for (local i = 0; i <= max_cat; i++) {
+				if (i != 0)
+					text_townbox.AddParam(1 << this.town_cargo_cat[i][0]);
+				text_townbox.AddParam(this.town_goals_cat[i]);
+				text_townbox.AddParam(this.town_supplied_cat[i]);
+				text_townbox.AddParam(this.town_stockpiled_cat[i]);
 			}
 			break;
 		default:

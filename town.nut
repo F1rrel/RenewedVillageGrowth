@@ -150,8 +150,9 @@ function GoalTown::MonthlyManageTown()
 			for (local cid = GSCompany.COMPANY_FIRST; cid <= GSCompany.COMPANY_LAST; cid++) {
 				if (GSCompany.ResolveCompanyID(cid) != GSCompany.COMPANY_INVALID) {
 					local cargo_supplied = GSCargoMonitor.GetTownDeliveryAmount(cid, cargo, this.id, true);
-					this.DebugCargoSupplied(cargo, cargo_supplied);
 					town_supplied_cat[index] += cargo_supplied;
+					if (cargo_supplied > 0) 
+						this.DebugCargoSupplied(cargo, cargo_supplied);
 					if (cargo == 0) 
 						passangers_supplied += cargo_supplied;
 				}
