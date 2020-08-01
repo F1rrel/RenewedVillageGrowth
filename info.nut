@@ -74,8 +74,11 @@ class MainClass extends GSInfo
 		AddLabels("cargo_randomization", { 
 					_1 = "None",
 					_2 = "1 per category",
-					_3 = "1-2 per category",
-					_4 = "1-3 per category" });
+					_3 = "2 per category",
+					_4 = "3 per category",
+					_5 = "1-2 per category",
+					_6 = "1-3 per category",
+					_7 = "2-3 per category" });
 
 		AddSetting({ name = "goal_scale_factor",
 				description = "Difficulty level (easy = 60, normal = 100, hard = 140)",

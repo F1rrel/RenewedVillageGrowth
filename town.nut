@@ -398,7 +398,9 @@ function GoalTown::Randomization()
 {
 	switch (::SettingsTable.randomization) {
 		case 2: // 1 per category
-			this.town_cargo_cat = Randomize1();
+		case 3: // 2 per category
+		case 4: // 3 per category
+			this.town_cargo_cat = RandomizeFixed(::SettingsTable.randomization - 1);
 			this.DebugCargoTable(this.town_cargo_cat);
 			break;
 		default:

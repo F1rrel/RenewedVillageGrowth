@@ -573,15 +573,21 @@ function InitCargoLists()
 }
 
 /* Randomize cargo to one per category and return cargo table. */
-function Randomize1()
+function RandomizeFixed(number)
 {
 	local cargo_cat = array(::CargoCat.len());
-	foreach (index, cat in ::CargoCat)
+	foreach (cat_idx, cat in ::CargoCat)
 	{
-		if (index == 0) {
-			cargo_cat[index] = cat;
+		if (cat_idx == 0) {
+			cargo_cat[cat_idx] = cat;
 		} else {
-			cargo_cat[index] = [cat[GSBase.RandRange(cat.len())]];
+			local cargo_list = clone cat;
+			cargo_cat[cat_idx] = [];
+			for (local i = 0; i < number || cargo_list.len() == 0; i++) {
+				local index = GSBase.RandRange(cargo_list.len());
+				cargo_cat[cat_idx].append(cargo_list[index]);
+				cargo_list.remove(index);
+			}
 		}
 	}
 
