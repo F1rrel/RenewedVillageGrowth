@@ -110,6 +110,11 @@ function FillCargoIDList(cargo_list) {
 				  "FICR","FOOD","FISH","PETR","GLAS","GRAI","IORE","LVST","WDPR","ENSP","METL",
 				  "MILK","PORE","OIL_","PAPR","FRUT","SAND","SCMT","GRVL","URAN","VALU","WOOD"];
 		break;
+	/* Improved Town Industries 1.3 */
+	case(19):
+		::CargoIDList <- ["PASS","COAL","MAIL","OIL_","FOOD","GOOD","RFPR","WOOD","IORE","STEL"];
+		break;
+	
 	default: break;
 	}
 
@@ -344,13 +349,22 @@ function DefineCargosBySettings()
 			::CargoCat <- [[0,2],
 				       [10,12,15,17,21,25],
 				       [1,6,7,8,16,22,23,26,27,28,29,30,31],
-				       [4,9,14,18,19,20,24],
-				       [3,5,11,13]];
+				       [4,9,13,14,18,20,24],
+				       [3,5,11,19]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
 			::CargoPermille <- [60,25,20,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
+			break;
+		case(19): // Improved Town Industries 1.3
+			::CargoCat <- [[0,2],
+				       [1,3,7,8],
+				       [4,5,6,9]];
+			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.PRODUCTS];
+			::CargoMinPopDemand <- [0,1000,4000];
+			::CargoPermille <- [60,45,25];
+			::CargoDecay <- [0.4,0.2,0.1];
 			break;
 		default:
 			break;

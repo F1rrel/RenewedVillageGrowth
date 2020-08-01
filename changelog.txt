@@ -5,6 +5,7 @@ Version 4
 - new: added randomization of cargos to fixed number or variable number per category
 - new: added parameter to display all required cargo by towns from start - "Display immediately cargos per town"
 - new: added displaying of full cargo list in "Town info display mode" parameter
+- new: added support for Improved Town Industries 1.3
 - modified: added easy, medium and hard values to some parameters
 - modified: completely reworked town texts
 - modified: any supplied cargo from first category will start town monitoring
