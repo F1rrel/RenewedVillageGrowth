@@ -76,7 +76,7 @@ function FillCargoIDList(cargo_list) {
 				  "OIL_",null,"STEL","PETR","BATT","VEHI","YETI","CLAY","LVST","URAN",
 				  "IORE"];
 		break;
-	/* FIRS version 3.0.12 */
+	/* FIRS version 3 */
 	case(12): // Temperate Basic
 		::CargoIDList <- ["PASS","BEER","MAIL","RFPR","CLAY","GOOD","COAL","ENSP","FMSP","FISH",
 				  "FRUT","FOOD","IORE","LVST","MILK","SAND","SCMT","STEL"];
@@ -114,12 +114,32 @@ function FillCargoIDList(cargo_list) {
 	case(19):
 		::CargoIDList <- ["PASS","COAL","MAIL","OIL_","FOOD","GOOD","RFPR","WOOD","IORE","STEL"];
 		break;
+	/* FIRS version 4.0.0-alpha-3 */
+	case(20): // Temperate Basic
+		::CargoIDList <- ["PASS","BEER","MAIL","RFPR","COAL","GOOD","ENSP","FMSP","FISH","FRUT",
+				  "IORE","FOOD","KAOL","LVST","MILK","SAND","SCMT","STEL"];
+		break;
+	case(21): // Arctic Basic
+		::CargoIDList <- ["PASS","NH3_","MAIL","ENSP","BOOM","FMSP","FERT","FISH","KAOL","WDPR",
+				  "PAPR","FOOD","PEAT","PHOS","POTA","PORE","SULP","WOOD","ZINC"];
+		break;
+	case(22): // Tropic Basic
+		::CargoIDList <- ["PASS","BEER","MAIL","BEAN","RFPR","GOOD","JAVA","COPR","CORE","ENSP",
+				  "FMSP","FOOD","FISH","FRUT","GRAI","LVST","NITR","OIL_","WOOL"];
+		break;
+	case(23): // Steeltown
+		::CargoIDList <- ["PASS","ACID","MAIL","STAL","ALUM","VEHI","CBLK","STCB","CSTI","CMNT",
+				  "CHLO","FOOD","SOAP","COAL","CTAR","COKE","POWR","ENSP","FMSP","FECR",
+				  "GLAS","IORE","LIME","LYE_","MNO2","O2__","COAT","PETR","IRON","PIPE",
+				  "PLAS","QLME","RBAR","RUBR","SALT","SAND","SCMT","SLAG","SASH","STST",
+				  "STSE","STSH","STWR","SULP","TYRE","VBOD","VENG","VPTS","ZINC"];
+		break;
 	
 	default: break;
 	}
 
 	// This is used to add all null IDs after the end of active used cargos
-	local missing_cargo = 32 - ::CargoIDList.len();
+	local missing_cargo = 64 - ::CargoIDList.len();
 	for (local i = 0; i < missing_cargo; i++) {
 		for (local i = 0; i < missing_cargo; i++) ::CargoIDList.append(null);
 	}
@@ -366,6 +386,54 @@ function DefineCargosBySettings()
 			::CargoPermille <- [60,45,25];
 			::CargoDecay <- [0.4,0.2,0.1];
 			break;
+		case(20): // FIRS 4.0.0-alpha-3: Temperate Basic
+			::CargoCat <- [[0,2],
+					   [8,9,13,14],
+					   [4,10,12,15,16],
+				       [3,6,7,17],
+				       [1,5,11]];
+			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
+					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
+			::CargoMinPopDemand <- [0,500,1000,4000,8000];
+			::CargoPermille <- [60,25,20,15,10];
+			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
+			break;
+		case(21): // FIRS 4.0.0-alpha-3: Arctic Basic
+			::CargoCat <- [[0,2],
+					   [1,7,11,14],
+					   [8,12,13,15,17],
+				       [3,5,9,16],
+				       [4,6,10,18]];
+			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
+					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
+			::CargoMinPopDemand <- [0,500,1000,4000,8000];
+			::CargoPermille <- [60,25,20,15,10];
+			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
+			break;
+		case(22): // FIRS 4.0.0-alpha-3: Tropic Basic
+			::CargoCat <- [[0,2],
+				       [1,3,6,12,13,14,15],
+				       [8,16,17,18],
+				       [4,9,10],
+				       [5,7,11]];
+			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
+					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
+			::CargoMinPopDemand <- [0,500,1000,4000,8000];
+			::CargoPermille <- [60,25,20,15,10];
+			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
+			break;
+		case(23): // FIRS 4.0.0-alpha-3: Steeltown
+			::CargoCat <- [[0,2],
+					   [11,13,21,22,25,35,36,38,34],
+					   [4,12,16,19,24,26,27,30,33,48],
+				       [1,3,6,7,8,10,14,15,17,18,20,23,28,31,32,37,39,41,42,43],
+				       [5,9,29,40,44,45,46,47]];
+			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
+					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
+			::CargoMinPopDemand <- [0,500,1000,4000,8000];
+			::CargoPermille <- [60,25,20,15,10];
+			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
+			break;
 		default:
 			break;
 	}
@@ -377,13 +445,13 @@ function DefineCargosBySettings()
  */
 function CheckInitialCargoList() {
 	local cargo_list = [];
-	for(local i = 0; i < 32; ++i) {
+	for(local i = 0; i < 64; ++i) {
 		cargo_list.append(GSCargo.GetCargoLabel(i));
 	}
 	FillCargoIDList(cargo_list);
 
 	// Comparing actual list to original list
-	for (local i = 0; i < 32; i++) {
+	for (local i = 0; i < 64; i++) {
 		if (cargo_list[i] != ::CargoIDList[i]) {
 			::CargoIDList = false;
 			Log.Info("Warning: game's cargo list differ from settings.", Log.LVL_INFO);
@@ -394,7 +462,7 @@ function CheckInitialCargoList() {
 
 function ConstructECSVectorCargoList(cargo_list) {
 	local return_list = [];
-	for (local i = 0; i < 32; ++i) {
+	for (local i = 0; i < 64; ++i) {
 		return_list.append(null);
 	}
 	

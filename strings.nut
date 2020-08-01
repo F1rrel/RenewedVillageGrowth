@@ -152,7 +152,7 @@ function GoalTown::TownSignText()
 function DebugCargoLabels()
 {
 	local list = GSCargoList();
-	for(local i = 0; i < 32; ++i) {
+	for(local i = 0; i < 64; ++i) {
 		Log.Info("Cargo " + i + ": " + GSCargo.GetCargoLabel(i), Log.LVL_SUB_DECISIONS);
 	}
 }
@@ -193,7 +193,7 @@ function GoalTown::DebugTgrArray()
 function GoalTown::DebugCargoHash(hash)
 {
 	local cargo_text = "";
-	for (local i = 0; i < 32; i++)
+	for (local i = 0; i < 64; i++)
 	{
 		if (hash & (1 << i)) {
 			cargo_text += GSCargo.GetCargoLabel(i) + ",";

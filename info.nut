@@ -44,7 +44,7 @@ class MainClass extends GSInfo
 				medium_value = 1,
 				hard_value = 1,
 				custom_value = 1,
-				flags = CONFIG_NONE, min_value = 1, max_value = 19 });
+				flags = CONFIG_NONE, min_value = 1, max_value = 23 });
 		AddLabels("industry_NewGRF", { 
 					_1 = "Baseset: Temperate",
 					_2 = "Baseset: Arctic",
@@ -64,7 +64,11 @@ class MainClass extends GSInfo
 					_16 = "FIRS 3: In A Hot Country",
 					_17 = "FIRS 3: Extreme",
 					_18 = "NAIS 1.0.6: North America",
-					_19 = "Improved Town Industries 1.3" });
+					_19 = "Improved Town Industries 1.3",
+					_20 = "FIRS 4.0.0-alpha-3: Temperate Basic",
+					_21 = "FIRS 4.0.0-alpha-3: Arctic Basic",
+					_22 = "FIRS 4.0.0-alpha-3: Tropic Basic",
+					_23 = "FIRS 4.0.0-alpha-3: Steeltown" });
 
 		AddSetting({ name = "cargo_randomization",
 				description = "Cargo randomization type",
