@@ -11,7 +11,7 @@ STR_CARGOCAT_LABEL_1     :Raw food
 STR_CARGOCAT_LABEL_2     :Raw materials
 STR_CARGOCAT_LABEL_3     :Processed materials
 STR_CARGOCAT_LABEL_4     :Final products
-STR_CARGOCAT_LABEL_5     :Industrial goods
+STR_CARGOCAT_LABEL_5     :Products
 STR_SB_CARGOCAT_CAT      :Category
 STR_SB_CARGOCAT_POP      :Minimal town population
 STR_SB_CARGOCAT_DECAY    :Monthly decay
@@ -27,19 +27,19 @@ STR_SB_WARNING_1         :The industry set defined in the GS settings doesn't ma
 
 ##### TOWNBOX #####
 STR_TOWNBOX_NOGROWTH           :Transport {LTBLUE}{CARGO_LIST}{BLACK} from this town to make it grow.
-STR_TOWNBOX_IND_3_NOGROWTH     :Transport {LTBLUE}{CARGO_LIST}{BLACK} from this town to make it grow.{}Cargo list:{} * {LTBLUE}Public services{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}{} * {RED}Raw materials{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}{} * {BROWN}Industrial goods{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}
+STR_TOWNBOX_IND_3_NOGROWTH     :Transport {LTBLUE}{CARGO_LIST}{BLACK} from this town to make it grow.{}Cargo list:{} * {LTBLUE}Public services{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}{} * {RED}Raw materials{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}{} * {BROWN}Products{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}
 STR_TOWNBOX_IND_5_NOGROWTH     :Transport {LTBLUE}{CARGO_LIST}{BLACK} from this town to make it grow.{}Cargo list:{} * {LTBLUE}Public services{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}{} * {GREEN}Raw food{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}{} * {RED}Raw materials{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}{} * {BROWN}Processed materials{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}{} * {PURPLE}Final products{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}
 
 ############ range for 3 category industries starts
 STR_TOWNBOX_IND_3_CAT_0       :Limiter information: transported / required{} * {LTBLUE}Passengers{BLACK}: {ORANGE}{NUM}%{BLACK} / {ORANGE}{NUM}%{BLACK}{} * {WHITE}Mail{BLACK}: {ORANGE}{NUM}%{BLACK} / {ORANGE}{NUM}%{BLACK}{}Category deliveries: required / supplied / stockpiled{} * {LTBLUE}Public services{BLACK}: {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK}
 STR_TOWNBOX_IND_3_CAT_1       :Limiter information: transported / required{} * {LTBLUE}Passengers{BLACK}: {ORANGE}{NUM}%{BLACK} / {ORANGE}{NUM}%{BLACK}{} * {WHITE}Mail{BLACK}: {ORANGE}{NUM}%{BLACK} / {ORANGE}{NUM}%{BLACK}{}Category deliveries: required / supplied / stockpiled{} * {LTBLUE}Public services{BLACK}: {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK}{} * {RED}Raw materials{BLACK}: {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK}
-STR_TOWNBOX_IND_3_CAT_2       :Limiter information: transported / required{} * {LTBLUE}Passengers{BLACK}: {ORANGE}{NUM}%{BLACK} / {ORANGE}{NUM}%{BLACK}{} * {WHITE}Mail{BLACK}: {ORANGE}{NUM}%{BLACK} / {ORANGE}{NUM}%{BLACK}{}Category deliveries: required / supplied / stockpiled{} * {LTBLUE}Public services{BLACK}: {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK}{} * {RED}Raw materials{BLACK}: {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK}{} * {BROWN}Industrial goods{BLACK}: {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK}
+STR_TOWNBOX_IND_3_CAT_2       :Limiter information: transported / required{} * {LTBLUE}Passengers{BLACK}: {ORANGE}{NUM}%{BLACK} / {ORANGE}{NUM}%{BLACK}{} * {WHITE}Mail{BLACK}: {ORANGE}{NUM}%{BLACK} / {ORANGE}{NUM}%{BLACK}{}Category deliveries: required / supplied / stockpiled{} * {LTBLUE}Public services{BLACK}: {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK}{} * {RED}Raw materials{BLACK}: {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK}{} * {BROWN}Products{BLACK}: {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK} / {ORANGE}{NUM}{BLACK}
 ############ range for 3 category industries ends
 
 ############ range for cargo for 3 category industries starts
 STR_TOWNBOX_IND_3_CARGO_0       :Limiter information: transported / required{} * {LTBLUE}Passengers{BLACK}: {ORANGE}{NUM}%{BLACK} / {ORANGE}{NUM}%{BLACK}{} * {WHITE}Mail{BLACK}: {ORANGE}{NUM}%{BLACK} / {ORANGE}{NUM}%{BLACK}{}Cargo list:{} * {LTBLUE}Public services{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}
 STR_TOWNBOX_IND_3_CARGO_1       :Limiter information: transported / required{} * {LTBLUE}Passengers{BLACK}: {ORANGE}{NUM}%{BLACK} / {ORANGE}{NUM}%{BLACK}{} * {WHITE}Mail{BLACK}: {ORANGE}{NUM}%{BLACK} / {ORANGE}{NUM}%{BLACK}{}Cargo list:{} * {LTBLUE}Public services{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}{} * {RED}Raw materials{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}
-STR_TOWNBOX_IND_3_CARGO_2       :Limiter information: transported / required{} * {LTBLUE}Passengers{BLACK}: {ORANGE}{NUM}%{BLACK} / {ORANGE}{NUM}%{BLACK}{} * {WHITE}Mail{BLACK}: {ORANGE}{NUM}%{BLACK} / {ORANGE}{NUM}%{BLACK}{}Cargo list:{} * {LTBLUE}Public services{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}{} * {RED}Raw materials{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}{} * {BROWN}Industrial goods{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}
+STR_TOWNBOX_IND_3_CARGO_2       :Limiter information: transported / required{} * {LTBLUE}Passengers{BLACK}: {ORANGE}{NUM}%{BLACK} / {ORANGE}{NUM}%{BLACK}{} * {WHITE}Mail{BLACK}: {ORANGE}{NUM}%{BLACK} / {ORANGE}{NUM}%{BLACK}{}Cargo list:{} * {LTBLUE}Public services{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}{} * {RED}Raw materials{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}{} * {BROWN}Products{BLACK}: {ORANGE}{CARGO_LIST}{BLACK}
 ############ range for cargo for 3 category industries ends
 
 ############ range for combined for 3 category industries starts

@@ -5,7 +5,7 @@ enum CatLabels
 	RAW_MATERIALS = 2,
 	PROCESSED_MATERIALS = 3,
 	FINAL_PRODUCTS = 4,
-	INDUSTRIAL_GOODS = 5
+	PRODUCTS = 5
 }
 
 /* Cargolist of supported industry set's cargos. Used to check if
@@ -150,36 +150,36 @@ function DefineCargosBySettings()
 	switch (industry_setting) {
 		case(1): // Base temperate
 			::CargoCat <- [[0,2],
-				       [5,10],
-				       [1,3,4,6,7,8,9]];
-			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.INDUSTRIAL_GOODS];
+				       [1,3,4,6,7,8],
+				       [5,9,10]];
+			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.PRODUCTS];
 			::CargoMinPopDemand <- [0,1000,4000];
 			::CargoPermille <- [60,45,25];
 			::CargoDecay <- [0.4,0.2,0.1];
 			break;
 		case(2): //Base arctic
 			::CargoCat <- [[0,2],
-				       [5,10,11],
-				       [1,3,4,6,7,9]];
-			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.INDUSTRIAL_GOODS];
+				       [1,3,4,6,7,10],
+				       [5,9,11]];
+			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.PRODUCTS];
 			::CargoMinPopDemand <- [0,1000,4000];
 			::CargoPermille <- [60,45,25];
 			::CargoDecay <- [0.4,0.2,0.1];
 			break;
 		case(3): //Base tropical
 			::CargoCat <- [[0,2],
-				       [5,9,10,11],
-				       [1,3,4,6,7,8]];
-			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.INDUSTRIAL_GOODS];
+				       [1,3,4,6,7,8,9,10],
+				       [5,11]];
+			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.PRODUCTS];
 			::CargoMinPopDemand <- [0,1000,4000];
 			::CargoPermille <- [60,45,25];
 			::CargoDecay <- [0.4,0.2,0.1];
 			break;
 		case(4): //Base toyland
 			::CargoCat <- [[0,2],
-				       [3,5,11],
-				       [1,4,6,7,8,9,10]];
-			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.INDUSTRIAL_GOODS];
+				       [1,4,6,7,8,9,10],
+				       [3,5,11]];
+			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.PRODUCTS];
 			::CargoMinPopDemand <- [0,1000,4000];
 			::CargoPermille <- [60,45,25];
 			::CargoDecay <- [0.4,0.2,0.1];
