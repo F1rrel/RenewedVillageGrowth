@@ -596,7 +596,7 @@ function GetCargoHash(cargo_cat)
 	{
 		foreach (cargo in cat)
 		{
-			hash = hash | (1 << cargo);
+			hash += 1 << cargo;
 		}
 	}
 

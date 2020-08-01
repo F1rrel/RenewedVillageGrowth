@@ -34,8 +34,8 @@ class MainClass extends GSInfo
 				flags = CONFIG_INGAME, min_value = 1, max_value = 3 });
 		AddLabels("town_info_mode", { 
 					_1 = "Automatic",
-					_2 = "Cargo information",
-					_3 = "Limiter information" });
+					_2 = "Category deliveries",
+					_3 = "Cargo list" });
 	
 		AddSetting({ name = "industry_NewGRF",
 				description = "Which industry set is being used?",

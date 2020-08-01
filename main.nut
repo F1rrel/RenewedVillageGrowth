@@ -19,7 +19,6 @@ class MainClass extends GSController
 	gs_init_done = null;
 	load_saved_data = null;
 	current_save_version = null;
-	limit_growth = null;
 	actual_town_info_mode = null;
 
 	constructor() {
@@ -31,7 +30,6 @@ class MainClass extends GSController
 		this.gs_init_done = false;
 		this.current_save_version = 6;    // Ensures compatibility between revisions
 		this.load_saved_data = false;
-		this.limit_growth = false;
 		this.actual_town_info_mode = 0;
 		::TownDataTable <- {};
 		::SettingsTable <- {
@@ -46,9 +44,18 @@ function MainClass::Start()
 {
 	// Initializing the script
 	local start_tick = GSController.GetTick();
+
+	// Read the openttd.cfg Town Growth Rate setting first.
+	// If the map is set to disallow town growth at all, this script
+	// won't do anything further.
+	if (GSGameSettings.IsValid("town_growth_rate")) {
+		if (! GSGameSettings.GetValue("town_growth_rate") ) {
+			GSLog.Warning("You must set town growth in advanced setting to something other than None. This script is now exiting.");
+			return;
+		}
+	}
+
 	GSGame.Pause();
-	Log.Info("Growth limiter initialisation...", Log.LVL_INFO);
-	this.InitCityLimiter();
 	Log.Info("Script initialisation...", Log.LVL_INFO);
 	this.Init();
 	GSGame.Unpause();
@@ -120,33 +127,6 @@ function MainClass::Init()
 
 	// Now we can free ::TownDataTable
 	::TownDataTable = null;
-}
-
-function MainClass::InitCityLimiter()
-{
-	// Read the openttd.cfg Town Growth Rate setting first.
-	// If the map is set to disallow town growth at all, this script
-	// won't do anything further.
-	if (GSGameSettings.IsValid("town_growth_rate")) {
-		if (! GSGameSettings.GetValue("town_growth_rate") ) {
-			GSLog.Warning("You must set town growth in advanced setting to something other than None. This script is now exiting.");
-			this.limit_growth = false;
-			return;
-		}
-	}
-	
-	// If both the min value for pax and mail are set to 0,
-	// this script will do no good.  Stop the script.
-	local paxRequired = GSController.GetSetting("min_transport_pax").tofloat();
-	local mailRequired = GSController.GetSetting("min_transport_mail").tofloat();
-	
-	if (paxRequired == 0 && mailRequired == 0) {
-		this.limit_growth = false;
-		return;
-	}
-	
-	this.limit_growth = true;
-	return;
 }
 
 function MainClass::HandleEvents()
@@ -225,8 +205,10 @@ function MainClass::CreateTownList()
 	local towns_list = GSTownList();
 	local towns_array = [];
 
+	local paxRequired = GSController.GetSetting("min_transport_pax");
+	local mailRequired = GSController.GetSetting("min_transport_mail");
 	foreach (t, _ in towns_list) {
-		towns_array.append(GoalTown(t, this.load_saved_data, this.limit_growth));
+		towns_array.append(GoalTown(t, this.load_saved_data, paxRequired, mailRequired));
 	}
 
 	return towns_array;
@@ -238,7 +220,9 @@ function MainClass::CreateTownList()
  */
 function MainClass::UpdateTownList(town_id)
 {
-	this.towns.append(GoalTown(town_id, false, this.limit_growth));
+	local paxRequired = GSController.GetSetting("min_transport_pax");
+	local mailRequired = GSController.GetSetting("min_transport_mail");
+	this.towns.append(GoalTown(town_id, false, paxRequired, mailRequired));
 	Log.Info("New town founded: "+GSTown.GetName(town_id)+" (id: "+town_id+")", Log.LVL_DEBUG);
 }
 
@@ -279,8 +263,11 @@ function MainClass::ManageTowns()
 				break;
 		}
 
+		local threashold_setting = GSController.GetSetting("town_size_threshold");
+		local paxRequired = GSController.GetSetting("min_transport_pax");
+		local mailRequired = GSController.GetSetting("min_transport_mail");
 		foreach (town in this.towns) {
-			town.ManageTownLimiting();
+			town.ManageTownLimiting(threashold_setting, paxRequired, mailRequired);
 			town.MonthlyManageTown();
 			if (this.actual_town_info_mode > 1) {
 				town.UpdateTownText(this.actual_town_info_mode);

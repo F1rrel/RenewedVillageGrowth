@@ -7,8 +7,8 @@ class GoalTown
 	id = null;                  // Town id
 	sign_id = null;             // Id for extra text under town name
 	is_monitored = null;        // Whether the town is already under monitoring. True if town exchanges pax.
-	last_pax_delivery = null;   // Date of last pax delivery from or to the town
-	town_cargo_cat = null;		// Monthly supply per category
+	last_delivery = null;       // Date of last delivery from or to the town for monitoring
+	town_cargo_cat = null;		// List selected cargos per category
 	town_goals_cat = null;      // Town goals per cargo category
 	town_supplied_cat = null;   // Last monthly supply per cargo category (for categories: see InitCargoLists())
 	town_stockpiled_cat = null; // Stockpiled cargos per cargo category
@@ -16,22 +16,18 @@ class GoalTown
 	tgr_array_len = null;       // Town growth rate array lenght
 	tgr_average = null;         // Town growth rate average, calculated from the array
 	// Limit towns
-	limit_growth = null;		// global limit growth flag
-	text1 = null;
-	text2 = null;
-	text_number = null;
+	limit_passangers = null;
+	limit_mails = null;
+	limit_growth = null;
 	allowGrowth = null;			// limits growth requirement fulfilled
 	town_text_scroll = null;	// scroll town text when more than 3 categories are to be displayed
 	cargo_hash = null;
 
-	constructor(town_id, load_town_data, limit_growth) {
+	constructor(town_id, load_town_data, pax_required, mail_required) {
 		this.id = town_id;
 		this.tgr_array_len = 8;
 		this.tgr_average = null;
-		this.limit_growth = limit_growth;
-		this.text_number = 0;
 		this.allowGrowth = true;
-		this.text1 = GSText(GSText.STR_TOWNS_NOT_LIMITED);
 		this.town_text_scroll = 0;
 
 		/* If there isn't saved data for the towns, we
@@ -40,11 +36,16 @@ class GoalTown
 		if (!load_town_data) {
 			this.sign_id = -1;
 			this.is_monitored = false;
-			this.last_pax_delivery = null;
+			this.last_delivery = null;
 			this.town_goals_cat = array(::CargoCatNum, 0);
 			this.town_supplied_cat = array(::CargoCatNum, 0);
 			this.town_stockpiled_cat = array(::CargoCatNum, 0);
 			this.tgr_array = array(tgr_array_len, 0);
+			this.limit_passangers = array(2, 0);
+			this.limit_passangers[1] = pax_required;
+			this.limit_mails = array(2, 0);
+			this.limit_mails[1] = mail_required;
+			this.limit_growth = (pax_required > 0) || (mail_required > 0);
 			this.Randomization();
 			this.DisableOrigCargoGoal();
 			GSTown.SetGrowthRate(this.id, GSTown.TOWN_GROWTH_NONE);
@@ -52,12 +53,16 @@ class GoalTown
 		} else {
 			this.sign_id = ::TownDataTable[this.id].sign_id;
 			this.is_monitored = ::TownDataTable[this.id].is_monitored;
-			this.last_pax_delivery = ::TownDataTable[this.id].last_pax_delivery;
+			this.last_delivery = ::TownDataTable[this.id].last_delivery;
 			this.town_goals_cat = ::TownDataTable[this.id].town_goals_cat;
 			this.town_supplied_cat = ::TownDataTable[this.id].town_supplied_cat;
 			this.town_stockpiled_cat = ::TownDataTable[this.id].town_stockpiled_cat;
 			this.tgr_array = ::TownDataTable[this.id].tgr_array;
-			this.town_cargo_cat = GetCargoTable(::TownDataTable[this.id].cargo_hash);
+			this.limit_passangers = ::TownDataTable[this.id].limit_passangers;
+			this.limit_mails = ::TownDataTable[this.id].limit_mails;
+			this.limit_growth = (this.limit_passangers[1] > 0) || (this.limit_mails[1] > 0);
+			this.cargo_hash = ::TownDataTable[this.id].cargo_hash;
+			this.town_cargo_cat = GetCargoTable(this.cargo_hash);
 			this.DebugCargoTable(this.town_cargo_cat);
 			
 			this.UpdateTownText(GSController.GetSetting("town_info_mode"));
@@ -99,11 +104,13 @@ function GoalTown::SavingTownData()
 	local town_data = {};
 	town_data.sign_id <- this.sign_id;
 	town_data.is_monitored <- this.is_monitored;
-	town_data.last_pax_delivery <- this.last_pax_delivery;
+	town_data.last_delivery <- this.last_delivery;
 	town_data.town_goals_cat <- this.town_goals_cat;
 	town_data.town_supplied_cat <- this.town_supplied_cat;
 	town_data.town_stockpiled_cat <- this.town_stockpiled_cat;
 	town_data.tgr_array <- this.tgr_array;
+	town_data.limit_passangers <- this.limit_passangers;
+	town_data.limit_mails <- this.limit_mails;
 	town_data.cargo_hash <- this.cargo_hash;
 	return town_data;
 }
@@ -144,7 +151,6 @@ function GoalTown::MonthlyManageTown()
 	if (!this.is_monitored && !this.CheckMonitoring(false)) return;
 
 	// Checking cargo delivery
-	local passangers_supplied = 0;
 	foreach (index, category in this.town_cargo_cat) {
 		foreach (cargo in category) {
 			for (local cid = GSCompany.COMPANY_FIRST; cid <= GSCompany.COMPANY_LAST; cid++) {
@@ -153,14 +159,14 @@ function GoalTown::MonthlyManageTown()
 					town_supplied_cat[index] += cargo_supplied;
 					if (cargo_supplied > 0) 
 						this.DebugCargoSupplied(cargo, cargo_supplied);
-					if (cargo == 0) 
-						passangers_supplied += cargo_supplied;
 				}
 			}
-			if (cargo == 0 && passangers_supplied == 0 && !this.CheckMonitoring(true)) 
-				return;
 		}
 	}
+
+	// Check if the town should stop being monitored
+	if (town_supplied_cat[0] == 0 && !this.CheckMonitoring(true))
+		return;
 
 	// Calculating goals
 	for (local i = 0; i < CargoCatNum && cur_pop > ::CargoMinPopDemand[i]; i++) {
@@ -240,78 +246,28 @@ function GoalTown::MonthlyManageTown()
 	this.UpdateSignText();
 }
 
-function GoalTown::ManageTownLimiting() {
-	if (!this.limit_growth) {
-		return;
-	}
-	
-	// if the size of the town is below the threshold, set the growth rate to normal
-	local threashold_setting = GSController.GetSetting("town_size_threshold");
+function GoalTown::ManageTownLimiting(threashold_setting, paxRequired, mailRequired) {
+	// if the town limiting is turned off or the size of the town is below the threshold, set requirements to zero
 	local townPopulation = GSTown.GetPopulation(this.id);
-	if (townPopulation <= threashold_setting) {
+	if (townPopulation <= threashold_setting || (paxRequired == 0 && mailRequired == 0)) {
+		paxRequired = 0;
+		mailRequired = 0;
+		this.limit_growth = false;
+	} else {
+		this.limit_growth = true;
+	}
+
+	local paxTransport = GSTown.GetLastMonthTransportedPercentage (this.id, Helper.GetPAXCargo());
+	local mailTransport = GSTown.GetLastMonthTransportedPercentage (this.id, Helper.GetMailCargo());
+
+	if (paxTransport < paxRequired || mailTransport < mailRequired) {
+		this.allowGrowth = false;
+	} else {
 		this.allowGrowth = true;
-		this.text_number = 0;
-		this.text1 = GSText(GSText.STR_TOO_SMALL);
-		return;
 	}
 	
-	local paxRequired = GSController.GetSetting("min_transport_pax");
-	local mailRequired = GSController.GetSetting("min_transport_mail");
-	if (paxRequired && mailRequired) {
-		local paxTransport = GSTown.GetLastMonthTransportedPercentage (this.id, Helper.GetPAXCargo());
-		local mailTransport = GSTown.GetLastMonthTransportedPercentage (this.id, Helper.GetMailCargo());
-		if (paxTransport < 0) paxTransport = 0;
-		if (mailTransport < 0) mailTransport = 0;
-		local PaxTooLow = paxTransport < paxRequired;
-		local MailTooLow = mailTransport < mailRequired;
-
-		if (PaxTooLow || MailTooLow) {
-			this.allowGrowth = false;
-		} else {
-			this.allowGrowth = true;
-		}
-		
-		this.text_number = 2;
-		this.text1 = PaxTooLow ?
-			GSText(GSText.STR_PAX_BAD, paxTransport, paxRequired) :
-			GSText(GSText.STR_PAX_GOOD, paxTransport, paxRequired);
-		this.text2 = MailTooLow ?
-			GSText(GSText.STR_MAIL_BAD, mailTransport, mailRequired) :
-			GSText(GSText.STR_MAIL_GOOD, mailTransport, mailRequired);
-	}
-
-	else if (paxRequired) {
-		local paxTransport = GSTown.GetLastMonthTransportedPercentage (this.id, Helper.GetPAXCargo());
-		if (paxTransport < 0) paxTransport = 0;
-		local PaxTooLow = paxTransport < paxRequired;
-		if (PaxTooLow) {
-			this.text1 = GSText(GSText.STR_PAX_BAD, paxTransport, paxRequired);
-			this.allowGrowth = false;
-		} else {
-			this.text1 = GSText(GSText.STR_PAX_GOOD, paxTransport, paxRequired);
-			this.allowGrowth = true;
-		}
-		this.text_number = 1;
-	}
-
-	else if (mailRequired) {
-		local mailTransport = GSTown.GetLastMonthTransportedPercentage (this.id, Helper.GetMailCargo());
-		if (mailTransport < 0) mailTransport = 0;
-		local MailTooLow = mailTransport < mailRequired;
-		if (MailTooLow) {
-			this.text1 = GSText(GSText.STR_MAIL_BAD, mailTransport, mailRequired);
-			this.allowGrowth = false;
-		} else {
-			this.text1 = GSText(GSText.STR_MAIL_GOOD, mailTransport, mailRequired);
-			this.allowGrowth = true;
-		}
-		this.text_number = 1;
-	}
-	
-	else {
-		this.text1 = GSText(GSText.STR_TOWNS_NOT_LIMITED);
-		this.text_number = 0;
-	}
+	this.limit_passangers = [paxTransport, paxRequired];
+	this.limit_mails = [mailTransport, mailRequired];
 }
 
 /* Function called either for unmonitored towns, either for monitored
@@ -327,11 +283,13 @@ function GoalTown::CheckMonitoring(monitored)
 	 * results in lighter load as using
 	 * GSTown.GetLastMonth[Supply/TransportedPercentage].
 	 */
-	local pax_check = 0;
+	local delivery_check = 0;
 	for (local cid = GSCompany.COMPANY_FIRST; cid <= GSCompany.COMPANY_LAST; cid++) {
 		if (GSCompany.ResolveCompanyID(cid) != GSCompany.COMPANY_INVALID) {
-			pax_check += GSCargoMonitor.GetTownPickupAmount(cid, ::CargoList[0], this.id, true);
-			if (pax_check > 0) break;
+			foreach (cargo in town_cargo_cat[0]) {
+				delivery_check += GSCargoMonitor.GetTownPickupAmount(cid, cargo, this.id, true);
+			}
+			if (delivery_check > 0) break;
 		}
 	}
 
@@ -339,11 +297,11 @@ function GoalTown::CheckMonitoring(monitored)
 		/* For unmonitored towns: check whether they delivered
 		 * pax. If they did, monitoring is enabled.
 		 */
-		if (pax_check == 0) {
+		if (delivery_check == 0) {
 			return false;
 		} else {
 			this.is_monitored = true;
-			this.last_pax_delivery = GSDate.GetCurrentDate();
+			this.last_delivery = GSDate.GetCurrentDate();
 			Log.Info("City of "+GSTown.GetName(this.id)+" now monitored", Log.LVL_DEBUG);
 			return true;
 		}
@@ -353,12 +311,12 @@ function GoalTown::CheckMonitoring(monitored)
 		 * stop the monitoring. This is necessary for very
 		 * little towns, which otherwise could never grow.
 		 */
-		if (pax_check > 0) {
-			this.last_pax_delivery = GSDate.GetCurrentDate();
+		if (delivery_check > 0) {
+			this.last_delivery = GSDate.GetCurrentDate();
 			return true;
 		}
 
-		if ((GSDate.GetCurrentDate()-this.last_pax_delivery) < 365) {
+		if ((GSDate.GetCurrentDate()-this.last_delivery) < 365) {
 			return true;
 		} else {
 			GSTown.SetGrowthRate(this.id, GSTown.TOWN_GROWTH_NONE);
