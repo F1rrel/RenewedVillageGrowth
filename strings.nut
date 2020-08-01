@@ -1,16 +1,42 @@
 
 function GoalTown::TownBoxText(growth_enabled, text_mode)
 {
+	local text_townbox = null;
+
 	// If the function is called with false, town is not growing. Give a help message.
 	if (!growth_enabled || 0 == text_mode) {
-		return GSText(GSText.STR_TOWNBOX_NOGROWTH, 1 << ::CargoCat[0][0]);
+		local display_cargo = GSController.GetSetting("display_cargo");
+		if (display_cargo) {
+			text_townbox = GSText(GSText["STR_TOWNBOX_IND_"+::CargoCatNum+"_NOGROWTH"]);
+			foreach (index, category in this.town_cargo_cat) {
+				local cargo_mask = 0;
+				foreach (cargo in category) {
+					cargo_mask += 1 << cargo;
+				}
+				if (index == 0)
+					text_townbox.AddParam(cargo_mask);
+				text_townbox.AddParam(cargo_mask);
+			}
+		} else {
+			local cargo_mask = 0;
+			foreach (cargo in this.town_cargo_cat[0]) {
+				cargo_mask += 1 << cargo;
+			}
+			text_townbox = GSText(GSText.STR_TOWNBOX_NOGROWTH, cargo_mask);
+		}
+		return text_townbox;
 	}
 
-	local text_townbox = null;
 	switch (text_mode) {
 		case 1: // automatic
-			if (this.town_text_scroll > 0) {
-				text_townbox = this.TownTextLimiting();
+			if (::SettingsTable.randomization == 1) {
+				text_townbox = this.TownTextCategories();
+			}
+			else if (!this.limit_growth) {
+				text_townbox = this.TownTextCategoriesCombined();
+			}
+			else if (this.town_text_scroll > 0) {
+				text_townbox = this.TownTextCargos();
 				this.town_text_scroll = 0;
 			} else {
 				text_townbox = this.TownTextCategories();
@@ -20,8 +46,11 @@ function GoalTown::TownBoxText(growth_enabled, text_mode)
 		case 2: // categories
 			text_townbox = this.TownTextCategories();
 			break;
-		case 3: // limiting
-			text_townbox = this.TownTextLimiting();
+		case 3: // cargos
+			text_townbox = this.TownTextCargos(GSController.GetSetting("display_cargo"));
+			break;
+		case 4: // all cargos
+			text_townbox = this.TownTextCargos(true);
 			break;
 	}
 
@@ -39,38 +68,69 @@ function GoalTown::TownTextCategories()
 		if (this.town_goals_cat[max_cat+1] == 0) break;
 		max_cat++;
 	}
-	
-	// Building substrings. Labels depend on categories number.
-	// Adding numeric parameters and building the final string
-	local text_townbox = GSText(GSText["STR_TOWNBOX_"+max_cat]);
+
+	local text_townbox = GSText(GSText["STR_TOWNBOX_IND_"+::CargoCatNum+"_CAT_"+max_cat]);
+	text_townbox.AddParam(this.limit_passangers[0]);
+	text_townbox.AddParam(this.limit_passangers[1]);
+	text_townbox.AddParam(this.limit_mails[0]);
+	text_townbox.AddParam(this.limit_mails[1]);
 	for (local i = 0; i <= max_cat; i++) {
-		local text_townbox_cargocat = GSText(GSText["STR_TOWNBOX_CAT_"+::CargoCatList[i]]);
-		text_townbox_cargocat.AddParam(this.town_goals_cat[i]);
-		text_townbox_cargocat.AddParam(this.town_supplied_cat[i]);
-		text_townbox_cargocat.AddParam(this.town_stockpiled_cat[i]);
-		text_townbox.AddParam(text_townbox_cargocat);
+		text_townbox.AddParam(this.town_goals_cat[i]);
+		text_townbox.AddParam(this.town_supplied_cat[i]);
+		text_townbox.AddParam(this.town_stockpiled_cat[i]);
 	}
 	
 	return text_townbox;
 }
 
-function GoalTown::TownTextLimiting()
+function GoalTown::TownTextCategoriesCombined()
 {
-	// Adding town limiting text
-	local text_townbox = null;
-	switch (this.text_number){
-		case 0:
-			text_townbox = GSText(GSText.STR_TOWNS_NOT_LIMITED);
-			break;
-		case 1:
-			text_townbox = GSText(GSText.STR_LIMIT_1);
-			text_townbox.AddParam(this.text1);
-			break;
-		case 2:
-			text_townbox = GSText(GSText.STR_LIMIT_2);
-			text_townbox.AddParam(this.text1);
-			text_townbox.AddParam(this.text2);
-			break;
+	local max_cat = 0;
+	while (max_cat < ::CargoCatNum-1) {
+		if (this.town_goals_cat[max_cat+1] == 0) break;
+		max_cat++;
+	}
+
+	local text_townbox = GSText(GSText["STR_TOWNBOX_IND_"+::CargoCatNum+"_COMB_"+max_cat]);
+	foreach (index, category in this.town_cargo_cat) {
+		if (index != 0) {
+			local cargo_mask = 0;
+			foreach (cargo in category) {
+				cargo_mask += 1 << cargo;
+			}
+			text_townbox.AddParam(cargo_mask);
+		}
+		text_townbox.AddParam(this.town_goals_cat[index]);
+		text_townbox.AddParam(this.town_supplied_cat[index]);
+		text_townbox.AddParam(this.town_stockpiled_cat[index]);
+	}
+
+	return text_townbox;
+}
+
+function GoalTown::TownTextCargos(display_all)
+{
+	local max_cat = 0;
+	if (display_all) {
+		max_cat = ::CargoCatNum-1;
+	} else {
+		while (max_cat < ::CargoCatNum-1) {
+			if (this.town_goals_cat[max_cat+1] == 0) break;
+			max_cat++;
+		}
+	}
+
+	local text_townbox = GSText(GSText["STR_TOWNBOX_IND_"+::CargoCatNum+"_CARGO_"+max_cat]);
+	text_townbox.AddParam(this.limit_passangers[0]);
+	text_townbox.AddParam(this.limit_passangers[1]);
+	text_townbox.AddParam(this.limit_mails[0]);
+	text_townbox.AddParam(this.limit_mails[1]);
+	foreach (index, category in this.town_cargo_cat) {
+		local cargo_mask = 0;
+		foreach (cargo in category) {
+			cargo_mask += 1 << cargo;
+		}
+		text_townbox.AddParam(cargo_mask);
 	}
 	
 	return text_townbox;
@@ -98,10 +158,10 @@ function DebugCargoLabels()
 }
 
 /* Debug function: print supplied cargo. */
-function GoalTown::DebugCargoSupplied(i)
+function GoalTown::DebugCargoSupplied(i, supplied)
 {
-	Log.Info(GSTown.GetName(this.id)+": supplied "+GSCargo.GetCargoLabel(CargoList[i])+"="
-		 +town_supplied[i], Log.LVL_DEBUG);
+	Log.Info(GSTown.GetName(this.id)+": supplied "+GSCargo.GetCargoLabel(i)+"="
+		 +supplied, Log.LVL_DEBUG);
 }
 
 /* Debug function: print stockpiled/supplied/goal per cargo category. */
@@ -128,4 +188,28 @@ function GoalTown::DebugTgrArray()
 		array_text = array_text+"i"+i+"="+val+" ";
 	}
 	Log.Info(GSTown.GetName(this.id)+": "+array_text+"Average="+this.tgr_average, Log.LVL_DEBUG);
+}
+
+function GoalTown::DebugCargoHash(hash)
+{
+	local cargo_text = "";
+	for (local i = 0; i < 32; i++)
+	{
+		if (hash & (1 << i)) {
+			cargo_text += GSCargo.GetCargoLabel(i) + ",";
+		}
+	}
+	Log.Info(GSTown.GetName(this.id) + ": " + cargo_text, Log.LVL_DEBUG);
+}
+
+function GoalTown::DebugCargoTable(cargo_table)
+{
+	local cargo_text = "";
+	foreach (index, cat in cargo_table) {
+		cargo_text += "  " + index + ": ";
+		foreach (cargo in cat) {
+			cargo_text += GSCargo.GetCargoLabel(cargo) + ",";
+		}
+	}
+	Log.Info(GSTown.GetName(this.id) + ": " + cargo_text, Log.LVL_SUB_DECISIONS);
 }
