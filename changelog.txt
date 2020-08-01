@@ -8,6 +8,8 @@ Version 4
 - modified: added easy, medium and hard values to some parameters
 - modified: completely reworked town texts
 - modified: any supplied cargo from first category will start town monitoring
+- modified: updated FIRS 1.3 to FIRS 1.4 (not backward compatible)
+- modified: changed category names to better represent the cargo
 - fix: funding towns is now working
 - fix: the growth is now enabled properly for towns that were not growing when limiter got disabled mid game
 - removed: options to merge categories
