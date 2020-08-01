@@ -420,4 +420,5 @@ function GoalTown::Randomization()
 	}
 
 	this.cargo_hash = GetCargoHash(this.town_cargo_cat);
+	this.DebugCargoHash(this.cargo_hash);
 }

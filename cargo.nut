@@ -359,40 +359,6 @@ function DefineCargosBySettings()
 		default:
 			break;
 	}
-
-	ConfigureCategories();
-}
-
-/* Merge categories if required by settings. */
-function ConfigureCategories()
-{
-	local merge_2_3 = GSController.GetSetting("merge_cat_2_3");
-	local merge_4_5 = GSController.GetSetting("merge_cat_4_5");
-	local first_idx = null;
-
-	if (merge_2_3) {
-		first_idx = 1;
-		::CargoCat[first_idx].extend(::CargoCat[first_idx+1]);
-		::CargoCat[first_idx].sort();
-		::CargoCat.remove(first_idx+1);
-		::CargoCatList.remove(first_idx);
-		::CargoPermille[first_idx] += ::CargoPermille[first_idx+1];
-		::CargoPermille.remove(first_idx+1);
-		::CargoMinPopDemand.remove(first_idx+1);
-		::CargoDecay.remove(first_idx+1);
-	}
-	if (merge_4_5) {
-		merge_2_3 ? first_idx = 2 : first_idx = 3;
-		::CargoCat[first_idx].extend(::CargoCat[first_idx+1]);
-		::CargoCat[first_idx].sort();
-		::CargoCat.remove(first_idx+1);
-		::CargoCatList.remove(first_idx);
-		::CargoCatList[first_idx] = CatLabels.G_IND;
-		::CargoPermille[first_idx] += ::CargoPermille[first_idx+1];
-		::CargoPermille.remove(first_idx+1);
-		::CargoMinPopDemand.remove(first_idx+1);
-		::CargoDecay.remove(first_idx+1);
-	}
 }
 
 /* This function compares the ingame initial cargo list to the
@@ -583,7 +549,7 @@ function RandomizeFixed(number)
 		} else {
 			local cargo_list = clone cat;
 			cargo_cat[cat_idx] = [];
-			for (local i = 0; i < number || cargo_list.len() == 0; i++) {
+			for (local i = 0; i < number && cargo_list.len() != 0; i++) {
 				local index = GSBase.RandRange(cargo_list.len());
 				cargo_cat[cat_idx].append(cargo_list[index]);
 				cargo_list.remove(index);
@@ -605,12 +571,12 @@ function RandomizeRange(lower, upper)
 		} else {
 			local cargo_list = clone cat;
 			cargo_cat[cat_idx] = [];
-			for (local i = 0; i < lower || cargo_list.len() == 0; i++) {
+			for (local i = 0; i < lower && cargo_list.len() != 0; i++) {
 				local index = GSBase.RandRange(cargo_list.len());
 				cargo_cat[cat_idx].append(cargo_list[index]);
 				cargo_list.remove(index);
 			}
-			for (local i = 0; i < upper-lower || cargo_list.len() == 0; i++) {
+			for (local i = 0; i < upper-lower && cargo_list.len() != 0; i++) {
 				local index = GSBase.RandRange(cargo_list.len()*2); // 50% chance
 				if (index > cargo_list.len() - 1)
 					break;

@@ -1,10 +1,19 @@
 *** Renewed Village Growth GS Changelog ***
 
 Version 4
-- modified: added easy, medium and hard values to pax and mail requirement
-- fix: funding towns working
+* Not compatible with other versions
+- new: added randomization of cargos to fixed number or variable number per category
+- new: added parameter to display all required cargo by towns from start - "Display immediately cargos per town"
+- new: added displaying of full cargo list in "Town info display mode" parameter
+- modified: added easy, medium and hard values to some parameters
+- modified: completely reworked town texts
+- modified: any supplied cargo from first category will start town monitoring
+- fix: funding towns is now working
+- fix: the growth is now enabled properly for towns that were not growing when limiter got disabled mid game
+- removed: options to merge categories
 
 Version 3 (2020/05/17)
+* Not compatible with other versions
 - modified: support for any combination of ECS 1.2 vectors
 - modified: added parameter to game script settings "Town info display mode" to change the mode of 
 displaying town information (Automatic, Cargo information, Limiter information)
@@ -13,6 +22,7 @@ displaying town information (Automatic, Cargo information, Limiter information)
 - fix: towns will now properly stop to be monitored after one year without passanger service
 
 Version 2 (2020/05/13)
+* Not compatible with other versions
 - modified: "Expert: slowest TGR if requirements are not met" changed to max 880 as it is maximum 
 possible TGR 
 - modified: changed "Eternal love" default value to off

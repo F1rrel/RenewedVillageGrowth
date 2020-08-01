@@ -1,16 +1,32 @@
 
 function GoalTown::TownBoxText(growth_enabled, text_mode)
 {
+	local text_townbox = null;
+
 	// If the function is called with false, town is not growing. Give a help message.
 	if (!growth_enabled || 0 == text_mode) {
-		local cargo_mask = 0;
-		foreach (cargo in this.town_cargo_cat[0]) {
-			cargo_mask += 1 << cargo;
+		local display_cargo = GSController.GetSetting("display_cargo");
+		if (display_cargo) {
+			text_townbox = GSText(GSText["STR_TOWNBOX_IND_"+::CargoCatNum+"_NOGROWTH"]);
+			foreach (index, category in this.town_cargo_cat) {
+				local cargo_mask = 0;
+				foreach (cargo in category) {
+					cargo_mask += 1 << cargo;
+				}
+				if (index == 0)
+					text_townbox.AddParam(cargo_mask);
+				text_townbox.AddParam(cargo_mask);
+			}
+		} else {
+			local cargo_mask = 0;
+			foreach (cargo in this.town_cargo_cat[0]) {
+				cargo_mask += 1 << cargo;
+			}
+			text_townbox = GSText(GSText.STR_TOWNBOX_NOGROWTH, cargo_mask);
 		}
-		return GSText(GSText.STR_TOWNBOX_NOGROWTH, cargo_mask);
+		return text_townbox;
 	}
 
-	local text_townbox = null;
 	switch (text_mode) {
 		case 1: // automatic
 			if (::SettingsTable.randomization == 1) {
@@ -31,7 +47,10 @@ function GoalTown::TownBoxText(growth_enabled, text_mode)
 			text_townbox = this.TownTextCategories();
 			break;
 		case 3: // cargos
-			text_townbox = this.TownTextCargos();
+			text_townbox = this.TownTextCargos(GSController.GetSetting("display_cargo"));
+			break;
+		case 4: // all cargos
+			text_townbox = this.TownTextCargos(true);
 			break;
 	}
 
@@ -89,12 +108,16 @@ function GoalTown::TownTextCategoriesCombined()
 	return text_townbox;
 }
 
-function GoalTown::TownTextCargos()
+function GoalTown::TownTextCargos(display_all)
 {
 	local max_cat = 0;
-	while (max_cat < ::CargoCatNum-1) {
-		if (this.town_goals_cat[max_cat+1] == 0) break;
-		max_cat++;
+	if (display_all) {
+		max_cat = ::CargoCatNum-1;
+	} else {
+		while (max_cat < ::CargoCatNum-1) {
+			if (this.town_goals_cat[max_cat+1] == 0) break;
+			max_cat++;
+		}
 	}
 
 	local text_townbox = GSText(GSText["STR_TOWNBOX_IND_"+::CargoCatNum+"_CARGO_"+max_cat]);
@@ -188,5 +211,5 @@ function GoalTown::DebugCargoTable(cargo_table)
 			cargo_text += GSCargo.GetCargoLabel(cargo) + ",";
 		}
 	}
-	Log.Info(GSTown.GetName(this.id) + ": " + cargo_text, Log.LVL_DEBUG);
+	Log.Info(GSTown.GetName(this.id) + ": " + cargo_text, Log.LVL_SUB_DECISIONS);
 }

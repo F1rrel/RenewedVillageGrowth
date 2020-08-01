@@ -31,11 +31,12 @@ class MainClass extends GSInfo
 				medium_value = 1,
 				hard_value = 1,
 				custom_value = 1,
-				flags = CONFIG_INGAME, min_value = 1, max_value = 3 });
+				flags = CONFIG_INGAME, min_value = 1, max_value = 4 });
 		AddLabels("town_info_mode", { 
 					_1 = "Automatic",
 					_2 = "Category deliveries",
-					_3 = "Cargo list" });
+					_3 = "Cargo list",
+					_4 = "Full cargo list" });
 	
 		AddSetting({ name = "industry_NewGRF",
 				description = "Which industry set is being used?",
@@ -80,6 +81,14 @@ class MainClass extends GSInfo
 					_6 = "1-3 per category",
 					_7 = "2-3 per category" });
 
+		AddSetting({ name = "display_cargo",
+				description = "Display immediately cargos per town",
+				easy_value = 1,
+				medium_value = 0,
+				hard_value = 0,
+				custom_value = 0,
+				flags = CONFIG_BOOLEAN});
+
 		AddSetting({ name = "goal_scale_factor",
 				description = "Difficulty level (easy = 60, normal = 100, hard = 140)",
 				easy_value = 60,
@@ -87,22 +96,6 @@ class MainClass extends GSInfo
 				hard_value = 140,
 				custom_value = 100,
 				flags = CONFIG_INGAME, min_value = 1, max_value = 1000, step_size = 20 });
-
-		AddSetting({ name = "merge_cat_2_3",
-				description = "Merge categories 2 (food) and 3 (goods) into one (see readme.txt)",
-				easy_value = 0,
-				medium_value = 0,
-				hard_value = 0,
-				custom_value = 0,
-				flags = CONFIG_BOOLEAN });
-
-		AddSetting({ name = "merge_cat_4_5",
-				description = "Merge categories 4 (raw ind.) and 5 (trans. ind.) into one (see readme.txt)",
-				easy_value = 0,
-				medium_value = 0,
-				hard_value = 0,
-				custom_value = 0,
-				flags = CONFIG_BOOLEAN });
 
 		AddSetting({ name = "use_town_sign",
 				description = "Show growth rate text under town names",
@@ -114,9 +107,9 @@ class MainClass extends GSInfo
 				
 		AddSetting({ name = "eternal_love",
 				description = "Eternal love from towns",
-				easy_value = 0,
-				medium_value = 0,
-				hard_value = 0,
+				easy_value = 1,
+				medium_value = 2,
+				hard_value = 3,
 				custom_value = 0,
 				flags = CONFIG_INGAME, min_value = 0, max_value = 3 });
 		AddLabels("eternal_love", { _0 = "Off",
@@ -151,8 +144,8 @@ class MainClass extends GSInfo
 		AddSetting({
 			name = "town_size_threshold",
 			description = "Limit Growth: Minimum size of town before the limit rules kicks in",
-			easy_value = 350,
-			medium_value = 350,
+			easy_value = 800,
+			medium_value = 550,
 			hard_value = 350,
 			custom_value = 350,
 			flags = CONFIG_INGAME, min_value = 0,
