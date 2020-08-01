@@ -572,7 +572,7 @@ function InitCargoLists()
 	::CargoCatNum <- ::CargoCat.len();
 }
 
-/* Randomize cargo to one per category and return cargo table. */
+/* Randomize fixed number of cargos per category and return cargo table. */
 function RandomizeFixed(number)
 {
 	local cargo_cat = array(::CargoCat.len());
@@ -585,6 +585,35 @@ function RandomizeFixed(number)
 			cargo_cat[cat_idx] = [];
 			for (local i = 0; i < number || cargo_list.len() == 0; i++) {
 				local index = GSBase.RandRange(cargo_list.len());
+				cargo_cat[cat_idx].append(cargo_list[index]);
+				cargo_list.remove(index);
+			}
+		}
+	}
+
+	return cargo_cat;
+}
+
+/* Randomize number of cargos per category specified by range and return cargo table. */
+function RandomizeRange(lower, upper)
+{
+	local cargo_cat = array(::CargoCat.len());
+	foreach (cat_idx, cat in ::CargoCat)
+	{
+		if (cat_idx == 0) {
+			cargo_cat[cat_idx] = cat;
+		} else {
+			local cargo_list = clone cat;
+			cargo_cat[cat_idx] = [];
+			for (local i = 0; i < lower || cargo_list.len() == 0; i++) {
+				local index = GSBase.RandRange(cargo_list.len());
+				cargo_cat[cat_idx].append(cargo_list[index]);
+				cargo_list.remove(index);
+			}
+			for (local i = 0; i < upper-lower || cargo_list.len() == 0; i++) {
+				local index = GSBase.RandRange(cargo_list.len()*2); // 50% chance
+				if (index > cargo_list.len() - 1)
+					break;
 				cargo_cat[cat_idx].append(cargo_list[index]);
 				cargo_list.remove(index);
 			}

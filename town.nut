@@ -403,10 +403,21 @@ function GoalTown::Randomization()
 			this.town_cargo_cat = RandomizeFixed(::SettingsTable.randomization - 1);
 			this.DebugCargoTable(this.town_cargo_cat);
 			break;
+		case 5: // 1-2 per category
+			this.town_cargo_cat = RandomizeRange(1, 2);
+			this.DebugCargoTable(this.town_cargo_cat);
+			break;
+		case 6: // 1-3 per category
+			this.town_cargo_cat = RandomizeRange(1, 3);
+			this.DebugCargoTable(this.town_cargo_cat);
+			break;
+		case 7: // 2-3 per category
+			this.town_cargo_cat = RandomizeRange(2, 3);
+			this.DebugCargoTable(this.town_cargo_cat);
+			break;
 		default:
 			this.town_cargo_cat = ::CargoCat;
 	}
 
 	this.cargo_hash = GetCargoHash(this.town_cargo_cat);
-	this.DebugCargoHash(this.cargo_hash);
 }

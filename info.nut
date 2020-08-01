@@ -70,7 +70,7 @@ class MainClass extends GSInfo
 				medium_value = 1,
 				hard_value = 1,
 				custom_value = 1,
-				flags = CONFIG_NONE, min_value = 1, max_value = 4 });
+				flags = CONFIG_NONE, min_value = 1, max_value = 7 });
 		AddLabels("cargo_randomization", { 
 					_1 = "None",
 					_2 = "1 per category",
