@@ -246,10 +246,10 @@ function DefineCargosBySettings()
 			break;
 		case(10): //ECS 1.2
 			::CargoCat <- [[0,2,31],
-				       [11,27],
-				       [5,10,25],
-				       [1,3,4,6,7,8,13,14,15,17,25,29,30],
-				       [9,12,18,19,20,21,22,23,24,27]];
+				       [4,6,13,14,22,27],
+				       [1,3,7,8,10,15,17,26,29],
+				       [9,12,18,19,20,21,23],
+				       [5,11,24,25,28]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -258,82 +258,82 @@ function DefineCargosBySettings()
 			break;
 		case(11): //YETI 0.1.6
 			::CargoCat <- [[0,2,16],
-				       [8],
-				       [4],
-				       [1,3,6,7,10,17,18,19,20],
-				       [12,13,14,15]];
+				       [6,7,18],
+				       [1,3,10,17,19,20],
+				       [12,13,14],
+				       [4,8,15]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
 			::CargoPermille <- [60,25,20,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(12): // FIRS 3.0.12 - Temperate Basic
+		case(12): // FIRS 3 - Temperate Basic
 			::CargoCat <- [[0,2],
 				       [9,10,13,14],
-				       [3,17,1],
 				       [4,6,12,15,16],
-				       [5,7,8,11]];
+				       [3,7,8,17],
+				       [1,5,11]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
 			::CargoPermille <- [60,25,20,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(13): // FIRS 3.0.12 - Arctic Basic
+		case(13): // FIRS 3 - Arctic Basic
 			::CargoCat <- [[0,2],
 				       [8,11,14],
-				       [1,6,9,13,15],
-				       [7,10,17,18],
-				       [3,4,5,12,16]];
+				       [1,7,10,17,18],
+				       [3,4,9,13,15,16],
+				       [6,8,12,16]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
 			::CargoPermille <- [60,25,20,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(14): // FIRS 3.0.12 - Tropic Basic
+		case(14): // FIRS 3 - Tropic Basic
 			::CargoCat <- [[0,2],
-				       [1,3,12,13,14,15,6],
-				       [4,5,7],
+				       [1,3,6,12,13,14,15],
 				       [8,16,17,18],
-				       [9,10,11]];
+				       [4,9,10],
+				       [5,7,11]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
 			::CargoPermille <- [60,25,20,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(15): // FIRS 3.0.12 - Steeltown
+		case(15): // FIRS 3 - Steeltown
 			::CargoCat <- [[0,2],
-				       [11,16,20,21,23,25,27],
-				       [1,3,7,8,15,18,26],
-				       [9,10,12,13,14,17,19,22],
-				       [4,5,6,24,28,29,30]];
+				       [11,25],
+				       [9,10,12,13,14,19,21,22,23],
+				       [3,4,6,7,8,15,16,17,18,26],
+				       [1,5,24,27,28,29,30]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
 			::CargoPermille <- [60,25,20,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(16): // FIRS 3.0.12 -In A Hot Coutry
+		case(16): // FIRS 3 -In A Hot Coutry
 			::CargoCat <- [[0,2],
-				       [4,8,13,16,17,19,21,25],
-				       [1,6,9,18,23],
-				       [7,10,12,20,22,24,26,27,28],
-				       [3,5,11,14,15]];
+				       [4,8,16,17,19,21],
+				       [7,10,12,20,22,24,25,26,27,28],
+				       [6,13,14,15,18,23],
+				       [1,3,5,9,11]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
 			::CargoPermille <- [60,25,20,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(17): // FIRS 3.0.12 - Extreme
+		case(17): // FIRS 3 - Extreme
 			::CargoCat <- [[0,2],
-				       [12,13,14,16,20,23,28],
-				       [1,6,17,19,22,26],
-				       [3,7,8,15,21,24,25,27,29,30],
-				       [4,5,9,10,11,18]];
+				       [12,13,14,16,20,28],
+				       [3,7,8,15,21,23,24,25,26,27,29,30],
+				       [6,9,10,17,18,19],
+				       [1,4,5,11,22]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -343,9 +343,9 @@ function DefineCargosBySettings()
 		case(18): // NAIS 1.0.6 - North America
 			::CargoCat <- [[0,2],
 				       [10,12,15,17,21,25],
-				       [4,13,14,18,20,24],
 				       [1,6,7,8,16,22,23,26,27,28,29,30,31],
-				       [3,5,9,11,19]];
+				       [4,9,14,18,19,20,24],
+				       [3,5,11,13]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
