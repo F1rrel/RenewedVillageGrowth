@@ -61,7 +61,7 @@ class GoalTown
 			this.limit_passangers = ::TownDataTable[this.id].limit_passangers;
 			this.limit_mails = ::TownDataTable[this.id].limit_mails;
 			this.limit_growth = (this.limit_passangers[1] > 0) || (this.limit_mails[1] > 0);
-			this.cargo_hash = ::TownDataTable[this.id].cargo_hash;
+			this.cargo_hash = ::TownDataTable[this.id].cargo_hash_upper << 32 | ::TownDataTable[this.id].cargo_hash_lower;
 			this.town_cargo_cat = GetCargoTable(this.cargo_hash);
 			this.DebugCargoTable(this.town_cargo_cat);
 			
@@ -111,7 +111,8 @@ function GoalTown::SavingTownData()
 	town_data.tgr_array <- this.tgr_array;
 	town_data.limit_passangers <- this.limit_passangers;
 	town_data.limit_mails <- this.limit_mails;
-	town_data.cargo_hash <- this.cargo_hash;
+	town_data.cargo_hash_upper <- this.cargo_hash >> 32;
+	town_data.cargo_hash_lower <- this.cargo_hash & ((1 << 32) - 1);
 	return town_data;
 }
 

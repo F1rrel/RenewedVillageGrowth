@@ -65,10 +65,10 @@ class MainClass extends GSInfo
 					_17 = "FIRS 3: Extreme",
 					_18 = "NAIS 1.0.6: North America",
 					_19 = "Improved Town Industries 1.3",
-					_20 = "FIRS 4.0.0-alpha-3: Temperate Basic",
-					_21 = "FIRS 4.0.0-alpha-3: Arctic Basic",
-					_22 = "FIRS 4.0.0-alpha-3: Tropic Basic",
-					_23 = "FIRS 4.0.0-alpha-3: Steeltown" });
+					_20 = "FIRS 4 alpha: Temperate Basic",
+					_21 = "FIRS 4 alpha: Arctic Basic",
+					_22 = "FIRS 4 alpha: Tropic Basic",
+					_23 = "FIRS 4 alpha: Steeltown" });
 
 		AddSetting({ name = "cargo_randomization",
 				description = "Cargo randomization type",

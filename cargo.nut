@@ -5,7 +5,9 @@ enum CatLabels
 	RAW_MATERIALS = 2,
 	PROCESSED_MATERIALS = 3,
 	FINAL_PRODUCTS = 4,
-	PRODUCTS = 5
+	PRODUCTS = 5,
+	LOCAL_PRODUCTION = 6,
+	IMPORTED_GOODS = 7
 }
 
 /* Cargolist of supported industry set's cargos. Used to check if
@@ -114,7 +116,7 @@ function FillCargoIDList(cargo_list) {
 	case(19):
 		::CargoIDList <- ["PASS","COAL","MAIL","OIL_","FOOD","GOOD","RFPR","WOOD","IORE","STEL"];
 		break;
-	/* FIRS version 4.0.0-alpha-3 */
+	/* FIRS version 4 alpha */
 	case(20): // Temperate Basic
 		::CargoIDList <- ["PASS","BEER","MAIL","RFPR","COAL","GOOD","ENSP","FMSP","FISH","FRUT",
 				  "IORE","FOOD","KAOL","LVST","MILK","SAND","SCMT","STEL"];
@@ -218,7 +220,7 @@ function DefineCargosBySettings()
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(6): // FIRS 1.4 - Temperate Basic
@@ -230,7 +232,7 @@ function DefineCargosBySettings()
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(7): // FIRS 1.4 - Arctic Basic
@@ -242,7 +244,7 @@ function DefineCargosBySettings()
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(8): // FIRS 1.4 - Tropic Basic
@@ -254,7 +256,7 @@ function DefineCargosBySettings()
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(9): // FIRS 1.4 - Hearth of the Darkness
@@ -266,7 +268,7 @@ function DefineCargosBySettings()
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(10): //ECS 1.2
@@ -278,7 +280,7 @@ function DefineCargosBySettings()
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(11): //YETI 0.1.6
@@ -290,7 +292,7 @@ function DefineCargosBySettings()
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(12): // FIRS 3 - Temperate Basic
@@ -302,7 +304,7 @@ function DefineCargosBySettings()
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(13): // FIRS 3 - Arctic Basic
@@ -314,7 +316,7 @@ function DefineCargosBySettings()
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(14): // FIRS 3 - Tropic Basic
@@ -326,19 +328,19 @@ function DefineCargosBySettings()
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(15): // FIRS 3 - Steeltown
 			::CargoCat <- [[0,2],
-				       [11,25],
-				       [9,10,12,13,14,19,21,22,23],
-				       [3,4,6,7,8,15,16,17,18,26],
+				       [9,10,11,13,14,19,25],
+				       [12,17,21,22,23],
+				       [3,4,6,7,8,15,16,18,26],
 				       [1,5,24,27,28,29,30]];
-			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
+			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.LOCAL_PRODUCTION,CatLabels.IMPORTED_GOODS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(16): // FIRS 3 -In A Hot Coutry
@@ -350,7 +352,7 @@ function DefineCargosBySettings()
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(17): // FIRS 3 - Extreme
@@ -362,7 +364,7 @@ function DefineCargosBySettings()
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(18): // NAIS 1.0.6 - North America
@@ -374,7 +376,7 @@ function DefineCargosBySettings()
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(19): // Improved Town Industries 1.3
@@ -386,7 +388,7 @@ function DefineCargosBySettings()
 			::CargoPermille <- [60,45,25];
 			::CargoDecay <- [0.4,0.2,0.1];
 			break;
-		case(20): // FIRS 4.0.0-alpha-3: Temperate Basic
+		case(20): // FIRS 4 alpha: Temperate Basic
 			::CargoCat <- [[0,2],
 					   [8,9,13,14],
 					   [4,10,12,15,16],
@@ -395,10 +397,10 @@ function DefineCargosBySettings()
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(21): // FIRS 4.0.0-alpha-3: Arctic Basic
+		case(21): // FIRS 4 alpha: Arctic Basic
 			::CargoCat <- [[0,2],
 					   [1,7,11,14],
 					   [8,12,13,15,17],
@@ -407,10 +409,10 @@ function DefineCargosBySettings()
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(22): // FIRS 4.0.0-alpha-3: Tropic Basic
+		case(22): // FIRS 4 alpha: Tropic Basic
 			::CargoCat <- [[0,2],
 				       [1,3,6,12,13,14,15],
 				       [8,16,17,18],
@@ -419,19 +421,19 @@ function DefineCargosBySettings()
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(23): // FIRS 4.0.0-alpha-3: Steeltown
+		case(23): // FIRS 4 alpha: Steeltown
 			::CargoCat <- [[0,2],
 					   [11,13,21,22,25,35,36,38,34],
 					   [4,12,16,19,24,26,27,30,33,48],
 				       [1,3,6,7,8,10,14,15,17,18,20,23,28,31,32,37,39,41,42,43],
 				       [5,9,29,40,44,45,46,47]];
-			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
+			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.LOCAL_PRODUCTION,CatLabels.IMPORTED_GOODS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
-			::CargoPermille <- [60,25,20,15,10];
+			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		default:
