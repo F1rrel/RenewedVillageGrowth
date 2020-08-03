@@ -31,12 +31,13 @@ class MainClass extends GSInfo
 				medium_value = 1,
 				hard_value = 1,
 				custom_value = 1,
-				flags = CONFIG_INGAME, min_value = 1, max_value = 4 });
+				flags = CONFIG_INGAME, min_value = 1, max_value = 5 });
 		AddLabels("town_info_mode", { 
 					_1 = "Automatic",
 					_2 = "Category deliveries",
 					_3 = "Cargo list",
-					_4 = "Full cargo list" });
+					_4 = "Combined",
+					_5 = "Full cargo list" });
 	
 		AddSetting({ name = "industry_NewGRF",
 				description = "Which industry set is being used?",
@@ -73,9 +74,9 @@ class MainClass extends GSInfo
 		AddSetting({ name = "cargo_randomization",
 				description = "Cargo randomization type",
 				easy_value = 1,
-				medium_value = 1,
-				hard_value = 1,
-				custom_value = 1,
+				medium_value = 7,
+				hard_value = 5,
+				custom_value = 2,
 				flags = CONFIG_NONE, min_value = 1, max_value = 7 });
 		AddLabels("cargo_randomization", { 
 					_1 = "None",
@@ -113,8 +114,8 @@ class MainClass extends GSInfo
 		AddSetting({ name = "eternal_love",
 				description = "Eternal love from towns",
 				easy_value = 1,
-				medium_value = 2,
-				hard_value = 3,
+				medium_value = 3,
+				hard_value = 0,
 				custom_value = 0,
 				flags = CONFIG_INGAME, min_value = 0, max_value = 3 });
 		AddLabels("eternal_love", { _0 = "Off",
@@ -159,17 +160,17 @@ class MainClass extends GSInfo
 
 		AddSetting({ name = "town_growth_factor",
 				description = "Expert: town growth factor",
-				easy_value = 100,
+				easy_value = 50,
 				medium_value = 100,
-				hard_value = 100,
+				hard_value = 200,
 				custom_value = 100,
 				flags = CONFIG_INGAME, min_value = 20, max_value = 1000, step_size = 20 });
 
 		AddSetting({ name = "supply_impacting_part",
 				description = "Expert: minimum supply percentage for TGR growth",
-				easy_value = 50,
+				easy_value = 80,
 				medium_value = 50,
-				hard_value = 50,
+				hard_value = 20,
 				custom_value = 50,
 				flags = CONFIG_INGAME, min_value = 0, max_value = 100, step_size = 5 });
 
@@ -183,10 +184,10 @@ class MainClass extends GSInfo
 
 		AddSetting({ name = "lowest_town_growth_rate",
 				description = "Expert: slowest TGR if requirements are not met",
-				easy_value = 880,
-				medium_value = 880,
+				easy_value = 365,
+				medium_value = 550,
 				hard_value = 880,
-				custom_value = 880,
+				custom_value = 550,
 				flags = CONFIG_INGAME, min_value = 10, max_value = 880, step_size = 10 });
 				
 		AddSetting({ name = "log_level",

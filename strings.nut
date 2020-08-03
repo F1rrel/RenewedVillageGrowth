@@ -53,7 +53,10 @@ function GoalTown::TownBoxText(growth_enabled, text_mode)
 		case 3: // cargos
 			text_townbox = this.TownTextCargos(display_cargo);
 			break;
-		case 4: // all cargos
+		case 4: // combined
+			text_townbox = this.TownTextCategoriesCombined();
+			break;
+		case 5: // all cargos
 			text_townbox = this.TownTextCargos(true);
 			break;
 	}
