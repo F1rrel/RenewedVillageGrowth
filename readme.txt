@@ -3,10 +3,11 @@
                 *  A GameScript for OpenTTD  *
                 ******************************
 
+Version: 4.0
 
 Usefull URL's:
 - forum topic: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
-- last stable version: 3
+- github: https://github.com/F1rrel/RenewedVillageGrowth
 
 
 Content:
@@ -23,8 +24,8 @@ Renewed Village Growth (RVG) is a game script which changes the way towns
 grow in OTTD. Various cargo requirements and passanger/mail percentage 
 transported are defined - monthly - for each town. Towns only grow 
 if those requirements are - partially or completely - satisfied. RVG 
-supports several industry sets: Baseset, FIRS 1.3.0 and 3.0.12, ECS 1.2, 
-YETI 0.1.6, NAIS.
+supports several industry sets: Baseset, FIRS 1.4, FIRS 3, FIRS 4 alpha, 
+ECS 1.2, YETI 0.1.6, NAIS 1.0.6, Improved Town 1.3 Industries.
 
 The script only defines requirements for towns who are exchanging
 passengers (meaning that a delivery of passengers coming from a town
@@ -46,26 +47,23 @@ of 10 * cargotype requirement). Note that the cargo requirements
 originally defined in the Arctic and Tropical climate (food and
 water/food) are disabled by the script.
 
-Depending on the used industry set, there are 3 or 5 categories
-(though those can be reduced in settings). Here are the basic
-categories:
+Depending on the used industry set, there are 3 or 5 categories. 
+Here are the basic categories:
 *For baseset industries (all climate):*
-- Cat 1: Passengers and Mail
-- Cat 2: General goods (includes food and goods)
-- Cat 3: Industrial materials (includes coal, wood, grain...)
+- Cat 1: Public services
+- Cat 2: Raw materials
+- Cat 3: Products (processed raw materials)
 *For FIRS, ECS and YETI:*
-- Cat 1: Passengers and mail (includes also ECS Tourists)
-- Cat 2: General food (includes: food, alcohol, fruit...)
-- Cat 3: General goods (includes: goods, petrol, building material...)
-- Cat 4: Raw industrial goods (includes: coal, oil, wood...)
-- Cat 5: Transformed industrial goods (includes: chemicals, lumber,
-  manufacturing supplies, farm supplies...)
+- Cat 1: Public services (includes also ECS Tourists)
+- Cat 2: Raw food (includes: livestock, coffee, fruit...)
+- Cat 3: Raw materials (includes: goods, petrol, building material...)
+- Cat 4: Processed materials (includes: chemicals, lumber, engineering supplies...)
+- Cat 5: Final products (includes: vehicles, building materials, food, goods...)
 Notes about categories:
 - In the storybook, you can find a comprehensive list of cargotypes
   for each category and some other data.
-- For industry sets which uses 5 categories, you can make the
-  challenge easier by reducing them (merge categories 2 and 3, and/or
-  categories 4 and 5). See settings below.
+- You can select a randomization, so every town will have randomly selected
+  cargos per category. More on it in the Settings.
   
 Cargo category requirements increase relatively to town population, in
 two ways:
@@ -74,11 +72,11 @@ town size. The bigger a town is, bigger is the requirement for a given
 category.
 - each category starts being required only on a defined town
 size. Passengers and mail are required whatever the town's size is,
-while General food cargos are required only for towns bigger
-500. General goods cargos, for towns bigger than 1500.
-Hence, little towns only need Cat.1 cargos (Passengers and mail) to
+while Raw food cargos are required only for towns bigger
+500. Raw materials cargos, for towns bigger than 1500.
+Hence, little towns only need Cat.1 cargos (Public services) to
 grow, while towns with at least 500 habitants also need - increasingly
-- food. When cities grow more, other categories come in play. That
+- raw food. When cities grow more, other categories come in play. That
 means, that in the end, you can only expect to have a full - and long
 term - city growth when developing some local industry, to which
 deliver raw and transformed industrial materials. For details about
@@ -88,15 +86,16 @@ The informations that the script gives are:
 - Under each town name, a text indicates the actual town growth
   rate, only for the monitored towns; the number indicates how many
   days will you'll have to wait between each town expansion.
-- In townboxes, first page is detailed informations about cargo 
-  requirements are given for each category, in the form:
+- In townboxes, first page is first part is information about required 
+  and achieved percentage of transported passangers and mails is given
+  Second part contains detailed informations about cargo requirements 
+  for each category, in the form:
   *category: actual goal / last month supply / stockpiled cargo.
   Note that the town window only displays informations for cargo
   categories which are required in a given town at a given
   moment. Thus, in little towns, it is normal to only see an
   indication for category 1.
-- In townboxes, second page is information about required and achieved
-  percentage of transported passangers and mails is given
+- In townboxes, second page 
 - Townbox pages switch automatically every 3 seconds or can be a 
   specific page, see "Town info display mode" GS setting.
 - The StoryBook also gives informations: there you can find a general
@@ -111,7 +110,7 @@ supplied. If you deliver all the required cargo, you will have the
 maximum growth rate for a town (its maximum growth rate depends on its
 size). If you deliver only a part of cargo, growth rate will be
 lower. If you only deliver 50% of the requirements, town growth rate
-is arbitrarily set to 10000. If you deliver a larger part of
+is arbitrarily set to maximum. If you deliver a larger part of
 requirements, the town growth rate increases exponentially. Hence, the
 town growth rate is at the same time progressive and exponential.
 
@@ -135,12 +134,13 @@ Have fun !
 Normal settings:
 - "Town info display mode": changes the mode of displaying town 
   information 
-    - Automatic - switches between all pages at 3s interval 
+    - Automatic - switches between pages at 3s interval 
 	(higher town count can increase this interval)
-	- Cargo information - displays cargo categories required / 
-	supplied / stockpiled
-	- Limiter information - displays passangers/mails transported / 
-	required
+	- Category deliveries - displays passangers/mails transported / 
+	required and cargo categories required / supplied / stockpiled
+	- Cargo list - displays accepted cargo per category
+  - Combined - displays cargo categories and accepted cargo per category
+  - Full cargo list - displays all categories of accepted cargo
 - "Which industry set is being used?": this is necessary to determine
   what cargotypes are used by the game and build categories.
 - "Difficulty level": a general factor for calculating cargo
@@ -163,6 +163,16 @@ Normal settings:
   labels and their index numbers. Set it to 3 if you want check 
   details about calculations.
   
+Randomization settings:
+- "Randomization: Type": all towns will have randomly selected
+  cargos per category based on selection
+  - None - no randomization, all cargos per category are accepted
+  - 1,2,3 per category - fixed amount of cargos per category
+  - 1-2, 1-3, 2-3 - minimum to maximum amount of cargos per category
+- "Randomization: Show town cargos from start": if selected, all randomized
+  cargos can be visible for each town, otherwise only reached
+  categories are displayed
+
 Limit growth settings:
 - "Minimum Percentage of Passangers Transported": how much of the 
   passangers generated by the town that month must be transported
@@ -195,12 +205,12 @@ they can safely be changed while the game is running:
   increase exponentiality. To put it simple: the higher is this
   number, the more you need to approach a 100% supply to have a decent
   growth. Also See: http://dev.openttdcoop.org/projects/gs-rcg/wiki
-- "lowest TGR if requirements are not meet": for some reason, when
+- "lowest TGR if requirements are not met": for some reason, when
   requirements are not met at all for a town, but this still is under
   active monitoring (because exchanging passengers), it is better not
   disabling completely town growth but setting it to an extremely low
-  rate. The default is 10000 (which means that a new house is created
-  only each 10000 days = 27 years). It can be increased until 30000.
+  rate. The default is 880 (which means that a new house is created
+  only each 880 days). It can be increased until 880.
 
 
 3. Requirements
@@ -208,9 +218,10 @@ they can safely be changed while the game is running:
 - OpenTTD, v. 1.10.x or newer.
 - GS SuperLib, v. 40 (you can find it on BaNaNaS, also accessible
   through OTTD's "Online Content").
-- Industry sets: you can use Baseset (all climates), FIRS 1.3.0 and 
-  3.0.12 (all economies), ECS 1.2 (any combination), YETI 0.1.6, 
-  NAIS 1.0.6. Using RVG with any other unsupported industry 
+- Industry sets: you can use Baseset (all climates), FIRS 1.4 
+  (all economies), FIRS 3 (all economies), FIRS 4 alpha (all economies),
+  ECS 1.2 (any combination), YETI 0.1.6, NAIS 1.0.6, Improved Town
+  Industries 1.3. Using RVG with any other unsupported industry 
   set may result in odd - or unstable - behaviours.
 
 

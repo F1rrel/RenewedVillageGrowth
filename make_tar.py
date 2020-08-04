@@ -19,18 +19,22 @@ gs_name = "Renewed_Village_Growth"
 
 # Script:
 version = -1
+subversion = -1
 for line in open("version.nut"):
 
 	r = re.search('SELF_VERSION\s+<-\s+([0-9]+)', line)
 	if(r != None):
 		version = r.group(1)
+	r2 = re.search('SELF_SUBVERSION\s+<-\s+([0-9]+)', line)
+	if(r2 != None):
+		subversion = r2.group(1)
 
-if(version == -1):
+if(version == -1 or subversion == -1):
 	print("Couldn't find " + gs_name + " version in info.nut!")
 	exit(-1)
 
 if platform.system() == 'Linux':
-    tmp_dir = gs_name + "-" + str(version)
+    tmp_dir = gs_name + "-" + str(version) + "." + str(subversion)
     tar_name = tmp_dir + ".tar"
 
     if os.path.exists(tmp_dir):
@@ -54,7 +58,7 @@ if platform.system() == 'Linux':
     rmtree(tmp_dir)
 
 elif platform.system() == 'Windows':
-    dir_name = gs_name + "-v" + version
+    dir_name = gs_name + "-" + str(version) + "." + str(subversion)
     tar_name = dir_name + ".tar"
     os.system("mkdir " + dir_name)
     os.system("xcopy /C /Y *.nut " + dir_name)

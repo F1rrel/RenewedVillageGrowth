@@ -9,6 +9,7 @@ class GoalTown
 	is_monitored = null;        // Whether the town is already under monitoring. True if town exchanges pax.
 	last_delivery = null;       // Date of last delivery from or to the town for monitoring
 	town_cargo_cat = null;		// List selected cargos per category
+	cargo_hash = null;			// Hash created from town_cargo_cat
 	town_goals_cat = null;      // Town goals per cargo category
 	town_supplied_cat = null;   // Last monthly supply per cargo category (for categories: see InitCargoLists())
 	town_stockpiled_cat = null; // Stockpiled cargos per cargo category
@@ -16,18 +17,18 @@ class GoalTown
 	tgr_array_len = null;       // Town growth rate array lenght
 	tgr_average = null;         // Town growth rate average, calculated from the array
 	// Limit towns
-	limit_passangers = null;
-	limit_mails = null;
-	limit_growth = null;
+	limit_passangers = null;	// Array[supplied, required] of passangers
+	limit_mails = null;			// Array[supplied, required] of mails
+	limit_growth = null;		// Flag if limiter is active
+	limit_delay = null;			// Increments for each limiter false condition until "limiter_delay" setting
 	allowGrowth = null;			// limits growth requirement fulfilled
 	town_text_scroll = null;	// scroll town text when more than 3 categories are to be displayed
-	cargo_hash = null;
 
 	constructor(town_id, load_town_data, pax_required, mail_required) {
 		this.id = town_id;
 		this.tgr_array_len = 8;
 		this.tgr_average = null;
-		this.allowGrowth = true;
+		this.allowGrowth = false;
 		this.town_text_scroll = 0;
 
 		/* If there isn't saved data for the towns, we
@@ -46,6 +47,7 @@ class GoalTown
 			this.limit_mails = array(2, 0);
 			this.limit_mails[1] = mail_required;
 			this.limit_growth = (pax_required > 0) || (mail_required > 0);
+			this.limit_delay = 0;
 			this.Randomization();
 			this.DisableOrigCargoGoal();
 			GSTown.SetGrowthRate(this.id, GSTown.TOWN_GROWTH_NONE);
@@ -61,6 +63,7 @@ class GoalTown
 			this.limit_passangers = ::TownDataTable[this.id].limit_passangers;
 			this.limit_mails = ::TownDataTable[this.id].limit_mails;
 			this.limit_growth = (this.limit_passangers[1] > 0) || (this.limit_mails[1] > 0);
+			this.limit_delay = ::TownDataTable[this.id].limit_delay;
 			this.cargo_hash = ::TownDataTable[this.id].cargo_hash_upper << 32 | ::TownDataTable[this.id].cargo_hash_lower;
 			this.town_cargo_cat = GetCargoTable(this.cargo_hash);
 			this.DebugCargoTable(this.town_cargo_cat);
@@ -111,6 +114,7 @@ function GoalTown::SavingTownData()
 	town_data.tgr_array <- this.tgr_array;
 	town_data.limit_passangers <- this.limit_passangers;
 	town_data.limit_mails <- this.limit_mails;
+	town_data.limit_delay <- this.limit_delay;
 	town_data.cargo_hash_upper <- this.cargo_hash >> 32;
 	town_data.cargo_hash_lower <- this.cargo_hash & ((1 << 32) - 1);
 	return town_data;
@@ -148,8 +152,8 @@ function GoalTown::MonthlyManageTown()
 		GSTown.SetCargoGoal(this.id, GSCargo.TE_FOOD, 0);
 	}
 
-	// Checking whether we should enable monitoring and perform calculations
-	if (!this.is_monitored && !this.CheckMonitoring(false)) return;
+	// Checking whether we should enable or disable town monitoring
+	if (!this.CheckMonitoring(this.is_monitored)) return;
 
 	// Checking cargo delivery
 	foreach (index, category in this.town_cargo_cat) {
@@ -164,10 +168,6 @@ function GoalTown::MonthlyManageTown()
 			}
 		}
 	}
-
-	// Check if the town should stop being monitored
-	if (town_supplied_cat[0] == 0 && !this.CheckMonitoring(true))
-		return;
 
 	// Calculating goals
 	for (local i = 0; i < CargoCatNum && cur_pop > ::CargoMinPopDemand[i]; i++) {
@@ -245,6 +245,7 @@ function GoalTown::MonthlyManageTown()
 	}
 	
 	this.UpdateSignText();
+	GSTown.SetText(this.id, this.TownBoxText(true, GSController.GetSetting("town_info_mode"), true));
 }
 
 function GoalTown::ManageTownLimiting(threashold_setting, paxRequired, mailRequired) {
@@ -262,9 +263,14 @@ function GoalTown::ManageTownLimiting(threashold_setting, paxRequired, mailRequi
 	local mailTransport = GSTown.GetLastMonthTransportedPercentage (this.id, Helper.GetMailCargo());
 
 	if (paxTransport < paxRequired || mailTransport < mailRequired) {
-		this.allowGrowth = false;
+		++this.limit_delay;
+		if (this.limit_delay > GSController.GetSetting("limiter_delay")) {
+			this.limit_delay = 0;
+			this.allowGrowth = false;
+		}
 	} else {
 		this.allowGrowth = true;
+		this.limit_delay = 0;
 	}
 	
 	this.limit_passangers = [paxTransport, paxRequired];
@@ -289,10 +295,13 @@ function GoalTown::CheckMonitoring(monitored)
 		if (GSCompany.ResolveCompanyID(cid) != GSCompany.COMPANY_INVALID) {
 			foreach (cargo in town_cargo_cat[0]) {
 				delivery_check += GSCargoMonitor.GetTownPickupAmount(cid, cargo, this.id, true);
+				delivery_check += GSCargoMonitor.GetTownDeliveryAmount(cid, cargo, this.id, true);
+				if (delivery_check > 0) break;
 			}
-			if (delivery_check > 0) break;
 		}
 	}
+
+	Log.Info("City of "+GSTown.GetName(this.id)+" delivery = " + delivery_check, Log.LVL_DEBUG);
 
 	if (!monitored) {
 		/* For unmonitored towns: check whether they delivered

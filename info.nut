@@ -19,9 +19,9 @@ class MainClass extends GSInfo
 	function GetDescription()	{ return "A combination of Renewed City Growth GS and City Growth Limiter GS. Towns require various cargo delivery to grow. Town growth is limited by percentage of transported PAX/mail. Supporting Baseset, FIRS, ECS, YETI, NAIS industries. See the readme.txt for detailed description."; }
 	function GetURL()			{ return "https://www.tt-forums.net/viewtopic.php?f=65&t=87052"; }
 	function GetVersion()		{ return SELF_VERSION; }
-	function GetDate()			{ return "2020-05-17"; }
+	function GetDate()			{ return "2020-08-03"; }
 	function GetAPIVersion()	{ return "1.10"; }
-	function MinVersionToLoad()	{ return 1; }
+	function MinVersionToLoad()	{ return 4; }
 	function CreateInstance()	{ return "MainClass"; }
 	function GetSettings() {
 
@@ -71,30 +71,6 @@ class MainClass extends GSInfo
 					_22 = "FIRS 4 alpha: Tropic Basic",
 					_23 = "FIRS 4 alpha: Steeltown" });
 
-		AddSetting({ name = "cargo_randomization",
-				description = "Cargo randomization type",
-				easy_value = 1,
-				medium_value = 7,
-				hard_value = 5,
-				custom_value = 2,
-				flags = CONFIG_NONE, min_value = 1, max_value = 7 });
-		AddLabels("cargo_randomization", { 
-					_1 = "None",
-					_2 = "1 per category",
-					_3 = "2 per category",
-					_4 = "3 per category",
-					_5 = "1-2 per category",
-					_6 = "1-3 per category",
-					_7 = "2-3 per category" });
-
-		AddSetting({ name = "display_cargo",
-				description = "Display immediately cargos per town",
-				easy_value = 1,
-				medium_value = 0,
-				hard_value = 0,
-				custom_value = 0,
-				flags = CONFIG_BOOLEAN});
-
 		AddSetting({ name = "goal_scale_factor",
 				description = "Difficulty level (easy = 60, normal = 100, hard = 140)",
 				easy_value = 60,
@@ -123,6 +99,30 @@ class MainClass extends GSInfo
 					_2 = "Good",
 					_3 = "Poor" });
 
+		AddSetting({ name = "cargo_randomization",
+				description = "Randomization: Type",
+				easy_value = 1,
+				medium_value = 7,
+				hard_value = 5,
+				custom_value = 2,
+				flags = CONFIG_NONE, min_value = 1, max_value = 7 });
+		AddLabels("cargo_randomization", { 
+					_1 = "None",
+					_2 = "1 per category",
+					_3 = "2 per category",
+					_4 = "3 per category",
+					_5 = "1-2 per category",
+					_6 = "1-3 per category",
+					_7 = "2-3 per category" });
+
+		AddSetting({ name = "display_cargo",
+				description = "Randomization: Show town cargos from start",
+				easy_value = 1,
+				medium_value = 0,
+				hard_value = 0,
+				custom_value = 0,
+				flags = CONFIG_BOOLEAN});
+
 		AddSetting({
 			name = "min_transport_pax",
 			description = "Limit Growth: Minimun Percentage of Passengers Transported",
@@ -130,10 +130,7 @@ class MainClass extends GSInfo
 			medium_value = 50,
 			hard_value = 65,
 			custom_value = 50,
-			flags = CONFIG_INGAME,
-			min_value = 0,
-			max_value = 90,
-			step_size = 5});
+			flags = CONFIG_INGAME, min_value = 0, max_value = 90, step_size = 5});
 			
 		AddSetting({
 			name = "min_transport_mail",
@@ -142,10 +139,7 @@ class MainClass extends GSInfo
 			medium_value = 50,
 			hard_value = 65,
 			custom_value = 50,
-			flags = CONFIG_INGAME,
-			min_value = 0,
-			max_value = 90,
-			step_size = 5});
+			flags = CONFIG_INGAME, min_value = 0, max_value = 90, step_size = 5});
 			
 		AddSetting({
 			name = "town_size_threshold",
@@ -157,6 +151,15 @@ class MainClass extends GSInfo
 			flags = CONFIG_INGAME, min_value = 0,
 			max_value = 3000,
 			step_size = 25});
+
+		AddSetting({
+			name = "limiter_delay",
+			description = "Limit Growth: Stop growth after set amount of months",
+			easy_value = 3,
+			medium_value = 1,
+			hard_value = 0,
+			custom_value = 1,
+			flags = CONFIG_INGAME, min_value = 0, max_value = 12, step_size = 1});
 
 		AddSetting({ name = "town_growth_factor",
 				description = "Expert: town growth factor",

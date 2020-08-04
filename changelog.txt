@@ -1,21 +1,27 @@
 *** Renewed Village Growth GS Changelog ***
 
-Version 4
+Version 4.0
 * Not compatible with other versions
 - new: added randomization of cargos to fixed number or variable number per category
-- new: added parameter to display all required cargo by towns from start - "Display immediately cargos per town"
+- new: added parameter to display all required cargo by towns from start - "Display immediately 
+cargos per town"
 - new: added displaying of full cargo list in "Town info display mode" parameter
 - new: added support for Improved Town Industries 1.3
-- new: added support for FIRS 4 alpha
+- new: added support for FIRS 1.4 and FIRS 4 alpha
 - new: added support for 64 cargo types
+- new: added setting to delay limiter stopping town growth by set amount of months - "Limit 
+Growth: Stop growth after set amount of months"
 - modified: added easy, medium and hard values to some parameters
 - modified: completely reworked town texts
 - modified: any supplied cargo from first category will start town monitoring
-- modified: updated FIRS 1.3 to FIRS 1.4 (not backward compatible)
 - modified: changed category names to better represent the cargo
+- modified: town texts are redrawn when new month kicks in
 - fix: funding towns is now working
-- fix: the growth is now enabled properly for towns that were not growing when limiter got disabled mid game
+- fix: the growth is now enabled properly for towns that were not growing when limiter got 
+disabled mid game
+- fix: starting monitoring should be more reliable
 - removed: options to merge categories
+- removed: FIRS 1.3 no longer supported
 
 Version 3 (2020/05/17)
 * Not compatible with other versions
@@ -33,8 +39,8 @@ possible TGR
 - modified: changed "Eternal love" default value to off
 - modified: updated ECS vector to version 1.2
 - fix: issue with scrambled story book text after loading game
-- fix: display town growth is not limited by the script message when pax and mail requirements changed to 
-0 mid game
+- fix: display town growth is not limited by the script message when pax and mail requirements changed 
+to 0 mid game
 - fix: town categories in town info screen now scroll when there are more than can fit
 - fix: removed duplicite cargo printing
 - removed: french translation

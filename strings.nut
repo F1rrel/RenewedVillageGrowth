@@ -1,5 +1,5 @@
 
-function GoalTown::TownBoxText(growth_enabled, text_mode)
+function GoalTown::TownBoxText(growth_enabled, text_mode, redraw=false)
 {
 	local text_townbox = null;
 
@@ -35,16 +35,20 @@ function GoalTown::TownBoxText(growth_enabled, text_mode)
 		case 1: // automatic
 			if (::SettingsTable.randomization == 1) {
 				text_townbox = this.TownTextCategories();
+				break;
 			}
 			else if (!this.limit_growth) {
 				text_townbox = this.TownTextCategoriesCombined();
+				break;
 			}
-			else if (this.town_text_scroll > 0) {
+
+			if (!redraw) {
+				this.town_text_scroll = (this.town_text_scroll < 1) ? this.town_text_scroll + 1 : 0;
+			}
+			if (this.town_text_scroll > 0) {
 				text_townbox = this.TownTextCargos(display_cargo);
-				this.town_text_scroll = 0;
 			} else {
 				text_townbox = this.TownTextCategories();
-				++this.town_text_scroll;
 			}
 			break;
 		case 2: // categories
