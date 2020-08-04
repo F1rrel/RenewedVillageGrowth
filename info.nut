@@ -16,7 +16,7 @@ class MainClass extends GSInfo
 	function GetAuthor()		{ return "Firrel"; }
 	function GetName()			{ return "Renewed Village Growth"; }
 	function GetShortName() 	{ return "REVI"; }
-	function GetDescription()	{ return "A combination of Renewed City Growth GS and City Growth Limiter GS. Towns require various cargo delivery to grow. Town growth is limited by percentage of transported PAX/mail. Supporting Baseset, FIRS, ECS, YETI, NAIS industries. See the readme.txt for detailed description."; }
+	function GetDescription()	{ return "Towns require various cargo deliveries to grow. Required cargos can be randomized. Town growth is limited by percentage of transported PAX/mail. Supporting Baseset, FIRS (1.4, 3, 4), ECS, YETI, NAIS, Improved Town Industries."; }
 	function GetURL()			{ return "https://www.tt-forums.net/viewtopic.php?f=65&t=87052"; }
 	function GetVersion()		{ return SELF_VERSION; }
 	function GetDate()			{ return "2020-08-04"; }
