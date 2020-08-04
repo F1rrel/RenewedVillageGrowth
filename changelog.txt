@@ -1,5 +1,9 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 4.1
+- fix: received cargo for first category is now working properly
+
+
 Version 4.0
 * Not compatible with other versions
 - new: added randomization of cargos to fixed number or variable number per category

@@ -161,9 +161,11 @@ function GoalTown::MonthlyManageTown()
 			for (local cid = GSCompany.COMPANY_FIRST; cid <= GSCompany.COMPANY_LAST; cid++) {
 				if (GSCompany.ResolveCompanyID(cid) != GSCompany.COMPANY_INVALID) {
 					local cargo_supplied = GSCargoMonitor.GetTownDeliveryAmount(cid, cargo, this.id, true);
-					town_supplied_cat[index] += cargo_supplied;
 					if (cargo_supplied > 0) 
 						this.DebugCargoSupplied(cargo, cargo_supplied);
+					else if (cargo_supplied < 0)
+						cargo_supplied = 0;
+					town_supplied_cat[index] += cargo_supplied;
 				}
 			}
 		}
@@ -295,13 +297,10 @@ function GoalTown::CheckMonitoring(monitored)
 		if (GSCompany.ResolveCompanyID(cid) != GSCompany.COMPANY_INVALID) {
 			foreach (cargo in town_cargo_cat[0]) {
 				delivery_check += GSCargoMonitor.GetTownPickupAmount(cid, cargo, this.id, true);
-				delivery_check += GSCargoMonitor.GetTownDeliveryAmount(cid, cargo, this.id, true);
 				if (delivery_check > 0) break;
 			}
 		}
 	}
-
-	Log.Info("City of "+GSTown.GetName(this.id)+" delivery = " + delivery_check, Log.LVL_DEBUG);
 
 	if (!monitored) {
 		/* For unmonitored towns: check whether they delivered
