@@ -46,7 +46,7 @@ if platform.system() == 'Linux':
         if os.path.isfile(file):
             copy2(file, tmp_dir)
     copy2('readme.txt', tmp_dir)
-    copy2('license.txt', tmp_dir)
+    #copy2('license.txt', tmp_dir)
     copy2('changelog.txt', tmp_dir)
     copytree('lang', os.path.join(tmp_dir, 'lang'))
 
@@ -63,7 +63,7 @@ elif platform.system() == 'Windows':
     os.system("mkdir " + dir_name)
     os.system("xcopy /C /Y *.nut " + dir_name)
     os.system("xcopy /C /Y readme.txt " + dir_name)
-    os.system("xcopy /C /Y license.txt " + dir_name)
+    #os.system("xcopy /C /Y license.txt " + dir_name)
     os.system("xcopy /C /Y changelog.txt " + dir_name)
     os.system("xcopy /E /C /Y lang " + dir_name)
     os.system("tar -cf " + tar_name + " " + dir_name)
