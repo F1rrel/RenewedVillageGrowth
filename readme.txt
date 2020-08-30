@@ -3,7 +3,7 @@
                 *  A GameScript for OpenTTD  *
                 ******************************
 
-Version: 4.1
+Version: 4.2
 
 Usefull URL's:
 - forum topic: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
@@ -25,7 +25,7 @@ grow in OTTD. Various cargo requirements and passanger/mail percentage
 transported are defined - monthly - for each town. Towns only grow 
 if those requirements are - partially or completely - satisfied. RVG 
 supports several industry sets: Baseset, FIRS 1.4, FIRS 3, FIRS 4 alpha, 
-ECS 1.2, YETI 0.1.6, NAIS 1.0.6, Improved Town 1.3 Industries.
+ECS 1.2, YETI 0.1.6, NAIS 1.0.6, ITI 1.5, XIS 0.6.
 
 The script only defines requirements for towns who are exchanging
 passengers (meaning that a delivery of passengers coming from a town
@@ -220,9 +220,9 @@ they can safely be changed while the game is running:
   through OTTD's "Online Content").
 - Industry sets: you can use Baseset (all climates), FIRS 1.4 
   (all economies), FIRS 3 (all economies), FIRS 4 alpha (all economies),
-  ECS 1.2 (any combination), YETI 0.1.6, NAIS 1.0.6, Improved Town
-  Industries 1.3. Using RVG with any other unsupported industry 
-  set may result in odd - or unstable - behaviours.
+  ECS 1.2 (any combination), YETI 0.1.6 (all except simplified), 
+  NAIS 1.0.6, ITI 1.5, XIS 0.6 (The Lot). Using RVG with any other 
+  unsupported industry set may result in odd - or unstable - behaviours.
 
 
 4. License

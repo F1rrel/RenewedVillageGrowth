@@ -75,8 +75,12 @@ function FillCargoIDList(cargo_list) {
 	/* YETI 0.1.6 */
 	case(11):
 		::CargoIDList <- ["PASS","GRVL","MAIL","WOOD","BDMT",null,"GRAI","FRUT","FOOD",null,
-				  "OIL_",null,"STEL","PETR","BATT","VEHI","YETI","CLAY","LVST","URAN",
-				  "IORE"];
+				"OIL_",null,"STEL","PETR","BATT","VEHI","YETI","CLAY","LVST","URAN",
+				"IORE"];
+
+		if (cargo_list[21] == "YETY") {
+			::CargoIDList.append("YETY");
+		}
 		break;
 	/* FIRS version 3 */
 	case(12): // Temperate Basic
@@ -112,9 +116,13 @@ function FillCargoIDList(cargo_list) {
 				  "FICR","FOOD","FISH","PETR","GLAS","GRAI","IORE","LVST","WDPR","ENSP","METL",
 				  "MILK","PORE","OIL_","PAPR","FRUT","SAND","SCMT","GRVL","URAN","VALU","WOOD"];
 		break;
-	/* Improved Town Industries 1.3 */
+	/* Improved Town Industries 1.5 */
 	case(19):
 		::CargoIDList <- ["PASS","COAL","MAIL","OIL_","FOOD","GOOD","RFPR","WOOD","IORE","STEL"];
+		if (cargo_list[10] == "RCYC" && cargo_list[11] == "WSTE") {
+			::CargoIDList.append("RCYC");
+			::CargoIDList.append("WSTE");
+		}
 		break;
 	/* FIRS version 4 alpha */
 	case(20): // Temperate Basic
@@ -136,7 +144,15 @@ function FillCargoIDList(cargo_list) {
 				  "PLAS","QLME","RBAR","RUBR","SALT","SAND","SCMT","SLAG","SASH","STST",
 				  "STSE","STSH","STWR","SULP","TYRE","VBOD","VENG","VPTS","ZINC"];
 		break;
-	
+	case(24): // XIS 0.6: The Lot
+		::CargoIDList <- ["PASS","ACID","MAIL","BEER","AORE","GOOD","BEAN","BDMT","CMNT","RFPR",
+						  "CHLO","FOOD","CLAY","COAL","COKE","COPR","CORE","EOIL","POWR","ENSP",
+						  "BOOM","FMSP","FERT","FISH","FRUT","GRAI","IORE","KAOL","LIME","LVST",
+						  "WDPR","MNO2","METL","MILK","NITR","OIL_","MNSP","PAPR","PEAT","PETR",
+						  "PHOS","IRON","PIPE","FICR","PORE","QLME","RCYC","RUBR","SALT","SAND",
+						  "SCMT","SLAG","SASH","STEL","SGBT","SULP","VBOD","VPTS","VEHI","WOOD",
+						  "WOOL","ZINC"];
+		break;
 	default: break;
 	}
 
@@ -284,7 +300,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(11): //YETI 0.1.6
-			::CargoCat <- [[0,2,16],
+			::CargoCat <- [[0,2,16,21],
 				       [6,7,18],
 				       [1,3,10,17,19,20],
 				       [12,13,14],
@@ -379,10 +395,10 @@ function DefineCargosBySettings()
 			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(19): // Improved Town Industries 1.3
+		case(19): // Improved Town Industries 1.5
 			::CargoCat <- [[0,2],
-				       [1,3,7,8],
-				       [4,5,6,9]];
+				       [1,3,7,8,11],
+				       [4,5,6,9,10]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.PRODUCTS];
 			::CargoMinPopDemand <- [0,1000,4000];
 			::CargoPermille <- [60,45,25];
@@ -436,8 +452,31 @@ function DefineCargosBySettings()
 			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
+		case(24): // XIS 0.6: The Lot
+			::CargoCat <- [[0,2],
+				       [6,23,24,25,29,33,38,43,48,54],
+				       [12,13,16,26,27,28,31,34,35,40,44,46,47,49,50,59,60],
+				       [1,4,8,9,10,14,15,19,21,30,32,37,41,45,51,52,53,55,61],
+				       [3,5,7,11,17,18,20,22,36,39,42,56,57,58]];
+			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
+					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
+			::CargoMinPopDemand <- [0,500,1000,4000,8000];
+			::CargoPermille <- [60,25,25,15,10];
+			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
+			break;
 		default:
 			break;
+	}
+
+	// Remove unused cargo ids
+	if (::CargoIDList) {
+		foreach (cat in ::CargoCat) {
+			foreach (index, cargo in cat) {
+				if (::CargoIDList[cargo] == null) {
+					cat.remove(index);
+				}
+			}
+		}
 	}
 }
 

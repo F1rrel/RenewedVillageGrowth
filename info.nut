@@ -16,7 +16,7 @@ class MainClass extends GSInfo
 	function GetAuthor()		{ return "Firrel"; }
 	function GetName()			{ return "Renewed Village Growth"; }
 	function GetShortName() 	{ return "REVI"; }
-	function GetDescription()	{ return "Towns require various cargo deliveries to grow. Required cargos can be randomized. Town growth is limited by percentage of transported PAX/mail. Supporting Baseset, FIRS (1.4, 3, 4), ECS, YETI, NAIS, Improved Town Industries."; }
+	function GetDescription()	{ return "Towns require various cargo deliveries to grow. Required cargos can be randomized. Town growth is limited by percentage of transported PAX/mail. Supporting Baseset, FIRS (1.4, 3, 4), ECS, YETI, NAIS, ITI, XIS."; }
 	function GetURL()			{ return "https://www.tt-forums.net/viewtopic.php?f=65&t=87052"; }
 	function GetVersion()		{ return SELF_VERSION; }
 	function GetDate()			{ return "2020-08-04"; }
@@ -45,7 +45,7 @@ class MainClass extends GSInfo
 				medium_value = 1,
 				hard_value = 1,
 				custom_value = 1,
-				flags = CONFIG_NONE, min_value = 1, max_value = 23 });
+				flags = CONFIG_NONE, min_value = 1, max_value = 24 });
 		AddLabels("industry_NewGRF", { 
 					_1 = "Baseset: Temperate",
 					_2 = "Baseset: Arctic",
@@ -65,11 +65,12 @@ class MainClass extends GSInfo
 					_16 = "FIRS 3: In A Hot Country",
 					_17 = "FIRS 3: Extreme",
 					_18 = "NAIS 1.0.6: North America",
-					_19 = "Improved Town Industries 1.3",
+					_19 = "Improved Town Industries 1.5",
 					_20 = "FIRS 4 alpha: Temperate Basic",
 					_21 = "FIRS 4 alpha: Arctic Basic",
 					_22 = "FIRS 4 alpha: Tropic Basic",
-					_23 = "FIRS 4 alpha: Steeltown" });
+					_23 = "FIRS 4 alpha: Steeltown",
+					_24 = "XIS 0.6: The Lot" });
 
 		AddSetting({ name = "goal_scale_factor",
 				description = "Difficulty level (easy = 60, normal = 100, hard = 140)",
