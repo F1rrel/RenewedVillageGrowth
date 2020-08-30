@@ -1,16 +1,15 @@
 *** Renewed Village Growth GS Changelog ***
 
-Version 4.2
+Version 4.2 (2020/08/30)
 - new: added support for XIS 0.6: The Lot
 - modified: updated ITI to 1.5 to allow recycling chain
 - modified: all YETI game styles working except Simplified
 - fix: randomization giving too few cargos when not all ECS vectors are enabled
 
-Version 4.1
+Version 4.1 (2020/08/04)
 - fix: received cargo for first category is now working properly
 
-
-Version 4.0
+Version 4.0 (2020/08/04)
 * Not compatible with other versions
 - new: added randomization of cargos to fixed number or variable number per category
 - new: added parameter to display all required cargo by towns from start - "Display immediately 
