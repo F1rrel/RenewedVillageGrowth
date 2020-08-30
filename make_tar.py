@@ -65,7 +65,7 @@ elif platform.system() == 'Windows':
     os.system("xcopy /C /Y readme.txt " + dir_name)
     #os.system("xcopy /C /Y license.txt " + dir_name)
     os.system("xcopy /C /Y changelog.txt " + dir_name)
-    os.system("xcopy /E /C /Y lang " + dir_name)
+    os.system("xcopy /E /C /I lang " + dir_name + "\lang")
     os.system("tar -cf " + tar_name + " " + dir_name)
     os.system("rd /S /Q " + dir_name)
 
