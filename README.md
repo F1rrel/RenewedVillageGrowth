@@ -10,10 +10,10 @@ BaNaNaS: https://bananas.openttd.org/package/game-script/52455649
 - OpenTTD, v. 1.10.x or newer.
 - GS SuperLib, v. 40 (you can find it on BaNaNaS, also accessible
   through OTTD's "Online Content").
-- Industry sets: you can use Baseset (all climates), FIRS 1.3.0 and 
-  3.0.12 (all economies), ECS 1.2 (any combination), YETI 0.1.6, 
-  NAIS 1.0.6. Using RVG with any other unsupported industry 
-  set may result in odd - or unstable - behaviours.
+- Industry sets: you can use Baseset (all climates), FIRS 1.4, 3, 4
+  (all economies), ECS 1.2 (any combination), YETI 0.1.6 
+  (all except Simplified), NAIS 1.0.6, ITI 1.5, XIS 0.6. 
+  Using RVG with any other unsupported industry set may result in odd - or unstable - behaviours.
 
 ## License
 
