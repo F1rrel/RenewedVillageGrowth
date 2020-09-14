@@ -19,9 +19,9 @@ class MainClass extends GSInfo
 	function GetDescription()	{ return "Towns require various cargo deliveries to grow. Required cargos can be randomized. Town growth is limited by percentage of transported PAX/mail. Supporting Baseset, FIRS (1.4, 3, 4), ECS, YETI, NAIS, ITI, XIS."; }
 	function GetURL()			{ return "https://www.tt-forums.net/viewtopic.php?f=65&t=87052"; }
 	function GetVersion()		{ return SELF_VERSION; }
-	function GetDate()			{ return "2020-08-04"; }
+	function GetDate()			{ return SELF_DATE; }
 	function GetAPIVersion()	{ return "1.10"; }
-	function MinVersionToLoad()	{ return 4; }
+	function MinVersionToLoad()	{ return SELF_MINLOADVERSION; }
 	function CreateInstance()	{ return "MainClass"; }
 	function GetSettings() {
 
