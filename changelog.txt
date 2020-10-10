@@ -1,5 +1,7 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 5.0
+
 Version 4.3 (2020/09/14)
 - fix: reworked GS versioning system
 

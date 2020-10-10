@@ -3,7 +3,7 @@
                 *  A GameScript for OpenTTD  *
                 ******************************
 
-Version: 4.3
+Version: 5.0
 
 Usefull URL's:
 - forum topic: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
