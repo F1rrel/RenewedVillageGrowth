@@ -42,6 +42,10 @@ class MainClass extends GSController
 
 function MainClass::Start()
 {
+	// Wait random number of ticks (less than one day) based on system time to ensure random number seed
+	local sysdate = GSDate.GetSystemTime() % 70;
+    this.Sleep(sysdate);
+
 	// Initializing the script
 	local start_tick = GSController.GetTick();
 
