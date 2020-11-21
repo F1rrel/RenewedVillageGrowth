@@ -116,13 +116,15 @@ function FillCargoIDList(cargo_list) {
 				  "FICR","FOOD","FISH","PETR","GLAS","GRAI","IORE","LVST","WDPR","ENSP","METL",
 				  "MILK","PORE","OIL_","PAPR","FRUT","SAND","SCMT","GRVL","URAN","VALU","WOOD"];
 		break;
-	/* Improved Town Industries 1.5 */
+	/* Improved Town Industries 1.6 */
 	case(19):
-		::CargoIDList <- ["PASS","COAL","MAIL","OIL_","FOOD","GOOD","RFPR","WOOD","IORE","STEL"];
-		if (cargo_list[10] == "RCYC" && cargo_list[11] == "WSTE") {
-			::CargoIDList.append("RCYC");
-			::CargoIDList.append("WSTE");
-		}
+		::CargoIDList <- ["PASS","COAL","MAIL","OIL_","WDPR","GOOD","RFPR","WOOD","IORE","STEL",
+				            null,  null,"FOOD",  null,  null,  null];
+		::CargoIDList[10] = ((cargo_list[10] == "RCYC") ? "RCYC" : null);
+		::CargoIDList[11] = ((cargo_list[11] == "WSTE") ? "WSTE" : null);
+		::CargoIDList[13] = ((cargo_list[13] == "URAN") ? "URAN" : null);
+		::CargoIDList[14] = ((cargo_list[14] == "NUKF") ? "NUKF" : null);
+		::CargoIDList[15] = ((cargo_list[15] == "NUKW") ? "NUKW" : null);
 		break;
 	/* FIRS version 4 alpha */
 	case(20): // Temperate Basic
@@ -395,10 +397,10 @@ function DefineCargosBySettings()
 			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(19): // Improved Town Industries 1.5
-			::CargoCat <- [[0,2],
-				       [1,3,7,8,11],
-				       [4,5,6,9,10]];
+		case(19): // Improved Town Industries 1.6
+			::CargoCat <- [[0,2,11],
+				       [1,3,7,8,12,13],
+				       [4,5,6,9,10,14,15]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.PRODUCTS];
 			::CargoMinPopDemand <- [0,1000,4000];
 			::CargoPermille <- [60,45,25];

@@ -25,7 +25,7 @@ grow in OTTD. Various cargo requirements and passanger/mail percentage
 transported are defined - monthly - for each town. Towns only grow 
 if those requirements are - partially or completely - satisfied. RVG 
 supports several industry sets: Baseset, FIRS 1.4, FIRS 3, FIRS 4 alpha, 
-ECS 1.2, YETI 0.1.6, NAIS 1.0.6, ITI 1.5, XIS 0.6.
+ECS 1.2, YETI 0.1.6, NAIS 1.0.6, ITI 1.6, XIS 0.6.
 
 The script only defines requirements for towns who are exchanging
 passengers (meaning that a delivery of passengers coming from a town
@@ -221,7 +221,7 @@ they can safely be changed while the game is running:
 - Industry sets: you can use Baseset (all climates), FIRS 1.4 
   (all economies), FIRS 3 (all economies), FIRS 4 alpha (all economies),
   ECS 1.2 (any combination), YETI 0.1.6 (all except simplified), 
-  NAIS 1.0.6, ITI 1.5, XIS 0.6 (The Lot). Using RVG with any other 
+  NAIS 1.0.6, ITI 1.6, XIS 0.6 (The Lot). Using RVG with any other 
   unsupported industry set may result in odd - or unstable - behaviours.
 
 

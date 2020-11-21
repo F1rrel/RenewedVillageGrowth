@@ -65,7 +65,7 @@ class MainClass extends GSInfo
 					_16 = "FIRS 3: In A Hot Country",
 					_17 = "FIRS 3: Extreme",
 					_18 = "NAIS 1.0.6: North America",
-					_19 = "Improved Town Industries 1.5",
+					_19 = "Improved Town Industries 1.6",
 					_20 = "FIRS 4 alpha: Temperate Basic",
 					_21 = "FIRS 4 alpha: Arctic Basic",
 					_22 = "FIRS 4 alpha: Tropic Basic",
