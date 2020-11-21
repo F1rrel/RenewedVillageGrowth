@@ -12,7 +12,7 @@ BaNaNaS: https://bananas.openttd.org/package/game-script/52455649
   through OTTD's "Online Content").
 - Industry sets: you can use Baseset (all climates), FIRS 1.4, 3, 4
   (all economies), ECS 1.2 (any combination), YETI 0.1.6 
-  (all except Simplified), NAIS 1.0.6, ITI 1.5, XIS 0.6. 
+  (all except Simplified), NAIS 1.0.6, ITI 1.6, XIS 0.6. 
   Using RVG with any other unsupported industry set may result in odd - or unstable - behaviours.
 
 ## License
