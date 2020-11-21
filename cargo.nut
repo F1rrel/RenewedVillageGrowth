@@ -471,9 +471,10 @@ function DefineCargosBySettings()
 	// Remove unused cargo ids
 	if (::CargoIDList) {
 		foreach (cat in ::CargoCat) {
-			foreach (index, cargo in cat) {
-				if (::CargoIDList[cargo] == null) {
+			for (local index = 0; index < cat.len(); ++index) {
+				if (::CargoIDList[cat[index]] == null) {
 					cat.remove(index);
+					--index;
 				}
 			}
 		}
