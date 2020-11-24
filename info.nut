@@ -45,7 +45,7 @@ class MainClass extends GSInfo
 				medium_value = 1,
 				hard_value = 1,
 				custom_value = 1,
-				flags = CONFIG_NONE, min_value = 1, max_value = 24 });
+				flags = CONFIG_NONE, min_value = 1, max_value = 25 });
 		AddLabels("industry_NewGRF", { 
 					_1 = "Baseset: Temperate",
 					_2 = "Baseset: Arctic",
@@ -70,7 +70,8 @@ class MainClass extends GSInfo
 					_21 = "FIRS 4 alpha: Arctic Basic",
 					_22 = "FIRS 4 alpha: Tropic Basic",
 					_23 = "FIRS 4 alpha: Steeltown",
-					_24 = "XIS 0.6: The Lot" });
+					_24 = "FIRS 4 alpha: In A Hot Country",
+					_25 = "XIS 0.6: The Lot" });
 
 		AddSetting({ name = "goal_scale_factor",
 				description = "Difficulty level (easy = 60, normal = 100, hard = 140)",

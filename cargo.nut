@@ -142,11 +142,16 @@ function FillCargoIDList(cargo_list) {
 	case(23): // Steeltown
 		::CargoIDList <- ["PASS","ACID","MAIL","STAL","ALUM","VEHI","CBLK","STCB","CSTI","CMNT",
 				  "CHLO","FOOD","SOAP","COAL","CTAR","COKE","POWR","ENSP","FMSP","FECR",
-				  "GLAS","IORE","LIME","LYE_","MNO2","O2__","COAT","PETR","IRON","PIPE",
-				  "PLAS","QLME","RBAR","RUBR","SALT","SAND","SCMT","SLAG","SASH","STST",
-				  "STSE","STSH","STWR","SULP","TYRE","VBOD","VENG","VPTS","ZINC"];
+				  "GLAS","IORE","LIME","LYE_","MNO2","O2__","COAT","IRON","PIPE","PLAS",
+				  "QLME","RUBR","SALT","SAND","SCMT","SLAG","SASH","STST","STSE","STSH",
+				  "STWR","SULP","TYRE","VBOD","VENG","VPTS","ZINC","POTA"];
 		break;
-	case(24): // XIS 0.6: The Lot
+	case(24): // In A Hot Country
+		::CargoIDList <- ["PASS","BEER","MAIL","BDMT","CASS","GOOD","RFPR","CLAY","JAVA","COPR",
+				  "CORE","FOOD","DIAM","EOIL","ENSP","FMSP","FRUT","LVST","WDPR","MAIZ",
+				  "MNO2","NUTS","OIL_","PETR","PHOS","RUBR","SAND","GRVL","WOOD"];
+		break;
+	case(25): // XIS 0.6: The Lot
 		::CargoIDList <- ["PASS","ACID","MAIL","BEER","AORE","GOOD","BEAN","BDMT","CMNT","RFPR",
 						  "CHLO","FOOD","CLAY","COAL","COKE","COPR","CORE","EOIL","POWR","ENSP",
 						  "BOOM","FMSP","FERT","FISH","FRUT","GRAI","IORE","KAOL","LIME","LVST",
@@ -444,17 +449,29 @@ function DefineCargosBySettings()
 			break;
 		case(23): // FIRS 4 alpha: Steeltown
 			::CargoCat <- [[0,2],
-					   [11,13,21,22,25,35,36,38,34],
-					   [4,12,16,19,24,26,27,30,33,48],
-				       [1,3,6,7,8,10,14,15,17,18,20,23,28,31,32,37,39,41,42,43],
-				       [5,9,29,40,44,45,46,47]];
+					   [11,13,21,22,25,32,33,34,36,47],
+					   [4,12,16,19,24,26,29,31,46],
+				       [1,3,6,7,8,10,14,15,17,18,20,23,27,30,35,37,29,40,41],
+				       [5,9,28,28,42,43,44,45]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.LOCAL_PRODUCTION,CatLabels.IMPORTED_GOODS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
 			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(24): // XIS 0.6: The Lot
+		case(24): // FIRS 3 -In A Hot Coutry
+			::CargoCat <- [[0,2],
+				       [4,8,16,17,19,21],
+				       [7,10,12,20,22,24,25,26,27,28],
+				       [6,13,14,15,18,23],
+				       [1,3,5,9,11]];
+			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
+					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
+			::CargoMinPopDemand <- [0,500,1000,4000,8000];
+			::CargoPermille <- [60,25,25,15,10];
+			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
+			break;
+		case(25): // XIS 0.6: The Lot
 			::CargoCat <- [[0,2],
 				       [6,23,24,25,29,33,38,43,48,54],
 				       [12,13,16,26,27,28,31,34,35,40,44,46,47,49,50,59,60],
