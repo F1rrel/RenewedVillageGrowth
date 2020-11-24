@@ -1,6 +1,14 @@
 *** Renewed Village Growth GS Changelog ***
 
-Version 5.0
+Version 5.0 (2020/11/24)
+* Not compatible with previous versions
+- new: French translation (rmnvgr)
+- new: Added ToyLib
+- modified: Updated ITI to version 1.6
+- modified: Updated FIRS to version 4 alpha 4
+- fix: when playing with 64 cargo economy, the loading of cargo hash now should work properly
+- fix: added initialization of random seed so restarting the game will lead to different cargos
+- fix: unused cargos should be properly removed from category list
 
 Version 4.3 (2020/09/14)
 - fix: reworked GS versioning system
@@ -15,7 +23,7 @@ Version 4.1 (2020/08/04)
 - fix: received cargo for first category is now working properly
 
 Version 4.0 (2020/08/04)
-* Not compatible with other versions
+* Not compatible with previous versions
 - new: added randomization of cargos to fixed number or variable number per category
 - new: added parameter to display all required cargo by towns from start - "Display immediately 
 cargos per town"
@@ -38,7 +46,7 @@ disabled mid game
 - removed: FIRS 1.3 no longer supported
 
 Version 3 (2020/05/17)
-* Not compatible with other versions
+* Not compatible with previous versions
 - modified: support for any combination of ECS 1.2 vectors
 - modified: added parameter to game script settings "Town info display mode" to change the mode of 
 displaying town information (Automatic, Cargo information, Limiter information)
@@ -47,7 +55,7 @@ displaying town information (Automatic, Cargo information, Limiter information)
 - fix: towns will now properly stop to be monitored after one year without passanger service
 
 Version 2 (2020/05/13)
-* Not compatible with other versions
+* Not compatible with previous versions
 - modified: "Expert: slowest TGR if requirements are not met" changed to max 880 as it is maximum 
 possible TGR 
 - modified: changed "Eternal love" default value to off
