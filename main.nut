@@ -9,6 +9,10 @@ import("util.superlib", "SuperLib", 40);
 Log <- SuperLib.Log;
 Helper <- SuperLib.Helper;
 
+// Import ToyLib
+import("Library.GSToyLib", "GSToyLib", 1);
+import("Library.SCPLib", "SCPLib", 45);
+
 class MainClass extends GSController
 {
 	towns = null;
@@ -20,6 +24,7 @@ class MainClass extends GSController
 	load_saved_data = null;
 	current_save_version = null;
 	actual_town_info_mode = null;
+	toy_lib = null;
 
 	constructor() {
 		this.towns = null;
@@ -31,6 +36,7 @@ class MainClass extends GSController
 		this.current_save_version = SELF_MAJORVERSION;    // Ensures compatibility between revisions
 		this.load_saved_data = false;
 		this.actual_town_info_mode = 0;
+		this.toy_lib = null;
 		::TownDataTable <- {};
 		::SettingsTable <- {
 			industry_NewGRF = GSController.GetSetting("industry_NewGRF"),
@@ -104,6 +110,8 @@ function MainClass::Start()
 
 function MainClass::Init()
 {
+	this.toy_lib = GSToyLib(null); // Init ToyLib;
+
 	// Check game settings
 	GSGameSettings.SetValue("economy.town_growth_rate", 2);
 	GSGameSettings.SetValue("economy.fund_buildings", 0);
@@ -242,6 +250,7 @@ function MainClass::ManageTowns()
 	if (diff_date == 0) {
 		return;
 	} else {
+		GSToyLib.Check();
 		this.current_date = date;
 	}
 
