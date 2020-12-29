@@ -18,7 +18,7 @@ function StoryEditor::CargoInfoPage()
 			bit_sum += 1 << ::CargoCat[i][j];
 		}
 		GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0,
-				       GSText(GSText["STR_SB_CARGOCAT_"+::CargoCatList[i]],
+				       GSText(GSText["STR_SB_CARGOCAT_"+i],
 					     GSText(GSText.STR_SB_CARGOCAT_CAT), i+1,
 					     GSText(GSText["STR_CARGOCAT_LABEL_"+::CargoCatList[i]]),
 					     GSText(GSText.STR_SB_CARGOCAT_POP), ::CargoMinPopDemand[i],

@@ -199,6 +199,7 @@ function DefineCargosBySettings()
 	local industry_setting = GSController.GetSetting("industry_NewGRF");
 	switch (industry_setting) {
 		case(1): // Base temperate
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [1,3,4,6,7,8],
 				       [5,9,10]];
@@ -208,6 +209,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.1];
 			break;
 		case(2): //Base arctic
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [1,3,4,6,7,10],
 				       [5,9,11]];
@@ -217,6 +219,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.1];
 			break;
 		case(3): //Base tropical
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [1,3,4,6,7,8,9,10],
 				       [5,11]];
@@ -226,6 +229,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.1];
 			break;
 		case(4): //Base toyland
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [1,4,6,7,8,9,10],
 				       [3,5,11]];
@@ -235,6 +239,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.1];
 			break;
 		case(5): // FIRS 1.4 - Firs Economy
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [4,6,10,12,13,14],
 				       [1,3,7,8,15,16,17,20,22,26,27,31],
@@ -247,6 +252,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(6): // FIRS 1.4 - Temperate Basic
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [4,10,13],
 				       [1,8,16,17,19],
@@ -259,6 +265,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(7): // FIRS 1.4 - Arctic Basic
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [4,6,14],
 				       [3,7,8,16],
@@ -271,6 +278,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(8): // FIRS 1.4 - Tropic Basic
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [4,6,10,12,13],
 				       [3,15,17,27],
@@ -283,6 +291,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(9): // FIRS 1.4 - Hearth of the Darkness
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [6,10,12,13,14],
 				       [1,3,7,8,22,27],
@@ -295,6 +304,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(10): //ECS 1.2
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2,31],
 				       [4,6,13,14,22,27],
 				       [1,3,7,8,10,15,17,26,29],
@@ -307,6 +317,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(11): //YETI 0.1.6
+			::CargoLimiter <- [0,2,16,21];
 			::CargoCat <- [[0,2,16,21],
 				       [6,7,18],
 				       [1,3,10,17,19,20],
@@ -319,6 +330,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(12): // FIRS 3 - Temperate Basic
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [9,10,13,14],
 				       [4,6,12,15,16],
@@ -331,6 +343,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(13): // FIRS 3 - Arctic Basic
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [8,11,14],
 				       [1,7,10,17,18],
@@ -343,6 +356,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(14): // FIRS 3 - Tropic Basic
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [1,3,6,12,13,14,15],
 				       [8,16,17,18],
@@ -355,6 +369,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(15): // FIRS 3 - Steeltown
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [9,10,11,13,14,19,25],
 				       [12,17,21,22,23],
@@ -367,6 +382,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(16): // FIRS 3 -In A Hot Coutry
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [4,8,16,17,19,21],
 				       [7,10,12,20,22,24,25,26,27,28],
@@ -379,6 +395,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(17): // FIRS 3 - Extreme
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [12,13,14,16,20,28],
 				       [3,7,8,15,21,23,24,25,26,27,29,30],
@@ -391,6 +408,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(18): // NAIS 1.0.6 - North America
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [10,12,15,17,21,25],
 				       [1,6,7,8,16,22,23,26,27,28,29,30,31],
@@ -403,6 +421,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(19): // Improved Town Industries 1.6
+			::CargoLimiter <- [0,2,11];
 			::CargoCat <- [[0,2,11],
 				       [1,3,7,8,12,13],
 				       [4,5,6,9,10,14,15]];
@@ -412,6 +431,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.1];
 			break;
 		case(20): // FIRS 4 alpha: Temperate Basic
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 					   [8,9,13,14],
 					   [4,10,12,15,16],
@@ -424,6 +444,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(21): // FIRS 4 alpha: Arctic Basic
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 					   [1,7,11,14],
 					   [8,12,13,15,17],
@@ -436,6 +457,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(22): // FIRS 4 alpha: Tropic Basic
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [1,3,6,12,13,14,15],
 				       [8,16,17,18],
@@ -448,6 +470,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(23): // FIRS 4 alpha: Steeltown
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 					   [11,13,21,22,25,32,33,34,36,47],
 					   [4,12,16,19,24,26,29,31,46],
@@ -460,6 +483,7 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(24): // FIRS 3 -In A Hot Coutry
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [4,8,16,17,19,21],
 				       [7,10,12,20,22,24,25,26,27,28],
@@ -472,13 +496,14 @@ function DefineCargosBySettings()
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		case(25): // XIS 0.6: The Lot
+			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				       [6,23,24,25,29,33,38,43,48,54],
 				       [12,13,16,26,27,28,31,34,35,40,44,46,47,49,50,59,60],
 				       [1,4,8,9,10,14,15,19,21,30,32,37,41,45,51,52,53,55,61],
 				       [3,5,7,11,17,18,20,22,36,39,42,56,57,58]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
-					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
+					   CatLabels.PROCESSED_MATERIALS,CatLabels.IMPORTED_GOODS]; // FIXME: Imported goods to final products
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
 			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];

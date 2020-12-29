@@ -126,17 +126,8 @@ class MainClass extends GSInfo
 				flags = CONFIG_BOOLEAN});
 
 		AddSetting({
-			name = "min_transport_pax",
-			description = "Limit Growth: Minimun Percentage of Passengers Transported",
-			easy_value = 30,
-			medium_value = 50,
-			hard_value = 65,
-			custom_value = 50,
-			flags = CONFIG_INGAME, min_value = 0, max_value = 90, step_size = 5});
-			
-		AddSetting({
-			name = "min_transport_mail",
-			description = "Limit Growth: Minimun Percentage of Mail Transported",
+			name = "limit_min_transport",
+			description = "Limit Growth: Minimun percentage of transported cargo from town",
 			easy_value = 30,
 			medium_value = 50,
 			hard_value = 65,
