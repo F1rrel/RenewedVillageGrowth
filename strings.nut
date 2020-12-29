@@ -7,7 +7,7 @@ function GoalTown::TownBoxText(growth_enabled, text_mode, redraw=false)
 	local display_cargo = GSController.GetSetting("display_cargo");
 	if (!growth_enabled || 0 == text_mode) {
 		if (display_cargo) {
-			text_townbox = GSText(GSText["STR_TOWNBOX_CARGO_"+::CargoCatNum]);
+			text_townbox = GSText(GSText["STR_TOWNBOX_CARGO_"+(::CargoCatNum-1)]);
 			foreach (index, category in this.town_cargo_cat) {
 				local cargo_mask = 0;
 				foreach (cargo in category) {
