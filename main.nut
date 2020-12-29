@@ -218,10 +218,9 @@ function MainClass::CreateTownList()
 	local towns_list = GSTownList();
 	local towns_array = [];
 
-	local paxRequired = GSController.GetSetting("min_transport_pax");
-	local mailRequired = GSController.GetSetting("min_transport_mail");
+	local min_transport = GSController.GetSetting("limit_min_transport");
 	foreach (t, _ in towns_list) {
-		towns_array.append(GoalTown(t, this.load_saved_data, paxRequired, mailRequired));
+		towns_array.append(GoalTown(t, this.load_saved_data, min_transport));
 	}
 
 	return towns_array;
@@ -233,9 +232,8 @@ function MainClass::CreateTownList()
  */
 function MainClass::UpdateTownList(town_id)
 {
-	local paxRequired = GSController.GetSetting("min_transport_pax");
-	local mailRequired = GSController.GetSetting("min_transport_mail");
-	this.towns.append(GoalTown(town_id, false, paxRequired, mailRequired));
+	local min_transport = GSController.GetSetting("limit_min_transport");
+	this.towns.append(GoalTown(town_id, false, min_transport));
 	Log.Info("New town founded: "+GSTown.GetName(town_id)+" (id: "+town_id+")", Log.LVL_DEBUG);
 }
 
@@ -277,11 +275,10 @@ function MainClass::ManageTowns()
 				break;
 		}
 
-		local threashold_setting = GSController.GetSetting("town_size_threshold");
-		local paxRequired = GSController.GetSetting("min_transport_pax");
-		local mailRequired = GSController.GetSetting("min_transport_mail");
+		local threshold_setting = GSController.GetSetting("town_size_threshold");
+		local min_transport = GSController.GetSetting("limit_min_transport");
 		foreach (town in this.towns) {
-			town.ManageTownLimiting(threashold_setting, paxRequired, mailRequired);
+			town.ManageTownLimiting(threshold_setting, min_transport);
 			town.MonthlyManageTown();
 			if (this.actual_town_info_mode > 1) {
 				town.UpdateTownText(this.actual_town_info_mode);
