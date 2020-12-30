@@ -9,7 +9,30 @@ function StoryEditor::CargoInfoPage()
 {
 	// Creation of the page
 	local sp_cargo = this.NewStoryPage(GSCompany.COMPANY_INVALID, GSText(GSText.STR_SB_TITLE_1));
-	GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_EXPLAIN_1));
+
+	switch (::SettingsTable.randomization) {
+		case 2: // 1 per category
+			GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_EXPLAIN_2, GSText(GSText.STR_SB_EXPLAIN_RANDOM_0, 1, GSText(GSText.STR_EMPTY))));
+			break;
+		case 3: // 2 per category
+			GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_EXPLAIN_2, GSText(GSText.STR_SB_EXPLAIN_RANDOM_1, 2, GSText(GSText.STR_EMPTY))));
+			break;
+		case 4: // 3 per category
+			GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_EXPLAIN_2, GSText(GSText.STR_SB_EXPLAIN_RANDOM_1, 3, GSText(GSText.STR_EMPTY))));
+			break;
+		case 5: // 1-2 per category
+			GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_EXPLAIN_2, GSText(GSText.STR_SB_EXPLAIN_RANDOM_2, 1, 2)));
+			break;
+		case 6: // 1-3 per category
+			GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_EXPLAIN_2, GSText(GSText.STR_SB_EXPLAIN_RANDOM_2, 1, 3)));
+			break;
+		case 7: // 2-3 per category
+			GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_EXPLAIN_2, GSText(GSText.STR_SB_EXPLAIN_RANDOM_2, 2, 3)));
+			break;
+		default: // No randomization
+			GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_EXPLAIN_1));
+			break;
+	}
 	
 	// Adding elements per categories
 	for (local i = 0; i < ::CargoCatNum; i++) {

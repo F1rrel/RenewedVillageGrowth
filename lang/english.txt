@@ -16,15 +16,19 @@ STR_CARGOCAT_LABEL_7     :Imported goods
 ##### STORY BOOK #####
 STR_SB_TITLE_1           :Cargo categories
 STR_SB_EXPLAIN_1         :These are the cargo categories for town requirements, each category including different cargo types. To achieve requirements for a category, you can deliver any cargo belonging to it.
+STR_SB_EXPLAIN_2         :These are the cargo categories for town requirements, each category including different cargo types. Each town has a selection of {STRING2} from each category. To achieve requirements for a category, you can deliver any cargo that the Town requires for that category as shown in the Town info window.
+STR_SB_EXPLAIN_RANDOM_0  :{SILVER}{NUM} cargo type{BLACK}{STRING}
+STR_SB_EXPLAIN_RANDOM_1  :{SILVER}{NUM} cargo{BLACK} types{STRING}
+STR_SB_EXPLAIN_RANDOM_2  :{SILVER}{NUM} - {NUM} cargo types {BLACK}
 STR_SB_CARGOCAT_CAT      :Category
 STR_SB_CARGOCAT_POP      :Minimal town population
 STR_SB_CARGOCAT_DECAY    :Monthly decay
 STR_SB_CARGOCAT_CARGOT   :Cargo types
-STR_SB_CARGOCAT_0        :{STRING} {NUM}: {LTBLUE}{STRING}{BLACK}{}{STRING}: {ORANGE}{NUM}{BLACK} {STRING}: {ORANGE}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
-STR_SB_CARGOCAT_1        :{STRING} {NUM}: {GREEN}{STRING}{BLACK}{}{STRING}: {ORANGE}{NUM}{BLACK} {STRING}: {ORANGE}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
-STR_SB_CARGOCAT_2        :{STRING} {NUM}: {RED}{STRING}{BLACK}{}{STRING}: {ORANGE}{NUM}{BLACK} {STRING}: {ORANGE}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
-STR_SB_CARGOCAT_3        :{STRING} {NUM}: {BROWN}{STRING}{BLACK}{}{STRING}: {ORANGE}{NUM}{BLACK} {STRING}: {ORANGE}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
-STR_SB_CARGOCAT_4        :{STRING} {NUM}: {PURPLE}{STRING}{BLACK}{}{STRING}: {ORANGE}{NUM}{BLACK} {STRING}: {ORANGE}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
+STR_SB_CARGOCAT_0        :{STRING} {NUM}: {LTBLUE}{STRING}{BLACK}{}{STRING}: {SILVER}{NUM}{BLACK} {STRING}: {SILVER}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
+STR_SB_CARGOCAT_1        :{STRING} {NUM}: {GREEN}{STRING}{BLACK}{}{STRING}: {SILVER}{NUM}{BLACK} {STRING}: {SILVER}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
+STR_SB_CARGOCAT_2        :{STRING} {NUM}: {RED}{STRING}{BLACK}{}{STRING}: {SILVER}{NUM}{BLACK} {STRING}: {SILVER}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
+STR_SB_CARGOCAT_3        :{STRING} {NUM}: {BROWN}{STRING}{BLACK}{}{STRING}: {SILVER}{NUM}{BLACK} {STRING}: {SILVER}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
+STR_SB_CARGOCAT_4        :{STRING} {NUM}: {PURPLE}{STRING}{BLACK}{}{STRING}: {SILVER}{NUM}{BLACK} {STRING}: {SILVER}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
 STR_SB_WARNING_TITLE     :Warning
 STR_SB_WARNING_1         :The industry set defined in the GS settings doesn't match with the game's initial cargo list.
 
