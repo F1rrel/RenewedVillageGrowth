@@ -522,6 +522,13 @@ function DefineCargosBySettings()
 				}
 			}
 		}
+
+		foreach (index, cargo in ::CargoLimiter) {
+			if (::CargoIDList[cargo] == null) {
+				::CargoLimiter.remove(index);
+				--index;
+			}
+		}
 	}
 }
 
