@@ -15,7 +15,6 @@ function GoalTown::TownBoxText(growth_enabled, text_mode, redraw=false)
 				}
 				if (index == 0)
 					text_townbox.AddParam(GSText(GSText.STR_TOWNBOX_NOGROWTH, cargo_mask));
-				Log.Info("STR_CARGOCAT_LABEL_"+::CargoCatList[index], Log.LVL_INFO);
 				text_townbox.AddParam(GSText(GSText["STR_CARGOCAT_LABEL_"+::CargoCatList[index]]));
 				text_townbox.AddParam(cargo_mask);
 			}
