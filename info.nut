@@ -45,33 +45,10 @@ class MainClass extends GSInfo
 				medium_value = 1,
 				hard_value = 1,
 				custom_value = 1,
-				flags = CONFIG_NONE, min_value = 1, max_value = 25 });
+				flags = CONFIG_NONE, min_value = 1, max_value = 1 });
 		AddLabels("industry_NewGRF", { 
-					_1 = "Baseset: Temperate",
-					_2 = "Baseset: Arctic",
-					_3 = "Baseset: Tropical",
-					_4 = "Baseset: Toyland",
-					_5 = "FIRS 1.4: Firs economy",
-					_6 = "FIRS 1.4: Temperate basic",
-					_7 = "FIRS 1.4: Arctic basic",
-					_8 = "FIRS 1.4: Tropic Basic",
-					_9 = "FIRS 1.4: Hearth of Darkness",
-					_10 = "ECS 1.2: Any Vectors",
-					_11 = "YETI 0.1.6",
-					_12 = "FIRS 3: Temperate Basic",
-					_13 = "FIRS 3: Arctic Basic",
-					_14 = "FIRS 3: Tropic Basic",
-					_15 = "FIRS 3: Steeltown",
-					_16 = "FIRS 3: In A Hot Country",
-					_17 = "FIRS 3: Extreme",
-					_18 = "NAIS 1.0.6: North America",
-					_19 = "Improved Town Industries 1.6",
-					_20 = "FIRS 4 alpha: Temperate Basic",
-					_21 = "FIRS 4 alpha: Arctic Basic",
-					_22 = "FIRS 4 alpha: Tropic Basic",
-					_23 = "FIRS 4 alpha: Steeltown",
-					_24 = "FIRS 4 alpha: In A Hot Country",
-					_25 = "XIS 0.6: The Lot" });
+					_1 = "Automatic"
+				});
 
 		AddSetting({ name = "goal_scale_factor",
 				description = "Difficulty level (easy = 60, normal = 100, hard = 140)",
