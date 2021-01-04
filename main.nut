@@ -82,6 +82,13 @@ function MainClass::Start()
 	local story_editor = StoryEditor();
 	story_editor.CreateStoryBook();
 
+	if (!this.gs_init_done) {
+		GSLog.Error("Game initialisation failed, stopping the game script!");
+		while(true){
+			GSController.Sleep(30681); // sleep for a year
+		}
+	}
+
 	// Main loop
 	local past_system_time = GSDate.GetSystemTime();
 	while (true) {
@@ -122,7 +129,9 @@ function MainClass::Init()
 	this.current_year = GSDate.GetYear(this.current_date);
 
 	// Initialize cargo lists and variables
-	InitCargoLists();
+	if (!InitCargoLists())
+		return;
+
 	/* Check whether saved data are in the current save
 	 * format.
 	 */

@@ -54,7 +54,6 @@ function StoryEditor::CargoInfoPage()
 function StoryEditor::CargoWarningPage()
 {
 	// Creating the page
-	Log.Info("This is called", Log.LVL_DEBUG);
 	local sp_warning = this.NewStoryPage(GSCompany.COMPANY_INVALID, GSText(GSText.STR_SB_WARNING_TITLE));
 	GSStoryPage.NewElement(sp_warning, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_WARNING_1));
 	GSStoryPage.Show(sp_warning);
@@ -70,12 +69,13 @@ function StoryEditor::CreateStoryBook()
 	local sb_list = GSStoryPageList(0);
 	foreach (page, _ in sb_list) GSStoryPage.Remove(page);
 
-	// Create basic cargo informations page
-	this.CargoInfoPage();
-
 	// Issue a warning if industry set doesn't match
 	if (!::CargoIDList) {
 		this.CargoWarningPage();
+	}
+	// Create basic cargo informations page
+	else {
+		this.CargoInfoPage();
 	}
 }
 

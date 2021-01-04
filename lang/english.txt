@@ -30,7 +30,7 @@ STR_SB_CARGOCAT_2        :{STRING} {NUM}: {RED}{STRING}{BLACK}{}{STRING}: {SILVE
 STR_SB_CARGOCAT_3        :{STRING} {NUM}: {BROWN}{STRING}{BLACK}{}{STRING}: {SILVER}{NUM}{BLACK} {STRING}: {SILVER}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
 STR_SB_CARGOCAT_4        :{STRING} {NUM}: {PURPLE}{STRING}{BLACK}{}{STRING}: {SILVER}{NUM}{BLACK} {STRING}: {SILVER}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
 STR_SB_WARNING_TITLE     :Warning
-STR_SB_WARNING_1         :The industry set defined in the GS settings doesn't match with the game's initial cargo list.
+STR_SB_WARNING_1         :The cargo categories could not be created for this industry set. The game script is turned off.
 
 ##### TOWNBOX #####
 STR_TOWNBOX_CATEGORY            :Cargo information: supplied / required{STRING}
