@@ -340,10 +340,10 @@ function GoalTown::CheckMonitoring(monitored)
 
 function GoalTown::StopMonitors()
 {
-	for (local i = 0; i< ::CargoTypeNum; i++) {
+	for (local i = 0; i< ::CargoIDList.len(); i++) {
 		for (local cid = GSCompany.COMPANY_FIRST; cid <= GSCompany.COMPANY_LAST; cid++) {
 			if (GSCompany.ResolveCompanyID(cid) != GSCompany.COMPANY_INVALID) {
-				GSCargoMonitor.GetTownDeliveryAmount(cid, ::CargoList[i],this.id,false);
+				GSCargoMonitor.GetTownDeliveryAmount(cid, ::CargoIDList[i],this.id,false);
 			}
 		}
 	}
@@ -403,28 +403,48 @@ function GoalTown::UpdateTownText(info_mode)
 function GoalTown::Randomization()
 {
 	switch (::SettingsTable.randomization) {
-		case 2: // 1 per category
-		case 3: // 2 per category
-		case 4: // 3 per category
-			this.town_cargo_cat = RandomizeFixed(::SettingsTable.randomization - 1);
-			this.DebugCargoTable(this.town_cargo_cat);
+		case 2: // Industry
+		{
+			local categories = RandomizeIndustry();
+			this.town_cargo_cat = categories.cargo_cat;
+			this.DebugRandomizationIndustry(categories.industry_cat);
 			break;
-		case 5: // 1-2 per category
+		}
+		case 3: // 1 per category
+			this.town_cargo_cat = RandomizeFixed(1);
+			break;
+		case 4: // 2 per category
+			this.town_cargo_cat = RandomizeFixed(2);
+			break;
+		case 5: // 3 per category
+			this.town_cargo_cat = RandomizeFixed(3);
+			break;
+		case 6: // 5 per category
+			this.town_cargo_cat = RandomizeFixed(5);
+			break;
+		case 7: // 7 per category
+			this.town_cargo_cat = RandomizeFixed(7);
+			break;
+		case 8: // 1-2 per category
 			this.town_cargo_cat = RandomizeRange(1, 2);
-			this.DebugCargoTable(this.town_cargo_cat);
 			break;
-		case 6: // 1-3 per category
+		case 9: // 1-3 per category
 			this.town_cargo_cat = RandomizeRange(1, 3);
-			this.DebugCargoTable(this.town_cargo_cat);
 			break;
-		case 7: // 2-3 per category
+		case 10: // 2-3 per category
 			this.town_cargo_cat = RandomizeRange(2, 3);
-			this.DebugCargoTable(this.town_cargo_cat);
+			break;
+		case 11: // 3-5 per category
+			this.town_cargo_cat = RandomizeRange(3, 5);
+			break;
+		case 12: // 3-7 per category
+			this.town_cargo_cat = RandomizeRange(3, 7);
 			break;
 		default:
 			this.town_cargo_cat = ::CargoCat;
 	}
 
+	this.DebugCargoTable(this.town_cargo_cat);
 	this.cargo_hash = GetCargoHash(this.town_cargo_cat);
 	this.DebugCargoHash(this.cargo_hash);
 }

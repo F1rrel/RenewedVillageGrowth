@@ -7,7 +7,12 @@ enum CatLabels
 	FINAL_PRODUCTS = 4,
 	PRODUCTS = 5,
 	LOCAL_PRODUCTION = 6,
-	IMPORTED_GOODS = 7
+	IMPORTED_GOODS = 7,
+	CATEGORY_I = 8,
+	CATEGORY_II = 9,
+	CATEGORY_III = 10,
+	CATEGORY_IV = 11,
+	CATEGORY_V = 12
 }
 
 enum Economies
@@ -306,7 +311,7 @@ function ConstructECSVectorCargoList(cargo_list) {
 /* Here are defined the cargo categories and other data for each
  * set. Follow explanations below to change category data.
  */
-function DefineCargosBySettings()
+function DefineCargosBySettings(economy)
 {
 	/* Setup global cargo variables, per cargo categories: (Cat 1:
 	 * Passengers and mail, Cat 2: General food, Cat 3: General
@@ -329,7 +334,7 @@ function DefineCargosBySettings()
 	 * ::CargoDecay: defines the part of the stockpiled cargos
 	 * which is lost each month
 	 */
-	switch (::Economy) {
+	switch (economy) {
 		case(Economies.BASESET__TEMPERATE): // Base temperate
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
@@ -673,18 +678,13 @@ function DiscoverEconomyType() {
 		cargo_list.append(GSCargo.GetCargoLabel(i));
 	}
 
-	::Economy <- Economies.NONE;
+	local economy = Economies.NONE;
 	for (local i = 1; i < 26; ++i) {
 		local economy_cargo_list = GetEconomyCargoList(i, cargo_list);
 		if (CompareCargoLists(economy_cargo_list, cargo_list)) {
 			::CargoIDList <- cargo_list;
-			::Economy <- i;
+			economy = i;
 		}
-	}
-	if (::Economy == Economies.NONE) {
-		::CargoIDList <- false;
-		Log.Info("Warning: game's cargo list differ from settings.", Log.LVL_INFO);
-		return false;
 	}
 
 	// This is used to add all null IDs after the end of active used cargos
@@ -693,7 +693,7 @@ function DiscoverEconomyType() {
 		for (local i = 0; i < missing_cargo; i++) ::CargoIDList.append(null);
 	}
 
-	return true;
+	return economy;
 }
 
 function CompareCargoLists(list1, list2) {
@@ -711,21 +711,16 @@ function InitCargoLists()
 {
 	DebugCargoLabels();       	// Debug info: print cargo labels
 
-	if (!DiscoverEconomyType()) // Check if cargo list matches the predefined ones
+	local economy = DiscoverEconomyType(); // Get economy type based on cargo list
+	if (economy == Economies.NONE) {
+		::CargoIDList <- false;
+		Log.Info("Warning: game's cargo list differ from settings.", Log.LVL_INFO);
 		return false;
-
-	DefineCargosBySettings(); 	// Define cargo data accordingly to industry set
-
-	// Building a general list of all cargos, ordered by categories.
-	::CargoList <- [];
-	for (local i = 0; i < ::CargoCat.len(); i++) {
-		for (local j = 0; j < ::CargoCat[i].len(); j++) {
-			::CargoList.append(CargoCat[i][j]);
-		}
 	}
 
+	DefineCargosBySettings(economy); 	// Define cargo data accordingly to industry set
+
 	// Initializing some useful and often used variables
-	::CargoTypeNum <- ::CargoList.len();
 	::CargoCatNum <- ::CargoCat.len();
 
 	return true;
@@ -798,9 +793,9 @@ function GetCargoHash(cargo_cat)
 }
 
 /* Create cargo table from cargo hash */
-function GetCargoTable(hash)
+function GetCargoTable(hash) // TODO: Randomization 2
 {
-	local cargo_cat = array(::CargoCat.len());
+	local cargo_cat = array(::CargoCatNum);
 
 	foreach (index, cat in ::CargoCat)
 	{

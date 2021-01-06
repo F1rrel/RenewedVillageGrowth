@@ -73,8 +73,8 @@ function StoryEditor::CreateStoryBook()
 	if (!::CargoIDList) {
 		this.CargoWarningPage();
 	}
-	// Create basic cargo informations page
-	else {
+	// Create basic cargo informations page (randomization industry does not support cargo info page)
+	else if (GSController.GetSetting("cargo_randomization") != 2) {
 		this.CargoInfoPage();
 	}
 }
