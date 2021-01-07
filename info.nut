@@ -38,17 +38,6 @@ class MainClass extends GSInfo
 					_3 = "Cargo list",
 					_4 = "Combined",
 					_5 = "Full cargo list" });
-	
-		AddSetting({ name = "industry_NewGRF",
-				description = "Which industry set is being used?",
-				easy_value = 1,
-				medium_value = 1,
-				hard_value = 1,
-				custom_value = 1,
-				flags = CONFIG_NONE, min_value = 1, max_value = 1 });
-		AddLabels("industry_NewGRF", { 
-					_1 = "Automatic"
-				});
 
 		AddSetting({ name = "goal_scale_factor",
 				description = "Difficulty level (easy = 60, normal = 100, hard = 140)",
@@ -80,19 +69,24 @@ class MainClass extends GSInfo
 
 		AddSetting({ name = "cargo_randomization",
 				description = "Randomization: Type",
-				easy_value = 1,
-				medium_value = 7,
-				hard_value = 5,
-				custom_value = 2,
-				flags = CONFIG_NONE, min_value = 1, max_value = 7 });
+				easy_value = 7,
+				medium_value = 2,
+				hard_value = 3,
+				custom_value = 11,
+				flags = CONFIG_NONE, min_value = 1, max_value = 12 });
 		AddLabels("cargo_randomization", { 
 					_1 = "None",
-					_2 = "1 per category",
-					_3 = "2 per category",
-					_4 = "3 per category",
-					_5 = "1-2 per category",
-					_6 = "1-3 per category",
-					_7 = "2-3 per category" });
+					_2 = "Industry",
+					_3 = "1 per category",
+					_4 = "2 per category",
+					_5 = "3 per category",
+					_6 = "5 per category",
+					_7 = "7 per category",
+					_8 = "1-2 per category",
+					_9 = "1-3 per category",
+					_10 = "2-3 per category",
+					_11 = "3-5 per category",
+					_12 = "3-7 per category" });
 
 		AddSetting({ name = "display_cargo",
 				description = "Randomization: Show town cargos from start",

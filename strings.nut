@@ -30,8 +30,11 @@ function GoalTown::TownBoxText(growth_enabled, text_mode, redraw=false)
 
 	switch (text_mode) {
 		case 1: // automatic
-			if (::SettingsTable.randomization == 1) {
+			if (::SettingsTable.randomization == Randomization.NONE) {
 				text_townbox = this.TownTextCategories();
+				break;
+			} else if (::SettingsTable.randomization == Randomization.INDUSTRY) {
+				text_townbox = this.TownTextCategoriesCombined(display_cargo);
 				break;
 			}
 
@@ -122,16 +125,11 @@ function GoalTown::TownTextCategoriesCombined(display_all)
 	text_townbox = this.TownTextLimiter(text_townbox, true);
 
 	for (local index = 0; index <= max_cat; ++index) {
-		if (index != 0) {
-			local cargo_mask = 0;
-			foreach (cargo in this.town_cargo_cat[index]) {
-				cargo_mask += 1 << cargo;
-			}
-			text_townbox.AddParam(cargo_mask);
+		local cargo_mask = 0;
+		foreach (cargo in this.town_cargo_cat[index]) {
+			cargo_mask += 1 << cargo;
 		}
-		else {
-			text_townbox.AddParam(GSText(GSText["STR_CARGOCAT_LABEL_" + ::CargoCatList[index]]));
-		}
+		text_townbox.AddParam(cargo_mask);
 		text_townbox.AddParam(this.town_supplied_cat[index]);
 		text_townbox.AddParam(this.town_goals_cat[index]);
 	}
@@ -236,10 +234,55 @@ function GoalTown::DebugCargoTable(cargo_table)
 {
 	local cargo_text = "";
 	foreach (index, cat in cargo_table) {
-		cargo_text += "  " + index + ": ";
+		cargo_text += "  " + (index + 1) + ": ";
 		foreach (cargo in cat) {
 			cargo_text += GSCargo.GetCargoLabel(cargo) + ",";
 		}
 	}
 	Log.Info(GSTown.GetName(this.id) + ": " + cargo_text, Log.LVL_SUB_DECISIONS);
+}
+
+function DebugIndustryLists()
+{
+	local str = ::industries_raw.len() + " Raw industries: | ";
+    foreach (industry in ::industries_raw) {
+        str += industry + " " + GSIndustryType.GetName(industry) + " | ";
+    }
+    Log.Info(str, Log.LVL_DEBUG);
+
+    str = ::industries_1.len() + " Accepting 1 cargos: | ";
+    foreach (industry in ::industries_1) {
+        str += industry + " " + GSIndustryType.GetName(industry) + " | ";
+    }
+    Log.Info(str, Log.LVL_DEBUG);
+
+    str = ::industries_2.len() + " Accepting 2 cargos: | ";
+    foreach (industry in ::industries_2) {
+        str += industry + " " + GSIndustryType.GetName(industry) + " | ";
+    }
+    Log.Info(str, Log.LVL_DEBUG);
+
+    str = ::industries_3.len() + " Accepting 3 cargos: | ";
+    foreach (industry in ::industries_3) {
+        str += industry + " " + GSIndustryType.GetName(industry) + " | ";
+    }
+    Log.Info(str, Log.LVL_DEBUG);
+
+    str = ::industries_4.len() + " Accepting 4 and more cargos: | ";
+    foreach (industry in ::industries_4) {
+        str += industry + " " + GSIndustryType.GetName(industry) + " | ";
+    }
+    Log.Info(str, Log.LVL_DEBUG);
+}
+
+function GoalTown::DebugRandomizationIndustry(categories)
+{
+	local str = "";
+	foreach (index, category in categories) {
+        str += "  " + (index + 1) + ": ";
+        foreach (industry in category) {
+            str += GSIndustryType.GetName(industry) + ",";
+        }
+    }
+	Log.Info(GSTown.GetName(this.id) + ": " + str, Log.LVL_SUB_DECISIONS);
 }

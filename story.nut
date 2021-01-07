@@ -9,29 +9,61 @@ function StoryEditor::CargoInfoPage()
 {
 	// Creation of the page
 	local sp_cargo = this.NewStoryPage(GSCompany.COMPANY_INVALID, GSText(GSText.STR_SB_TITLE_1));
+	local rand_type = 0; // 0 = NONE, 1 = FIXED, 2 = RANGE
+	local rand_1, rand_2;
 
 	switch (::SettingsTable.randomization) {
-		case 2: // 1 per category
-			GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_EXPLAIN_2, GSText(GSText.STR_SB_EXPLAIN_RANDOM_0, 1, GSText(GSText.STR_EMPTY))));
+		case Randomization.FIXED_1:
+		case Randomization.FIXED_2:
+		case Randomization.FIXED_3:
+			rand_1 = ::SettingsTable.randomization - Randomization.FIXED_1 + 1;
+			rand_type = 1;
 			break;
-		case 3: // 2 per category
-			GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_EXPLAIN_2, GSText(GSText.STR_SB_EXPLAIN_RANDOM_1, 2, GSText(GSText.STR_EMPTY))));
+		case Randomization.FIXED_5:
+			rand_1 = 5;
+			rand_type = 1;
 			break;
-		case 4: // 3 per category
-			GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_EXPLAIN_2, GSText(GSText.STR_SB_EXPLAIN_RANDOM_1, 3, GSText(GSText.STR_EMPTY))));
+		case Randomization.FIXED_7:
+			rand_1 = 7;
+			rand_type = 1;
 			break;
-		case 5: // 1-2 per category
-			GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_EXPLAIN_2, GSText(GSText.STR_SB_EXPLAIN_RANDOM_2, 1, 2)));
+
+		case Randomization.RANGE_1_2:
+			rand_1 = 1;
+			rand_2 = 2;
+			rand_type = 2;
 			break;
-		case 6: // 1-3 per category
-			GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_EXPLAIN_2, GSText(GSText.STR_SB_EXPLAIN_RANDOM_2, 1, 3)));
+		case Randomization.RANGE_1_3:
+			rand_1 = 1;
+			rand_2 = 3;
+			rand_type = 2;
 			break;
-		case 7: // 2-3 per category
-			GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_EXPLAIN_2, GSText(GSText.STR_SB_EXPLAIN_RANDOM_2, 2, 3)));
+		case Randomization.RANGE_2_3:
+			rand_1 = 2;
+			rand_2 = 3;
+			rand_type = 2;
 			break;
-		default: // No randomization
+		case Randomization.RANGE_3_5:
+			rand_1 = 3;
+			rand_2 = 5;
+			rand_type = 2;
+			break;
+		case Randomization.RANGE_3_7:
+			rand_1 = 3;
+			rand_2 = 7;
+			rand_type = 2;
+			break;
+	}
+
+	switch (rand_type) {
+		case 1: // FIXED
+			GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_EXPLAIN_2, GSText(GSText.STR_SB_EXPLAIN_RANDOM_0, rand_1, GSText(GSText.STR_EMPTY))));
+			break;
+		case 2: // RANGE
+			GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_EXPLAIN_2, GSText(GSText.STR_SB_EXPLAIN_RANDOM_2, rand_1, rand_2)));
+			break;
+		default:
 			GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_EXPLAIN_1));
-			break;
 	}
 	
 	// Adding elements per categories
@@ -73,8 +105,8 @@ function StoryEditor::CreateStoryBook()
 	if (!::CargoIDList) {
 		this.CargoWarningPage();
 	}
-	// Create basic cargo informations page
-	else {
+	// Create basic cargo informations page (randomization industry does not support cargo info page)
+	else if (::SettingsTable.randomization != Randomization.INDUSTRY) {
 		this.CargoInfoPage();
 	}
 }

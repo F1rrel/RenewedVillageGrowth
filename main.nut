@@ -1,5 +1,6 @@
 require("version.nut");
 require("cargo.nut");
+require("industry.nut");
 require("town.nut");
 require("story.nut");
 require("strings.nut");
@@ -12,6 +13,21 @@ Helper <- SuperLib.Helper;
 // Import ToyLib
 import("Library.GSToyLib", "GSToyLib", 1);
 import("Library.SCPLib", "SCPLib", 45);
+
+enum Randomization {
+	NONE = 1,
+	INDUSTRY = 2,
+	FIXED_1 = 3,
+	FIXED_2 = 4,
+	FIXED_3 = 5,
+	FIXED_5 = 6,
+	FIXED_7 = 7,
+	RANGE_1_2 = 8,
+	RANGE_1_3 = 9,
+	RANGE_2_3 = 10,
+	RANGE_3_5 = 11,
+	RANGE_3_7 = 12
+};
 
 class MainClass extends GSController
 {
@@ -39,7 +55,6 @@ class MainClass extends GSController
 		this.toy_lib = null;
 		::TownDataTable <- {};
 		::SettingsTable <- {
-			industry_NewGRF = GSController.GetSetting("industry_NewGRF"),
 			use_town_sign = GSController.GetSetting("use_town_sign"),
 			randomization = GSController.GetSetting("cargo_randomization")
 		}
@@ -128,9 +143,14 @@ function MainClass::Init()
 	this.current_month = GSDate.GetMonth(this.current_date);
 	this.current_year = GSDate.GetYear(this.current_date);
 
-	// Initialize cargo lists and variables
-	if (!InitCargoLists())
-		return;
+	if (::SettingsTable.randomization == Randomization.INDUSTRY) {
+		InitIndustryLists();
+	}
+	else {
+		// Initialize cargo lists and variables
+		if (!InitCargoLists())
+			return;
+	}
 
 	/* Check whether saved data are in the current save
 	 * format.
@@ -176,8 +196,7 @@ function MainClass::Save()
 	/* If some permanent setting has been changed in scenario
 	 * editor, do not save anything.
 	 */
-	if ((::SettingsTable.industry_NewGRF != GSController.GetSetting("industry_NewGRF")) ||
-	    (::SettingsTable.use_town_sign != GSController.GetSetting("use_town_sign")) ||
+	if ((::SettingsTable.use_town_sign != GSController.GetSetting("use_town_sign")) ||
 		(::SettingsTable.randomization != GSController.GetSetting("cargo_randomization"))) {
 		Log.Info("Some permanent setting changed. Not saving town data.", Log.LVL_INFO);
 		return save_table;
