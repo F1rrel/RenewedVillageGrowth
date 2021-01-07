@@ -14,6 +14,21 @@ Helper <- SuperLib.Helper;
 import("Library.GSToyLib", "GSToyLib", 1);
 import("Library.SCPLib", "SCPLib", 45);
 
+enum Randomization {
+	NONE = 1,
+	INDUSTRY = 2,
+	FIXED_1 = 3,
+	FIXED_2 = 4,
+	FIXED_3 = 5,
+	FIXED_5 = 6,
+	FIXED_7 = 7,
+	RANGE_1_2 = 8,
+	RANGE_1_3 = 9,
+	RANGE_2_3 = 10,
+	RANGE_3_5 = 11,
+	RANGE_3_7 = 12
+};
+
 class MainClass extends GSController
 {
 	towns = null;
@@ -128,7 +143,7 @@ function MainClass::Init()
 	this.current_month = GSDate.GetMonth(this.current_date);
 	this.current_year = GSDate.GetYear(this.current_date);
 
-	if (GSController.GetSetting("cargo_randomization") == 2) {
+	if (::SettingsTable.randomization == Randomization.INDUSTRY) {
 		InitIndustryLists();
 	}
 	else {

@@ -51,7 +51,7 @@ function InitIndustryLists()
 	}
     ::CargoIDList <- cargo_list;
     ::CargoLimiter <- [0, 2];
-    ::CargoCatNum <- list_4.len() > 0 ? 5 : 4;
+    ::CargoCatNum <- (list_4.len() > 0 || (list_3.len() > 6 && (list_1.len() + list_raw.len()) > 9)) ? 5 : 4;
 
     if (::CargoCatNum == 4) {
         ::CargoMinPopDemand <- [0, 1000, 4000, 8000];
@@ -109,9 +109,7 @@ function RandomizeIndustry()
             else {
                 local rand_1 = GSBase.RandRange(list_1.len());
                 local rand_2 = GSBase.RandRange(list_1.len() - 1);
-                if (rand_1 == rand_2)
-                    ++rand_2;
-                categories.append([list_1[rand_1], list_1[rand_2]]);
+                categories.append([list_1[rand_1], list_1[rand_2 >= rand_1 ? rand_2 + 1 : rand_2]]);
                 list_1.remove(rand_1);
                 list_1.remove(rand_2);
             }
@@ -188,8 +186,13 @@ function RandomizeIndustry()
         list_3.remove(rand_3);
     }
 
+    return categories;
+}
+
+function GetCargoCatFromIndustryCat(industry_cat)
+{
     local cargo_cat = [[0, 2]];
-    foreach (cat_idx, cat in categories) {
+    foreach (cat_idx, cat in industry_cat) {
         cargo_cat.append([]);
         foreach (ind_idx, ind in cat) {
             local cargo_list = GSIndustryType.GetAcceptedCargo(ind);
@@ -207,10 +210,47 @@ function RandomizeIndustry()
         }
     }
 
-    local result = {};
-    result.cargo_cat <- cargo_cat;
-    result.industry_cat <- categories;
-
-    return result;
+    return cargo_cat;
 }
 
+function GetIndustryHash(industry_cat)
+{
+    local hash = 0;
+    local index = 0;
+    foreach (cat_idx, cat in industry_cat)
+	{
+        local new_cat = 0x01;
+		foreach (ind_idx, ind in cat)
+		{
+            local industry = (ind << 1 & 0xff) | new_cat; // | industry id 8 bit | new category flag 1 bit |
+			hash = hash | (industry << index);
+            index += 9;
+            new_cat = 0x00;
+		}
+	}
+
+	return hash;
+}
+
+function GetIndustryTable(hash)
+{
+    local industry_cat = [];
+    local cat_idx = 0;
+
+    while (hash > 0) {
+        local industry = (hash & 0x01fe) >> 1;
+        local new_cat = hash & 0x01;
+
+        if (new_cat) {
+            industry_cat.append([industry]);
+            ++cat_idx;
+        } 
+        else {
+            industry_cat[cat_idx-1].append(industry);
+        }
+
+        hash = hash >> 9;
+    }
+
+    return industry_cat;
+}

@@ -30,10 +30,10 @@ function GoalTown::TownBoxText(growth_enabled, text_mode, redraw=false)
 
 	switch (text_mode) {
 		case 1: // automatic
-			if (::SettingsTable.randomization == 1) {
+			if (::SettingsTable.randomization == Randomization.NONE) {
 				text_townbox = this.TownTextCategories();
 				break;
-			} else if (::SettingsTable.randomization == 2) {
+			} else if (::SettingsTable.randomization == Randomization.INDUSTRY) {
 				text_townbox = this.TownTextCategoriesCombined(display_cargo);
 				break;
 			}
@@ -234,7 +234,7 @@ function GoalTown::DebugCargoTable(cargo_table)
 {
 	local cargo_text = "";
 	foreach (index, cat in cargo_table) {
-		cargo_text += "  " + index + ": ";
+		cargo_text += "  " + (index + 1) + ": ";
 		foreach (cargo in cat) {
 			cargo_text += GSCargo.GetCargoLabel(cargo) + ",";
 		}
@@ -279,7 +279,7 @@ function GoalTown::DebugRandomizationIndustry(categories)
 {
 	local str = "";
 	foreach (index, category in categories) {
-        str += "  " + index + ": ";
+        str += "  " + (index + 1) + ": ";
         foreach (industry in category) {
             str += GSIndustryType.GetName(industry) + ",";
         }
