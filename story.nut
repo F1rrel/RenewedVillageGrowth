@@ -82,15 +82,6 @@ function StoryEditor::CargoInfoPage()
 	}
 }
 
-/* Issue an initial warning if game's cargo list doesn't match with settings. */
-function StoryEditor::CargoWarningPage()
-{
-	// Creating the page
-	local sp_warning = this.NewStoryPage(GSCompany.COMPANY_INVALID, GSText(GSText.STR_SB_WARNING_TITLE));
-	GSStoryPage.NewElement(sp_warning, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_WARNING_1));
-	GSStoryPage.Show(sp_warning);
-}
-
 /* Create the StoryBook if it still doesn't exist. This function is
  * called only when (re)initializing all data, because the existing
  * storybook is stored by OTTD.

@@ -179,9 +179,8 @@ function GoalTown::TownSignText()
 /* Helper function: get a list of currently used cargo labels/ID. */
 function DebugCargoLabels()
 {
-	local list = GSCargoList();
-	for(local i = 0; i < 64; ++i) {
-		Log.Info("Cargo " + i + ": " + GSCargo.GetCargoLabel(i), Log.LVL_SUB_DECISIONS);
+	foreach (index, cargo_label in ::CargoIDList) {
+		Log.Info("Cargo " + index + ": " + cargo_label, Log.LVL_SUB_DECISIONS);
 	}
 }
 
