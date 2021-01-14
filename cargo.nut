@@ -640,7 +640,7 @@ function DefineCargosBySettings(economy)
 				       [1,4,8,9,10,14,15,19,21,30,32,37,41,45,51,52,53,55,61],
 				       [3,5,7,11,17,18,20,22,36,39,42,56,57,58]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
-					   CatLabels.PROCESSED_MATERIALS,CatLabels.IMPORTED_GOODS]; // FIXME: Imported goods to final products
+					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
 			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
@@ -706,8 +706,7 @@ function InitCargoLists()
 	DebugCargoLabels();       	// Debug info: print cargo labels
 
 	local economy = DiscoverEconomyType(); 	// Get economy type based on cargo list
-	// DefineCargosBySettings(economy); 		// Define cargo data accordingly to industry set
-	DefineCargosBySettings(Economies.NONE); // FIXME: Remove me
+	DefineCargosBySettings(economy); 		// Define cargo data accordingly to industry set
 
 	// Initializing some useful and often used variables
 	::CargoCatNum <- ::CargoCat.len();
