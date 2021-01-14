@@ -225,8 +225,7 @@ function MainClass::Load(version, saved_data)
 {
 	Log.Info("Loading data...", Log.LVL_INFO);
 	// Loading town data. Only load data if the savegame version matches.
-	if ((saved_data.rawin("save_version") && saved_data.save_version == this.current_save_version)
-		|| (version == 4 && saved_data.save_version == 6)) { // FIXME: remove with new major version
+	if ((saved_data.rawin("save_version") && saved_data.save_version == this.current_save_version)) {
 		this.load_saved_data = true;
 		foreach (townid, town_data in saved_data.town_data_table) {
 			::TownDataTable[townid] <- town_data;

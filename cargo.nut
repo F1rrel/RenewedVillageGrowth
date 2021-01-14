@@ -640,12 +640,13 @@ function DefineCargosBySettings(economy)
 				       [1,4,8,9,10,14,15,19,21,30,32,37,41,45,51,52,53,55,61],
 				       [3,5,7,11,17,18,20,22,36,39,42,56,57,58]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
-					   CatLabels.PROCESSED_MATERIALS,CatLabels.IMPORTED_GOODS]; // FIXME: Imported goods to final products
+					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
 			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
 		default:
+			CreateDefaultCargoCat();
 			break;
 	}
 
@@ -673,24 +674,12 @@ function DefineCargosBySettings(economy)
  * industry sets and cargoscheme supported by the script. 
  */
 function DiscoverEconomyType() {
-	local cargo_list = [];
-	for(local i = 0; i < 64; ++i) {
-		cargo_list.append(GSCargo.GetCargoLabel(i));
-	}
-
 	local economy = Economies.NONE;
 	for (local i = 1; i < 26; ++i) {
-		local economy_cargo_list = GetEconomyCargoList(i, cargo_list);
-		if (CompareCargoLists(economy_cargo_list, cargo_list)) {
-			::CargoIDList <- cargo_list;
-			economy = i;
+		local economy_cargo_list = GetEconomyCargoList(i, ::CargoIDList);
+		if (CompareCargoLists(economy_cargo_list, ::CargoIDList)) {
+			return i;
 		}
-	}
-
-	// This is used to add all null IDs after the end of active used cargos
-	local missing_cargo = 64 - ::CargoIDList.len();
-	for (local i = 0; i < missing_cargo; i++) {
-		for (local i = 0; i < missing_cargo; i++) ::CargoIDList.append(null);
 	}
 
 	return economy;
@@ -709,16 +698,15 @@ function CompareCargoLists(list1, list2) {
 /* Initialization of cargo data. */
 function InitCargoLists()
 {
-	DebugCargoLabels();       	// Debug info: print cargo labels
-
-	local economy = DiscoverEconomyType(); // Get economy type based on cargo list
-	if (economy == Economies.NONE) {
-		::CargoIDList <- false;
-		Log.Info("Warning: game's cargo list differ from settings.", Log.LVL_INFO);
-		return false;
+	::CargoIDList <- [];
+	for(local i = 0; i < 64; ++i) {
+		::CargoIDList.append(GSCargo.GetCargoLabel(i));
 	}
 
-	DefineCargosBySettings(economy); 	// Define cargo data accordingly to industry set
+	DebugCargoLabels();       	// Debug info: print cargo labels
+
+	local economy = DiscoverEconomyType(); 	// Get economy type based on cargo list
+	DefineCargosBySettings(economy); 		// Define cargo data accordingly to industry set
 
 	// Initializing some useful and often used variables
 	::CargoCatNum <- ::CargoCat.len();
@@ -793,7 +781,7 @@ function GetCargoHash(cargo_cat)
 }
 
 /* Create cargo table from cargo hash */
-function GetCargoTable(hash) // TODO: Randomization 2
+function GetCargoTable(hash)
 {
 	local cargo_cat = array(::CargoCatNum);
 
@@ -810,4 +798,143 @@ function GetCargoTable(hash) // TODO: Randomization 2
 	}
 
 	return cargo_cat;
+}
+
+/* Checks if one of the industry types that produce this cargo is a raw industry */
+function IsRawCargo(cargo)
+{
+	local industry_list = GSIndustryList_CargoProducing(cargo);
+	industry_list.Valuate(GSIndustry.GetIndustryType);
+	industry_list.Sort(GSList.SORT_BY_VALUE, true);
+	
+	while (industry_list.Count() > 0) {
+		local industry_type = industry_list.GetValue(industry_list.Begin());
+		if (GSIndustryType.IsRawIndustry(industry_type))
+			return 1;
+		industry_list.RemoveValue(industry_type);
+	}
+
+	return 0;
+}
+
+function CreateDefaultCargoCat()
+{
+	::CargoLimiter <- [0,2];
+	::CargoCat <- [[0,2]];
+	::CargoCatList <- [CatLabels.CATEGORY_I];
+	::CargoMinPopDemand <- [0];
+	::CargoPermille <- [60];
+	::CargoDecay <- [0.4];
+
+	local cargo_list = GSCargoList();
+	cargo_list.RemoveItem(0); // PASS
+	cargo_list.RemoveItem(2); // MAIL
+	cargo_list.Valuate(IsRawCargo);
+
+	// RAW CARGOS
+	local raw_list = GSList();
+	raw_list.AddList(cargo_list);
+	raw_list.KeepValue(1);
+
+	if (raw_list.Count() > 10) {
+		::CargoCat.append([]);
+		::CargoCat.append([]);
+
+		::CargoCatList.append(CatLabels.CATEGORY_II);
+		::CargoCatList.append(CatLabels.CATEGORY_III);
+		::CargoMinPopDemand.append(500);
+		::CargoMinPopDemand.append(1000);
+		::CargoPermille.append(25);
+		::CargoPermille.append(25);
+		::CargoDecay.append(0.2);
+		::CargoDecay.append(0.2);
+
+		raw_list.Valuate(GSBase.RandItem);
+		raw_list.Sort(GSList.SORT_BY_VALUE, GSList.SORT_ASCENDING);
+
+		local cargo = raw_list.Begin();
+		local index = 0;
+		while (!raw_list.IsEnd()) {
+			if (index < (raw_list.Count() + 1) / 2)
+				::CargoCat[1].append(cargo);
+			else
+				::CargoCat[2].append(cargo);
+			cargo = raw_list.Next();
+			++index;
+		}
+	}
+	else {
+		::CargoCat.append([]);
+		::CargoCatList.append(CatLabels.CATEGORY_II);
+		::CargoMinPopDemand.append(1000);
+		::CargoPermille.append(45);
+		::CargoDecay.append(0.2);
+
+		foreach (cargo, _ in raw_list) {
+			::CargoCat[1].append(cargo);
+		}
+	}
+
+	// PROCESSED CARGOS
+	local processed_list = GSList();
+	processed_list.AddList(cargo_list);
+	processed_list.KeepValue(0);
+
+	if (processed_list.Count() > 10) {
+		::CargoCat.append([]);
+		::CargoCat.append([]);
+		if (::CargoCatList.top() == CatLabels.CATEGORY_III) {
+			::CargoCatList.append(CatLabels.CATEGORY_IV);
+			::CargoCatList.append(CatLabels.CATEGORY_V);
+		}
+		else {
+			::CargoCatList.append(CatLabels.CATEGORY_III);
+			::CargoCatList.append(CatLabels.CATEGORY_IV);
+		}
+		::CargoMinPopDemand.append(4000);
+		::CargoMinPopDemand.append(8000);
+		::CargoPermille.append(15);
+		::CargoPermille.append(15);
+		::CargoDecay.append(0.1);
+		::CargoDecay.append(0.1);
+
+		processed_list.Valuate(GSBase.RandItem);
+		processed_list.Sort(GSList.SORT_BY_VALUE, GSList.SORT_ASCENDING);
+
+		local cargo = processed_list.Begin();
+		local index = 0;
+		local shift = ::CargoCatList.top() == CatLabels.CATEGORY_V ? 3 : 2;
+		while (!processed_list.IsEnd()) {
+			if (index < (processed_list.Count() + 1) / 2)
+				::CargoCat[shift].append(cargo);
+			else
+				::CargoCat[shift + 1].append(cargo);
+			cargo = processed_list.Next();
+			++index;
+		}
+	}
+	else {
+		::CargoCat.append([]);
+		if (::CargoCatList.top() == CatLabels.CATEGORY_III)
+			::CargoCatList.append(CatLabels.CATEGORY_IV);
+		else
+			::CargoCatList.append(CatLabels.CATEGORY_III);
+		::CargoMinPopDemand.append(4000);
+		::CargoPermille.append(15);
+		::CargoDecay.append(0.1);
+
+		local index = ::CargoCatList.top() == CatLabels.CATEGORY_IV ? 3 : 2;
+		foreach (cargo, _ in processed_list) {
+			::CargoCat[index].append(cargo);
+		}
+	}
+
+	local cargo_text = "";
+	foreach (index, cat in ::CargoCat) {
+		cargo_text += "  " + (index + 1) + ": ";
+		foreach (cargo in cat) {
+			cargo_text += GSCargo.GetCargoLabel(cargo) + ",";
+		}
+	}
+	Log.Info(cargo_text, Log.LVL_SUB_DECISIONS);
 }
