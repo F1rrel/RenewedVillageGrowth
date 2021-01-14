@@ -678,7 +678,7 @@ function DiscoverEconomyType() {
 	for (local i = 1; i < 26; ++i) {
 		local economy_cargo_list = GetEconomyCargoList(i, ::CargoIDList);
 		if (CompareCargoLists(economy_cargo_list, ::CargoIDList)) {
-			return economy;
+			return i;
 		}
 	}
 
@@ -800,6 +800,7 @@ function GetCargoTable(hash)
 	return cargo_cat;
 }
 
+/* Checks if one of the industry types that produce this cargo is a raw industry */
 function IsRawCargo(cargo)
 {
 	local industry_list = GSIndustryList_CargoProducing(cargo);
