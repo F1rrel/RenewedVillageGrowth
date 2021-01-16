@@ -96,6 +96,21 @@ class MainClass extends GSInfo
 				custom_value = 0,
 				flags = CONFIG_BOOLEAN});
 
+		AddSetting({ name = "raw_industry_density",
+				description = "Industry stabilizer: raw industry density",
+				easy_value = 0,
+				medium_value = 0,
+				hard_value = 0,
+				custom_value = 0,
+				flags = CONFIG_INGAME, min_value = 0, max_value = 5});
+		AddLabels("raw_industry_density", { 
+					_0 = "Funding only",
+					_1 = "Minimal",
+					_2 = "Very Low",
+					_3 = "Low",
+					_4 = "Normal",
+					_5 = "High"	});
+
 		AddSetting({
 			name = "limit_min_transport",
 			description = "Limit Growth: Minimun percentage of transported cargo from town",

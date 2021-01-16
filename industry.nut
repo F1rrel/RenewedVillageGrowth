@@ -1,3 +1,6 @@
+// As defined number of industries on a 256x256 map [funding, minimal, very low, low, normal, high]
+::NumIndustries <- [0, 0, 10, 25, 55, 80];
+
 function InitIndustryLists()
 {
     local industry_type_list = GSIndustryTypeList();
@@ -253,4 +256,116 @@ function GetIndustryTable(hash)
     }
 
     return industry_cat;
+}
+
+function ProspectRawIndustry()
+{
+    local target_count = GetRawIndustryTargetCount();
+    if (target_count == 0)
+        return;
+
+    local industry_list = GSIndustryList();
+    industry_list.Valuate(IsRawIndustry);
+    industry_list.KeepValue(1);
+    if (target_count <= industry_list.Count())
+        return;
+
+    // If it is not set, set prospecting industry construction type
+    local construction_type = GSGameSettings.GetValue("construction.raw_industry_construction");
+    if (construction_type != 2)
+        GSGameSettings.SetValue("construction.raw_industry_construction", 2);
+
+    local raw_count = industry_list.Count();
+    local try_count = 0;
+    while (raw_count < target_count) {
+        if (try_count > 3) {
+            Log.Warning("Industry funding failed: " + GSError.GetLastErrorString(), Log.LVL_INFO);
+            break;
+        }
+
+        local industry_type = GetRawIndustryToProspect();
+        if (GSIndustryType.ProspectIndustry(industry_type)) {
+            raw_count++;
+            try_count = 0;
+        }
+        else
+            try_count++;
+    }
+
+    Log.Info("Prospected " + (raw_count - industry_list.Count()) + " raw industries up to total number of " + raw_count, Log.LVL_INFO);
+
+    // Reset to previous construction type
+    if (construction_type != 2)
+        GSGameSettings.SetValue("construction.raw_industry_construction", construction_type);
+}
+
+function IsProcessingIndustry(industry)
+{
+    return GSIndustryType.IsProcessingIndustry(GSIndustry.GetIndustryType(industry))
+}
+
+function IsRawIndustry(industry)
+{
+    return GSIndustryType.IsRawIndustry(GSIndustry.GetIndustryType(industry))
+}
+
+function CanProspectIndustry(industry)
+{
+    return GSIndustryType.CanProspectIndustry(GSIndustry.GetIndustryType(industry))
+}
+
+function GetRawIndustryTypeRatio()
+{
+    local industry_type_list = GSIndustryTypeList();
+    local count = industry_type_list.Count().tofloat();
+
+    industry_type_list.Valuate(GSIndustryType.IsRawIndustry);
+    industry_type_list.KeepValue(1);
+
+    return industry_type_list.Count().tofloat() / count;
+}
+
+function GetRawIndustryTypeCount()
+{
+    local industry_type_list = GSIndustryTypeList();
+    industry_type_list.Valuate(GSIndustryType.IsRawIndustry);
+    industry_type_list.KeepValue(1);
+
+    return industry_type_list.Count();
+}
+
+function GetRawIndustryTargetCount()
+{
+    local industry_density = GSController.GetSetting("raw_industry_density");
+    if (industry_density == 0) // funding only
+        return 0;
+    else if (industry_density == 1) // minimal (one of each)
+        return GetRawIndustryTypeCount();
+
+    local ratio = GetRawIndustryTypeRatio();
+
+    return (::NumIndustries[industry_density] * ((GSMap.GetMapSizeX() / 256.0) * (GSMap.GetMapSizeY() / 256.0)) * ratio).tointeger();
+}
+
+function GetIndustryTypeCount(industry_type)
+{
+    local industry_list = GSIndustryList();
+    industry_list.Valuate(GSIndustry.GetIndustryType);
+    industry_list.KeepValue(industry_type);
+    return industry_list.Count();
+}
+
+function GetRawIndustryToProspect()
+{
+    local industry_type_list = GSIndustryTypeList();
+    industry_type_list.Valuate(GSIndustryType.IsRawIndustry);
+    industry_type_list.KeepValue(1);
+
+    industry_type_list.Valuate(GSIndustryType.CanProspectIndustry);
+    industry_type_list.KeepValue(1);
+
+    industry_type_list.Valuate(GetIndustryTypeCount);
+    industry_type_list.Sort(GSList.SORT_BY_VALUE, GSList.SORT_ASCENDING);
+
+    return industry_type_list.Begin();
 }
