@@ -92,7 +92,7 @@ function MainClass::Start()
 
 	// Create and fill StoryBook. This can't be done before OTTD is ready.
 	local story_editor = StoryEditor();
-	story_editor.CreateStoryBook();
+	story_editor.CreateStoryBook(this.towns.len());
 
 	if (!this.gs_init_done) {
 		GSLog.Error("Game initialisation failed, stopping the game script!");
@@ -164,6 +164,8 @@ function MainClass::Init()
 	// Create the towns list
 	Log.Info("Create town list ... (can take a while on large maps)", Log.LVL_INFO);
 	this.towns = this.CreateTownList();
+	if (this.towns.len() > SELF_MAX_TOWNS)
+		return;
 
 	// Run industry stabilizer
 	Log.Info("Prospecting raw industries ... (can take a while on large maps)", Log.LVL_INFO);
@@ -211,10 +213,12 @@ function MainClass::Save()
 	if (!this.gs_init_done) {
 		save_table.town_data_table <- ::TownDataTable;
 	} else {
+		local start_opcodes = GSController.GetOpsTillSuspend();
 		foreach (i, town in this.towns)
 		{
 			save_table.town_data_table[town.id] <- town.SavingTownData();
 		}
+		Log.Info("Opcodes per saved town = " + ((start_opcodes - GSController.GetOpsTillSuspend()) / this.towns.len()), Log.LVL_DEBUG);
 		// Also store a savegame version flag
 		save_table.save_version <- this.current_save_version;
 	}
