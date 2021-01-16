@@ -82,19 +82,28 @@ function StoryEditor::CargoInfoPage()
 	}
 }
 
+/* Issue an initial warning if game's cargo list doesn't match with settings. */
+function StoryEditor::TownsWarningPage(num_towns)
+{
+	// Creating the page
+	local sp_warning = this.NewStoryPage(GSCompany.COMPANY_INVALID, GSText(GSText.STR_SB_WARNING_TITLE));
+	GSStoryPage.NewElement(sp_warning, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_WARNING_1, num_towns, SELF_MAX_TOWNS));
+	GSStoryPage.Show(sp_warning);
+}
+
 /* Create the StoryBook if it still doesn't exist. This function is
  * called only when (re)initializing all data, because the existing
  * storybook is stored by OTTD.
  */
-function StoryEditor::CreateStoryBook()
+function StoryEditor::CreateStoryBook(num_towns)
 {
 	// Remove any eventual previous existent storypage
 	local sb_list = GSStoryPageList(0);
 	foreach (page, _ in sb_list) GSStoryPage.Remove(page);
 
-	// Issue a warning if industry set doesn't match
-	if (!::CargoIDList) {
-		this.CargoWarningPage();
+	// Issue a warning if there are more towns on the map than the GS can save
+	if (num_towns > SELF_MAX_TOWNS) {
+		this.TownsWarningPage(num_towns);
 	}
 	// Create basic cargo informations page (randomization industry does not support cargo info page)
 	else if (::SettingsTable.randomization != Randomization.INDUSTRY) {

@@ -34,6 +34,8 @@ STR_SB_CARGOCAT_1        :{STRING} {NUM}: {GREEN}{STRING}{BLACK}{}{STRING}: {SIL
 STR_SB_CARGOCAT_2        :{STRING} {NUM}: {RED}{STRING}{BLACK}{}{STRING}: {SILVER}{NUM}{BLACK} {STRING}: {SILVER}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
 STR_SB_CARGOCAT_3        :{STRING} {NUM}: {BROWN}{STRING}{BLACK}{}{STRING}: {SILVER}{NUM}{BLACK} {STRING}: {SILVER}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
 STR_SB_CARGOCAT_4        :{STRING} {NUM}: {PURPLE}{STRING}{BLACK}{}{STRING}: {SILVER}{NUM}{BLACK} {STRING}: {SILVER}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
+STR_SB_WARNING_TITLE     :Warning
+STR_SB_WARNING_1         :There are more towns on the map than the game script can save. The current number of towns is {SILVER}{NUM}{BLACK} and the maximum is {SILVER}{NUM}{BLACK}. The game script is turned off.
 
 ##### TOWNBOX #####
 STR_TOWNBOX_CATEGORY            :Cargo information: supplied / required{STRING}
