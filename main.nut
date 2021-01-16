@@ -64,7 +64,7 @@ class MainClass extends GSController
 function MainClass::Start()
 {
 	// Wait random number of ticks (less than one day) based on system time to ensure random number seed
-	local sysdate = GSDate.GetSystemTime() % 70;
+	local sysdate = GSDate.GetSystemTime() % 70 + 1;
     this.Sleep(sysdate);
 
 	// Initializing the script
@@ -162,6 +162,10 @@ function MainClass::Init()
 	// Create the towns list
 	Log.Info("Create town list ... (can take a while on large maps)", Log.LVL_INFO);
 	this.towns = this.CreateTownList();
+
+	// Run industry stabilizer
+	Log.Info("Prospecting raw industries ... (can take a while on large maps)", Log.LVL_INFO);
+	ProspectRawIndustry();
 
 	// Ending initialization
 	this.gs_init_done = true;
@@ -322,12 +326,16 @@ function MainClass::ManageTowns()
 	}
 
 	// Run the yearly functions - Nothing to do for now, so we leave it out
-	/*local year = GSDate.GetYear(date);
+	local year = GSDate.GetYear(date);
 	local diff_year = year - this.current_year;
-	if ( diff_year == 0) return;
+	if ( diff_year == 0)
+		return;
 	else
 	{
 		GSLog.Info("Starting Yearly Updates");
+
+		ProspectRawIndustry();
+
 		this.current_year = year
-	}*/
+	}
 }
