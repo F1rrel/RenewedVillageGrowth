@@ -98,8 +98,8 @@ class MainClass extends GSInfo
 
 		AddSetting({ name = "raw_industry_density",
 				description = "Industry stabilizer: raw industry density",
-				easy_value = 5,
-				medium_value = 3,
+				easy_value = 0,
+				medium_value = 0,
 				hard_value = 0,
 				custom_value = 0,
 				flags = CONFIG_INGAME, min_value = 0, max_value = 5});
