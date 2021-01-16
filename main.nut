@@ -54,10 +54,7 @@ class MainClass extends GSController
 		this.actual_town_info_mode = 0;
 		this.toy_lib = null;
 		::TownDataTable <- {};
-		::SettingsTable <- {
-			use_town_sign = GSController.GetSetting("use_town_sign"),
-			randomization = GSController.GetSetting("cargo_randomization")
-		}
+		::SettingsTable <- {};
 	}
 }
 
@@ -138,6 +135,11 @@ function MainClass::Init()
 	GSGameSettings.SetValue("economy.town_growth_rate", 2);
 	GSGameSettings.SetValue("economy.fund_buildings", 0);
 
+	if (!this.load_saved_data) { // Disallow changing these in a running game
+		::SettingsTable.use_town_sign <- GSController.GetSetting("use_town_sign");
+		::SettingsTable.randomization <- GSController.GetSetting("cargo_randomization");
+	}
+
 	// Set current date
 	this.current_date = this.current_week = GSDate.GetCurrentDate();
 	this.current_month = GSDate.GetMonth(this.current_date);
@@ -197,14 +199,9 @@ function MainClass::Save()
 	Log.Info("Saving data...", Log.LVL_INFO);
 	local save_table = {};
 
-	/* If some permanent setting has been changed in scenario
-	 * editor, do not save anything.
-	 */
-	if ((::SettingsTable.use_town_sign != GSController.GetSetting("use_town_sign")) ||
-		(::SettingsTable.randomization != GSController.GetSetting("cargo_randomization"))) {
-		Log.Info("Some permanent setting changed. Not saving town data.", Log.LVL_INFO);
-		return save_table;
-	}
+	// Save permanent settings (allows changing them in scenario editor)
+	save_table.use_town_sign <- ::SettingsTable.use_town_sign;
+	save_table.randomization <- ::SettingsTable.randomization;
 
 	/* If the script isn't yet initialized, we can't retrieve data
 	 * from GoalTown instances. Thus, simply use the original
@@ -231,6 +228,8 @@ function MainClass::Load(version, saved_data)
 	// Loading town data. Only load data if the savegame version matches.
 	if ((saved_data.rawin("save_version") && saved_data.save_version == this.current_save_version)) {
 		this.load_saved_data = true;
+		::SettingsTable.use_town_sign <- saved_data.use_town_sign;
+		::SettingsTable.randomization <- saved_data.randomization;
 		foreach (townid, town_data in saved_data.town_data_table) {
 			::TownDataTable[townid] <- town_data;
 		}
