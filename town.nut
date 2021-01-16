@@ -374,7 +374,7 @@ function GoalTown::EternalLove(rating)
 function GoalTown::UpdateSignText()
 {
 	// Add a sign by the town to display the current growth
-	if (GSController.GetSetting("use_town_sign")) {
+	if (::SettingsTable.use_town_sign) {
 		local sign_text = TownSignText();
 		if (GSSign.IsValidSign(this.sign_id)) {
 			GSSign.SetName(this.sign_id, sign_text);
@@ -387,7 +387,7 @@ function GoalTown::UpdateSignText()
 function GoalTown::RemoveSignText()
 {
 	// Cleaning signs on the map
-	if (GSController.GetSetting("use_town_sign") && GSSign.IsValidSign(this.sign_id)) {
+	if (::SettingsTable.use_town_sign && GSSign.IsValidSign(this.sign_id)) {
 		GSSign.RemoveSign(this.sign_id);
 		this.sign_id = -1;
 	}

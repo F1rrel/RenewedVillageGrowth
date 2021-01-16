@@ -53,7 +53,7 @@ class MainClass extends GSInfo
 				medium_value = 1,
 				hard_value = 1,
 				custom_value = 1,
-				flags = CONFIG_BOOLEAN });
+				flags = CONFIG_BOOLEAN | CONFIG_INGAME });
 				
 		AddSetting({ name = "eternal_love",
 				description = "Eternal love from towns",
@@ -73,7 +73,7 @@ class MainClass extends GSInfo
 				medium_value = 2,
 				hard_value = 3,
 				custom_value = 11,
-				flags = CONFIG_NONE, min_value = 1, max_value = 12 });
+				flags = CONFIG_INGAME, min_value = 1, max_value = 12 });
 		AddLabels("cargo_randomization", { 
 					_1 = "None",
 					_2 = "Industry",
@@ -94,7 +94,7 @@ class MainClass extends GSInfo
 				medium_value = 0,
 				hard_value = 0,
 				custom_value = 0,
-				flags = CONFIG_BOOLEAN});
+				flags = CONFIG_BOOLEAN | CONFIG_INGAME});
 
 		AddSetting({ name = "raw_industry_density",
 				description = "Industry stabilizer: raw industry density",
