@@ -4,7 +4,7 @@ function GoalTown::TownBoxText(growth_enabled, text_mode, redraw=false)
 	local text_townbox = null;
 
 	// If the function is called with false, town is not growing. Give a help message.
-	local display_cargo = GSController.GetSetting("display_cargo");
+	local display_cargo = ::SettingsTable.randomization == Randomization.NONE ? false : GSController.GetSetting("display_cargo");
 	if (!growth_enabled || 0 == text_mode) {
 		if (display_cargo) {
 			text_townbox = GSText(GSText["STR_TOWNBOX_CARGO_"+(::CargoCatNum-1)]);
