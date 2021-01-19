@@ -21,7 +21,7 @@ STR_CARGOCAT_LABEL_12    :Catégorie V
 ##### STORY BOOK #####
 STR_SB_TITLE_1           :Catégories de marchandises
 STR_SB_EXPLAIN_1         :Voici les catégories de marchandises requises par les villes, chaque catégorie comprenant différents types de marchandises. Pour satisfaire la demande pour une catégorie, vous pouvez fournir n’importe quelle marchandise qui la compose.
-STR_SB_EXPLAIN_2         :Voici les catégories de marchandises requises par les villes, chaque catégorie comprenant différents types de marchandises. Chaque ville a une selection randomisée de {STRING2} par catégorie. Pour satisfaire la demande pour une catégorie, vous pouvez fournir n’importe quelle marchandise qui la ville demande pour cette catégorie comme vous pouvez voir dans les Informations de la ville.
+STR_SB_EXPLAIN_2         :Voici les catégories de marchandises requises par les villes, chaque catégorie comprenant différents types de marchandises. Chaque ville a une sélection aléatoire de {STRING2} par catégorie. Pour satisfaire la demande pour une catégorie, vous pouvez fournir n’importe quelle marchandise demandée par la ville pour cette catégorie visible dans les informations de la ville.
 STR_SB_EXPLAIN_RANDOM_0  :{SILVER}{NUM} type de marchandise{BLACK}{STRING}
 STR_SB_EXPLAIN_RANDOM_1  :{SILVER}{NUM} types de marchandise{BLACK}{STRING}
 STR_SB_EXPLAIN_RANDOM_2  :{SILVER}{NUM} - {NUM} types de marchandise {BLACK}
@@ -29,41 +29,41 @@ STR_SB_CARGOCAT_CAT      :Catégorie
 STR_SB_CARGOCAT_POP      :Population requise
 STR_SB_CARGOCAT_DECAY    :Dégradation mensuelle des stocks
 STR_SB_CARGOCAT_CARGOT   :Types de marchandises
-STR_SB_CARGOCAT_0        :{STRING} {NUM}: {LTBLUE}{STRING}{BLACK}{}{STRING}: {SILVER}{NUM}{BLACK} {STRING}: {SILVER}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
-STR_SB_CARGOCAT_1        :{STRING} {NUM}: {GREEN}{STRING}{BLACK}{}{STRING}: {SILVER}{NUM}{BLACK} {STRING}: {SILVER}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
-STR_SB_CARGOCAT_2        :{STRING} {NUM}: {RED}{STRING}{BLACK}{}{STRING}: {SILVER}{NUM}{BLACK} {STRING}: {SILVER}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
-STR_SB_CARGOCAT_3        :{STRING} {NUM}: {BROWN}{STRING}{BLACK}{}{STRING}: {SILVER}{NUM}{BLACK} {STRING}: {SILVER}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
-STR_SB_CARGOCAT_4        :{STRING} {NUM}: {PURPLE}{STRING}{BLACK}{}{STRING}: {SILVER}{NUM}{BLACK} {STRING}: {SILVER}{NUM}%{BLACK}{}{STRING}: {CARGO_LIST}
+STR_SB_CARGOCAT_0        :{STRING} {NUM} : {LTBLUE}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
+STR_SB_CARGOCAT_1        :{STRING} {NUM} : {GREEN}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
+STR_SB_CARGOCAT_2        :{STRING} {NUM} : {RED}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
+STR_SB_CARGOCAT_3        :{STRING} {NUM} : {BROWN}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
+STR_SB_CARGOCAT_4        :{STRING} {NUM} : {PURPLE}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
 STR_SB_WARNING_TITLE     :Attention
-STR_SB_WARNING_1         :Il y a plus de ville dans la carte de jeu comme le Script de Jeu peuve sauver. Le numéro de ville actuel est {SILVER}{NUM}{BLACK} et le numéro maximal est {SILVER}{NUM}{BLACK}. Le Script de Jeu est terminé.
+STR_SB_WARNING_1         :Il y a plus de villes dans la carte que le script de jeu peut en sauvegarder. Il y a actuellement {SILVER}{NUM}{BLACK} villes et le nombre maximum est {SILVER}{NUM}{BLACK}. Le script de jeu est désactivé.
 
 ##### TOWNBOX #####
-STR_TOWNBOX_CATEGORY            :Informations du limiteur : transportés / requis{STRING}
-STR_TOWNBOX_CATEGORY_STOP       :Pas assez transporté hors de la ville:{} * {RED}{CARGO_LIST}{BLACK}{}Informations du limiteur : transportés
-STR_TOWNBOX_CATEGORY_LOW        :Infrastructure de transport insuffisante:{} * {SILVER}{CARGO_LIST}{BLACK}{}Informations du limiteur : transportés
-STR_TOWNBOX_CATEGORY_DELAYED    :Pas assez transporté hors de la ville:{} * {GOLD}{CARGO_LIST}{BLACK}{}Informations du limiteur : transportés
-STR_TOWNBOX_CARGO               :Types de marchandises:{STRING}
-STR_TOWNBOX_CARGO_STOP          :Pas assez transporté hors de la ville:{} * {RED}{CARGO_LIST}{BLACK}{}Types de marchandises:
-STR_TOWNBOX_CARGO_LOW           :Infrastructure de transport insuffisante:{} * {SILVER}{CARGO_LIST}{BLACK}{}Types de marchandises:
-STR_TOWNBOX_CARGO_DELAYED       :Pas assez transporté hors de la ville:{} * {GOLD}{CARGO_LIST}{BLACK}{}Types de marchandises:
+STR_TOWNBOX_CATEGORY            :Informations de marchandise : transporté / requis{STRING}
+STR_TOWNBOX_CATEGORY_STOP       :Pas assez d’exportations :{} * {RED}{CARGO_LIST}{BLACK}{}Informations de marchandise : transporté / requis
+STR_TOWNBOX_CATEGORY_LOW        :Infrastructures de transport insuffisante:{} * {SILVER}{CARGO_LIST}{BLACK}{}Informations de marchandise : transporté / requis
+STR_TOWNBOX_CATEGORY_DELAYED    :Pas assez transporté hors de la ville:{} * {GOLD}{CARGO_LIST}{BLACK}{}Informations de marchandise : transporté / requis
+STR_TOWNBOX_CARGO               :Informations de marchandise :{STRING}
+STR_TOWNBOX_CARGO_STOP          :Pas assez d’exportations :{} * {RED}{CARGO_LIST}{BLACK}{}Informations de marchandise :
+STR_TOWNBOX_CARGO_LOW           :Infrastructures de transport insuffisantes :{} * {SILVER}{CARGO_LIST}{BLACK}{}Informations de marchandise :
+STR_TOWNBOX_CARGO_DELAYED       :Pas assez d’exportations :{} * {GOLD}{CARGO_LIST}{BLACK}{}Informations de marchandises:
 STR_TOWNBOX_NOGROWTH            :Transporter {SILVER}{CARGO_LIST}{BLACK} depuis cette ville pour la faire croître.
 
-STR_TOWNBOX_CATEGORY_0          :{STRING1}{} * {LTBLUE}{STRING}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
-STR_TOWNBOX_CATEGORY_1          :{STRING1}{} * {LTBLUE}{STRING}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{STRING}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
-STR_TOWNBOX_CATEGORY_2          :{STRING1}{} * {LTBLUE}{STRING}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{STRING}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{STRING}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
-STR_TOWNBOX_CATEGORY_3          :{STRING1}{} * {LTBLUE}{STRING}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{STRING}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{STRING}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {BROWN}{STRING}{BLACK}:{SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
-STR_TOWNBOX_CATEGORY_4          :{STRING1}{} * {LTBLUE}{STRING}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{STRING}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{STRING}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {BROWN}{STRING}{BLACK}:{SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {PURPLE}{STRING}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_CATEGORY_0          :{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_CATEGORY_1          :{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_CATEGORY_2          :{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_CATEGORY_3          :{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {BROWN}{STRING}{BLACK} :{SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_CATEGORY_4          :{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {BROWN}{STRING}{BLACK} :{SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {PURPLE}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
 
-STR_TOWNBOX_CARGO_0             :{STRING1}{} * {LTBLUE}{STRING}{BLACK}: {SILVER}{CARGO_LIST}{BLACK}
-STR_TOWNBOX_CARGO_1             :{STRING1}{} * {LTBLUE}{STRING}{BLACK}: {SILVER}{CARGO_LIST}{BLACK}{} * {GREEN}{STRING}{BLACK}: {SILVER}{CARGO_LIST}{BLACK}
-STR_TOWNBOX_CARGO_2             :{STRING1}{} * {LTBLUE}{STRING}{BLACK}: {SILVER}{CARGO_LIST}{BLACK}{} * {GREEN}{STRING}{BLACK}: {SILVER}{CARGO_LIST}{BLACK}{} * {RED}{STRING}{BLACK}: {SILVER}{CARGO_LIST}{BLACK}
-STR_TOWNBOX_CARGO_3             :{STRING1}{} * {LTBLUE}{STRING}{BLACK}: {SILVER}{CARGO_LIST}{BLACK}{} * {GREEN}{STRING}{BLACK}: {SILVER}{CARGO_LIST}{BLACK}{} * {RED}{STRING}{BLACK}: {SILVER}{CARGO_LIST}{BLACK}{} * {BROWN}{STRING}{BLACK}:{SILVER}{CARGO_LIST}{BLACK}
-STR_TOWNBOX_CARGO_4             :{STRING1}{} * {LTBLUE}{STRING}{BLACK}: {SILVER}{CARGO_LIST}{BLACK}{} * {GREEN}{STRING}{BLACK}: {SILVER}{CARGO_LIST}{BLACK}{} * {RED}{STRING}{BLACK}: {SILVER}{CARGO_LIST}{BLACK}{} * {BROWN}{STRING}{BLACK}:{SILVER}{CARGO_LIST}{BLACK}{} * {PURPLE}{STRING}{BLACK}: {SILVER}{CARGO_LIST}{BLACK}
+STR_TOWNBOX_CARGO_0             :{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}
+STR_TOWNBOX_CARGO_1             :{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}
+STR_TOWNBOX_CARGO_2             :{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}
+STR_TOWNBOX_CARGO_3             :{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {BROWN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}
+STR_TOWNBOX_CARGO_4             :{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {BROWN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {PURPLE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}
 
-STR_TOWNBOX_COMBINED_0          :{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
-STR_TOWNBOX_COMBINED_1          :{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
-STR_TOWNBOX_COMBINED_2          :{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
-STR_TOWNBOX_COMBINED_3          :{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {BROWN}{CARGO_LIST}{BLACK}:{SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
-STR_TOWNBOX_COMBINED_4          :{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {BROWN}{CARGO_LIST}{BLACK}:{SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {PURPLE}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_COMBINED_0          :{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_COMBINED_1          :{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_COMBINED_2          :{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_COMBINED_3          :{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {BROWN}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_COMBINED_4          :{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {BROWN}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {PURPLE}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
 
 STR_EMPTY                       :
