@@ -16,17 +16,18 @@ import("Library.SCPLib", "SCPLib", 45);
 
 enum Randomization {
 	NONE = 1,
-	INDUSTRY = 2,
-	FIXED_1 = 3,
-	FIXED_2 = 4,
-	FIXED_3 = 5,
-	FIXED_5 = 6,
-	FIXED_7 = 7,
-	RANGE_1_2 = 8,
-	RANGE_1_3 = 9,
-	RANGE_2_3 = 10,
-	RANGE_3_5 = 11,
-	RANGE_3_7 = 12
+	INDUSTRY_DESC = 2,
+	INDUSTRY_ASC = 3,
+	FIXED_1 = 4,
+	FIXED_2 = 5,
+	FIXED_3 = 6,
+	FIXED_5 = 7,
+	FIXED_7 = 8,
+	RANGE_1_2 = 9,
+	RANGE_1_3 = 10,
+	RANGE_2_3 = 11,
+	RANGE_3_5 = 12,
+	RANGE_3_7 = 13
 };
 
 class MainClass extends GSController
@@ -145,7 +146,8 @@ function MainClass::Init()
 	this.current_month = GSDate.GetMonth(this.current_date);
 	this.current_year = GSDate.GetYear(this.current_date);
 
-	if (::SettingsTable.randomization == Randomization.INDUSTRY) {
+	if (::SettingsTable.randomization == Randomization.INDUSTRY_DESC
+	 || ::SettingsTable.randomization == Randomization.INDUSTRY_ASC) {
 		InitIndustryLists();
 	}
 	else {
