@@ -70,7 +70,7 @@ function InitIndustryLists()
     }
 }
 
-function RandomizeIndustry()
+function RandomizeIndustry(ascending)
 {
     local categories = [];
 
@@ -187,6 +187,14 @@ function RandomizeIndustry()
         else
             list_raw.remove(rand_1 - list_1.len());
         list_3.remove(rand_3);
+    }
+
+    if (!ascending) {
+        local category_reverse = [];
+        for (local i = categories.len() - 1; i >= 0; --i) {
+            category_reverse.append(categories[i]);
+        }
+        return category_reverse;
     }
 
     return categories;

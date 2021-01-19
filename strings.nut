@@ -33,7 +33,8 @@ function GoalTown::TownBoxText(growth_enabled, text_mode, redraw=false)
 			if (::SettingsTable.randomization == Randomization.NONE) {
 				text_townbox = this.TownTextCategories();
 				break;
-			} else if (::SettingsTable.randomization == Randomization.INDUSTRY) {
+			} else if (::SettingsTable.randomization == Randomization.INDUSTRY_DESC
+					|| ::SettingsTable.randomization == Randomization.INDUSTRY_ASC) {
 				text_townbox = this.TownTextCategoriesCombined(display_cargo);
 				break;
 			}

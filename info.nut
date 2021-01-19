@@ -73,20 +73,21 @@ class MainClass extends GSInfo
 				medium_value = 2,
 				hard_value = 3,
 				custom_value = 11,
-				flags = CONFIG_INGAME, min_value = 1, max_value = 12 });
+				flags = CONFIG_INGAME, min_value = 1, max_value = 13 });
 		AddLabels("cargo_randomization", { 
 					_1 = "None",
-					_2 = "Industry",
-					_3 = "1 per category",
-					_4 = "2 per category",
-					_5 = "3 per category",
-					_6 = "5 per category",
-					_7 = "7 per category",
-					_8 = "1-2 per category",
-					_9 = "1-3 per category",
-					_10 = "2-3 per category",
-					_11 = "3-5 per category",
-					_12 = "3-7 per category" });
+					_2 = "Industry descending",
+					_3 = "Industry ascending",
+					_4 = "1 per category",
+					_5 = "2 per category",
+					_6 = "3 per category",
+					_7 = "5 per category",
+					_8 = "7 per category",
+					_9 = "1-2 per category",
+					_10 = "1-3 per category",
+					_11 = "2-3 per category",
+					_12 = "3-5 per category",
+					_13 = "3-7 per category" });
 
 		AddSetting({ name = "display_cargo",
 				description = "Randomization: Show town cargos from start",

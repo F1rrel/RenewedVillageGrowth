@@ -106,7 +106,8 @@ function StoryEditor::CreateStoryBook(num_towns)
 		this.TownsWarningPage(num_towns);
 	}
 	// Create basic cargo informations page (randomization industry does not support cargo info page)
-	else if (::SettingsTable.randomization != Randomization.INDUSTRY) {
+	else if (::SettingsTable.randomization != Randomization.INDUSTRY_DESC 
+		  && ::SettingsTable.randomization != Randomization.INDUSTRY_ASC) {
 		this.CargoInfoPage();
 	}
 }

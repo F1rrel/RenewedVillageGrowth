@@ -58,7 +58,8 @@ class GoalTown
 			this.limit_transported = (::TownDataTable[this.id].limit_transported_upper + 0x7FFFFFFF << 32) | (::TownDataTable[this.id].limit_transported_lower + 0X7FFFFFFF);
 			this.limit_delay = ::TownDataTable[this.id].limit_delay;
 			this.cargo_hash = (::TownDataTable[this.id].cargo_hash_upper + 0x7FFFFFFF << 32) | (::TownDataTable[this.id].cargo_hash_lower + 0X7FFFFFFF);
-			if (::SettingsTable.randomization == Randomization.INDUSTRY) 
+			if (::SettingsTable.randomization == Randomization.INDUSTRY_DESC
+			 || ::SettingsTable.randomization == Randomization.INDUSTRY_ASC) 
 				this.town_cargo_cat = GetCargoCatFromIndustryCat(GetIndustryTable(this.cargo_hash));
 			else
 				this.town_cargo_cat = GetCargoTable(this.cargo_hash);
@@ -406,9 +407,10 @@ function GoalTown::UpdateTownText(info_mode)
 function GoalTown::Randomization()
 {
 	switch (::SettingsTable.randomization) {
-		case Randomization.INDUSTRY:
+		case Randomization.INDUSTRY_ASC:
+		case Randomization.INDUSTRY_DESC:
 		{
-			local industry_cat = RandomizeIndustry();
+			local industry_cat = RandomizeIndustry(::SettingsTable.randomization == Randomization.INDUSTRY_ASC);
 			this.town_cargo_cat = GetCargoCatFromIndustryCat(industry_cat);
 			this.cargo_hash = GetIndustryHash(industry_cat);
 			this.DebugRandomizationIndustry(industry_cat);
