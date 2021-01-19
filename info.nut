@@ -71,7 +71,7 @@ class MainClass extends GSInfo
 				description = "Randomization: Type",
 				easy_value = 7,
 				medium_value = 2,
-				hard_value = 3,
+				hard_value = 4,
 				custom_value = 11,
 				flags = CONFIG_INGAME, min_value = 1, max_value = 13 });
 		AddLabels("cargo_randomization", { 
