@@ -265,6 +265,7 @@ function ProspectRawIndustry()
         return;
 
     local industry_list = GSIndustryList();
+    local industry_count = industry_list.Count();
     industry_list.Valuate(IsRawIndustry);
     industry_list.KeepValue(1);
     if (target_count <= industry_list.Count())
@@ -275,6 +276,8 @@ function ProspectRawIndustry()
     if (construction_type != 2)
         GSGameSettings.SetValue("construction.raw_industry_construction", 2);
 
+    local built_count = 0;
+    local ignore_list = GSList();
     local raw_count = industry_list.Count();
     local try_count = 0;
     while (raw_count < target_count) {
@@ -283,10 +286,25 @@ function ProspectRawIndustry()
             break;
         }
 
-        local industry_type = GetRawIndustryToProspect();
+        local industry_type = GetRawIndustryToProspect(ignore_list);
+        Log.Info("Funding industry " + GSIndustryType.GetName(industry_type), Log.LVL_DEBUG);
         if (GSIndustryType.ProspectIndustry(industry_type)) {
-            raw_count++;
-            try_count = 0;
+            if (GSIndustryList().Count() == (industry_count + built_count + 1)) {
+                raw_count++;
+                try_count = 0;
+                built_count++;
+            }
+            else {
+                try_count++;
+            }
+
+            // If newGRF refuses to build the industry type, prospecting returns true, 
+            // so the industry type must be removed from chosing
+            if (try_count > 3) {
+                Log.Warning("Cannot prospect " + GSIndustryType.GetName(industry_type) + ", will be skipped.", Log.LVL_INFO);
+                ignore_list.AddItem(industry_type, 0);
+                try_count = 0;
+            }
         }
         else
             try_count++;
@@ -355,9 +373,12 @@ function GetIndustryTypeCount(industry_type)
     return industry_list.Count();
 }
 
-function GetRawIndustryToProspect()
+function GetRawIndustryToProspect(ignore_list)
 {
     local industry_type_list = GSIndustryTypeList();
+
+    industry_type_list.RemoveList(ignore_list);
+
     industry_type_list.Valuate(GSIndustryType.IsRawIndustry);
     industry_type_list.KeepValue(1);
 
