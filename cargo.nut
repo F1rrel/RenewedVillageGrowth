@@ -103,7 +103,7 @@ function GetEconomyCargoList(economy, cargo_list) {
 	case(Economies.ECS):
 		return this.ConstructECSVectorCargoList(cargo_list);
 	/*FIRS version 2.1.5 */
-	case(Economies.TEMPERATE_BASIC): // Temperate Basic
+	case(Economies.FIRS2__TEMPERATE_BASIC): // Temperate Basic
 		return ["PASS","BEER","MAIL","RFPR","CLAY","GOOD","COAL","ENSP","FMSP","FISH",
 				"FRUT","FOOD","IORE","LVST","MNSP","STEL","MILK","SAND","SCMT"];
 	case(Economies.FIRS2__ARCTIC_BASIC): // Arctic Basic
