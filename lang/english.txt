@@ -37,6 +37,10 @@ STR_SB_CARGOCAT_4        :{STRING} {NUM}: {PURPLE}{STRING}{BLACK}{}{STRING}: {SI
 STR_SB_WARNING_TITLE     :Warning
 STR_SB_WARNING_1         :There are more towns on the map than the game script can save. The current number of towns is {SILVER}{NUM}{BLACK} and the maximum is {SILVER}{NUM}{BLACK}. The game script is turned off.
 
+##### GOAL #####
+STR_GOAL_GLOBAL                 :{STRING}{COMPANY}{BLACK} ...................................................................................................................................
+STR_GOAL_POINTS                 :{SILVER}{NUM}{BLACK} points
+
 ##### TOWNBOX #####
 STR_TOWNBOX_CONTRIBUTOR         :Largest population {SILVER}{NUM}{BLACK}:{} * {SILVER}{COMPANY}{BLACK}
 STR_TOWNBOX_NO_CONTRIBUTOR      :Largest population {SILVER}{NUM}{BLACK}{STRING}
@@ -68,5 +72,23 @@ STR_TOWNBOX_COMBINED_1          :{STRING2}{}{STRING1}{} * {LTBLUE}{CARGO_LIST}{B
 STR_TOWNBOX_COMBINED_2          :{STRING2}{}{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
 STR_TOWNBOX_COMBINED_3          :{STRING2}{}{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {BROWN}{CARGO_LIST}{BLACK}:{SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
 STR_TOWNBOX_COMBINED_4          :{STRING2}{}{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {BROWN}{CARGO_LIST}{BLACK}:{SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {PURPLE}{CARGO_LIST}{BLACK}: {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+
+STR_DARK_BLUE                   :{DKBLUE}
+STR_PALE_GREEN                  :{LTBROWN}
+STR_PINK                        :{GOLD}
+STR_YELLOW                      :{YELLOW}
+STR_RED                         :{RED}
+STR_LIGHT_BLUE                  :{LTBLUE}
+STR_GREEN                       :{GREEN}
+STR_DARK_GREEN                  :{DKGREEN}
+STR_BLUE                        :{BLUE}
+STR_CREAM                       :{CREAM}
+STR_MAUVE                       :{BLACK}
+STR_PURPLE                      :{PURPLE}
+STR_ORANGE                      :{ORANGE}
+STR_BROWN                       :{BROWN}
+STR_GREY                        :{GRAY}
+STR_WHITE                       :{WHITE}
+STR_SILVER                      :{SILVER}
 
 STR_EMPTY                       :

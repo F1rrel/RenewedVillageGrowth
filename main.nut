@@ -429,6 +429,10 @@ function MainClass::ManageTowns()
 				town.EternalLove(eternal_love_rating);
 			}
 		}
+
+		foreach (company in this.companies) {
+			company.MonthlyUpdateGUIGoals();
+		}
 		
 		this.current_month = month;
 		local month_tick_duration = GSController.GetTick() - month_tick;

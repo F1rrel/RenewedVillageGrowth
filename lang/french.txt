@@ -37,6 +37,10 @@ STR_SB_CARGOCAT_4        :{STRING} {NUM} : {PURPLE}{STRING}{BLACK}{}{STRING} : {
 STR_SB_WARNING_TITLE     :Attention
 STR_SB_WARNING_1         :Il y a plus de villes dans la carte que le script de jeu peut en sauvegarder. Il y a actuellement {SILVER}{NUM}{BLACK} villes et le nombre maximum est {SILVER}{NUM}{BLACK}. Le script de jeu est désactivé.
 
+##### GOAL #####
+STR_GOAL_GLOBAL                 :{STRING}{COMPANY}{BLACK} ...................................................................................................................................
+STR_GOAL_POINTS                 :{SILVER}{NUM}{BLACK} points
+
 ##### TOWNBOX #####
 STR_TOWNBOX_CONTRIBUTOR         :La plus grande population {SILVER}{NUM}{BLACK} :{} * {SILVER}{COMPANY}{BLACK}
 STR_TOWNBOX_NO_CONTRIBUTOR      :La plus grande population {SILVER}{NUM}{BLACK}{STRING}
