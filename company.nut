@@ -5,8 +5,6 @@ class Company
 
     constructor(id, load_data)
     {
-        Log.Info("Creating company " + id + ": " + GSCompany.GetName(id), Log.LVL_INFO);
-
         this.id = id;
 
         if (!load_data)
@@ -17,8 +15,6 @@ class Company
         {
             this.points = ::CompanyDataTable[this.id].points;
         }
-
-        GSLog.Info("Points: " + this.points);
     }
 }
 
@@ -26,5 +22,12 @@ function Company::SavingCompanyData()
 {
     local company_data = {};
     company_data.points <- this.points;
+
+    return company_data;
+}
+
+function Company::AddPoints(points)
+{
+    this.points += points > 0 ? points : 0;
 }
 

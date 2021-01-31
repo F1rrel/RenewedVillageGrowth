@@ -35,6 +35,7 @@ class GoalTown
 		 */
 		if (!load_town_data) {
 			this.sign_id = -1;
+			this.contributor = -1;
 			this.max_population = GSTown.GetPopulation(this.id);
 			this.is_monitored = false;
 			this.allowGrowth = false;
@@ -51,6 +52,7 @@ class GoalTown
 			GSTown.SetText(this.id, TownBoxText(false, 0));
 		} else {
 			this.sign_id = ::TownDataTable[this.id].sign_id;
+			this.contributor = ::TownDataTable[this.id].contributor;
 			this.max_population = ::TownDataTable[this.id].max_population;
 			this.is_monitored = ::TownDataTable[this.id].is_monitored;
 			this.allowGrowth = ::TownDataTable[this.id].allowGrowth;
@@ -107,6 +109,8 @@ function GoalTown::SavingTownData()
 	 */
 	local town_data = {};
 	town_data.sign_id <- this.sign_id;
+	town_data.contributor <- this.contributor;
+	town_data.max_population <- this.max_population;
 	town_data.is_monitored <- this.is_monitored;
 	town_data.allowGrowth <- this.allowGrowth;
 	town_data.last_delivery <- this.last_delivery;
@@ -123,7 +127,7 @@ function GoalTown::SavingTownData()
 }
 
 /* Main town management function. Called each month. */
-function GoalTown::MonthlyManageTown()
+function GoalTown::MonthlyManageTown(companies)
 {
 	local sum_goals = 0;
 	local goal_diff = 0;
@@ -261,6 +265,7 @@ function GoalTown::MonthlyManageTown()
 
 	// Find the biggest contributor
 	local max_contrib = 0.0;
+	local total_contrib = 0.0;
 	local company_id = -1;
 	foreach (id, category in companies_supplied) {
 		local contribution = 0;
@@ -268,16 +273,33 @@ function GoalTown::MonthlyManageTown()
 			if (this.town_goals_cat[index] == 0)
 				continue;
 
+			// each category is normalized to 0.0-1.0 range and summed up to have equal weight
 			contribution += supplied > this.town_goals_cat[index] ? 1.0 : supplied.tofloat() / this.town_goals_cat[index];
 		}
 
-		if (contribution > max_contrib) {
+		// when equal, decide based on total supplied
+		if (contribution == max_contrib && company_id >=0) {
+			local total = 0;
+			foreach (supplied in category) {
+				total += supplied;
+			}
+			if (total > total_contrib) {
+				max_contrib = contribution;
+				total_contrib = total;
+				company_id = id;
+			}
+		}
+		else if (contribution > max_contrib) {
 			max_contrib = contribution;
+			total_contrib = 0;
+			foreach (supplied in category) {
+				total_contrib += supplied;
+			}
 			company_id = id;
 		}
 	}
-
 	this.contributor = company_id;
+
 	this.UpdateSignText();
 	GSTown.SetText(this.id, this.TownBoxText(true, GSController.GetSetting("town_info_mode"), true));
 }

@@ -82,8 +82,6 @@ function MainClass::Start()
 		}
 	}
 
-	this.load_saved_data = false;
-
 	GSGame.Pause();
 	Log.Info("Script initialisation...", Log.LVL_INFO);
 	this.Init();
@@ -233,11 +231,9 @@ function MainClass::Save()
 	if (!this.gs_init_done) {
 		save_table.town_data_table <- ::TownDataTable;
 	} else {
-		GSLog.Info("Saving companies " + this.companies.len());
 		foreach (company in this.companies)
 		{
 			save_table.company_data_table[company.id] <- company.SavingCompanyData();
-			GSLog.Info("Saving company " + GSCompany.GetName(company.id));
 		}
 
 		local start_opcodes = GSController.GetOpsTillSuspend();
@@ -358,6 +354,25 @@ function MainClass::UpdateTownList(town_id)
 	Log.Info("New town founded: "+GSTown.GetName(town_id)+" (id: "+town_id+")", Log.LVL_DEBUG);
 }
 
+function MainClass::DailyManageTownPopulation()
+{
+	foreach (town in this.towns) {
+		local new_population = GSTown.GetPopulation(town.id);
+		if (new_population > town.max_population) {
+			foreach (company in companies) {
+				if (company.id == town.contributor) {
+					company.AddPoints(new_population - town.max_population);
+					Log.Info(GSTown.GetName(town.id) 
+							 + " increased population by " + (new_population - town.max_population) 
+							 + " which was added to " + GSCompany.GetName(company.id), Log.LVL_DEBUG);
+				}
+			}
+			
+			town.max_population = new_population;
+		}
+	}
+}
+
 /* Function called periodically (each 74 ticks) to manage
  * towns and other stuff.
  */
@@ -370,6 +385,8 @@ function MainClass::ManageTowns()
 		return;
 	} else {
 		GSToyLib.Check();
+		DailyManageTownPopulation();
+
 		this.current_date = date;
 	}
 
@@ -400,7 +417,7 @@ function MainClass::ManageTowns()
 		local min_transport = GSController.GetSetting("limit_min_transport");
 		foreach (town in this.towns) {
 			town.ManageTownLimiting(threshold_setting, min_transport);
-			town.MonthlyManageTown();
+			town.MonthlyManageTown(this.companies);
 			if (this.actual_town_info_mode > 1) {
 				town.UpdateTownText(this.actual_town_info_mode);
 			}
@@ -422,10 +439,10 @@ function MainClass::ManageTowns()
 		return;
 	else
 	{
-		GSLog.Info("Starting Yearly Updates");
+		Log.Info("Starting Yearly Updates...", Log.LVL_INFO);
 
 		ProspectRawIndustry();
 
-		this.current_year = year
+		this.current_year = year;
 	}
 }
