@@ -69,9 +69,13 @@ function StoryEditor::CargoInfoPage()
 	// Adding elements per categories
 	for (local i = 0; i < ::CargoCatNum; i++) {
 		local bit_sum = 0;
-		for (local j = 0; j < ::CargoCat[i].len(); j++) {
-			bit_sum += 1 << ::CargoCat[i][j];
+		if (::SettingsTable.randomization != Randomization.INDUSTRY_DESC 
+		 && ::SettingsTable.randomization != Randomization.INDUSTRY_ASC) {
+			for (local j = 0; j < ::CargoCat[i].len(); j++) {
+				bit_sum += 1 << ::CargoCat[i][j];
+			}
 		}
+		
 		GSStoryPage.NewElement(sp_cargo, GSStoryPage.SPET_TEXT, 0,
 				       GSText(GSText["STR_SB_CARGOCAT_"+i],
 					     GSText(GSText.STR_SB_CARGOCAT_CAT), i+1,
@@ -105,11 +109,8 @@ function StoryEditor::CreateStoryBook(num_towns)
 	if (num_towns > SELF_MAX_TOWNS) {
 		this.TownsWarningPage(num_towns);
 	}
-	// Create basic cargo informations page (randomization industry does not support cargo info page)
-	else if (::SettingsTable.randomization != Randomization.INDUSTRY_DESC 
-		  && ::SettingsTable.randomization != Randomization.INDUSTRY_ASC) {
-		this.CargoInfoPage();
-	}
+	// Create basic cargo informations page
+	this.CargoInfoPage();
 }
 
 /* Wrapper that creates a new StoryPage but disable date output. */

@@ -192,6 +192,12 @@ function GoalTown::DebugCargoSupplied(i, supplied)
 		 +supplied, Log.LVL_DEBUG);
 }
 
+/* Debug function: print supplied cargo towards category for the company. */
+function GoalTown::DebugCompanyCategorySupplied(cid, cat, supplied)
+{
+	Log.Info(GSCompany.GetName(cid) + " cat " + cat + ": supplied " + supplied, Log.LVL_DEBUG);
+}
+
 /* Debug function: print stockpiled/supplied/goal per cargo category. */
 function GoalTown::DebugCargoCatInfo(i)
 {
