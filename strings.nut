@@ -4,10 +4,11 @@ function GoalTown::TownBoxText(growth_enabled, text_mode, redraw=false)
 	local text_townbox = null;
 
 	// If the function is called with false, town is not growing. Give a help message.
-	local display_cargo = ::SettingsTable.randomization == Randomization.NONE ? false : GSController.GetSetting("display_cargo");
+	local display_cargo = ::SettingsTable.randomization == Randomization.NONE ? false : ::SettingsTable.display_cargo;
 	if (!growth_enabled || 0 == text_mode) {
 		if (display_cargo) {
 			text_townbox = GSText(GSText["STR_TOWNBOX_CARGO_"+(::CargoCatNum-1)]);
+			text_townbox = this.TownTextContributor(text_townbox);
 			foreach (index, category in this.town_cargo_cat) {
 				local cargo_mask = 0;
 				foreach (cargo in category) {
@@ -85,6 +86,18 @@ function GoalTown::TownTextLimiter(text_townbox, category)
 	return text_townbox;
 }
 
+function GoalTown::TownTextContributor(text_townbox)
+{
+	if (this.contributor < 0) {
+		text_townbox.AddParam(GSText(GSText.STR_TOWNBOX_NO_CONTRIBUTOR, this.max_population, GSText(GSText.STR_EMPTY)));
+	}
+	else {
+		text_townbox.AddParam(GSText(GSText.STR_TOWNBOX_CONTRIBUTOR, this.max_population, this.contributor));
+	}
+
+	return text_townbox;
+}
+
 
 /* Function which builds town texts.
  * Town text will look like below:
@@ -99,6 +112,7 @@ function GoalTown::TownTextCategories()
 	}
 
 	local text_townbox = GSText(GSText["STR_TOWNBOX_CATEGORY_" + max_cat]);
+	text_townbox = this.TownTextContributor(text_townbox);
 	text_townbox = this.TownTextLimiter(text_townbox, true);
 
 	for (local i = 0; i <= max_cat; i++) {
@@ -123,6 +137,7 @@ function GoalTown::TownTextCategoriesCombined(display_all)
 	}
 
 	local text_townbox = GSText(GSText["STR_TOWNBOX_COMBINED_" + max_cat]);
+	text_townbox = this.TownTextContributor(text_townbox);
 	text_townbox = this.TownTextLimiter(text_townbox, true);
 
 	for (local index = 0; index <= max_cat; ++index) {
@@ -151,6 +166,7 @@ function GoalTown::TownTextCargos(display_all)
 	}
 
 	local text_townbox = GSText(GSText["STR_TOWNBOX_CARGO_" + max_cat]);
+	text_townbox = this.TownTextContributor(text_townbox);
 	text_townbox = this.TownTextLimiter(text_townbox, false);
 
 	for (local index = 0; index <= max_cat; ++index) {

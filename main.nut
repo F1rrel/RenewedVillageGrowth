@@ -143,6 +143,7 @@ function MainClass::Init()
 	if (!this.load_saved_data) { // Disallow changing these in a running game
 		::SettingsTable.use_town_sign <- GSController.GetSetting("use_town_sign");
 		::SettingsTable.randomization <- GSController.GetSetting("cargo_randomization");
+		::SettingsTable.display_cargo <- GSController.GetSetting("display_cargo");
 	}
 
 	// Set current date
@@ -221,6 +222,7 @@ function MainClass::Save()
 	// Save permanent settings (allows changing them in scenario editor)
 	save_table.use_town_sign <- ::SettingsTable.use_town_sign;
 	save_table.randomization <- ::SettingsTable.randomization;
+	save_table.display_cargo <- ::SettingsTable.display_cargo;
 
 	/* If the script isn't yet initialized, we can't retrieve data
 	 * from GoalTown instances. Thus, simply use the original
@@ -257,6 +259,7 @@ function MainClass::Load(version, saved_data)
 		this.load_saved_data = true;
 		::SettingsTable.use_town_sign <- saved_data.use_town_sign;
 		::SettingsTable.randomization <- saved_data.randomization;
+		::SettingsTable.display_cargo <- saved_data.display_cargo;
 		
 		foreach (companyid, company_data in saved_data.company_data_table) {
 			::CompanyDataTable[companyid] <- company_data;
@@ -417,7 +420,7 @@ function MainClass::ManageTowns()
 		local min_transport = GSController.GetSetting("limit_min_transport");
 		foreach (town in this.towns) {
 			town.ManageTownLimiting(threshold_setting, min_transport);
-			town.MonthlyManageTown(this.companies);
+			town.MonthlyManageTown();
 			if (this.actual_town_info_mode > 1) {
 				town.UpdateTownText(this.actual_town_info_mode);
 			}

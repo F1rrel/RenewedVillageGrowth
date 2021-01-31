@@ -127,7 +127,7 @@ function GoalTown::SavingTownData()
 }
 
 /* Main town management function. Called each month. */
-function GoalTown::MonthlyManageTown(companies)
+function GoalTown::MonthlyManageTown()
 {
 	local sum_goals = 0;
 	local goal_diff = 0;
