@@ -431,7 +431,7 @@ function MainClass::ManageTowns()
 		}
 
 		foreach (company in this.companies) {
-			company.MonthlyUpdateGUIGoals();
+			company.MonthlyUpdateGUIGoals(this.towns);
 		}
 		
 		this.current_month = month;
