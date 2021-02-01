@@ -214,15 +214,20 @@ function GoalTown::MonthlyManageTown()
 	this.DebugGoalsResult(sum_goals, goal_diff, goal_diff_percent);  // Debug info about general goal results
 	if (goal_diff_percent <= sup_imp_part) {
 		local max_town_growth_rate = g_factor * 50000 / (100 + cur_pop.tofloat());
-		max_town_growth_rate = max_town_growth_rate > 1 ? max_town_growth_rate : 1;
 		new_town_growth_rate = (max_town_growth_rate
-					* (1 + (e_factor / (1 - goal_diff_percent * 2) - e_factor))).tointeger();
-	} else if (goal_diff_percent > sup_imp_part || new_town_growth_rate > lowest_tgr) {
+					* (1 + (e_factor / (1 - goal_diff_percent) - e_factor))).tointeger();
+	}
+	else {
 		new_town_growth_rate = lowest_tgr;
 	}
 
+	if (new_town_growth_rate > lowest_tgr)
+		new_town_growth_rate = lowest_tgr;
+	else if (new_town_growth_rate < 1)
+		new_town_growth_rate = 1;
+
 	// Defining the new town growth rate, calculated as the moving average of the TGR array, update only if town growth requirements are fulfilled
-	local sum_array = 0;
+	local sum_array = 0.0;
 	local i = 0;
 	while (this.tgr_array[i] > 0) {
 		sum_array += this.tgr_array[i];
