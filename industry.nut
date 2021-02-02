@@ -50,8 +50,8 @@ function InitIndustryLists()
     // Initialized required global variables
     local cargo_list = [];
     for(local i = 0; i < 64; ++i) {
-		cargo_list.append(GSCargo.GetCargoLabel(i));
-	}
+        cargo_list.append(GSCargo.GetCargoLabel(i));
+    }
     ::CargoIDList <- cargo_list;
     ::CargoLimiter <- [0, 2];
     ::CargoCatNum <- (list_4.len() > 0 || (list_3.len() > 6 && (list_1.len() + list_raw.len()) > 9)) ? 5 : 4;
@@ -60,13 +60,13 @@ function InitIndustryLists()
         ::CargoMinPopDemand <- [0, 1000, 4000, 8000];
         ::CargoCatList <- [CatLabels.CATEGORY_I, CatLabels.CATEGORY_II, CatLabels.CATEGORY_III, CatLabels.CATEGORY_IV];
         ::CargoPermille <- [60, 10, 25, 40];
-	    ::CargoDecay <- [0.4, 0.1, 0.1, 0.1, 0.1];
+        ::CargoDecay <- [0.4, 0.1, 0.1, 0.1, 0.1];
     }
     else {
         ::CargoMinPopDemand <- [0, 500, 1000, 4000, 8000];
         ::CargoCatList <- [CatLabels.CATEGORY_I, CatLabels.CATEGORY_II, CatLabels.CATEGORY_III, CatLabels.CATEGORY_IV, CatLabels.CATEGORY_V];
         ::CargoPermille <- [60, 10, 25, 40, 60];
-	    ::CargoDecay <- [0.4, 0.1, 0.1, 0.1, 0.1];
+        ::CargoDecay <- [0.4, 0.1, 0.1, 0.1, 0.1];
     }
 }
 
@@ -229,18 +229,18 @@ function GetIndustryHash(industry_cat)
     local hash = 0;
     local index = 0;
     foreach (cat_idx, cat in industry_cat)
-	{
+    {
         local new_cat = 0x01;
-		foreach (ind_idx, ind in cat)
-		{
+        foreach (ind_idx, ind in cat)
+        {
             local industry = (ind << 1 & 0xff) | new_cat; // | industry id 8 bit | new category flag 1 bit |
-			hash = hash | (industry << index);
+            hash = hash | (industry << index);
             index += 9;
             new_cat = 0x00;
-		}
-	}
+        }
+    }
 
-	return hash;
+    return hash;
 }
 
 function GetIndustryTable(hash)

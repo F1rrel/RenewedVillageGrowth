@@ -1,88 +1,88 @@
 
 function GoalTown::TownBoxText(growth_enabled, text_mode, redraw=false)
 {
-	local text_townbox = null;
+    local text_townbox = null;
 
-	// If the function is called with false, town is not growing. Give a help message.
-	local display_cargo = ::SettingsTable.randomization == Randomization.NONE ? false : GSController.GetSetting("display_cargo");
-	if (!growth_enabled || 0 == text_mode) {
-		if (display_cargo) {
-			text_townbox = GSText(GSText["STR_TOWNBOX_CARGO_"+(::CargoCatNum-1)]);
-			foreach (index, category in this.town_cargo_cat) {
-				local cargo_mask = 0;
-				foreach (cargo in category) {
-					cargo_mask += 1 << cargo;
-				}
-				if (index == 0)
-					text_townbox.AddParam(GSText(GSText.STR_TOWNBOX_NOGROWTH, cargo_mask));
-				text_townbox.AddParam(GSText(GSText["STR_CARGOCAT_LABEL_"+::CargoCatList[index]]));
-				text_townbox.AddParam(cargo_mask);
-			}
-		} else {
-			local cargo_mask = 0;
-			foreach (cargo in this.town_cargo_cat[0]) {
-				cargo_mask += 1 << cargo;
-			}
-			text_townbox = GSText(GSText.STR_TOWNBOX_NOGROWTH, cargo_mask);
-		}
-		return text_townbox;
-	}
+    // If the function is called with false, town is not growing. Give a help message.
+    local display_cargo = ::SettingsTable.randomization == Randomization.NONE ? false : GSController.GetSetting("display_cargo");
+    if (!growth_enabled || 0 == text_mode) {
+        if (display_cargo) {
+            text_townbox = GSText(GSText["STR_TOWNBOX_CARGO_"+(::CargoCatNum-1)]);
+            foreach (index, category in this.town_cargo_cat) {
+                local cargo_mask = 0;
+                foreach (cargo in category) {
+                    cargo_mask += 1 << cargo;
+                }
+                if (index == 0)
+                    text_townbox.AddParam(GSText(GSText.STR_TOWNBOX_NOGROWTH, cargo_mask));
+                text_townbox.AddParam(GSText(GSText["STR_CARGOCAT_LABEL_"+::CargoCatList[index]]));
+                text_townbox.AddParam(cargo_mask);
+            }
+        } else {
+            local cargo_mask = 0;
+            foreach (cargo in this.town_cargo_cat[0]) {
+                cargo_mask += 1 << cargo;
+            }
+            text_townbox = GSText(GSText.STR_TOWNBOX_NOGROWTH, cargo_mask);
+        }
+        return text_townbox;
+    }
 
-	switch (text_mode) {
-		case 1: // automatic
-			if (::SettingsTable.randomization == Randomization.NONE) {
-				text_townbox = this.TownTextCategories();
-				break;
-			} else if (::SettingsTable.randomization == Randomization.INDUSTRY_DESC
-					|| ::SettingsTable.randomization == Randomization.INDUSTRY_ASC) {
-				text_townbox = this.TownTextCategoriesCombined(display_cargo);
-				break;
-			}
+    switch (text_mode) {
+        case 1: // automatic
+            if (::SettingsTable.randomization == Randomization.NONE) {
+                text_townbox = this.TownTextCategories();
+                break;
+            } else if (::SettingsTable.randomization == Randomization.INDUSTRY_DESC
+                    || ::SettingsTable.randomization == Randomization.INDUSTRY_ASC) {
+                text_townbox = this.TownTextCategoriesCombined(display_cargo);
+                break;
+            }
 
-			if (!redraw) {
-				this.town_text_scroll = (this.town_text_scroll < 1) ? this.town_text_scroll + 1 : 0;
-			}
-			if (this.town_text_scroll > 0) {
-				text_townbox = this.TownTextCargos(display_cargo);
-			} else {
-				text_townbox = this.TownTextCategories();
-			}
-			break;
-		case 2: // categories
-			text_townbox = this.TownTextCategories();
-			break;
-		case 3: // cargos
-			text_townbox = this.TownTextCargos(display_cargo);
-			break;
-		case 4: // combined
-			text_townbox = this.TownTextCategoriesCombined(display_cargo);
-			break;
-		case 5: // all cargos
-			text_townbox = this.TownTextCargos(true);
-			break;
-	}
+            if (!redraw) {
+                this.town_text_scroll = (this.town_text_scroll < 1) ? this.town_text_scroll + 1 : 0;
+            }
+            if (this.town_text_scroll > 0) {
+                text_townbox = this.TownTextCargos(display_cargo);
+            } else {
+                text_townbox = this.TownTextCategories();
+            }
+            break;
+        case 2: // categories
+            text_townbox = this.TownTextCategories();
+            break;
+        case 3: // cargos
+            text_townbox = this.TownTextCargos(display_cargo);
+            break;
+        case 4: // combined
+            text_townbox = this.TownTextCategoriesCombined(display_cargo);
+            break;
+        case 5: // all cargos
+            text_townbox = this.TownTextCargos(true);
+            break;
+    }
 
-	return text_townbox;
+    return text_townbox;
 }
 
 function GoalTown::TownTextLimiter(text_townbox, category)
 {
-	local str = category ? "CATEGORY" : "CARGO";
+    local str = category ? "CATEGORY" : "CARGO";
 
-	if (this.allowGrowth && this.limit_delay > 0 && this.limit_transported != 0) {
-		text_townbox.AddParam(GSText(GSText["STR_TOWNBOX_" + str + "_DELAYED"], this.limit_transported));
-	}
-	else if (this.allowGrowth && this.limit_transported != 0) {
-		text_townbox.AddParam(GSText(GSText["STR_TOWNBOX_" + str + "_LOW"], this.limit_transported));
-	}
-	else if (!this.allowGrowth) {
-		text_townbox.AddParam(GSText(GSText["STR_TOWNBOX_" + str + "_STOP"], this.limit_transported));
-	}
-	else {
-		text_townbox.AddParam(GSText(GSText["STR_TOWNBOX_" + str], GSText(GSText.STR_EMPTY)));
-	}
+    if (this.allowGrowth && this.limit_delay > 0 && this.limit_transported != 0) {
+        text_townbox.AddParam(GSText(GSText["STR_TOWNBOX_" + str + "_DELAYED"], this.limit_transported));
+    }
+    else if (this.allowGrowth && this.limit_transported != 0) {
+        text_townbox.AddParam(GSText(GSText["STR_TOWNBOX_" + str + "_LOW"], this.limit_transported));
+    }
+    else if (!this.allowGrowth) {
+        text_townbox.AddParam(GSText(GSText["STR_TOWNBOX_" + str + "_STOP"], this.limit_transported));
+    }
+    else {
+        text_townbox.AddParam(GSText(GSText["STR_TOWNBOX_" + str], GSText(GSText.STR_EMPTY)));
+    }
 
-	return text_townbox;
+    return text_townbox;
 }
 
 
@@ -92,159 +92,159 @@ function GoalTown::TownTextLimiter(text_townbox, category)
  */
 function GoalTown::TownTextCategories()
 {
-	local max_cat = 0;
-	while (max_cat < ::CargoCatNum-1) {
-		if (this.town_goals_cat[max_cat + 1] == 0) break;
-		max_cat++;
-	}
+    local max_cat = 0;
+    while (max_cat < ::CargoCatNum-1) {
+        if (this.town_goals_cat[max_cat + 1] == 0) break;
+        max_cat++;
+    }
 
-	local text_townbox = GSText(GSText["STR_TOWNBOX_CATEGORY_" + max_cat]);
-	text_townbox = this.TownTextLimiter(text_townbox, true);
+    local text_townbox = GSText(GSText["STR_TOWNBOX_CATEGORY_" + max_cat]);
+    text_townbox = this.TownTextLimiter(text_townbox, true);
 
-	for (local i = 0; i <= max_cat; i++) {
-		text_townbox.AddParam(GSText(GSText["STR_CARGOCAT_LABEL_" + ::CargoCatList[i]]));
-		text_townbox.AddParam(this.town_supplied_cat[i]);
-		text_townbox.AddParam(this.town_goals_cat[i]);
-	}
-	
-	return text_townbox;
+    for (local i = 0; i <= max_cat; i++) {
+        text_townbox.AddParam(GSText(GSText["STR_CARGOCAT_LABEL_" + ::CargoCatList[i]]));
+        text_townbox.AddParam(this.town_supplied_cat[i]);
+        text_townbox.AddParam(this.town_goals_cat[i]);
+    }
+    
+    return text_townbox;
 }
 
 function GoalTown::TownTextCategoriesCombined(display_all)
 {
-	local max_cat = 0;
-	if (display_all) {
-		max_cat = ::CargoCatNum-1;
-	} else {
-		while (max_cat < ::CargoCatNum-1) {
-			if (this.town_goals_cat[max_cat + 1] == 0) break;
-			max_cat++;
-		}
-	}
+    local max_cat = 0;
+    if (display_all) {
+        max_cat = ::CargoCatNum-1;
+    } else {
+        while (max_cat < ::CargoCatNum-1) {
+            if (this.town_goals_cat[max_cat + 1] == 0) break;
+            max_cat++;
+        }
+    }
 
-	local text_townbox = GSText(GSText["STR_TOWNBOX_COMBINED_" + max_cat]);
-	text_townbox = this.TownTextLimiter(text_townbox, true);
+    local text_townbox = GSText(GSText["STR_TOWNBOX_COMBINED_" + max_cat]);
+    text_townbox = this.TownTextLimiter(text_townbox, true);
 
-	for (local index = 0; index <= max_cat; ++index) {
-		local cargo_mask = 0;
-		foreach (cargo in this.town_cargo_cat[index]) {
-			cargo_mask += 1 << cargo;
-		}
-		text_townbox.AddParam(cargo_mask);
-		text_townbox.AddParam(this.town_supplied_cat[index]);
-		text_townbox.AddParam(this.town_goals_cat[index]);
-	}
+    for (local index = 0; index <= max_cat; ++index) {
+        local cargo_mask = 0;
+        foreach (cargo in this.town_cargo_cat[index]) {
+            cargo_mask += 1 << cargo;
+        }
+        text_townbox.AddParam(cargo_mask);
+        text_townbox.AddParam(this.town_supplied_cat[index]);
+        text_townbox.AddParam(this.town_goals_cat[index]);
+    }
 
-	return text_townbox;
+    return text_townbox;
 }
 
 function GoalTown::TownTextCargos(display_all)
 {
-	local max_cat = 0;
-	if (display_all) {
-		max_cat = ::CargoCatNum-1;
-	} else {
-		while (max_cat < ::CargoCatNum-1) {
-			if (this.town_goals_cat[max_cat+1] == 0) break;
-			max_cat++;
-		}
-	}
+    local max_cat = 0;
+    if (display_all) {
+        max_cat = ::CargoCatNum-1;
+    } else {
+        while (max_cat < ::CargoCatNum-1) {
+            if (this.town_goals_cat[max_cat+1] == 0) break;
+            max_cat++;
+        }
+    }
 
-	local text_townbox = GSText(GSText["STR_TOWNBOX_CARGO_" + max_cat]);
-	text_townbox = this.TownTextLimiter(text_townbox, false);
+    local text_townbox = GSText(GSText["STR_TOWNBOX_CARGO_" + max_cat]);
+    text_townbox = this.TownTextLimiter(text_townbox, false);
 
-	for (local index = 0; index <= max_cat; ++index) {
-		local cargo_mask = 0;
-		foreach (cargo in this.town_cargo_cat[index]) {
-			cargo_mask += 1 << cargo;
-		}
-		text_townbox.AddParam(GSText(GSText["STR_CARGOCAT_LABEL_" + ::CargoCatList[index]]));
-		text_townbox.AddParam(cargo_mask);
-	}
-	
-	return text_townbox;
+    for (local index = 0; index <= max_cat; ++index) {
+        local cargo_mask = 0;
+        foreach (cargo in this.town_cargo_cat[index]) {
+            cargo_mask += 1 << cargo;
+        }
+        text_townbox.AddParam(GSText(GSText["STR_CARGOCAT_LABEL_" + ::CargoCatList[index]]));
+        text_townbox.AddParam(cargo_mask);
+    }
+    
+    return text_townbox;
 }
 
 /* Building the text for towns' signtexts. */
 function GoalTown::TownSignText()
 {
-	local text_townsign = null;
-	if (GSTown.GetGrowthRate(this.id) > 880) {
-		text_townsign = GSText(GSText.STR_TOWNSIGN_NOTGROWING);
-	} else {
-		text_townsign = GSText(GSText.STR_TOWNSIGN_GROWTHRATE, GSTown.GetGrowthRate(this.id));
-	}
-	return text_townsign;
+    local text_townsign = null;
+    if (GSTown.GetGrowthRate(this.id) > 880) {
+        text_townsign = GSText(GSText.STR_TOWNSIGN_NOTGROWING);
+    } else {
+        text_townsign = GSText(GSText.STR_TOWNSIGN_GROWTHRATE, GSTown.GetGrowthRate(this.id));
+    }
+    return text_townsign;
 }
 
 /* Helper function: get a list of currently used cargo labels/ID. */
 function DebugCargoLabels()
 {
-	foreach (index, cargo_label in ::CargoIDList) {
-		Log.Info("Cargo " + index + ": " + cargo_label, Log.LVL_SUB_DECISIONS);
-	}
+    foreach (index, cargo_label in ::CargoIDList) {
+        Log.Info("Cargo " + index + ": " + cargo_label, Log.LVL_SUB_DECISIONS);
+    }
 }
 
 /* Debug function: print supplied cargo. */
 function GoalTown::DebugCargoSupplied(i, supplied)
 {
-	Log.Info(GSTown.GetName(this.id)+": supplied "+GSCargo.GetCargoLabel(i)+"="
-		 +supplied, Log.LVL_DEBUG);
+    Log.Info(GSTown.GetName(this.id)+": supplied "+GSCargo.GetCargoLabel(i)+"="
+         +supplied, Log.LVL_DEBUG);
 }
 
 /* Debug function: print stockpiled/supplied/goal per cargo category. */
 function GoalTown::DebugCargoCatInfo(i)
 {
-	Log.Info(GSTown.GetName(this.id)+": Cat. "+(i+1)
-		 +" - Goal="+this.town_goals_cat[i]
-		 +" Supplied="+this.town_supplied_cat[i]
-		 +" Stockpiled="+this.town_stockpiled_cat[i], Log.LVL_DEBUG);
+    Log.Info(GSTown.GetName(this.id)+": Cat. "+(i+1)
+         +" - Goal="+this.town_goals_cat[i]
+         +" Supplied="+this.town_supplied_cat[i]
+         +" Stockpiled="+this.town_stockpiled_cat[i], Log.LVL_DEBUG);
 }
 
 /* Debug function: print the general goals achievement before calculating the new TGR. */
 function GoalTown::DebugGoalsResult(sum_goals, goal_diff, goal_diff_percent)
 {
-	Log.Info(GSTown.GetName(this.id)+": sum_goals="+sum_goals+" goal_diff="+goal_diff+" goal_diff_percent="
-		 +goal_diff_percent, Log.LVL_DEBUG);
+    Log.Info(GSTown.GetName(this.id)+": sum_goals="+sum_goals+" goal_diff="+goal_diff+" goal_diff_percent="
+         +goal_diff_percent, Log.LVL_DEBUG);
 }
 
 /* Debug function: print the content of the TGR array. */
 function GoalTown::DebugTgrArray()
 {
-	local array_text = " ";
-	foreach (i, val in this.tgr_array) {
-		array_text = array_text+"i"+i+"="+val+" ";
-	}
-	Log.Info(GSTown.GetName(this.id)+": "+array_text+"Average="+this.tgr_average, Log.LVL_DEBUG);
+    local array_text = " ";
+    foreach (i, val in this.tgr_array) {
+        array_text = array_text+"i"+i+"="+val+" ";
+    }
+    Log.Info(GSTown.GetName(this.id)+": "+array_text+"Average="+this.tgr_average, Log.LVL_DEBUG);
 }
 
 function GoalTown::DebugCargoHash(hash)
 {
-	local cargo_text = "";
-	for (local i = 0; i < 64; i++)
-	{
-		if (hash & (1 << i)) {
-			cargo_text += GSCargo.GetCargoLabel(i) + ",";
-		}
-	}
-	Log.Info(GSTown.GetName(this.id) + ": " + cargo_text, Log.LVL_DEBUG);
+    local cargo_text = "";
+    for (local i = 0; i < 64; i++)
+    {
+        if (hash & (1 << i)) {
+            cargo_text += GSCargo.GetCargoLabel(i) + ",";
+        }
+    }
+    Log.Info(GSTown.GetName(this.id) + ": " + cargo_text, Log.LVL_DEBUG);
 }
 
 function GoalTown::DebugCargoTable(cargo_table)
 {
-	local cargo_text = "";
-	foreach (index, cat in cargo_table) {
-		cargo_text += "  " + (index + 1) + ": ";
-		foreach (cargo in cat) {
-			cargo_text += GSCargo.GetCargoLabel(cargo) + ",";
-		}
-	}
-	Log.Info(GSTown.GetName(this.id) + ": " + cargo_text, Log.LVL_SUB_DECISIONS);
+    local cargo_text = "";
+    foreach (index, cat in cargo_table) {
+        cargo_text += "  " + (index + 1) + ": ";
+        foreach (cargo in cat) {
+            cargo_text += GSCargo.GetCargoLabel(cargo) + ",";
+        }
+    }
+    Log.Info(GSTown.GetName(this.id) + ": " + cargo_text, Log.LVL_SUB_DECISIONS);
 }
 
 function DebugIndustryLists()
 {
-	local str = ::industries_raw.len() + " Raw industries: | ";
+    local str = ::industries_raw.len() + " Raw industries: | ";
     foreach (industry in ::industries_raw) {
         str += industry + " " + GSIndustryType.GetName(industry) + " | ";
     }
@@ -277,12 +277,12 @@ function DebugIndustryLists()
 
 function GoalTown::DebugRandomizationIndustry(categories)
 {
-	local str = "";
-	foreach (index, category in categories) {
+    local str = "";
+    foreach (index, category in categories) {
         str += "  " + (index + 1) + ": ";
         foreach (industry in category) {
             str += GSIndustryType.GetName(industry) + ",";
         }
     }
-	Log.Info(GSTown.GetName(this.id) + ": " + str, Log.LVL_SUB_DECISIONS);
+    Log.Info(GSTown.GetName(this.id) + ": " + str, Log.LVL_SUB_DECISIONS);
 }

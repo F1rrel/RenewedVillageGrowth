@@ -15,6 +15,8 @@ enum CatLabels
     CATEGORY_V = 12
 }
 
+enum NumEconomies = 30;
+
 enum Economies
 {
     NONE = 0,
@@ -763,7 +765,7 @@ function DefineCargosBySettings(economy)
  */
 function DiscoverEconomyType() {
     local economy = Economies.NONE;
-    for (local i = 1; i < 30; ++i) {
+    for (local i = 1; i <= NumEconomies; ++i) {
         local economy_cargo_list = GetEconomyCargoList(i, ::CargoIDList);
         if (CompareCargoLists(economy_cargo_list, ::CargoIDList)) {
             return i;
