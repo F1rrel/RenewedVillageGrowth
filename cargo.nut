@@ -763,7 +763,7 @@ function DefineCargosBySettings(economy)
  */
 function DiscoverEconomyType() {
 	local economy = Economies.NONE;
-	for (local i = 1; i < 26; ++i) {
+	for (local i = 1; i < 30; ++i) {
 		local economy_cargo_list = GetEconomyCargoList(i, ::CargoIDList);
 		if (CompareCargoLists(economy_cargo_list, ::CargoIDList)) {
 			return i;
