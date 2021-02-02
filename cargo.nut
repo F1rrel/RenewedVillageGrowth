@@ -505,10 +505,10 @@ function DefineCargosBySettings(economy)
 			case(Economies.FIRS2__TROPIC_BASIC): // FIRS 2 - Tropic Basic
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [3,6,12,13,14,15],
+						  [1,3,6,12,13,14,15],
 						  [8,17,18,19],
 						  [4,9,10,16],
-						  [1,5,7,11]];
+						  [5,7,11]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
