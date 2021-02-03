@@ -361,8 +361,8 @@ function DefineCargosBySettings(economy)
 		case(Economies.BASESET__TEMPERATE): // Base temperate
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [1,3,4,6,7,8],
-						  [5,9,10]];
+				       [1,3,4,6,7,8],
+				       [5,9,10]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.PRODUCTS];
 			::CargoMinPopDemand <- [0,1000,4000];
 			::CargoPermille <- [60,45,25];
@@ -371,8 +371,8 @@ function DefineCargosBySettings(economy)
 		case(Economies.BASESET__ARCTIC): //Base arctic
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [1,3,4,6,7,10],
-						  [5,9,11]];
+				       [1,3,4,6,7,10],
+				       [5,9,11]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.PRODUCTS];
 			::CargoMinPopDemand <- [0,1000,4000];
 			::CargoPermille <- [60,45,25];
@@ -381,8 +381,8 @@ function DefineCargosBySettings(economy)
 		case(Economies.BASESET__TROPICAL): //Base tropical
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-				      	  [1,3,4,6,7,8,9,10],
-						  [5,11]];
+				       [1,3,4,6,7,8,9,10],
+				       [5,11]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.PRODUCTS];
 			::CargoMinPopDemand <- [0,1000,4000];
 			::CargoPermille <- [60,45,25];
@@ -391,8 +391,8 @@ function DefineCargosBySettings(economy)
 		case(Economies.BASESET__TOYLAND): //Base toyland
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [1,4,6,7,8,9,10],
-						  [3,5,11]];
+				       [1,4,6,7,8,9,10],
+				       [3,5,11]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.PRODUCTS];
 			::CargoMinPopDemand <- [0,1000,4000];
 			::CargoPermille <- [60,45,25];
@@ -401,10 +401,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.FIRS1__FIRS_ECONOMY): // FIRS 1.4 - Firs Economy
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [4,6,10,12,13,14],
-						  [1,3,7,8,15,16,17,20,22,26,27,31],
-						  [9,18,19,21,23,24],
-						  [5,11,25,28,29]];
+				       [4,6,10,12,13,14],
+				       [1,3,7,8,15,16,17,20,22,26,27,31],
+				       [9,18,19,21,23,24],
+				       [5,11,25,28,29]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -414,10 +414,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.FIRS1__TEMPERATE_BASIC): // FIRS 1.4 - Temperate Basic
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [4,10,13],
-						  [1,8,16,17,19],
-						  [9,18,20,23,24],
-						  [5,11,29]];
+				       [4,10,13],
+				       [1,8,16,17,19],
+				       [9,18,20,23,24],
+				       [5,11,29]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -427,10 +427,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.FIRS1__ARCTIC_BASIC): // FIRS 1.4 - Arctic Basic
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [4,6,14],
-						  [3,7,8,16],
-						  [13,18,21,23,24],
-						  [5,11,25,29]];
+				       [4,6,14],
+				       [3,7,8,16],
+				       [13,18,21,23,24],
+				       [5,11,25,29]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -440,10 +440,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.FIRS1__TROPIC_BASIC): // FIRS 1.4 - Tropic Basic
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [4,6,10,12,13],
-						  [3,15,17,27],
-						  [18,21,23,24],
-						  [5,11,19]];
+				       [4,6,10,12,13],
+				       [3,15,17,27],
+				       [18,21,23,24],
+				       [5,11,19]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -453,10 +453,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.FIRS1__HEARTH_OF_DARKNESS): // FIRS 1.4 - Hearth of the Darkness
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [6,10,12,13,14],
-						  [1,3,7,8,22,27],
-						  [18,20,21,24],
-						  [5,11,28,29]];
+				       [6,10,12,13,14],
+				       [1,3,7,8,22,27],
+				       [18,20,21,24],
+				       [5,11,28,29]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -544,10 +544,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.YETI): //YETI 0.1.6
 			::CargoLimiter <- [0,2,16,21];
 			::CargoCat <- [[0,2,16,21],
-						  [6,7,18],
-						  [1,3,10,17,19,20],
-						  [12,13,14],
-						  [4,8,15]];
+				       [6,7,18],
+				       [1,3,10,17,19,20],
+				       [12,13,14],
+				       [4,8,15]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -557,10 +557,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.FIRS3__TEMPERATE_BASIC): // FIRS 3 - Temperate Basic
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [9,10,13,14],
-						  [4,6,12,15,16],
-						  [3,7,8,17],
-						  [1,5,11]];
+				       [9,10,13,14],
+				       [4,6,12,15,16],
+				       [3,7,8,17],
+				       [1,5,11]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -570,10 +570,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.FIRS3__ARCTIC_BASIC): // FIRS 3 - Arctic Basic
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [8,11,14],
-						  [1,7,10,17,18],
-						  [3,4,9,13,15,16],
-						  [6,8,12,16]];
+				       [8,11,14],
+				       [1,7,10,17,18],
+				       [3,4,9,13,15,16],
+				       [6,8,12,16]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -583,10 +583,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.FIRS3__TROPIC_BASIC): // FIRS 3 - Tropic Basic
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [1,3,6,12,13,14,15],
-						  [8,16,17,18],
-						  [4,9,10],
-						  [5,7,11]];
+				       [1,3,6,12,13,14,15],
+				       [8,16,17,18],
+				       [4,9,10],
+				       [5,7,11]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -596,10 +596,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.FIRS3__STEELTOWN): // FIRS 3 - Steeltown
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [9,10,11,13,14,19,25],
-						  [12,17,21,22,23],
-						  [3,4,6,7,8,15,16,18,26],
-						  [1,5,24,27,28,29,30]];
+				       [9,10,11,13,14,19,25],
+				       [12,17,21,22,23],
+				       [3,4,6,7,8,15,16,18,26],
+				       [1,5,24,27,28,29,30]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.LOCAL_PRODUCTION,CatLabels.IMPORTED_GOODS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -609,10 +609,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.FIRS3__IN_A_HOT_COUNTRY): // FIRS 3 -In A Hot Coutry
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [4,8,16,17,19,21],
-						  [7,10,12,20,22,24,25,26,27,28],
-						  [6,13,14,15,18,23],
-						  [1,3,5,9,11]];
+				       [4,8,16,17,19,21],
+				       [7,10,12,20,22,24,25,26,27,28],
+				       [6,13,14,15,18,23],
+				       [1,3,5,9,11]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -622,10 +622,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.FIRS3__EXTREME): // FIRS 3 - Extreme
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [12,13,14,16,20,28],
-						  [3,7,8,15,21,23,24,25,26,27,29,30],
-						  [6,9,10,17,18,19],
-						  [1,4,5,11,22]];
+				       [12,13,14,16,20,28],
+				       [3,7,8,15,21,23,24,25,26,27,29,30],
+				       [6,9,10,17,18,19],
+				       [1,4,5,11,22]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -635,10 +635,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.NAIS__NORTH_AMERICA): // NAIS 1.0.6 - North America
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [10,12,15,17,21,25],
-						  [1,6,7,8,16,22,23,26,27,28,29,30,31],
-						  [4,9,13,14,18,20,24],
-						  [3,5,11,19]];
+				       [10,12,15,17,21,25],
+				       [1,6,7,8,16,22,23,26,27,28,29,30,31],
+				       [4,9,13,14,18,20,24],
+				       [3,5,11,19]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -648,8 +648,8 @@ function DefineCargosBySettings(economy)
 		case(Economies.ITI): // Improved Town Industries 1.6
 			::CargoLimiter <- [0,2,11];
 			::CargoCat <- [[0,2,11],
-						  [1,3,7,8,12,13],
-						  [4,5,6,9,10,14,15]];
+				       [1,3,7,8,12,13],
+				       [4,5,6,9,10,14,15]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.PRODUCTS];
 			::CargoMinPopDemand <- [0,1000,4000];
 			::CargoPermille <- [60,45,25];
@@ -658,10 +658,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.FIRS4__TEMPERATE_BASIC): // FIRS 4 alpha: Temperate Basic
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [8,9,13,14],
-						  [4,10,12,15,16],
-						  [3,6,7,17],
-						  [1,5,11]];
+					   [8,9,13,14],
+					   [4,10,12,15,16],
+				       [3,6,7,17],
+				       [1,5,11]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -671,10 +671,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.FIRS4__ARCTIC_BASIC): // FIRS 4 alpha: Arctic Basic
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [1,7,11,14],
-						  [8,12,13,15,17],
-						  [3,5,9,16],
-						  [4,6,10,18]];
+					   [1,7,11,14],
+					   [8,12,13,15,17],
+				       [3,5,9,16],
+				       [4,6,10,18]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -684,10 +684,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.FIRS4__TROPIC_BASIC): // FIRS 4 alpha: Tropic Basic
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [1,3,6,12,13,14,15],
-						  [8,16,17,18],
-						  [4,9,10],
-						  [5,7,11]];
+				       [1,3,6,12,13,14,15],
+				       [8,16,17,18],
+				       [4,9,10],
+				       [5,7,11]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -697,10 +697,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.FIRS4__STEELTOWN): // FIRS 4 alpha: Steeltown
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [11,13,21,22,25,32,33,34,36,47],
-						  [4,12,16,19,24,26,29,31,46],
-						  [1,3,6,7,8,10,14,15,17,18,20,23,27,30,35,37,29,40,41],
-						  [5,9,28,28,42,43,44,45]];
+					   [11,13,21,22,25,32,33,34,36,47],
+					   [4,12,16,19,24,26,29,31,46],
+				       [1,3,6,7,8,10,14,15,17,18,20,23,27,30,35,37,29,40,41],
+				       [5,9,28,28,42,43,44,45]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.LOCAL_PRODUCTION,CatLabels.IMPORTED_GOODS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -710,10 +710,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.FIRS4__IN_A_HOT_COUNTRY): // FIRS 3 -In A Hot Coutry
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [4,8,16,17,19,21],
-						  [7,10,12,20,22,24,25,26,27,28],
-						  [6,13,14,15,18,23],
-						  [1,3,5,9,11]];
+				       [4,8,16,17,19,21],
+				       [7,10,12,20,22,24,25,26,27,28],
+				       [6,13,14,15,18,23],
+				       [1,3,5,9,11]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -723,10 +723,10 @@ function DefineCargosBySettings(economy)
 		case(Economies.XIS__THE_LOT): // XIS 0.6: The Lot
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
-						  [6,23,24,25,29,33,38,43,48,54],
-						  [12,13,16,26,27,28,31,34,35,40,44,46,47,49,50,59,60],
-						  [1,4,8,9,10,14,15,19,21,30,32,37,41,45,51,52,53,55,61],
-						  [3,5,7,11,17,18,20,22,36,39,42,56,57,58]];
+				       [6,23,24,25,29,33,38,43,48,54],
+				       [12,13,16,26,27,28,31,34,35,40,44,46,47,49,50,59,60],
+				       [1,4,8,9,10,14,15,19,21,30,32,37,41,45,51,52,53,55,61],
+				       [3,5,7,11,17,18,20,22,36,39,42,56,57,58]];
 			::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
 					   CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
 			::CargoMinPopDemand <- [0,500,1000,4000,8000];
