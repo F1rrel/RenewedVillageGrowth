@@ -47,12 +47,12 @@ enum Economies
 	FIRS4__TROPIC_BASIC = 27, // 4.0.0 beta 4
 	FIRS4__STEELTOWN = 28, // 4.0.0 beta 4
 	FIRS4__IN_A_HOT_COUNTRY = 29, // 4.0.0 beta 4
-	XIS__THE_LOT = 30 // 0.6
-	SPI__FULL = 31 // 1.32c
-	SPI__REDUCED = 32 // 1.32c
-	SPI__WOOD = 33 // 1.32c
-	SPI__METAL = 34 // 1.32c
-	SPI__FARM = 35 // 1.32c
+	XIS__THE_LOT = 30, // 0.6
+	SPI__FULL = 31, // 1.32c
+	SPI__REDUCED = 32, // 1.32c
+	SPI__WOOD = 33, // 1.32c
+	SPI__METAL = 34, // 1.32c
+	SPI__FARM = 35, // 1.32c
 }
 
 /* Cargolist of supported industry set's cargos. Used to check if
@@ -202,7 +202,7 @@ function GetEconomyCargoList(economy, cargo_list) {
 				"PHOS","IRON","PIPE","FICR","PORE","QLME","RCYC","RUBR","SALT","SAND",
 				"SCMT","SLAG","SASH","STEL","SGBT","SULP","VBOD","VPTS","VEHI","WOOD",
 				"WOOL","ZINC"];
-	/* SPI - Stockpiled Industries 1.32c*/
+	/* SPI - Stockpiled Industries 1.32c */
 	case(Economies.SPI__FULL): // The full SPI set
 		return ["PASS","BEER","MAIL","AORE","BDMT","RFPR","CLAY","COAL","ENSP","FMSP",
 				"FISH","FOOD","FRUT","GOOD","GRAI","IORE","LVST","WDPR","MNSP","STEL",
