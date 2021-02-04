@@ -2,3 +2,4 @@
 *.tar
 slnx.sqlite
 .suo
+/.vs/VSWorkspaceState.json
