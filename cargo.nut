@@ -203,21 +203,21 @@ function GetEconomyCargoList(economy, cargo_list) {
 				"SCMT","SLAG","SASH","STEL","SGBT","SULP","VBOD","VPTS","VEHI","WOOD",
 				"WOOL","ZINC"];
 	/* SPI - Stockpiled Industries 1.32c*/
-	case(Economies.SPI__FULL) // The full SPI set
+	case(Economies.SPI__FULL): // The full SPI set
 		return ["PASS","BEER","MAIL","AORE","BDMT","RFPR","CLAY","COAL","ENSP","FMSP",
 				"FISH","FOOD","FRUT","GOOD","GRAI","IORE","LVST","WDPR","MNSP","STEL",
 				"MILK","OIL_","FICR","RCYC","PAPR","SAND","SCMT","GRVL","WOOD","TXTL"];
-	case(Economies.SPI__REDUCED) // Reduced SPI set with fewer cargos and industries
+	case(Economies.SPI__REDUCED): // Reduced SPI set with fewer cargos and industries
 		return ["PASS","BEER","MAIL","BDMT","RFPR","CLAY","COAL","ENSP","FMSP","FOOD",
 				"FRUT","GOOD","GRAI","IORE","LVST","MNSP","STEL","OIL_","FICR","PAPR",
 				"SAND","SCMT","WOOD","TXTL"];
-	case(Economies.SPI__WOOD) // A mini SPI set based around wood and paper
+	case(Economies.SPI__WOOD): // A mini SPI set based around wood and paper
 		return ["PASS","MAIL","RFPR","CLAY","ENSP","FMSP","FOOD","GOOD","GRAI","MNSP",
 				"OIL_","PAPR","WOOD"];
-	case(Economies.SPI__METAL) // A mini SPI set based around metal
+	case(Economies.SPI__METAL): // A mini SPI set based around metal
 		return ["PASS","MAIL","COAL","ENSP","FMSP","FOOD","GOOD","GRAI","IORE","MNSP",
 				"STEL","SCMT"];
-	case(Economies.SPI__FARM) // A mini SPI set based around farms
+	case(Economies.SPI__FARM): // A mini SPI set based around farms
 		return ["PASS","BEER","MAIL","FMSP","FOOD","FRUT","GOOD","GRAI","LVST","MNSP",
 				"MILK","FICR","TXTL"];
 	default:
@@ -757,7 +757,7 @@ function DefineCargosBySettings(economy)
 			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(Economies.SPI_FULL): // SPI - The full set
+		case(Economies.SPI__FULL): // SPI - The full set
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				    	   [10,12,13,15,19],
@@ -770,7 +770,7 @@ function DefineCargosBySettings(economy)
 			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(Economies.SPI_REDUCED): // SPI - The reduced set
+		case(Economies.SPI__REDUCED): // SPI - The reduced set
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 					       [10,12,14],
@@ -783,7 +783,7 @@ function DefineCargosBySettings(economy)
 			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(Economies.SPI_WOOD): // SPI - The wood set
+		case(Economies.SPI__WOOD): // SPI - The wood set
 			::CargoLimiter <- [0,1];
 			::CargoCat <- [[0,1],
 					       [7],
@@ -796,7 +796,7 @@ function DefineCargosBySettings(economy)
 			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(Economies.SPI_METAL): // SPI - The metal set
+		case(Economies.SPI__METAL): // SPI - The metal set
 			::CargoLimiter <- [0,1];
 			::CargoCat <- [[0,1],
 				    	   [6],
@@ -809,7 +809,7 @@ function DefineCargosBySettings(economy)
 			::CargoPermille <- [60,25,25,15,10];
 			::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
 			break;
-		case(Economies.SPI_FARM): // SPI - The farm set
+		case(Economies.SPI__FARM): // SPI - The farm set
 			::CargoLimiter <- [0,2];
 			::CargoCat <- [[0,2],
 				    	   [5,7,8,10],
