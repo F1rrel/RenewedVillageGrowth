@@ -135,12 +135,12 @@ Normal settings:
 - "Town info display mode": changes the mode of displaying town 
   information 
     - Automatic - switches between pages at 3s interval 
-	(higher town count can increase this interval)
-	- Category deliveries - displays passangers/mails transported / 
-	required and cargo categories required / supplied / stockpiled
-	- Cargo list - displays accepted cargo per category
-  - Combined - displays cargo categories and accepted cargo per category
-  - Full cargo list - displays all categories of accepted cargo
+    (higher town count can increase this interval)
+    - Category deliveries - displays passangers/mails transported / 
+    required and cargo categories required / supplied / stockpiled
+    - Cargo list - displays accepted cargo per category
+    - Combined - displays cargo categories and accepted cargo per category
+    - Full cargo list - displays all categories of accepted cargo
 - "Which industry set is being used?": this is necessary to determine
   what cargotypes are used by the game and build categories.
 - "Difficulty level": a general factor for calculating cargo
@@ -166,9 +166,9 @@ Normal settings:
 Randomization settings:
 - "Randomization: Type": all towns will have randomly selected
   cargos per category based on selection
-  - None - no randomization, all cargos per category are accepted
-  - 1,2,3 per category - fixed amount of cargos per category
-  - 1-2, 1-3, 2-3 - minimum to maximum amount of cargos per category
+    - None - no randomization, all cargos per category are accepted
+    - 1,2,3 per category - fixed amount of cargos per category
+    - 1-2, 1-3, 2-3 - minimum to maximum amount of cargos per category
 - "Randomization: Show town cargos from start": if selected, all randomized
   cargos can be visible for each town, otherwise only reached
   categories are displayed

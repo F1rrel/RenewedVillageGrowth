@@ -83,7 +83,7 @@ function Company::MonthlyUpdateGUIGoals(towns)
         }
 
         local max_cat = 0;
-	    while (max_cat < ::CargoCatNum-1) {
+        while (max_cat < ::CargoCatNum-1) {
             if (town.town_goals_cat[max_cat + 1] == 0) break;
             max_cat++;
         }
