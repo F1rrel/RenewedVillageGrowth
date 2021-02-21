@@ -788,13 +788,17 @@ function InitCargoLists()
 {
 	::CargoIDList <- [];
 	for(local i = 0; i < 64; ++i) {
-		::CargoIDList.append(GSCargo.GetCargoLabel(i));
+		if (GSCargo.GetCargoLabel(i) == "LVPT") // CZTR ZBARVENI
+			::CargoIDList.append(null);
+		else
+			::CargoIDList.append(GSCargo.GetCargoLabel(i));
 	}
 
 	DebugCargoLabels();       	// Debug info: print cargo labels
 
 	local economy = DiscoverEconomyType(); 	// Get economy type based on cargo list
 	DefineCargosBySettings(economy); 		// Define cargo data accordingly to industry set
+	Log.Info("Economy: " + (economy == Economies.NONE ? "generated" : ("predefined " + economy)), Log.LVL_INFO);
 
 	// Initializing some useful and often used variables
 	::CargoCatNum <- ::CargoCat.len();
