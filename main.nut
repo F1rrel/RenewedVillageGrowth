@@ -2,6 +2,7 @@ require("version.nut");
 require("cargo.nut");
 require("industry.nut");
 require("town.nut");
+require("company.nut");
 require("story.nut");
 require("strings.nut");
 
@@ -32,6 +33,7 @@ enum Randomization {
 
 class MainClass extends GSController
 {
+	companies = null;
 	towns = null;
 	current_date = null;
 	current_week = null;
@@ -44,6 +46,7 @@ class MainClass extends GSController
 	toy_lib = null;
 
 	constructor() {
+		this.companies = [];
 		this.towns = null;
 		this.current_date = 0;
 		this.current_week = 0;
@@ -55,6 +58,7 @@ class MainClass extends GSController
 		this.actual_town_info_mode = 0;
 		this.toy_lib = null;
 		::TownDataTable <- {};
+		::CompanyDataTable <- {};
 		::SettingsTable <- {};
 	}
 }
@@ -139,6 +143,7 @@ function MainClass::Init()
 	if (!this.load_saved_data) { // Disallow changing these in a running game
 		::SettingsTable.use_town_sign <- GSController.GetSetting("use_town_sign");
 		::SettingsTable.randomization <- GSController.GetSetting("cargo_randomization");
+		::SettingsTable.display_cargo <- GSController.GetSetting("display_cargo");
 	}
 
 	// Set current date
@@ -159,12 +164,16 @@ function MainClass::Init()
 	/* Check whether saved data are in the current save
 	 * format.
 	 */
-	if (!load_saved_data) {
+	if (!this.load_saved_data) {
 		Helper.ClearAllSigns();
 	}
 
+	// Create company list
+	Log.Info("Creating company list ...", Log.LVL_INFO);
+	this.companies = this.CreateCompanyList();
+
 	// Create the towns list
-	Log.Info("Create town list ... (can take a while on large maps)", Log.LVL_INFO);
+	Log.Info("Creating town list ... (can take a while on large maps)", Log.LVL_INFO);
 	this.towns = this.CreateTownList();
 	if (this.towns.len() > SELF_MAX_TOWNS)
 		return;
@@ -175,9 +184,6 @@ function MainClass::Init()
 
 	// Ending initialization
 	this.gs_init_done = true;
-
-	// Now we can free ::TownDataTable
-	::TownDataTable = null;
 }
 
 function MainClass::HandleEvents()
@@ -185,12 +191,22 @@ function MainClass::HandleEvents()
 	while (GSEventController.IsEventWaiting()) {
 		local event = GSEventController.GetNextEvent();
 
+		if (event == null)
+			return;
+
 		switch (event.GetEventType()) {
 		// On town founding, add a new GoalTown instance
 		case GSEvent.ET_TOWN_FOUNDED:
 			event = GSEventTownFounded.Convert(event);
 			local town_id = event.GetTownID();
 			if (GSTown.IsValidTown(town_id)) this.UpdateTownList(town_id);
+			break;
+		
+		case GSEvent.ET_COMPANY_NEW:
+		case GSEvent.ET_COMPANY_BANKRUPT:
+		case GSEvent.ET_COMPANY_MERGER:
+			Log.Info("A company was created/bankrupt/merged => update company list", Log.LVL_INFO);
+			this.UpdateCompanyList();
 			break;
 
 		default: break;
@@ -206,21 +222,28 @@ function MainClass::Save()
 	// Save permanent settings (allows changing them in scenario editor)
 	save_table.use_town_sign <- ::SettingsTable.use_town_sign;
 	save_table.randomization <- ::SettingsTable.randomization;
+	save_table.display_cargo <- ::SettingsTable.display_cargo;
 
 	/* If the script isn't yet initialized, we can't retrieve data
 	 * from GoalTown instances. Thus, simply use the original
 	 * loaded table. Otherwise we build the table with town data.
 	 */
+	save_table.company_data_table <- {};
 	save_table.town_data_table <- {};
 	if (!this.gs_init_done) {
 		save_table.town_data_table <- ::TownDataTable;
 	} else {
+		foreach (company in this.companies)
+		{
+			save_table.company_data_table[company.id] <- company.SavingCompanyData();
+		}
+
 		local start_opcodes = GSController.GetOpsTillSuspend();
 		foreach (i, town in this.towns)
 		{
 			save_table.town_data_table[town.id] <- town.SavingTownData();
 		}
-		Log.Info("Opcodes per saved town = " + ((start_opcodes - GSController.GetOpsTillSuspend()) / this.towns.len()), Log.LVL_DEBUG);
+		Log.Info("Ocodes per saved town = " + ((start_opcodes - GSController.GetOpsTillSuspend()) / this.towns.len()), Log.LVL_DEBUG);
 		// Also store a savegame version flag
 		save_table.save_version <- this.current_save_version;
 	}
@@ -236,6 +259,12 @@ function MainClass::Load(version, saved_data)
 		this.load_saved_data = true;
 		::SettingsTable.use_town_sign <- saved_data.use_town_sign;
 		::SettingsTable.randomization <- saved_data.randomization;
+		::SettingsTable.display_cargo <- saved_data.display_cargo;
+		
+		foreach (companyid, company_data in saved_data.company_data_table) {
+			::CompanyDataTable[companyid] <- company_data;
+		}
+
 		foreach (townid, town_data in saved_data.town_data_table) {
 			::TownDataTable[townid] <- town_data;
 		}
@@ -243,6 +272,58 @@ function MainClass::Load(version, saved_data)
 	else {
 		Log.Info("Data format doesn't match with current version. Resetting.", Log.LVL_INFO);
 	}
+}
+
+function MainClass::UpdateCompanyList()
+{
+	for(local c = GSCompany.COMPANY_FIRST; c <= GSCompany.COMPANY_LAST; c++)
+	{
+		local existing = null;
+		local existing_idx = 0;
+		foreach(index, company in this.companies)
+		{
+			if(company.id == c)
+			{
+				existing = company;
+				existing_idx = index;
+				break;
+			}
+		}
+
+		if(GSCompany.ResolveCompanyID(c) == GSCompany.COMPANY_INVALID)
+		{
+			if(existing != null)
+				this.companies.remove(existing_idx);
+
+			continue;
+		}
+
+		// If the company can be resolved and exists => do anything
+		if(existing != null) continue;
+
+		// Initialize new company
+		this.companies.append(Company(c, false));
+	}
+}
+
+function MainClass::CreateCompanyList()
+{
+	this.companies = [];
+
+	if (this.load_saved_data && ::CompanyDataTable != null) {
+		foreach (company_id, company_data in ::CompanyDataTable)
+		{
+			this.companies.append(Company(company_id, true));
+		}
+	}
+
+	// Now we can free ::CompanyDataTable
+	::CompanyDataTable = null;
+
+	// Update company list for created/bankrupted/merged
+	this.UpdateCompanyList();
+
+	return companies;
 }
 
 /* Make a squirrel array of GoalTown instances (towns_array). For each
@@ -259,6 +340,9 @@ function MainClass::CreateTownList()
 		towns_array.append(GoalTown(t, this.load_saved_data, min_transport));
 	}
 
+	// Now we can free ::TownDataTable
+	::TownDataTable = null;
+
 	return towns_array;
 }
 
@@ -273,6 +357,25 @@ function MainClass::UpdateTownList(town_id)
 	Log.Info("New town founded: "+GSTown.GetName(town_id)+" (id: "+town_id+")", Log.LVL_DEBUG);
 }
 
+function MainClass::DailyManageTownPopulation()
+{
+	foreach (town in this.towns) {
+		local new_population = GSTown.GetPopulation(town.id);
+		if (new_population > town.max_population) {
+			foreach (company in companies) {
+				if (company.id == town.contributor) {
+					company.AddPoints(new_population - town.max_population);
+					Log.Info(GSTown.GetName(town.id) 
+							 + " increased population by " + (new_population - town.max_population) 
+							 + " which was added to " + GSCompany.GetName(company.id), Log.LVL_DEBUG);
+				}
+			}
+			
+			town.max_population = new_population;
+		}
+	}
+}
+
 /* Function called periodically (each 74 ticks) to manage
  * towns and other stuff.
  */
@@ -285,6 +388,8 @@ function MainClass::ManageTowns()
 		return;
 	} else {
 		GSToyLib.Check();
+		DailyManageTownPopulation();
+
 		this.current_date = date;
 	}
 
@@ -324,6 +429,10 @@ function MainClass::ManageTowns()
 				town.EternalLove(eternal_love_rating);
 			}
 		}
+
+		foreach (company in this.companies) {
+			company.MonthlyUpdateGUIGoals(this.towns);
+		}
 		
 		this.current_month = month;
 		local month_tick_duration = GSController.GetTick() - month_tick;
@@ -337,10 +446,10 @@ function MainClass::ManageTowns()
 		return;
 	else
 	{
-		GSLog.Info("Starting Yearly Updates");
+		Log.Info("Starting Yearly Updates...", Log.LVL_INFO);
 
 		ProspectRawIndustry();
 
-		this.current_year = year
+		this.current_year = year;
 	}
 }

@@ -60,7 +60,7 @@ function InitIndustryLists()
         ::CargoMinPopDemand <- [0, 1000, 4000, 8000];
         ::CargoCatList <- [CatLabels.CATEGORY_I, CatLabels.CATEGORY_II, CatLabels.CATEGORY_III, CatLabels.CATEGORY_IV];
         ::CargoPermille <- [60, 10, 25, 40];
-	    ::CargoDecay <- [0.4, 0.1, 0.1, 0.1, 0.1];
+	    ::CargoDecay <- [0.4, 0.1, 0.1, 0.1];
     }
     else {
         ::CargoMinPopDemand <- [0, 500, 1000, 4000, 8000];

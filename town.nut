@@ -6,6 +6,8 @@ class GoalTown
 {
 	id = null;                  // Town id
 	sign_id = null;             // Id for extra text under town name
+	contributor = null;			// company that contributed most to the growth of this town in the last month
+	max_population = null;		// maximum achieved population of this town
 	is_monitored = null;        // Whether the town is already under monitoring. True if town exchanges pax.
 	last_delivery = null;       // Date of last delivery from or to the town for monitoring
 	town_cargo_cat = null;		// List selected cargos per category
@@ -33,6 +35,8 @@ class GoalTown
 		 */
 		if (!load_town_data) {
 			this.sign_id = -1;
+			this.contributor = -1;
+			this.max_population = GSTown.GetPopulation(this.id);
 			this.is_monitored = false;
 			this.allowGrowth = false;
 			this.last_delivery = null;
@@ -48,6 +52,8 @@ class GoalTown
 			GSTown.SetText(this.id, TownBoxText(false, 0));
 		} else {
 			this.sign_id = ::TownDataTable[this.id].sign_id;
+			this.contributor = ::TownDataTable[this.id].contributor;
+			this.max_population = ::TownDataTable[this.id].max_population;
 			this.is_monitored = ::TownDataTable[this.id].is_monitored;
 			this.allowGrowth = ::TownDataTable[this.id].allowGrowth;
 			this.last_delivery = ::TownDataTable[this.id].last_delivery;
@@ -103,6 +109,8 @@ function GoalTown::SavingTownData()
 	 */
 	local town_data = {};
 	town_data.sign_id <- this.sign_id;
+	town_data.contributor <- this.contributor;
+	town_data.max_population <- this.max_population;
 	town_data.is_monitored <- this.is_monitored;
 	town_data.allowGrowth <- this.allowGrowth;
 	town_data.last_delivery <- this.last_delivery;
@@ -153,19 +161,29 @@ function GoalTown::MonthlyManageTown()
 	// Checking whether we should enable or disable town monitoring
 	if (!this.CheckMonitoring(this.is_monitored)) return;
 
-	// Checking cargo delivery
+	// Calculate supplied cargo
+	local companies_supplied = {};
 	foreach (index, category in this.town_cargo_cat) {
-		foreach (cargo in category) {
-			for (local cid = GSCompany.COMPANY_FIRST; cid <= GSCompany.COMPANY_LAST; cid++) {
-				if (GSCompany.ResolveCompanyID(cid) != GSCompany.COMPANY_INVALID) {
-					local cargo_supplied = GSCargoMonitor.GetTownDeliveryAmount(cid, cargo, this.id, true);
-					if (cargo_supplied > 0) 
-						this.DebugCargoSupplied(cargo, cargo_supplied);
-					else if (cargo_supplied < 0)
-						cargo_supplied = 0;
-					this.town_supplied_cat[index] += cargo_supplied;
-				}
+		for (local cid = GSCompany.COMPANY_FIRST; cid <= GSCompany.COMPANY_LAST; cid++) {
+			if (GSCompany.ResolveCompanyID(cid) == GSCompany.COMPANY_INVALID)
+				continue;
+
+			if (!companies_supplied.rawin(cid))
+				companies_supplied[cid] <- [];
+			
+			local category_supplied = 0;
+			foreach (cargo in category) {
+				local cargo_supplied = GSCargoMonitor.GetTownDeliveryAmount(cid, cargo, this.id, true);
+				category_supplied += cargo_supplied < 0 ? 0 : cargo_supplied;
+				if (cargo_supplied > 0) 
+					this.DebugCargoSupplied(cargo, cargo_supplied);
 			}
+
+			if (category_supplied > 0) 
+				this.DebugCompanyCategorySupplied(cid, index, category_supplied);
+			
+			this.town_supplied_cat[index] += category_supplied;
+			companies_supplied[cid].append(category_supplied);
 		}
 	}
 
@@ -249,7 +267,44 @@ function GoalTown::MonthlyManageTown()
 	} else {
 		GSTown.SetGrowthRate(this.id, GSTown.TOWN_GROWTH_NONE);
 	}
-	
+
+	// Find the biggest contributor
+	local max_contrib = 0.0;
+	local total_contrib = 0.0;
+	local company_id = -1;
+	foreach (id, category in companies_supplied) {
+		local contribution = 0;
+		foreach (index, supplied in category) {
+			if (this.town_goals_cat[index] == 0)
+				continue;
+
+			// each category is normalized to 0.0-1.0 range and summed up to have equal weight
+			contribution += supplied > this.town_goals_cat[index] ? 1.0 : supplied.tofloat() / this.town_goals_cat[index];
+		}
+
+		// when equal, decide based on total supplied
+		if (contribution == max_contrib && company_id >=0) {
+			local total = 0;
+			foreach (supplied in category) {
+				total += supplied;
+			}
+			if (total > total_contrib) {
+				max_contrib = contribution;
+				total_contrib = total;
+				company_id = id;
+			}
+		}
+		else if (contribution > max_contrib) {
+			max_contrib = contribution;
+			total_contrib = 0;
+			foreach (supplied in category) {
+				total_contrib += supplied;
+			}
+			company_id = id;
+		}
+	}
+	this.contributor = company_id;
+
 	this.UpdateSignText();
 	GSTown.SetText(this.id, this.TownBoxText(true, GSController.GetSetting("town_info_mode"), true));
 }
@@ -372,7 +427,7 @@ function GoalTown::EternalLove(rating)
 			|| cur_rating_class == GSTown.TOWN_RATING_OUTSTANDING)
 			continue;
 		local cur_rating = GSTown.GetDetailedRating(this.id, c);
-		Log.Info("Current/required rating of towns: " + cur_rating + " / " + rating, Log.LVL_DEBUG);
+		Log.Info("Current/required rating of " + GSTown.GetName(this.id) + ": " + cur_rating + " / " + rating, Log.LVL_DEBUG);
 		if (cur_rating < rating)
 			GSTown.ChangeRating(this.id, c, rating - cur_rating);
 	}
