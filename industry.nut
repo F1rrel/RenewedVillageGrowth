@@ -84,9 +84,16 @@ function RandomizeIndustry(ascending)
 
     // 2. Category
     {
-        local rand = GSBase.RandRange(list_1.len());
-        categories.append([list_1[rand]]);
-        list_1.remove(rand);
+        if (list_1.len() == 0) {
+            local rand = GSBase.RandRange(list_raw.len());
+            categories.append([list_raw[rand]]);
+            list_raw.remove(rand);
+        }
+        else {
+            local rand = GSBase.RandRange(list_1.len());
+            categories.append([list_1[rand]]);
+            list_1.remove(rand);
+        }
     }
 
     // 3. Category
