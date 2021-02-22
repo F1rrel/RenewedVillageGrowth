@@ -1,6 +1,6 @@
 # Renewed Village Growth (RVG)
 
-![Renewed Village Growth](https://i.imgur.com/sWsgrno.gif)
+![Renewed Village Growth](https://i.imgur.com/37J9Kn4.png)
 
 RVG is a Game Script for OpenTTD that manages towns growth in a new and balanced way, making growth depend on varied cargo delivery (passengers, food, goods, ...) and sustained transportation of passangers and mails. The script supports all NewGRF industry replacement sets. It is born as a combination of [keoz's Renewed City Growth GS](https://www.tt-forums.net/viewtopic.php?f=65&t=69827) and [Sylf's City Growth Limiter GS](https://www.tt-forums.net/viewtopic.php?t=58238).
 
