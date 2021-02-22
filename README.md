@@ -10,7 +10,7 @@ BaNaNaS: https://bananas.openttd.org/package/game-script/52455649
 ## Requirements
 
 - OpenTTD, v. 1.10.x or newer.
-- GS SuperLib, v. 40 (you can find it on BaNaNaS, also accessible
+- GS SuperLib v. 40, ToyLib v. 1, Script Communication for GS v. 45 (you can find it on BaNaNaS, also accessible
   through OTTD's "Online Content").
 - Industry sets: you can use any industry NewGRF
     - these are specifically supported industry NewGRF: Baseset (all climates), FIRS 1.4, 2, 3, 4
@@ -22,6 +22,8 @@ BaNaNaS: https://bananas.openttd.org/package/game-script/52455649
 Currently available languages:
 - English
 - French (rmnvgr)
+
+If you want to contribute to a translation, you can do it by modifying a file [lang.txt](lang.txt) and posting it to the forum topic or creating a new issue with this file included.
 
 ## License
 
