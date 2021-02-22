@@ -794,10 +794,10 @@ function InitCargoLists()
             ::CargoIDList.append(GSCargo.GetCargoLabel(i));
     }
 
-    DebugCargoLabels();       	// Debug info: print cargo labels
+    DebugCargoLabels();         // Debug info: print cargo labels
 
-    local economy = DiscoverEconomyType(); 	// Get economy type based on cargo list
-    DefineCargosBySettings(economy); 		// Define cargo data accordingly to industry set
+    local economy = DiscoverEconomyType();  // Get economy type based on cargo list
+    DefineCargosBySettings(economy);        // Define cargo data accordingly to industry set
     Log.Info("Economy: " + (economy == Economies.NONE ? "generated" : ("predefined " + economy)), Log.LVL_INFO);
 
     // Initializing some useful and often used variables
