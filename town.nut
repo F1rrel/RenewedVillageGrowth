@@ -6,12 +6,12 @@ class GoalTown
 {
     id = null;                  // Town id
     sign_id = null;             // Id for extra text under town name
-    contributor = null;			// company that contributed most to the growth of this town in the last month
-    max_population = null;		// maximum achieved population of this town
+    contributor = null;         // company that contributed most to the growth of this town in the last month
+    max_population = null;      // maximum achieved population of this town
     is_monitored = null;        // Whether the town is already under monitoring. True if town exchanges pax.
     last_delivery = null;       // Date of last delivery from or to the town for monitoring
-    town_cargo_cat = null;		// List selected cargos per category
-    cargo_hash = null;			// Hash created from town_cargo_cat
+    town_cargo_cat = null;      // List selected cargos per category
+    cargo_hash = null;          // Hash created from town_cargo_cat
     town_goals_cat = null;      // Town goals per cargo category
     town_supplied_cat = null;   // Last monthly supply per cargo category (for categories: see InitCargoLists())
     town_stockpiled_cat = null; // Stockpiled cargos per cargo category
@@ -19,10 +19,10 @@ class GoalTown
     tgr_array_len = null;       // Town growth rate array lenght
     tgr_average = null;         // Town growth rate average, calculated from the array
     // Limit towns
-    limit_transported = null;	// Mask of cargos that were under the limiting value
-    limit_delay = null;			// Increments for each limiter false condition until "limiter_delay" setting
-    allowGrowth = null;			// limits growth requirement fulfilled
-    town_text_scroll = null;	// scroll town text when more than 3 categories are to be displayed
+    limit_transported = null;   // Mask of cargos that were under the limiting value
+    limit_delay = null;         // Increments for each limiter false condition until "limiter_delay" setting
+    allowGrowth = null;         // limits growth requirement fulfilled
+    town_text_scroll = null;    // scroll town text when more than 3 categories are to be displayed
 
     constructor(town_id, load_town_data, min_transported) {
         this.id = town_id;
@@ -133,7 +133,7 @@ function GoalTown::MonthlyManageTown()
     local goal_diff = 0;
     local goal_diff_percent = 0.0;
     local cur_pop = GSTown.GetPopulation(this.id);
-    local parsed_cat = 0;	// index of parsed category
+    local parsed_cat = 0;   // index of parsed category
     local new_town_growth_rate = null;
     // Defining difficulty and calculation factors
     local d_factor = GSController.GetSetting("goal_scale_factor") / 100.0;
