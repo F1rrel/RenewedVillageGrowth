@@ -3,7 +3,7 @@
                 *  A GameScript for OpenTTD  *
                 ******************************
 
-Version: 5.0
+Version: 6.0
 
 Usefull URL's:
 - forum topic: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
@@ -24,8 +24,7 @@ Renewed Village Growth (RVG) is a game script which changes the way towns
 grow in OTTD. Various cargo requirements and passanger/mail percentage 
 transported are defined - monthly - for each town. Towns only grow 
 if those requirements are - partially or completely - satisfied. RVG 
-supports several industry sets: Baseset, FIRS 1.4, FIRS 3, FIRS 4 alpha, 
-ECS 1.2, YETI 0.1.6, NAIS 1.0.6, ITI 1.6, XIS 0.6.
+supports all industry sets.
 
 The script only defines requirements for towns who are exchanging
 passengers (meaning that a delivery of passengers coming from a town
@@ -47,7 +46,7 @@ of 10 * cargotype requirement). Note that the cargo requirements
 originally defined in the Arctic and Tropical climate (food and
 water/food) are disabled by the script.
 
-Depending on the used industry set, there are 3 or 5 categories. 
+Depending on the used industry set, there are 3 to 5 categories. 
 Here are the basic categories:
 *For baseset industries (all climate):*
 - Cat 1: Public services
@@ -64,6 +63,8 @@ Notes about categories:
   for each category and some other data.
 - You can select a randomization, so every town will have randomly selected
   cargos per category. More on it in the Settings.
+- There is also added a special randomization, that selects industries instead
+  of cargos so that the category is defined as inputs to a specific industry type
   
 Cargo category requirements increase relatively to town population, in
 two ways:
@@ -82,27 +83,50 @@ term - city growth when developing some local industry, to which
 deliver raw and transformed industrial materials. For details about
 each industry set watch at cargo.nut.
 
+Each town decides on a new Contributor at the start of a new month. This
+Contributor is chosen by the level of contribution to the categories of 
+the town. The contributor then receives points for this town for the 
+next month based on its growth and is displayed in the player's 
+statistics.
+Example of deciding on the Contributor:
+Player 1 supplies category 1 to 80%, category 2 to 40% and category 3 to 0%.
+Player 2 supplies category 1 to 100%, category 2 to 20% and category 3 to 15%.
+Player 1 contributes 120%, Player 2 contributes 135% and is the Contributor.
+
 The informations that the script gives are:
 - Under each town name, a text indicates the actual town growth
   rate, only for the monitored towns; the number indicates how many
   days will you'll have to wait between each town expansion.
-- In townboxes, first page is first part is information about required 
-  and achieved percentage of transported passangers and mails is given
-  Second part contains detailed informations about cargo requirements 
-  for each category, in the form:
-  *category: actual goal / last month supply / stockpiled cargo.
+- In townboxes, there are four parts:
+    - Largest population - the maximum achieved population of that town
+    - Contributor - company name that contributed the most to the town
+    - Limiter - information about the cargo that limits the growth
+    - Categories - cargo categories and their supplied/required info
   Note that the town window only displays informations for cargo
   categories which are required in a given town at a given
   moment. Thus, in little towns, it is normal to only see an
   indication for category 1.
-- In townboxes, second page 
-- Townbox pages switch automatically every 3 seconds or can be a 
-  specific page, see "Town info display mode" GS setting.
+- There are five possible modes of showing the townboxes:
+    - Automatic
+    - Cargo deliveries
+    - Cargo list
+    - Combined
+    - Full cargo list
+  See "Town info display mode" GS setting.
 - The StoryBook also gives informations: there you can find a general
   description of the categories used in the game, according to your
   settings. It also gives you some additional informations, such as
   the population limit at which each category becomes necessary for
   towns to grow.
+- The Goals display statistics of a player containing:
+    - Global goal - receive a point for every new habitant of a town 
+                    over the maximum achieved town size
+    - Average town category - average of number of categories of 
+                              contributed towns
+    - Number of contributed towns
+    - Number of not growing towns
+    - Biggest town - population
+    - Fastest growing town in days 
 
 Each month, for each town, a new town growth rate is recalculated. Its
 level depends on the part of required cargo which have been
@@ -124,7 +148,7 @@ percentage of passangers and/or mails is not fulfilled.
 
 Finally, note that towns data (goals, supplies, stockpiles, growth
 rates...) are saved, so that you can safely reload the game without
-losses.
+losses. This release supports up to 1400 towns to be saved.
 
 Have fun !
 
@@ -141,17 +165,8 @@ Normal settings:
     - Cargo list - displays accepted cargo per category
     - Combined - displays cargo categories and accepted cargo per category
     - Full cargo list - displays all categories of accepted cargo
-- "Which industry set is being used?": this is necessary to determine
-  what cargotypes are used by the game and build categories.
 - "Difficulty level": a general factor for calculating cargo
   requirement. The higher it is, the higher are cargo requirements.
-- "Merge categories 2 (food) and 3 (goods)": enabling this reduces the
-  number of cargo categories by merging "General Food" and "General
-  Goods" categories into only one, thus making the game easier. This
-  setting only has effect when using industry sets which use 5
-  categories (essentially FIRS and ECS).
-- "Merge categories 4 (raw ind.) and 5 (transf. ind.)": same as
-  previous setting, for categories 4 and 5.
 - "Show growth rate text under town names": disabling this allows to
   discard the signs under town names, which show growth rate. On big
   games, disabling those signs can significantly reduce gamescript's
@@ -165,21 +180,28 @@ Normal settings:
   
 Randomization settings:
 - "Randomization: Type": all towns will have randomly selected
-  cargos per category based on selection
+  cargos/industries per category based on selection
     - None - no randomization, all cargos per category are accepted
-    - 1,2,3 per category - fixed amount of cargos per category
-    - 1-2, 1-3, 2-3 - minimum to maximum amount of cargos per category
+    - Industry ascending/descending - each category represent an industry
+    - 1,2,3,5,7 per category - fixed amount of cargos per category
+    - 1-2, 1-3, 2-3, 3-5, 3-7 - minimum to maximum amount of cargos 
+      per category
 - "Randomization: Show town cargos from start": if selected, all randomized
   cargos can be visible for each town, otherwise only reached
   categories are displayed
 
+Industry stabilizer:
+- "Raw industry density": maintain a set amount of raw industries on
+  the map by funding new. Can be used to start a map with only raw
+  industries.
+
 Limit growth settings:
-- "Minimum Percentage of Passangers Transported": how much of the 
-  passangers generated by the town that month must be transported
-- "Minimum Percentage of Mails Transported": how much of the mails 
-  generated by the town that month must be transported
+- "Minimum Percentage of transported cargo from town": how much of the 
+  cargo generated by the town that month must be transported
 - "Minimum size of town before the limit rules kicks in": at what 
   population of the town the growth limitation will start
+- "Stop growth after set amount of months": keep growing for the amount
+  of months after limiter stops the growth
 
 Expert settings:
 These settings are for people who want finely tweak the script
@@ -218,11 +240,13 @@ they can safely be changed while the game is running:
 - OpenTTD, v. 1.10.x or newer.
 - GS SuperLib, v. 40 (you can find it on BaNaNaS, also accessible
   through OTTD's "Online Content").
-- Industry sets: you can use Baseset (all climates), FIRS 1.4 
-  (all economies), FIRS 3 (all economies), FIRS 4 alpha (all economies),
-  ECS 1.2 (any combination), YETI 0.1.6 (all except simplified), 
-  NAIS 1.0.6, ITI 1.6, XIS 0.6 (The Lot). Using RVG with any other 
-  unsupported industry set may result in odd - or unstable - behaviours.
+- Industry sets: you can use any industry NewGRF
+    - these are specifically supported industry NewGRF: Baseset 
+    (all climates), FIRS 1.4, 2, 3, 4 (all economies), ECS 1.2 
+    (any combination), YETI 0.1.6 (all except Simplified), 
+    NAIS 1.0.6, ITI 1.6, XIS 0.6. 
+  Using RVG with any other unsupported industry set will contain 
+  proceduraly generated categories
 
 
 4. License

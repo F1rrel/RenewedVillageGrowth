@@ -98,7 +98,7 @@ class MainClass extends GSInfo
                 flags = CONFIG_BOOLEAN | CONFIG_INGAME});
 
         AddSetting({ name = "raw_industry_density",
-                description = "Industry stabilizer: raw industry density",
+                description = "Industry stabilizer: Raw industry density",
                 easy_value = 0,
                 medium_value = 0,
                 hard_value = 0,
