@@ -15,14 +15,14 @@ class MainClass extends GSInfo
     {
     function GetAuthor()		{ return "Firrel"; }
     function GetName()			{ return "Renewed Village Growth"; }
-    function GetShortName() 	{ return "REVI"; }
-    function GetDescription()	{ return "Towns require various cargo deliveries to grow. Required cargos can be randomized. Town growth is limited by percentage of transported PAX/mail. Supporting Baseset, FIRS (1.4, 3, 4), ECS, YETI, NAIS, ITI, XIS."; }
+    function GetShortName() 	        { return "REVI"; }
+    function GetDescription()	        { return "Towns require various cargo deliveries to grow. Required cargos can be randomized. Town growth is limited by percentage of transported PAX/mail. Supporting Baseset, FIRS (1.4, 3, 4), ECS, YETI, NAIS, ITI, XIS."; }
     function GetURL()			{ return "https://www.tt-forums.net/viewtopic.php?f=65&t=87052"; }
     function GetVersion()		{ return SELF_VERSION; }
     function GetDate()			{ return SELF_DATE; }
-    function GetAPIVersion()	{ return "1.10"; }
-    function MinVersionToLoad()	{ return SELF_MINLOADVERSION; }
-    function CreateInstance()	{ return "MainClass"; }
+    function GetAPIVersion()	        { return "1.10"; }
+    function MinVersionToLoad()	        { return SELF_MINLOADVERSION; }
+    function CreateInstance()	        { return "MainClass"; }
     function GetSettings() {
 
         AddSetting({ name = "town_info_mode",
@@ -98,7 +98,7 @@ class MainClass extends GSInfo
                 flags = CONFIG_BOOLEAN | CONFIG_INGAME});
 
         AddSetting({ name = "raw_industry_density",
-                description = "Industry stabilizer: raw industry density",
+                description = "Industry stabilizer: Raw industry density",
                 easy_value = 0,
                 medium_value = 0,
                 hard_value = 0,

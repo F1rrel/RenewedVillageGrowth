@@ -1,5 +1,24 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 6.0
+* Not compatible with previous versions
+- new: Growth statistics for each player based on most contributed towns
+- new: Added FIRS 2.1.5 predefined cargo categories (pr0saic)
+- new: Updated texts in story book to include randomization cases
+- new: The supported economy is automatically detected from the cargo list
+- new: Added industry randomization option based on number of inputs of an industry
+- new: Added more cargo randomization options
+- new: Raw industry stabilizer that prospects raw industries based on a setting
+- new: Added warning for too many towns to save
+- modified: Removed cargo stockpiled number from town info box
+- modified: Reworked showing of limiter information to show only underperforming cargos with color indication
+- modified: Reworked limiter, now limits growth based on average value of all limited cargos (supports more cargos than passangers and mails)
+- modified: Changed all parameters to be changeable and handled edge cases
+- modified: Added Waste for ITI and Yeti, Tired Yeti for YETI as additional limited cargos
+- fix: Prevent showing all cargos when the randomization is none
+- fix: Growth rate is limited to 1 day minimum
+- fix: Ignore CZTR cargo LVPT when randomizing cargo categories
+
 Version 5.0 (2020/11/24)
 * Not compatible with previous versions
 - new: French translation (rmnvgr)

@@ -1,0 +1,49 @@
+This file is used to provide translations for specific string that are used 
+in Renewed Village Growth. You can post it to the forums topic or create an 
+issue with including this file in the github repository:
+forums: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
+github: https://github.com/F1rrel/RenewedVillageGrowth
+
+Language                        :french
+Game script version             :6.0
+
+Growth : {NUM} days             :Croissance: {NUM} jours
+Not growing                     :
+Public services                 :
+Raw food                        :
+Raw materials                   :
+Processed materials             :
+Final products                  :
+Products                        :
+Local production                :
+Imported goods                  :
+Category                        :
+Cargo categories                :
+cargo type                      :
+cargo types                     :
+Minimal town population         :
+Monthly decay                   :
+Warning                         :
+growth points                   :
+Biggest town                    :
+Fastest growing town in days    :
+Average town category           :
+Number of contributed towns     :
+Number of not growing towns     :
+Largest population              :
+Cargo information : supplied / required
+                                :
+Not enought transported out of town
+                                :
+Insufficient infrastructure of transportation
+                                :
+Transport {SILVER}{CARGO_LIST}{BLACK} from this town to make it grow.
+                                :
+These are the cargo categories for town requirements, each category including different cargo types.
+                                :
+To achieve requirements for a category, you can deliver any cargo belonging to it.
+                                :
+Each town has a selection of {STRING2} from each category. To achieve requirements for a category, you can deliver any cargo that the Town requires for that category as shown in the Town info window.
+                                :
+There are more towns on the map than the game script can save. The current number of towns is {SILVER}{NUM}{BLACK} and the maximum is {SILVER}{NUM}{BLACK}. The game script is turned off.
+                                :
