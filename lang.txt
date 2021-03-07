@@ -5,7 +5,7 @@ forums: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
 github: https://github.com/F1rrel/RenewedVillageGrowth
 
 Language                        :french
-Game script version             :6.0
+Game script version             :6.1
 
 Growth : {NUM} days             :Croissance: {NUM} jours
 Not growing                     :
@@ -43,7 +43,7 @@ These are the cargo categories for town requirements, each category including di
                                 :
 To achieve requirements for a category, you can deliver any cargo belonging to it.
                                 :
-Each town has a selection of {STRING2} from each category. To achieve requirements for a category, you can deliver any cargo that the Town requires for that category as shown in the Town info window.
+Each town has a selection of {STRING} from each category. To achieve requirements for a category, you can deliver any cargo that the Town requires for that category as shown in the Town info window.
                                 :
 There are more towns on the map than the game script can save. The current number of towns is {SILVER}{NUM}{BLACK} and the maximum is {SILVER}{NUM}{BLACK}. The game script is turned off.
                                 :

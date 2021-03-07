@@ -1,5 +1,10 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 6.1
+- new: Slovak translation
+- new: Czech translation
+- fix: crash when a town stopped to be monitored
+
 Version 6.0
 * Not compatible with previous versions
 - new: Growth statistics for each player based on most contributed towns
