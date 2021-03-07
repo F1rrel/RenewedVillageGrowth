@@ -22,6 +22,8 @@ BaNaNaS: https://bananas.openttd.org/package/game-script/52455649
 Currently available languages:
 - English
 - French (rmnvgr)
+- Slovak
+- Czech
 
 If you want to contribute to a translation, you can do it by modifying a file [lang.txt](lang.txt) and posting it to the forum topic or creating a new issue with this file included.
 
