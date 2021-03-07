@@ -1,0 +1,53 @@
+##### TOWN SIGN #####
+STR_TOWNSIGN_GROWTHRATE  :Rast mesta : {NUM} {P deň dní}
+STR_TOWNSIGN_NOTGROWING  :Mesto nerastie
+
+##### CARGO CATEGORIES #####
+STR_CARGOCAT_LABEL_0     :Verejné služby
+STR_CARGOCAT_LABEL_1     :Potraviny
+STR_CARGOCAT_LABEL_2     :Suroviny
+STR_CARGOCAT_LABEL_3     :Spracované materiály
+STR_CARGOCAT_LABEL_4     :Finálne výrobky
+STR_CARGOCAT_LABEL_5     :Výrobky
+STR_CARGOCAT_LABEL_6     :Miestna výroba
+STR_CARGOCAT_LABEL_7     :Dovezený tovar
+STR_CARGOCAT_LABEL_8     :Kategória I
+STR_CARGOCAT_LABEL_9     :Kategória II
+STR_CARGOCAT_LABEL_10    :Kategória III
+STR_CARGOCAT_LABEL_11    :Kategória IV
+STR_CARGOCAT_LABEL_12    :Kategória V
+
+##### STORY BOOK #####
+STR_SB_TITLE_1           :Kategórie nákladu
+STR_SB_EXPLAIN_1         :Toto sú kategórie nákladu, ktoré môžu mestá vyžadovať. Každá kategória pozostáva z viacerých typov nákladu. Na splnenie požiadavky mesta pre určitú kategóriu stačí dovážať aspoň jeden typ nákladu z danej kategórie.
+STR_SB_EXPLAIN_2         :Toto sú kategórie nákladu, ktoré môžu mestá vyžadovať. Každé mesto má výber {STRING}. Na splnenie požiadavky mesta pre určitú kategóriu stačí dovážať aspoň jeden typ nákladu z danej kategórie ako vidno v informačnej tabuli daného mesta.
+STR_SB_EXPLAIN_RANDOM_0  :{SILVER}{NUM} typ{P "" ov} nákladu {BLACK}{STRING}
+STR_SB_EXPLAIN_RANDOM_2  :{SILVER}{NUM} - {NUM} typov nákladu {BLACK}
+STR_SB_CARGOCAT_CAT      :Kategória
+STR_SB_CARGOCAT_POP      :Minimálna populácia mesta
+STR_SB_CARGOCAT_DECAY    :Mesačný úpadok tovaru
+STR_SB_CARGOCAT_CARGOT   :Kategórie nákladu
+STR_SB_WARNING_TITLE     :Upozornenie
+STR_SB_WARNING_1         :Na mape sa nachádza viac miest ako je hrací skript schopný uložiť. Aktuálny počet miest na mape je {SILVER}{NUM}{BLACK} a maximum je {SILVER}{NUM}{BLACK}. Hrací skript sa vypína.
+
+##### GOAL #####
+STR_GOAL_GLOBAL                 :{STRING}{COMPANY}{BLACK} prírastkových bodov{ORANGE}
+STR_STATISTICS_BIGGEST_TOWN     :{BLACK}Najväčšie mesto {SILVER}{TOWN}{ORANGE}
+STR_STATISTICS_GROWTH_TOWN      :{BLACK}Najrýchlejšie sa rozvýjajúce mesto v dňoch {SILVER}{TOWN}{ORANGE}
+STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}Priemerná kategória miest{ORANGE}
+STR_STATISTICS_NUM_TOWNS        :{BLACK}Počet podporovaných miest{ORANGE}
+STR_STATOSTOCS_NOT_GROWING      :{BLACK}Počet nerastúcich miest{ORANGE}
+
+##### TOWNBOX #####
+STR_TOWNBOX_CONTRIBUTOR         :Najvyššia dosiahnutá populácia {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
+STR_TOWNBOX_NO_CONTRIBUTOR      :Najvyššia dosiahnutá populácia {SILVER}{NUM}{BLACK}{STRING}
+
+STR_TOWNBOX_CATEGORY            :Štatistika dovozu : dodané / požadované{STRING}
+STR_TOWNBOX_CATEGORY_STOP       :Nefunkčný vývoz z mesta :{} * {RED}{CARGO_LIST}{BLACK}{}Štatistika dovozu : dodané / požadované
+STR_TOWNBOX_CATEGORY_LOW        :Nedostatočná infraštruktúra dopravy :{} * {SILVER}{CARGO_LIST}{BLACK}{}Štatistika dovozu : dodané / požadované
+STR_TOWNBOX_CATEGORY_DELAYED    :Nefunkčný vývoz z mesta :{} * {GOLD}{CARGO_LIST}{BLACK}{}Štatistika dovozu : dodané / požadované
+STR_TOWNBOX_CARGO               :Kategórie nákladu :{STRING}
+STR_TOWNBOX_CARGO_STOP          :Nefunkčný vývoz z mesta :{} * {RED}{CARGO_LIST}{BLACK}{}Kategórie nákladu :
+STR_TOWNBOX_CARGO_LOW           :Nedostatočná infraštruktúra dopravy :{} * {SILVER}{CARGO_LIST}{BLACK}{}Kategórie nákladu :
+STR_TOWNBOX_CARGO_DELAYED       :Nefunkčný vývoz z mesta :{} * {GOLD}{CARGO_LIST}{BLACK}{}Kategórie nákladu :
+STR_TOWNBOX_NOGROWTH            :Prevez {SILVER}{CARGO_LIST}{BLACK} z tohto mesta, aby mesto začalo rásť.
