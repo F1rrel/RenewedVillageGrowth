@@ -1,4 +1,3 @@
-
 ##### TOWN SIGN #####
 STR_TOWNSIGN_GROWTHRATE  :Growth : {NUM} days
 STR_TOWNSIGN_NOTGROWING  :Not growing
@@ -22,8 +21,7 @@ STR_CARGOCAT_LABEL_12    :Category V
 STR_SB_TITLE_1           :Cargo categories
 STR_SB_EXPLAIN_1         :These are the cargo categories for town requirements, each category including different cargo types. To achieve requirements for a category, you can deliver any cargo belonging to it.
 STR_SB_EXPLAIN_2         :These are the cargo categories for town requirements, each category including different cargo types. Each town has a selection of {STRING2} from each category. To achieve requirements for a category, you can deliver any cargo that the Town requires for that category as shown in the Town info window.
-STR_SB_EXPLAIN_RANDOM_0  :{SILVER}{NUM} cargo type{BLACK}{STRING}
-STR_SB_EXPLAIN_RANDOM_1  :{SILVER}{NUM} cargo types{BLACK}{STRING}
+STR_SB_EXPLAIN_RANDOM_0  :{SILVER}{NUM} cargo type{P "" s}{BLACK}{STRING}
 STR_SB_EXPLAIN_RANDOM_2  :{SILVER}{NUM} - {NUM} cargo types {BLACK}
 STR_SB_CARGOCAT_CAT      :Category
 STR_SB_CARGOCAT_POP      :Minimal town population
@@ -53,10 +51,10 @@ STR_TOWNBOX_CATEGORY            :Cargo information : supplied / required{STRING}
 STR_TOWNBOX_CATEGORY_STOP       :Not enought transported out of town :{} * {RED}{CARGO_LIST}{BLACK}{}Cargo information : supplied / required
 STR_TOWNBOX_CATEGORY_LOW        :Insufficient infrastructure of transportation :{} * {SILVER}{CARGO_LIST}{BLACK}{}Cargo information : supplied / required
 STR_TOWNBOX_CATEGORY_DELAYED    :Not enought transported out of town :{} * {GOLD}{CARGO_LIST}{BLACK}{}Cargo information : supplied / required
-STR_TOWNBOX_CARGO               :Cargo information :{STRING}
-STR_TOWNBOX_CARGO_STOP          :Not enought transported out of town :{} * {RED}{CARGO_LIST}{BLACK}{}Cargo information :
-STR_TOWNBOX_CARGO_LOW           :Insufficient infrastructure of transportation :{} * {SILVER}{CARGO_LIST}{BLACK}{}Cargo information :
-STR_TOWNBOX_CARGO_DELAYED       :Not enought transported out of town :{} * {GOLD}{CARGO_LIST}{BLACK}{}Cargo information :
+STR_TOWNBOX_CARGO               :Cargo categories :{STRING}
+STR_TOWNBOX_CARGO_STOP          :Not enought transported out of town :{} * {RED}{CARGO_LIST}{BLACK}{}Cargo categories :
+STR_TOWNBOX_CARGO_LOW           :Insufficient infrastructure of transportation :{} * {SILVER}{CARGO_LIST}{BLACK}{}Cargo categories :
+STR_TOWNBOX_CARGO_DELAYED       :Not enought transported out of town :{} * {GOLD}{CARGO_LIST}{BLACK}{}Cargo categories :
 STR_TOWNBOX_NOGROWTH            :Transport {SILVER}{CARGO_LIST}{BLACK} from this town to make it grow.
 
 STR_TOWNBOX_CATEGORY_0          :{STRING2}{}{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
