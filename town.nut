@@ -405,10 +405,12 @@ function GoalTown::CheckMonitoring(monitored)
 
 function GoalTown::StopMonitors()
 {
-    for (local i = 0; i< ::CargoIDList.len(); i++) {
+    for (local i = 0; i < ::CargoIDList.len(); i++) {
+        if (::CargoIDList[i] == null)
+            continue;
         for (local cid = GSCompany.COMPANY_FIRST; cid <= GSCompany.COMPANY_LAST; cid++) {
             if (GSCompany.ResolveCompanyID(cid) != GSCompany.COMPANY_INVALID) {
-                GSCargoMonitor.GetTownDeliveryAmount(cid, ::CargoIDList[i],this.id,false);
+                GSCargoMonitor.GetTownDeliveryAmount(cid, i, this.id, false);
             }
         }
     }
