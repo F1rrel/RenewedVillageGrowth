@@ -1,0 +1,53 @@
+##### TOWN SIGN #####
+STR_TOWNSIGN_GROWTHRATE  :成长中: {NUM} 天成长一次
+STR_TOWNSIGN_NOTGROWING  :停止成长
+
+##### CARGO CATEGORIES #####
+STR_CARGOCAT_LABEL_0     :公共服务
+STR_CARGOCAT_LABEL_1     :基础食物
+STR_CARGOCAT_LABEL_2     :基础材料
+STR_CARGOCAT_LABEL_3     :加工材料
+STR_CARGOCAT_LABEL_4     :最终产品
+STR_CARGOCAT_LABEL_5     :产品
+STR_CARGOCAT_LABEL_6     :本地生产
+STR_CARGOCAT_LABEL_7     :进口货物
+STR_CARGOCAT_LABEL_8     :类别 I
+STR_CARGOCAT_LABEL_9     :类别 II
+STR_CARGOCAT_LABEL_10    :类别 III
+STR_CARGOCAT_LABEL_11    :类别 IV
+STR_CARGOCAT_LABEL_12    :类别 V
+
+##### STORY BOOK #####
+STR_SB_TITLE_1           :货物类别
+STR_SB_EXPLAIN_1         :这些是城镇要求的货物类别,每个类别都包括不同的货物类型 To achieve requirements for a category, you can deliver any cargo belonging to it.
+STR_SB_EXPLAIN_2         :这些是城镇要求的货物类别,每个类别都包括不同的货物类型.为了达到某个类别的要求.您可以交付任何属于该类别的货物
+STR_SB_EXPLAIN_RANDOM_0  :{SILVER}{NUM} 货物类型 {BLACK}{STRING}
+STR_SB_EXPLAIN_RANDOM_2  :{SILVER}{NUM} - {NUM} 货物类型 {BLACK}
+STR_SB_CARGOCAT_CAT      :类别
+STR_SB_CARGOCAT_POP      :最少城镇人口
+STR_SB_CARGOCAT_DECAY    :每月衰减
+STR_SB_CARGOCAT_CARGOT   :货物类型
+STR_SB_WARNING_TITLE     :警告
+STR_SB_WARNING_1         :地图上的城镇数量超出了游戏脚本可以保存的数量.当前的城镇数量为 {SILVER}{NUM}{BLACK} .最大数量为{SILVER}{NUM}{BLACK}. 游戏脚本已经关闭
+
+##### GOAL #####
+STR_GOAL_GLOBAL                 :{STRING}{COMPANY}{BLACK} 成长点{ORANGE}
+STR_STATISTICS_BIGGEST_TOWN     :{BLACK}最大的城镇 {SILVER}{TOWN}{ORANGE}
+STR_STATISTICS_GROWTH_TOWN      :{BLACK}过去几天成长最快的城镇 {SILVER}{TOWN}{ORANGE}
+STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}平均城镇类别{ORANGE}
+STR_STATISTICS_NUM_TOWNS        :{BLACK}以贡献的城镇数量{ORANGE}
+STR_STATOSTOCS_NOT_GROWING      :{BLACK}未成长的城镇数量{ORANGE}
+
+##### TOWNBOX #####
+STR_TOWNBOX_CONTRIBUTOR         :最大人口 {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
+STR_TOWNBOX_NO_CONTRIBUTOR      :最大人口 {SILVER}{NUM}{BLACK}{STRING}
+
+STR_TOWNBOX_CATEGORY            :货物信息 : 已提供 / 需要{STRING}
+STR_TOWNBOX_CATEGORY_STOP       :运出城镇的货物数量不足 :{} * {RED}{CARGO_LIST}{BLACK}{}货物信息 : 已提供 / 需要
+STR_TOWNBOX_CATEGORY_LOW        :交通基础设施不足 :{} * {SILVER}{CARGO_LIST}{BLACK}{}货物信息 : 已提供 / 需要
+STR_TOWNBOX_CATEGORY_DELAYED    :运出城镇的货物数量不足 :{} * {GOLD}{CARGO_LIST}{BLACK}{}货物信息 : 已提供 / 需要
+STR_TOWNBOX_CARGO               :货物类别 :{STRING}
+STR_TOWNBOX_CARGO_STOP          :运出城镇的货物数量不足 :{} * {RED}{CARGO_LIST}{BLACK}{}货物类别 :
+STR_TOWNBOX_CARGO_LOW           :交通基础设施不足 :{} * {SILVER}{CARGO_LIST}{BLACK}{}货物类别 :
+STR_TOWNBOX_CARGO_DELAYED       :运出城镇的货物数量不足 :{} * {GOLD}{CARGO_LIST}{BLACK}{}货物类别 :
+STR_TOWNBOX_NOGROWTH            :从该镇运输 {SILVER}{CARGO_LIST}{BLACK} 使其成长
