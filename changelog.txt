@@ -1,5 +1,8 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 6.2
+- new: Simplified Chinese translation (SuperCirno)
+
 Version 6.1
 - new: Slovak translation
 - new: Czech translation
