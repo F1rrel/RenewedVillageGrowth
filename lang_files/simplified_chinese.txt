@@ -1,0 +1,49 @@
+This file is used to provide translations for specific string that are used 
+in Renewed Village Growth. You can post it to the forums topic or create an 
+issue with including this file in the github repository:
+forums: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
+github: https://github.com/F1rrel/RenewedVillageGrowth
+
+Language                        :simplified_chinese
+Game script version             :6.1
+
+Growth : {NUM} days             :成长中: {NUM} 天成长一次
+Not growing                     :停止成长
+Public services                 :公共服务
+Raw food                        :基础食物
+Raw materials                   :基础材料
+Processed materials             :加工材料
+Final products                  :最终产品
+Products                        :产品
+Local production                :本地生产
+Imported goods                  :进口货物
+Category                        :类别
+Cargo categories                :货物类别
+cargo type                      :货物类型
+cargo types                     :货物类型
+Minimal town population         :最少城镇人口
+Monthly decay                   :每月衰减
+Warning                         :警告
+growth points                   :成长点
+Biggest town                    :最大的城镇
+Fastest growing town in days    :过去几天成长最快的城镇
+Average town category           :平均城镇类别
+Number of contributed towns     :以贡献的城镇数量
+Number of not growing towns     :未成长的城镇数量
+Largest population              :最大人口
+Cargo information : supplied / required
+                                :货物信息 : 已提供 / 需要
+Not enought transported out of town
+                                :运出城镇的货物数量不足
+Insufficient infrastructure of transportation
+                                :交通基础设施不足
+Transport {SILVER}{CARGO_LIST}{BLACK} from this town to make it grow.
+                                :从该镇运输 {SILVER}{CARGO_LIST}{BLACK} 使其成长
+These are the cargo categories for town requirements, each category including different cargo types.
+                                :这些是城镇要求的货物类别,每个类别都包括不同的货物类型.
+To achieve requirements for a category, you can deliver any cargo belonging to it.
+                                :为了达到某个类别的要求.您可以交付任何属于该类别的货物.
+Each town has a selection of {STRING} from each category. To achieve requirements for a category, you can deliver any cargo that the Town requires for that category as shown in the Town info window.
+                                :每个城镇从每个类别中选择{STRING}.要达到某个类别的要求,您可以交付城镇所需的任何货物,如"城镇信息"窗口中所示.
+There are more towns on the map than the game script can save. The current number of towns is {SILVER}{NUM}{BLACK} and the maximum is {SILVER}{NUM}{BLACK}. The game script is turned off.
+                                :地图上的城镇数量超出了游戏脚本可以保存的数量.当前的城镇数量为 {SILVER}{NUM}{BLACK} .最大数量为{SILVER}{NUM}{BLACK}. 游戏脚本已经关闭
