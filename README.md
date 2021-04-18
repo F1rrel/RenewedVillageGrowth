@@ -24,6 +24,7 @@ Currently available languages:
 - French (rmnvgr)
 - Slovak
 - Czech
+- Simplified Chinese (SuperCirno)
 
 If you want to contribute to a translation, you can do it by modifying a file [lang.txt](lang.txt) and posting it to the forum topic or creating a new issue with this file included.
 
