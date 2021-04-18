@@ -19,8 +19,8 @@ STR_CARGOCAT_LABEL_12    :类别 V
 
 ##### STORY BOOK #####
 STR_SB_TITLE_1           :货物类别
-STR_SB_EXPLAIN_1         :这些是城镇要求的货物类别,每个类别都包括不同的货物类型 To achieve requirements for a category, you can deliver any cargo belonging to it.
-STR_SB_EXPLAIN_2         :这些是城镇要求的货物类别,每个类别都包括不同的货物类型.为了达到某个类别的要求.您可以交付任何属于该类别的货物
+STR_SB_EXPLAIN_1         :这些是城镇要求的货物类别,每个类别都包括不同的货物类型.为了达到某个类别的要求.您可以交付任何属于该类别的货物.
+STR_SB_EXPLAIN_2         :这些是城镇要求的货物类别,每个类别都包括不同的货物类型.每个城镇从每个类别中选择{STRING}.要达到某个类别的要求,您可以交付城镇所需的任何货物,如"城镇信息"窗口中所示.
 STR_SB_EXPLAIN_RANDOM_0  :{SILVER}{NUM} 货物类型 {BLACK}{STRING}
 STR_SB_EXPLAIN_RANDOM_2  :{SILVER}{NUM} - {NUM} 货物类型 {BLACK}
 STR_SB_CARGOCAT_CAT      :类别
