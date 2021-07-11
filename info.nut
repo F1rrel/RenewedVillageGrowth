@@ -151,9 +151,9 @@ class MainClass extends GSInfo
 
         AddSetting({ name = "supply_impacting_part",
                 description = "Expert: minimum supply percentage for TGR growth",
-                easy_value = 80,
+                easy_value = 20,
                 medium_value = 50,
-                hard_value = 20,
+                hard_value = 80,
                 custom_value = 50,
                 flags = CONFIG_INGAME, min_value = 0, max_value = 100, step_size = 5 });
 

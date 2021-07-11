@@ -137,7 +137,7 @@ function GoalTown::MonthlyManageTown()
     local new_town_growth_rate = null;
     // Defining difficulty and calculation factors
     local d_factor = GSController.GetSetting("goal_scale_factor") / 100.0;
-    local g_factor = GSController.GetSetting("town_growth_factor") / 100.0;
+    local g_factor = GSController.GetSetting("town_growth_factor");
     local e_factor = GSController.GetSetting("exponentiality_factor");
     local sup_imp_part = GSController.GetSetting("supply_impacting_part") / 100.0;
     local lowest_tgr = GSController.GetSetting("lowest_town_growth_rate");
@@ -229,17 +229,19 @@ function GoalTown::MonthlyManageTown()
         this.DebugCargoCatInfo(i) // Debug info: print stockpiled/supplied/goal per category
     }
 
-    /* Here we calculate the number of days until the next
-     * growth. The important stuff happens here. Other possible
-     * formulas for calculating the new town growth rate are:
-     * new_town_growth_rate = (max_town_growth_rate * (1+(10/(1-goal_diff_percent)-10))).tointeger();
-     * new_town_growth_rate = (max_town_growth_rate/(1-goal_diff_percent*2)).tointeger();
-     */
-    this.DebugGoalsResult(sum_goals, goal_diff, goal_diff_percent);  // Debug info about general goal results
+    // Calculates new town growth rate based on missing cargo percentage
+    // Firstly a maximum growth rate for the town is calculated with g_factor 
+    // being the growth rate at 0 population and exponentially increasing.
+    // An exponential extra growth is calculated based on missing cargo requirements.
+    // The max growth rate and difference between max growth rate and lowest growth rate
+    // multiplied by extra growth factor are combined into the resulting growth rate.
+    Log.Info("Goal diff: " + goal_diff_percent + "%", Log.LVL_DEBUG);
     if (goal_diff_percent <= sup_imp_part) {
-        local max_town_growth_rate = g_factor * 50000 / (100 + cur_pop.tofloat());
-        new_town_growth_rate = (max_town_growth_rate
-                    * (1 + (e_factor / (1 - goal_diff_percent) - e_factor))).tointeger();
+        local max_town_growth_rate = g_factor * exp(-cur_pop.tofloat()/10000);
+        max_town_growth_rate = max_town_growth_rate < 1 ? 1 : max_town_growth_rate;
+        local growth = 1 - (1 - exp(-e_factor * (1 - goal_diff_percent))) / (1 - exp(-e_factor));
+        new_town_growth_rate = (max_town_growth_rate + (lowest_tgr - max_town_growth_rate) * growth).tointeger();
+        Log.Info("max_growth_rate: " + max_town_growth_rate + ", growth: " + growth + ", new growth rate: " + new_town_growth_rate, Log.LVL_DEBUG);
     }
     else {
         new_town_growth_rate = lowest_tgr;
