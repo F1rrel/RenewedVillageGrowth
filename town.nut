@@ -197,21 +197,27 @@ function GoalTown::MonthlyManageTown()
     // If town's population is too low to calculate a goal, it is set to 1
     if (this.town_goals_cat[0] < 1) this.town_goals_cat[0] = 1;
 
+    // Get max category
+    local max_cat = 0;
+    while (this.town_goals_cat[max_cat] > 0) {
+        max_cat++;
+    }
+
     // Calculating global goal and achievement
-    for (local i = 0; i < CargoCatNum; i++) {
-        // Supplied stuff are summed with stockpiled stuff. sum_goals is incremented for each category.
-        if (this.town_goals_cat[i] > 0) {
-            sum_goals += this.town_goals_cat[i];
-            this.town_stockpiled_cat[i] += this.town_supplied_cat[i];
+    for (local i = 0; i < CargoCatNum; ++i) {
+        if (this.town_goals_cat[i] <= 0) {
+            this.town_stockpiled_cat[i] = 0;
+            continue;
         }
 
-        // Stockpiles are updated. goal_diff measures how many stuff is missing for goal achievement.
-        if (this.town_stockpiled_cat[i] < this.town_goals_cat[i]) {
-            goal_diff += (this.town_goals_cat[i] - this.town_stockpiled_cat[i]);
+        this.town_supplied_cat[i] += this.town_stockpiled_cat[i];
+
+        if (this.town_supplied_cat[i] < this.town_goals_cat[i]) {
+            goal_diff_percent += (this.town_goals_cat[i] - this.town_supplied_cat[i]).tofloat() / (this.town_goals_cat[i] * max_cat).tofloat();
             this.town_stockpiled_cat[i] = 0;
         } else {
             // If stockpiled is bigger than required, we cut off the required part
-            this.town_stockpiled_cat[i] = ((this.town_stockpiled_cat[i]- this.town_goals_cat[i])
+            this.town_stockpiled_cat[i] = ((this.town_supplied_cat[i] - this.town_goals_cat[i])
                              * (1 - ::CargoDecay[i])).tointeger();
             // Don't stockpile more than: (cargo category) * 10;
             if (this.town_stockpiled_cat[i] > 300 &&
@@ -219,6 +225,7 @@ function GoalTown::MonthlyManageTown()
                 this.town_stockpiled_cat[i] = this.town_goals_cat[i] * 10;
             }
         }
+
         this.DebugCargoCatInfo(i) // Debug info: print stockpiled/supplied/goal per category
     }
 
@@ -228,7 +235,6 @@ function GoalTown::MonthlyManageTown()
      * new_town_growth_rate = (max_town_growth_rate * (1+(10/(1-goal_diff_percent)-10))).tointeger();
      * new_town_growth_rate = (max_town_growth_rate/(1-goal_diff_percent*2)).tointeger();
      */
-    goal_diff_percent = (goal_diff.tofloat() / sum_goals.tofloat()); // Convert the difference to a percent
     this.DebugGoalsResult(sum_goals, goal_diff, goal_diff_percent);  // Debug info about general goal results
     if (goal_diff_percent <= sup_imp_part) {
         local max_town_growth_rate = g_factor * 50000 / (100 + cur_pop.tofloat());
