@@ -38,15 +38,15 @@ enum Economies
     FIRS3__ARCTIC_BASIC = 18, // 3.0.12
     FIRS3__TROPIC_BASIC = 19, // 3.0.12
     FIRS3__STEELTOWN = 20, // 3.0.12
-    FIRS3__IN_A_HOT_COUNTRY = 21, // 3.0.12
+    FIRS3__IN_A_HOT_COUNTRY = 21, // 3.0.12 and 4.0.0 - 4.1.x
     FIRS3__EXTREME = 22, // 3.0.12
     NAIS__NORTH_AMERICA = 23, // 1.0.6
     ITI = 24, // 1.6
-    FIRS4__TEMPERATE_BASIC = 25, // 4.0.0 beta 4
-    FIRS4__ARCTIC_BASIC = 26, // 4.0.0 beta 4
-    FIRS4__TROPIC_BASIC = 27, // 4.0.0 beta 4
-    FIRS4__STEELTOWN = 28, // 4.0.0 beta 4
-    FIRS4__IN_A_HOT_COUNTRY = 29, // 4.0.0 beta 4
+    FIRS4__TEMPERATE_BASIC = 25, // 4.3.0
+    FIRS4__ARCTIC_BASIC = 26, // 4.3.0
+    FIRS4__TROPIC_BASIC = 27, // 4.3.0
+    FIRS4__STEELTOWN = 28, // 4.3.0
+    FIRS4__IN_A_HOT_COUNTRY = 29, // 4.3.0
     XIS__THE_LOT = 30 // 0.6
 }
 
@@ -168,13 +168,13 @@ function GetEconomyCargoList(economy, cargo_list) {
         list[15] = ((cargo_list[15] == "NUKW") ? "NUKW" : null);
         return list;
     }
-    /* FIRS version 4 alpha */
+    /* FIRS version 4.3 */
     case(Economies.FIRS4__TEMPERATE_BASIC): // Temperate Basic
         return ["PASS","BEER","MAIL","RFPR","COAL","GOOD","ENSP","FMSP","FISH","FRUT",
                 "IORE","FOOD","KAOL","LVST","MILK","SAND","SCMT","STEL"];
     case(Economies.FIRS4__ARCTIC_BASIC): // Arctic Basic
-        return ["PASS","NH3_","MAIL","ENSP","BOOM","FMSP","FERT","FISH","KAOL","WDPR",
-                "PAPR","FOOD","PEAT","PHOS","POTA","PORE","SULP","WOOD","ZINC"];
+        return ["PASS","NH3_","MAIL","ENSP","BOOM","FMSP","FERT","FISH","KAOL","WOOD",
+                "WDPR","FOOD","PAPR","PEAT","PHOS","POTA","PORE","SULP","ZINC"];
     case(Economies.FIRS4__TROPIC_BASIC): // Tropic Basic
         return ["PASS","BEER","MAIL","BEAN","RFPR","GOOD","JAVA","COPR","CORE","ENSP",
                 "FMSP","FOOD","FISH","FRUT","GRAI","LVST","NITR","OIL_","WOOL"];
@@ -186,8 +186,8 @@ function GetEconomyCargoList(economy, cargo_list) {
                 "STWR","SULP","TYRE","VBOD","VENG","VPTS","ZINC","POTA"];
     case(Economies.FIRS4__IN_A_HOT_COUNTRY): // In A Hot Country
         return ["PASS","BEER","MAIL","BDMT","CASS","GOOD","RFPR","CLAY","JAVA","COPR",
-                "CORE","FOOD","DIAM","EOIL","ENSP","FMSP","FRUT","LVST","WDPR","MAIZ",
-                "MNO2","NUTS","OIL_","PETR","PHOS","RUBR","SAND","GRVL","WOOD"];
+                "CORE","FOOD","DIAM","EOIL","ENSP","FMSP","FRUT","LVST","WOOD","WDPR",
+                "MAIZ","MNO2","NUTS","OIL_","PETR","PHOS","RUBR","SAND","GRVL"];
     case(Economies.XIS__THE_LOT): // XIS 0.6: The Lot
         return ["PASS","ACID","MAIL","BEER","AORE","GOOD","BEAN","BDMT","CMNT","RFPR",
                 "CHLO","FOOD","CLAY","COAL","COKE","COPR","CORE","EOIL","POWR","ENSP",
@@ -606,7 +606,7 @@ function DefineCargosBySettings(economy)
             ::CargoPermille <- [60,25,25,15,10];
             ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
             break;
-        case(Economies.FIRS3__IN_A_HOT_COUNTRY): // FIRS 3 -In A Hot Coutry
+        case(Economies.FIRS3__IN_A_HOT_COUNTRY): // FIRS 3 and 4.0-4.1 - In A Hot Coutry
             ::CargoLimiter <- [0,2];
             ::CargoCat <- [[0,2],
                        [4,8,16,17,19,21],
@@ -655,7 +655,7 @@ function DefineCargosBySettings(economy)
             ::CargoPermille <- [60,45,25];
             ::CargoDecay <- [0.4,0.2,0.1];
             break;
-        case(Economies.FIRS4__TEMPERATE_BASIC): // FIRS 4 alpha: Temperate Basic
+        case(Economies.FIRS4__TEMPERATE_BASIC): // FIRS 4.3: Temperate Basic
             ::CargoLimiter <- [0,2];
             ::CargoCat <- [[0,2],
                        [8,9,13,14],
@@ -668,20 +668,20 @@ function DefineCargosBySettings(economy)
             ::CargoPermille <- [60,25,25,15,10];
             ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
             break;
-        case(Economies.FIRS4__ARCTIC_BASIC): // FIRS 4 alpha: Arctic Basic
+        case(Economies.FIRS4__ARCTIC_BASIC): // FIRS 4.3: Arctic Basic
             ::CargoLimiter <- [0,2];
             ::CargoCat <- [[0,2],
-                       [1,7,11,14],
-                       [8,12,13,15,17],
-                       [3,5,9,16],
-                       [4,6,10,18]];
+                       [1,7,11,15],
+                       [8,9,13,14,16],
+                       [3,5,10,17],
+                       [4,6,12,18]];
             ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
                        CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
             ::CargoMinPopDemand <- [0,500,1000,4000,8000];
             ::CargoPermille <- [60,25,25,15,10];
             ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
             break;
-        case(Economies.FIRS4__TROPIC_BASIC): // FIRS 4 alpha: Tropic Basic
+        case(Economies.FIRS4__TROPIC_BASIC): // FIRS 4.3: Tropic Basic
             ::CargoLimiter <- [0,2];
             ::CargoCat <- [[0,2],
                        [1,3,6,12,13,14,15],
@@ -694,7 +694,7 @@ function DefineCargosBySettings(economy)
             ::CargoPermille <- [60,25,25,15,10];
             ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
             break;
-        case(Economies.FIRS4__STEELTOWN): // FIRS 4 alpha: Steeltown
+        case(Economies.FIRS4__STEELTOWN): // FIRS 4.3: Steeltown
             ::CargoLimiter <- [0,2];
             ::CargoCat <- [[0,2],
                        [11,13,21,22,25,32,33,34,36,47],
@@ -707,12 +707,12 @@ function DefineCargosBySettings(economy)
             ::CargoPermille <- [60,25,25,15,10];
             ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
             break;
-        case(Economies.FIRS4__IN_A_HOT_COUNTRY): // FIRS 3 -In A Hot Coutry
+        case(Economies.FIRS4__IN_A_HOT_COUNTRY): // FIRS 4.3 -In A Hot Coutry
             ::CargoLimiter <- [0,2];
             ::CargoCat <- [[0,2],
-                       [4,8,16,17,19,21],
-                       [7,10,12,20,22,24,25,26,27,28],
-                       [6,13,14,15,18,23],
+                       [4,8,16,17,20,22],
+                       [7,10,12,18,21,23,25,26,27,28],
+                       [6,13,14,15,19,24],
                        [1,3,5,9,11]];
             ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
                        CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
