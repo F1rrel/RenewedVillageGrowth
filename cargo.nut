@@ -542,7 +542,7 @@ function DefineCargosBySettings(economy)
             ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
             break;
         case(Economies.YETI): //YETI 0.1.6
-            ::CargoLimiter <- [0,2,16,21];
+            ::CargoLimiter <- [0,2];
             ::CargoCat <- [[0,2,16,21],
                        [6,7,18],
                        [1,3,10,17,19,20],
