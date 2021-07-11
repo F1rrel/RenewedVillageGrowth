@@ -114,7 +114,7 @@ class MainClass extends GSInfo
 
         AddSetting({
             name = "limit_min_transport",
-            description = "Limit Growth: Minimun percentage of transported cargo from town",
+            description = "Limit Growth: Minimum percentage of transported cargo from town",
             easy_value = 30,
             medium_value = 50,
             hard_value = 65,
