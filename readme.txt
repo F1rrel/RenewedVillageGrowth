@@ -134,7 +134,7 @@ supplied. If you deliver all the required cargo, you will have the
 maximum growth rate for a town (its maximum growth rate depends on its
 size). If you deliver only a part of cargo, growth rate will be
 lower. If you only deliver 50% of the requirements, town growth rate
-is arbitrarily set to maximum. If you deliver a larger part of
+is arbitrarily set to minimum. If you deliver a larger part of
 requirements, the town growth rate increases exponentially. Hence, the
 town growth rate is at the same time progressive and exponential.
 
@@ -211,22 +211,20 @@ above. Expert settings should only be changed when having a decent
 understanding of their impact. Changing them is harmless though and
 they can safely be changed while the game is running:
 - "town growth factor": this value changes the maximum town growth
-  rate of a town. Increasing it will result in *lower* town growth
-  rate (town growing slower) and decreasing it will result in faster
-  town growth.
-- "minimum supply percentage for TGR growth": when calculating town
-  growth rate, the script scales the growth rate to the percentage of
-  required cargo supplied. But, by default, at least 50% of
-  requirements needs to be supplied for this to happen and hence, the
-  town growth rate is only scaled relatively to 50% until 100% of
-  supply. This setting allows to change that percentage. Also see:
-  http://dev.openttdcoop.org/projects/gs-rcg/wiki
+  rate of a town. Increasing it will result in slower town growth
+  and decreasing it will result in faster town growth. The value
+  represents the maximum town growth at 0 population.
+- "minimum supply percentage for TGR growth": this value specifies the
+  minimum percentage of fulfillment of cargo categories for which the
+  growth rate is calculated. When this percentage is not fulfilled, the 
+  lowest growth rate is used. The growth is still scaled to 100% of the 
+  fulfillment. 
 - "TGR growth exponentiality factor": when the script scales the town
   growth rate to the percentage of achieved requirement, this relation
   is not linear but exponential. By increasing this setting you can
   increase exponentiality. To put it simple: the higher is this
   number, the more you need to approach a 100% supply to have a decent
-  growth. Also See: http://dev.openttdcoop.org/projects/gs-rcg/wiki
+  growth.
 - "lowest TGR if requirements are not met": for some reason, when
   requirements are not met at all for a town, but this still is under
   active monitoring (because exchanging passengers), it is better not
