@@ -31,7 +31,7 @@ Average town category           :
 Number of contributed towns     :
 Number of not growing towns     :
 Largest population              :
-Cargo information : supplied / required
+Cargo information : available / required
                                 :
 Not enought transported out of town
                                 :

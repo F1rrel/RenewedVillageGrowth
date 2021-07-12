@@ -47,10 +47,10 @@ STR_STATOSTOCS_NOT_GROWING      :{BLACK}Number of not growing towns{ORANGE}
 STR_TOWNBOX_CONTRIBUTOR         :Largest population {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
 STR_TOWNBOX_NO_CONTRIBUTOR      :Largest population {SILVER}{NUM}{BLACK}{STRING}
 
-STR_TOWNBOX_CATEGORY            :Cargo information : accumulated / required{STRING}
-STR_TOWNBOX_CATEGORY_STOP       :Not enought transported out of town :{} * {RED}{CARGO_LIST}{BLACK}{}Cargo information : accumulated / required
-STR_TOWNBOX_CATEGORY_LOW        :Insufficient infrastructure of transportation :{} * {SILVER}{CARGO_LIST}{BLACK}{}Cargo information : accumulated / required
-STR_TOWNBOX_CATEGORY_DELAYED    :Not enought transported out of town :{} * {GOLD}{CARGO_LIST}{BLACK}{}Cargo information : accumulated / required
+STR_TOWNBOX_CATEGORY            :Cargo information : available / required{STRING}
+STR_TOWNBOX_CATEGORY_STOP       :Not enought transported out of town :{} * {RED}{CARGO_LIST}{BLACK}{}Cargo information : available / required
+STR_TOWNBOX_CATEGORY_LOW        :Insufficient infrastructure of transportation :{} * {SILVER}{CARGO_LIST}{BLACK}{}Cargo information : available / required
+STR_TOWNBOX_CATEGORY_DELAYED    :Not enought transported out of town :{} * {GOLD}{CARGO_LIST}{BLACK}{}Cargo information : available / required
 STR_TOWNBOX_CARGO               :Cargo categories :{STRING}
 STR_TOWNBOX_CARGO_STOP          :Not enought transported out of town :{} * {RED}{CARGO_LIST}{BLACK}{}Cargo categories :
 STR_TOWNBOX_CARGO_LOW           :Insufficient infrastructure of transportation :{} * {SILVER}{CARGO_LIST}{BLACK}{}Cargo categories :
