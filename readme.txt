@@ -3,7 +3,7 @@
                 *  A GameScript for OpenTTD  *
                 ******************************
 
-Version: 6.2
+Version: 7.0
 
 Usefull URL's:
 - forum topic: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
@@ -240,7 +240,7 @@ they can safely be changed while the game is running:
   through OTTD's "Online Content").
 - Industry sets: you can use any industry NewGRF
     - these are specifically supported industry NewGRF: Baseset 
-    (all climates), FIRS 1.4, 2, 3, 4 (all economies), ECS 1.2 
+    (all climates), FIRS 1.4, 2, 3, 4.3 (all economies), ECS 1.2 
     (any combination), YETI 0.1.6 (all except Simplified), 
     NAIS 1.0.6, ITI 1.6, XIS 0.6. 
   Using RVG with any other unsupported industry set will contain 

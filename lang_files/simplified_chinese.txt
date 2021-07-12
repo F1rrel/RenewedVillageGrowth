@@ -5,7 +5,7 @@ forums: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
 github: https://github.com/F1rrel/RenewedVillageGrowth
 
 Language                        :simplified_chinese
-Game script version             :6.2
+Game script version             :7.0
 
 Growth : {NUM} days             :成长中: {NUM} 天成长一次
 Not growing                     :停止成长

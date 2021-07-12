@@ -13,7 +13,7 @@ BaNaNaS: https://bananas.openttd.org/package/game-script/52455649
 - GS SuperLib v. 40, ToyLib v. 1, Script Communication for GS v. 45 (you can find it on BaNaNaS, also accessible
   through OTTD's "Online Content").
 - Industry sets: you can use any industry NewGRF
-    - these are specifically supported industry NewGRF: Baseset (all climates), FIRS 1.4, 2, 3, 4
+    - these are specifically supported industry NewGRF: Baseset (all climates), FIRS 1.4, 2, 3, 4.3
   (all economies), ECS 1.2 (any combination), YETI 0.1.6 
   (all except Simplified), NAIS 1.0.6, ITI 1.6, XIS 0.6. 
   Using RVG with any other unsupported industry set will contain proceduraly generated categories
