@@ -31,8 +31,8 @@ Average town category           :平均城镇类别
 Number of contributed towns     :以贡献的城镇数量
 Number of not growing towns     :未成长的城镇数量
 Largest population              :最大人口
-Cargo information : supplied / required
-                                :货物信息 : 已提供 / 需要
+Cargo information : available / required
+                                :货物信息 : 可用的 / 需要
 Not enought transported out of town
                                 :运出城镇的货物数量不足
 Insufficient infrastructure of transportation

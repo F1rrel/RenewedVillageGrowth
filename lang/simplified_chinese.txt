@@ -42,10 +42,10 @@ STR_STATOSTOCS_NOT_GROWING      :{BLACK}未成长的城镇数量{ORANGE}
 STR_TOWNBOX_CONTRIBUTOR         :最大人口 {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
 STR_TOWNBOX_NO_CONTRIBUTOR      :最大人口 {SILVER}{NUM}{BLACK}{STRING}
 
-STR_TOWNBOX_CATEGORY            :货物信息 : 已提供 / 需要{STRING}
-STR_TOWNBOX_CATEGORY_STOP       :运出城镇的货物数量不足 :{} * {RED}{CARGO_LIST}{BLACK}{}货物信息 : 已提供 / 需要
-STR_TOWNBOX_CATEGORY_LOW        :交通基础设施不足 :{} * {SILVER}{CARGO_LIST}{BLACK}{}货物信息 : 已提供 / 需要
-STR_TOWNBOX_CATEGORY_DELAYED    :运出城镇的货物数量不足 :{} * {GOLD}{CARGO_LIST}{BLACK}{}货物信息 : 已提供 / 需要
+STR_TOWNBOX_CATEGORY            :货物信息 : 可用的 / 需要{STRING}
+STR_TOWNBOX_CATEGORY_STOP       :运出城镇的货物数量不足 :{} * {RED}{CARGO_LIST}{BLACK}{}货物信息 : 可用的 / 需要
+STR_TOWNBOX_CATEGORY_LOW        :交通基础设施不足 :{} * {SILVER}{CARGO_LIST}{BLACK}{}货物信息 : 可用的 / 需要
+STR_TOWNBOX_CATEGORY_DELAYED    :运出城镇的货物数量不足 :{} * {GOLD}{CARGO_LIST}{BLACK}{}货物信息 : 可用的 / 需要
 STR_TOWNBOX_CARGO               :货物类别 :{STRING}
 STR_TOWNBOX_CARGO_STOP          :运出城镇的货物数量不足 :{} * {RED}{CARGO_LIST}{BLACK}{}货物类别 :
 STR_TOWNBOX_CARGO_LOW           :交通基础设施不足 :{} * {SILVER}{CARGO_LIST}{BLACK}{}货物类别 :

@@ -42,10 +42,10 @@ STR_STATOSTOCS_NOT_GROWING      :{BLACK}Nombre de villes non en croissance{ORANG
 STR_TOWNBOX_CONTRIBUTOR         :La plus grande population {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
 STR_TOWNBOX_NO_CONTRIBUTOR      :La plus grande population {SILVER}{NUM}{BLACK}{STRING}
 
-STR_TOWNBOX_CATEGORY            :Informations de marchandise : transporté / requis{STRING}
-STR_TOWNBOX_CATEGORY_STOP       :Pas assez d’exportations :{} * {RED}{CARGO_LIST}{BLACK}{}Informations de marchandise : transporté / requis
-STR_TOWNBOX_CATEGORY_LOW        :Infrastructures de transport insuffisante:{} * {SILVER}{CARGO_LIST}{BLACK}{}Informations de marchandise : transporté / requis
-STR_TOWNBOX_CATEGORY_DELAYED    :Pas assez transporté hors de la ville:{} * {GOLD}{CARGO_LIST}{BLACK}{}Informations de marchandise : transporté / requis
+STR_TOWNBOX_CATEGORY            :Informations de marchandise : disponible / requis{STRING}
+STR_TOWNBOX_CATEGORY_STOP       :Pas assez d’exportations :{} * {RED}{CARGO_LIST}{BLACK}{}Informations de marchandise : disponible / requis
+STR_TOWNBOX_CATEGORY_LOW        :Infrastructures de transport insuffisante:{} * {SILVER}{CARGO_LIST}{BLACK}{}Informations de marchandise : disponible / requis
+STR_TOWNBOX_CATEGORY_DELAYED    :Pas assez transporté hors de la ville:{} * {GOLD}{CARGO_LIST}{BLACK}{}Informations de marchandise : disponible / requis
 STR_TOWNBOX_CARGO               :Catégories de marchandise :{STRING}
 STR_TOWNBOX_CARGO_STOP          :Pas assez d’exportations :{} * {RED}{CARGO_LIST}{BLACK}{}Catégories de marchandise :
 STR_TOWNBOX_CARGO_LOW           :Infrastructures de transport insuffisantes :{} * {SILVER}{CARGO_LIST}{BLACK}{}Catégories de marchandise :

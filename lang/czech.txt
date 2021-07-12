@@ -42,10 +42,10 @@ STR_STATOSTOCS_NOT_GROWING      :{BLACK}Počet nerostoucích měst{ORANGE}
 STR_TOWNBOX_CONTRIBUTOR         :Nejvyšší dosažená populace {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
 STR_TOWNBOX_NO_CONTRIBUTOR      :Nejvyšší dosažená populace {SILVER}{NUM}{BLACK}{STRING}
 
-STR_TOWNBOX_CATEGORY            :Statistika dovozu : dodané / požadované{STRING}
-STR_TOWNBOX_CATEGORY_STOP       :Nefunkční vývoz ze města :{} * {RED}{CARGO_LIST}{BLACK}{}Statistika dovozu : dodané / požadované
-STR_TOWNBOX_CATEGORY_LOW        :Nedostatečná infraštruktura dopravy :{} * {SILVER}{CARGO_LIST}{BLACK}{}Statistika dovozu : dodané / požadované
-STR_TOWNBOX_CATEGORY_DELAYED    :Nefunkční vývoz ze města :{} * {GOLD}{CARGO_LIST}{BLACK}{}Statistika dovozu : dodané / požadované
+STR_TOWNBOX_CATEGORY            :Statistika dovozu : disponibilní / požadované{STRING}
+STR_TOWNBOX_CATEGORY_STOP       :Nefunkční vývoz ze města :{} * {RED}{CARGO_LIST}{BLACK}{}Statistika dovozu : disponibilní / požadované
+STR_TOWNBOX_CATEGORY_LOW        :Nedostatečná infraštruktura dopravy :{} * {SILVER}{CARGO_LIST}{BLACK}{}Statistika dovozu : disponibilní / požadované
+STR_TOWNBOX_CATEGORY_DELAYED    :Nefunkční vývoz ze města :{} * {GOLD}{CARGO_LIST}{BLACK}{}Statistika dovozu : disponibilní / požadované
 STR_TOWNBOX_CARGO               :Kategorie nákladu :{STRING}
 STR_TOWNBOX_CARGO_STOP          :Nefunkční vývoz ze města :{} * {RED}{CARGO_LIST}{BLACK}{}Kategorie nákladu :
 STR_TOWNBOX_CARGO_LOW           :Nedostatečná infraštruktura dopravy :{} * {SILVER}{CARGO_LIST}{BLACK}{}Kategorie nákladu :
