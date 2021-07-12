@@ -1,14 +1,22 @@
 *** Renewed Village Growth GS Changelog ***
 
-Version 6.2
+Version 7.0 (2021/07/12)
+* Not compatible with previous versions
+- modified: Updated FIRS to 4.3.0
+- modified: Show available cargo in town info instead of supplied (combination of supplied and stockpiled)
+- modified: New growth rate calculation with slower growth and bigger impact of missing cargo goals
+- modified: Equalization of impact of each cargo category on missing percentage
+- removed: Yeti workers and tired yeti workers as limiter cargos
+
+Version 6.2 (2021/04/18)
 - new: Simplified Chinese translation (SuperCirno)
 
-Version 6.1
+Version 6.1 (2021/03/07)
 - new: Slovak translation
 - new: Czech translation
 - fix: crash when a town stopped to be monitored
 
-Version 6.0
+Version 6.0 (2021/02/22)
 * Not compatible with previous versions
 - new: Growth statistics for each player based on most contributed towns
 - new: Added FIRS 2.1.5 predefined cargo categories (pr0saic)
