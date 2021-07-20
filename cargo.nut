@@ -48,7 +48,7 @@ enum Economies
     FIRS4__STEELTOWN = 28, // 4.3.0
     FIRS4__IN_A_HOT_COUNTRY = 29, // 4.3.0
     XIS__THE_LOT = 30,	// 0.6
-	OTIS_02 = 31 // 02
+    OTIS_02 = 31 // 02
 }
 
 /* Cargolist of supported industry set's cargos. Used to check if
@@ -197,14 +197,14 @@ function GetEconomyCargoList(economy, cargo_list) {
                 "PHOS","IRON","PIPE","FICR","PORE","QLME","RCYC","RUBR","SALT","SAND",
                 "SCMT","SLAG","SASH","STEL","SGBT","SULP","VBOD","VPTS","VEHI","WOOD",
                 "WOOL","ZINC"];
-	case(Economies.OTIS_02): // OTIS 02
+    case(Economies.OTIS_02): // OTIS 02
         return ["PASS","COAL","MAIL","OIL_","LIME","GOOD","GRAI","WOOD","IORE","STEL",
-				"MILK","FOOD","PAPR","FISH","WOOL","CLAY","SAND","WDPR","PCL_","GRVL",
-				"FRUT","BDMT","BEER","MAIZ","CMNT","GLAS","LVST","PETR","FRVG","SASH",
-				"OTI1","CORE","SCMT","COPR","URAN","VALU","AORE","OTI2","NICK","SULP",
-				"RUBR","VEHI","BAKE","PIPE","OYST","MEAT","CHSE","FURN","TEXT","SEED",
-				"FERT","BOOM","ACID","CHLO","SLAG","TWOD","SESP","FUEL","ELTR","WATR",
-				"POTA","POWR","MPTS","RFPR"];
+                "MILK","FOOD","PAPR","FISH","WOOL","CLAY","SAND","WDPR","PCL_","GRVL",
+                "FRUT","BDMT","BEER","MAIZ","CMNT","GLAS","LVST","PETR","FRVG","SASH",
+                "OTI1","CORE","SCMT","COPR","URAN","VALU","AORE","OTI2","NICK","SULP",
+                "RUBR","VEHI","BAKE","PIPE","OYST","MEAT","CHSE","FURN","TEXT","SEED",
+                "FERT","BOOM","ACID","CHLO","SLAG","TWOD","SESP","FUEL","ELTR","WATR",
+                "POTA","POWR","MPTS","RFPR"];
     default:
         return [];
     }
@@ -742,7 +742,7 @@ function DefineCargosBySettings(economy)
             ::CargoPermille <- [60,25,25,15,10];
             ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
             break;
-		case(Economies.OTIS_02): // OTIS 02
+........case(Economies.OTIS_02): // OTIS 02
             ::CargoLimiter <- [0,2];
             ::CargoCat <- [[0,2],
                        [1,4,6,7,8,9,10,11,13,14,15,16,17,19,20,23,26,28,29,30,31,32,40,44,49,51,55,59,60,63],
