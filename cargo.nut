@@ -47,7 +47,8 @@ enum Economies
     FIRS4__TROPIC_BASIC = 27, // 4.3.0
     FIRS4__STEELTOWN = 28, // 4.3.0
     FIRS4__IN_A_HOT_COUNTRY = 29, // 4.3.0
-    XIS__THE_LOT = 30 // 0.6
+    XIS__THE_LOT = 30,	// 0.6
+    OTIS_02 = 31 // 02
 }
 
 /* Cargolist of supported industry set's cargos. Used to check if
@@ -196,6 +197,14 @@ function GetEconomyCargoList(economy, cargo_list) {
                 "PHOS","IRON","PIPE","FICR","PORE","QLME","RCYC","RUBR","SALT","SAND",
                 "SCMT","SLAG","SASH","STEL","SGBT","SULP","VBOD","VPTS","VEHI","WOOD",
                 "WOOL","ZINC"];
+    case(Economies.OTIS_02): // OTIS 02
+        return ["PASS","COAL","MAIL","OIL_","LIME","GOOD","GRAI","WOOD","IORE","STEL",
+                "MILK","FOOD","PAPR","FISH","WOOL","CLAY","SAND","WDPR","PCL_","GRVL",
+                "FRUT","BDMT","BEER","MAIZ","CMNT","GLAS","LVST","PETR","FRVG","SASH",
+                "OTI1","CORE","SCMT","COPR","URAN","VALU","AORE","OTI2","NICK","SULP",
+                "RUBR","VEHI","BAKE","PIPE","OYST","MEAT","CHSE","FURN","TEXT","SEED",
+                "FERT","BOOM","ACID","CHLO","SLAG","TWOD","SESP","FUEL","ELTR","WATR",
+                "POTA","POWR","MPTS","RFPR"];
     default:
         return [];
     }
@@ -733,6 +742,18 @@ function DefineCargosBySettings(economy)
             ::CargoPermille <- [60,25,25,15,10];
             ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
             break;
+        case(Economies.OTIS_02): // OTIS 02
+            ::CargoLimiter <- [0,2];
+            ::CargoCat <- [[0,2],
+                       [1,4,6,7,8,9,10,11,13,14,15,16,17,19,20,23,26,28,29,30,31,32,40,44,49,51,55,59,60,63],
+                       [3,5,12,22,24,25,27,33,36,38,39,42,43,45,46,48,50,52,53,54,56],
+                       [18,21,34,35,37,41,47,57,58,61,62]];
+            ::CargoCatList <- [CatLabels.CATEGORY_I,CatLabels.CATEGORY_II,CatLabels.CATEGORY_III,
+                       CatLabels.CATEGORY_IV];
+            ::CargoMinPopDemand <- [0,500,1000,4000,8000];
+            ::CargoPermille <- [60,25,25,15,10];
+            ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
+            break;
         default:
             CreateDefaultCargoCat();
             break;
@@ -763,7 +784,7 @@ function DefineCargosBySettings(economy)
  */
 function DiscoverEconomyType() {
     local economy = Economies.NONE;
-    for (local i = 1; i < 31; ++i) {
+    for (local i = 1; i < 32; ++i) {
         local economy_cargo_list = GetEconomyCargoList(i, ::CargoIDList);
         if (CompareCargoLists(economy_cargo_list, ::CargoIDList)) {
             return i;
