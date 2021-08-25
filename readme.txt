@@ -242,7 +242,7 @@ they can safely be changed while the game is running:
     - these are specifically supported industry NewGRF: Baseset 
     (all climates), FIRS 1.4, 2, 3, 4.3 (all economies), ECS 1.2 
     (any combination), YETI 0.1.6 (all except Simplified), 
-    NAIS 1.0.6, ITI 1.6, XIS 0.6. 
+    NAIS 1.0.6, ITI 1.6, XIS 0.6, OTIS 02, IOTC 0.1. 
   Using RVG with any other unsupported industry set will contain 
   proceduraly generated categories
 
