@@ -198,8 +198,9 @@ function GoalTown::MonthlyManageTown()
     if (this.town_goals_cat[0] < 1) this.town_goals_cat[0] = 1;
 
     // Get max category
-    local max_cat = 0;
-    while (this.town_goals_cat[max_cat] > 0) {
+    local max_cat = 1;
+    while (max_cat < ::CargoCatNum) {
+        if (this.town_goals_cat[max_cat] == 0) break;
         max_cat++;
     }
 
