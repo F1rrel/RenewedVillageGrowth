@@ -219,11 +219,6 @@ function MainClass::Save()
     Log.Info("Saving data...", Log.LVL_INFO);
     local save_table = {};
 
-    // Save permanent settings (allows changing them in scenario editor)
-    save_table.use_town_sign <- ::SettingsTable.use_town_sign;
-    save_table.randomization <- ::SettingsTable.randomization;
-    save_table.display_cargo <- ::SettingsTable.display_cargo;
-
     /* If the script isn't yet initialized, we can't retrieve data
      * from GoalTown instances. Thus, simply use the original
      * loaded table. Otherwise we build the table with town data.
@@ -233,6 +228,11 @@ function MainClass::Save()
     if (!this.gs_init_done) {
         save_table.town_data_table <- ::TownDataTable;
     } else {
+        // Save permanent settings (allows changing them in scenario editor)
+        save_table.use_town_sign <- ::SettingsTable.use_town_sign;
+        save_table.randomization <- ::SettingsTable.randomization;
+        save_table.display_cargo <- ::SettingsTable.display_cargo;
+
         foreach (company in this.companies)
         {
             save_table.company_data_table[company.id] <- company.SavingCompanyData();
