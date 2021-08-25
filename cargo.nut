@@ -49,7 +49,7 @@ enum Economies
     FIRS4__IN_A_HOT_COUNTRY, // 4.3.0
     XIS__THE_LOT, // 0.6
     OTIS, // 02
-    IOTC, // 0.1.2
+    IOTC, // 0.1.4
     END,
 }
 
@@ -207,7 +207,7 @@ function GetEconomyCargoList(economy, cargo_list) {
                 "RUBR","VEHI","BAKE","PIPE","OYST","MEAT","CHSE","FURN","TEXT","SEED",
                 "FERT","BOOM","ACID","CHLO","SLAG","TWOD","SESP","FUEL","ELTR","WATR",
                 "POTA","POWR","MPTS","RFPR"];
-    case(Economies.IOTC): // IOTC 0.1.2
+    case(Economies.IOTC): // IOTC 0.1.4
         return ["PASS","TOUR","MAIL","JAVA","OILD","BEER","SGCN","SUGR","TBCO", null,
                 "MOLS","CIGR","FOOD","OILI","FUEL","RFPR","PIPE","NKOR","NICK","COBL",
                 "FERT","ENSP"];
