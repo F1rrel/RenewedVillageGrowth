@@ -18,37 +18,39 @@ enum CatLabels
 enum Economies
 {
     NONE = 0,
-    BASESET__TEMPERATE = 1,
-    BASESET__ARCTIC = 2,
-    BASESET__TROPICAL = 3,
-    BASESET__TOYLAND = 4,
-    FIRS1__FIRS_ECONOMY = 5, // 1.4
-    FIRS1__TEMPERATE_BASIC = 6, // 1.4
-    FIRS1__ARCTIC_BASIC = 7, // 1.4
-    FIRS1__TROPIC_BASIC = 8, // 1.4
-    FIRS1__HEARTH_OF_DARKNESS = 9, // 1.4
-    ECS = 10, // 1.2
-    FIRS2__TEMPERATE_BASIC = 11, // 2.1.5
-    FIRS2__ARCTIC_BASIC = 12, // 2.1.5
-    FIRS2__TROPIC_BASIC = 13, // 2.1.5
-    FIRS2__IN_A_HOT_COUNTRY = 14, // 2.1.5
-    FIRS2__EXTREME = 15, // 2.1.5
-    YETI = 16, // 0.1.6
-    FIRS3__TEMPERATE_BASIC = 17, // 3.0.12
-    FIRS3__ARCTIC_BASIC = 18, // 3.0.12
-    FIRS3__TROPIC_BASIC = 19, // 3.0.12
-    FIRS3__STEELTOWN = 20, // 3.0.12
-    FIRS3__IN_A_HOT_COUNTRY = 21, // 3.0.12 and 4.0.0 - 4.1.x
-    FIRS3__EXTREME = 22, // 3.0.12
-    NAIS__NORTH_AMERICA = 23, // 1.0.6
-    ITI = 24, // 1.6
-    FIRS4__TEMPERATE_BASIC = 25, // 4.3.0
-    FIRS4__ARCTIC_BASIC = 26, // 4.3.0
-    FIRS4__TROPIC_BASIC = 27, // 4.3.0
-    FIRS4__STEELTOWN = 28, // 4.3.0
-    FIRS4__IN_A_HOT_COUNTRY = 29, // 4.3.0
-    XIS__THE_LOT = 30,	// 0.6
-    OTIS_02 = 31 // 02
+    BASESET__TEMPERATE,
+    BASESET__ARCTIC,
+    BASESET__TROPICAL,
+    BASESET__TOYLAND,
+    FIRS1__FIRS_ECONOMY, // 1.4
+    FIRS1__TEMPERATE_BASIC, // 1.4
+    FIRS1__ARCTIC_BASIC, // 1.4
+    FIRS1__TROPIC_BASIC, // 1.4
+    FIRS1__HEARTH_OF_DARKNESS, // 1.4
+    ECS, // 1.2
+    FIRS2__TEMPERATE_BASIC, // 2.1.5
+    FIRS2__ARCTIC_BASIC, // 2.1.5
+    FIRS2__TROPIC_BASIC, // 2.1.5
+    FIRS2__IN_A_HOT_COUNTRY, // 2.1.5
+    FIRS2__EXTREME, // 2.1.5
+    YETI, // 0.1.6
+    FIRS3__TEMPERATE_BASIC, // 3.0.12
+    FIRS3__ARCTIC_BASIC, // 3.0.12
+    FIRS3__TROPIC_BASIC, // 3.0.12
+    FIRS3__STEELTOWN, // 3.0.12
+    FIRS3__IN_A_HOT_COUNTRY, // 3.0.12 and 4.0.0 - 4.1.x
+    FIRS3__EXTREME, // 3.0.12
+    NAIS__NORTH_AMERICA, // 1.0.6
+    ITI, // 1.6
+    FIRS4__TEMPERATE_BASIC, // 4.3.0
+    FIRS4__ARCTIC_BASIC, // 4.3.0
+    FIRS4__TROPIC_BASIC, // 4.3.0
+    FIRS4__STEELTOWN, // 4.3.0
+    FIRS4__IN_A_HOT_COUNTRY, // 4.3.0
+    XIS__THE_LOT, // 0.6
+    OTIS, // 02
+    IOTC, // 0.1.4
+    END,
 }
 
 /* Cargolist of supported industry set's cargos. Used to check if
@@ -197,7 +199,7 @@ function GetEconomyCargoList(economy, cargo_list) {
                 "PHOS","IRON","PIPE","FICR","PORE","QLME","RCYC","RUBR","SALT","SAND",
                 "SCMT","SLAG","SASH","STEL","SGBT","SULP","VBOD","VPTS","VEHI","WOOD",
                 "WOOL","ZINC"];
-    case(Economies.OTIS_02): // OTIS 02
+    case(Economies.OTIS): // OTIS 02
         return ["PASS","COAL","MAIL","OIL_","LIME","GOOD","GRAI","WOOD","IORE","STEL",
                 "MILK","FOOD","PAPR","FISH","WOOL","CLAY","SAND","WDPR","PCL_","GRVL",
                 "FRUT","BDMT","BEER","MAIZ","CMNT","GLAS","LVST","PETR","FRVG","SASH",
@@ -205,6 +207,10 @@ function GetEconomyCargoList(economy, cargo_list) {
                 "RUBR","VEHI","BAKE","PIPE","OYST","MEAT","CHSE","FURN","TEXT","SEED",
                 "FERT","BOOM","ACID","CHLO","SLAG","TWOD","SESP","FUEL","ELTR","WATR",
                 "POTA","POWR","MPTS","RFPR"];
+    case(Economies.IOTC): // IOTC 0.1.4
+        return ["PASS","TOUR","MAIL","JAVA","OILD","BEER","SGCN","SUGR","TBCO", null,
+                "MOLS","CIGR","FOOD","OILI","FUEL","RFPR","PIPE","NKOR","NICK","COBL",
+                "FERT","ENSP"];
     default:
         return [];
     }
@@ -742,7 +748,7 @@ function DefineCargosBySettings(economy)
             ::CargoPermille <- [60,25,25,15,10];
             ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
             break;
-        case(Economies.OTIS_02): // OTIS 02
+        case(Economies.OTIS): // OTIS 02
             ::CargoLimiter <- [0,2];
             ::CargoCat <- [[0,2],
                        [1,4,6,7,8,9,10,11,13,14,15,16,17,19,20,23,26,28,29,30,31,32,40,44,49,51,55,59,60,63],
@@ -750,9 +756,21 @@ function DefineCargosBySettings(economy)
                        [18,21,34,35,37,41,47,57,58,61,62]];
             ::CargoCatList <- [CatLabels.CATEGORY_I,CatLabels.CATEGORY_II,CatLabels.CATEGORY_III,
                        CatLabels.CATEGORY_IV];
-            ::CargoMinPopDemand <- [0,500,1000,4000,8000];
-            ::CargoPermille <- [60,25,25,15,10];
-            ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
+            ::CargoMinPopDemand <- [0,500,1000,4000];
+            ::CargoPermille <- [60,25,25,15];
+            ::CargoDecay <- [0.4,0.2,0.2,0.1];
+            break;
+        case(Economies.IOTC): // IOTC 0.1.2
+            ::CargoLimiter <- [0,2];
+            ::CargoCat <- [[0,2],
+                       [6,8,12,13,15],
+                       [10,14,16,17],
+                       [4,5,20,21]];
+            ::CargoCatList <- [CatLabels.CATEGORY_I,CatLabels.CATEGORY_II,CatLabels.CATEGORY_III,
+                       CatLabels.CATEGORY_IV];
+            ::CargoMinPopDemand <- [0,500,1500,4000];
+            ::CargoPermille <- [60,35,25,15];
+            ::CargoDecay <- [0.4,0.3,0.2,0.1];
             break;
         default:
             CreateDefaultCargoCat();
@@ -784,7 +802,7 @@ function DefineCargosBySettings(economy)
  */
 function DiscoverEconomyType() {
     local economy = Economies.NONE;
-    for (local i = 1; i < 32; ++i) {
+    for (local i = 1; i < Economies.END; ++i) {
         local economy_cargo_list = GetEconomyCargoList(i, ::CargoIDList);
         if (CompareCargoLists(economy_cargo_list, ::CargoIDList)) {
             return i;
