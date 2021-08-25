@@ -1,5 +1,11 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 7.1 (2021/08/25)
+- new: OTIS 02 predefined cargo categories (audunmaroey)
+- new: IOTC 0.1.4 predefined cargo categories
+- fix: crash when game debugging was turned on
+- fix: crash when last category was reached
+
 Version 7.0 (2021/07/12)
 * Not compatible with previous versions
 - modified: Updated FIRS to 4.3.0
