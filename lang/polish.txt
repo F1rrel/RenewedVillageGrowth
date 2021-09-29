@@ -31,9 +31,9 @@ STR_SB_WARNING_TITLE     :UWAGA
 STR_SB_WARNING_1         :Liczba miast na mapie jest zbyt duża, skrypt nie będzie mógł zapisywać zmian. Obecna liczba miast to {SILVER}{NUM}{BLACK}, a maksymalna dozwolona liczba to {SILVER}{NUM}{BLACK}. Skrypt zostaje wyłączony.
 
 ##### GOAL #####
-STR_GOAL_GLOBAL                 :{BLACK}Punkty rozwoju{STRING}{COMPANY}{ORANGE}
-STR_STATISTICS_BIGGEST_TOWN     :{BLACK}Największe miasto{SILVER}{TOWN}{ORANGE}
-STR_STATISTICS_GROWTH_TOWN      :{BLACK}Najszybciej rozwijające się miasto w dniach{SILVER}{TOWN}{ORANGE}
+STR_GOAL_GLOBAL                 :{BLACK}Punkty rozwoju {STRING}{COMPANY}{ORANGE}
+STR_STATISTICS_BIGGEST_TOWN     :{BLACK}Największe miasto: {SILVER}{TOWN}{ORANGE}
+STR_STATISTICS_GROWTH_TOWN      :{BLACK}Najszybciej rozwijające się miasto w dniach: {SILVER}{TOWN}{ORANGE}
 STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}Średnia kategoria miasta{ORANGE}
 STR_STATISTICS_NUM_TOWNS        :{BLACK}Liczba obsługiwanych miast{ORANGE}
 STR_STATOSTOCS_NOT_GROWING      :{BLACK}Liczba nierosnących miast{ORANGE}
