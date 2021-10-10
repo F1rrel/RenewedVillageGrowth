@@ -714,7 +714,7 @@ function DefineCargosBySettings(economy)
             ::CargoCat <- [[0,2],
                        [11,13,21,22,25,32,33,34,36,47],
                        [4,12,16,19,24,26,29,31,46],
-                       [1,3,6,7,8,10,14,15,17,18,20,23,27,30,35,37,29,40,41],
+                       [1,3,6,7,8,10,14,15,17,18,20,23,27,29,30,35,37,38,39,40,41],
                        [5,9,28,28,42,43,44,45]];
             ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.LOCAL_PRODUCTION,CatLabels.IMPORTED_GOODS,
                        CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
@@ -904,7 +904,7 @@ function GetCargoHash(cargo_cat)
     {
         foreach (cargo in cat)
         {
-            hash += 1 << cargo;
+            hash = hash | (1 << cargo);
         }
     }
 
