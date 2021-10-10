@@ -48,13 +48,13 @@ STR_TOWNBOX_CONTRIBUTOR         :Largest population {SILVER}{NUM}{BLACK}{} * {SI
 STR_TOWNBOX_NO_CONTRIBUTOR      :Largest population {SILVER}{NUM}{BLACK}{STRING}
 
 STR_TOWNBOX_CATEGORY            :Cargo information : available / required{STRING}
-STR_TOWNBOX_CATEGORY_STOP       :Not enought transported out of town :{} * {RED}{CARGO_LIST}{BLACK}{}Cargo information : available / required
+STR_TOWNBOX_CATEGORY_STOP       :Not enough transported out of town :{} * {RED}{CARGO_LIST}{BLACK}{}Cargo information : available / required
 STR_TOWNBOX_CATEGORY_LOW        :Insufficient infrastructure of transportation :{} * {SILVER}{CARGO_LIST}{BLACK}{}Cargo information : available / required
-STR_TOWNBOX_CATEGORY_DELAYED    :Not enought transported out of town :{} * {GOLD}{CARGO_LIST}{BLACK}{}Cargo information : available / required
+STR_TOWNBOX_CATEGORY_DELAYED    :Not enough transported out of town :{} * {GOLD}{CARGO_LIST}{BLACK}{}Cargo information : available / required
 STR_TOWNBOX_CARGO               :Cargo categories :{STRING}
-STR_TOWNBOX_CARGO_STOP          :Not enought transported out of town :{} * {RED}{CARGO_LIST}{BLACK}{}Cargo categories :
+STR_TOWNBOX_CARGO_STOP          :Not enough transported out of town :{} * {RED}{CARGO_LIST}{BLACK}{}Cargo categories :
 STR_TOWNBOX_CARGO_LOW           :Insufficient infrastructure of transportation :{} * {SILVER}{CARGO_LIST}{BLACK}{}Cargo categories :
-STR_TOWNBOX_CARGO_DELAYED       :Not enought transported out of town :{} * {GOLD}{CARGO_LIST}{BLACK}{}Cargo categories :
+STR_TOWNBOX_CARGO_DELAYED       :Not enough transported out of town :{} * {GOLD}{CARGO_LIST}{BLACK}{}Cargo categories :
 STR_TOWNBOX_NOGROWTH            :Transport {SILVER}{CARGO_LIST}{BLACK} from this town to make it grow.
 
 STR_TOWNBOX_CATEGORY_0          :{STRING2}{}{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
