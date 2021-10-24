@@ -16,6 +16,7 @@ Content:
 * 3. Requirements
 * 4. License
 * 5. Credits
+* 6. FAQ
 
 
 1. How the script works
@@ -242,7 +243,7 @@ they can safely be changed while the game is running:
     - these are specifically supported industry NewGRF: Baseset 
     (all climates), FIRS 1.4, 2, 3, 4.3 (all economies), ECS 1.2 
     (any combination), YETI 0.1.6 (all except Simplified), 
-    NAIS 1.0.6, ITI 1.6, XIS 0.6, OTIS 02, IOTC 0.1. 
+    NAIS 1.0.6, ITI 1.6, XIS 0.6, OTIS 02, IOTC 0.1, LJI 0.1. 
   Using RVG with any other unsupported industry set will contain 
   proceduraly generated categories
 
@@ -258,6 +259,32 @@ published by the Free Software Foundation, version 2 of the License
 5. Credits
 
 Author: Firrel
+
 Thanks to:
 - keoz for the Renewed City Growth GS
 - Sylf for the City Growth Limiter GS
+
+Contributors:
+- rmnvgr
+- pr0saic
+- audunmaroey
+- SuperCirno
+- qamil95
+- 2TallTyler
+
+
+6. FAQ
+
+Q: Where do I have to deliver the required cargo?
+A: Some of the cargo types are accepted by the towns, so they can be
+   directly delivered there. Other cargo types need to be delivered 
+   to a industry which accepts it. The station accepting the cargo 
+   needs to be near the town. The best indicator is that if the name 
+   of the station is same as the town, the cargo will be counted 
+   towards that town.
+
+Q: What to do when no industry accepts that cargo near the town?
+A: If no industry accepts the cargo, the industry has to be funded
+   near the town. The best way to place the industry is to firstly
+   place down a few stations and if the stations have the same name
+   as the town, the industry placed there will be near enough the town.
