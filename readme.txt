@@ -3,7 +3,7 @@
                 *  A GameScript for OpenTTD  *
                 ******************************
 
-Version: 7.0
+Version: 7.2
 
 Usefull URL's:
 - forum topic: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
@@ -16,6 +16,7 @@ Content:
 * 3. Requirements
 * 4. License
 * 5. Credits
+* 6. FAQ
 
 
 1. How the script works
@@ -214,11 +215,11 @@ they can safely be changed while the game is running:
   rate of a town. Increasing it will result in slower town growth
   and decreasing it will result in faster town growth. The value
   represents the maximum town growth at 0 population.
-- "minimum supply percentage for TGR growth": this value specifies the
-  minimum percentage of fulfillment of cargo categories for which the
-  growth rate is calculated. When this percentage is not fulfilled, the 
-  lowest growth rate is used. The growth is still scaled to 100% of the 
-  fulfillment. 
+- "minimum missing percentage for TGR growth": this value specifies the
+  minimum missing percentage of fulfillment of cargo categories for which 
+  the growth rate is calculated. When this percentage is not fulfilled, 
+  the lowest growth rate is used. The growth is still scaled to 100% of 
+  the fulfillment. 
 - "TGR growth exponentiality factor": when the script scales the town
   growth rate to the percentage of achieved requirement, this relation
   is not linear but exponential. By increasing this setting you can
@@ -242,7 +243,7 @@ they can safely be changed while the game is running:
     - these are specifically supported industry NewGRF: Baseset 
     (all climates), FIRS 1.4, 2, 3, 4.3 (all economies), ECS 1.2 
     (any combination), YETI 0.1.6 (all except Simplified), 
-    NAIS 1.0.6, ITI 1.6, XIS 0.6, OTIS 02, IOTC 0.1. 
+    NAIS 1.0.6, ITI 1.6, XIS 0.6, OTIS 02, IOTC 0.1, LJI 0.1. 
   Using RVG with any other unsupported industry set will contain 
   proceduraly generated categories
 
@@ -258,6 +259,32 @@ published by the Free Software Foundation, version 2 of the License
 5. Credits
 
 Author: Firrel
+
 Thanks to:
 - keoz for the Renewed City Growth GS
 - Sylf for the City Growth Limiter GS
+
+Contributors:
+- rmnvgr
+- pr0saic
+- audunmaroey
+- SuperCirno
+- qamil95
+- 2TallTyler
+
+
+6. FAQ
+
+Q: Where do I have to deliver the required cargo?
+A: Some of the cargo types are accepted by the towns, so they can be
+   directly delivered there. Other cargo types need to be delivered 
+   to a industry which accepts it. The station accepting the cargo 
+   needs to be near the town. The best indicator is that if the name 
+   of the station is same as the town, the cargo will be counted 
+   towards that town.
+
+Q: What to do when no industry accepts that cargo near the town?
+A: If no industry accepts the cargo, the industry has to be funded
+   near the town. The best way to place the industry is to firstly
+   place down a few stations and if the stations have the same name
+   as the town, the industry placed there will be near enough the town.

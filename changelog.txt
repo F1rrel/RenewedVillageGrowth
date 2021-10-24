@@ -1,5 +1,10 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 7.2(2021/10/24)
+- new: Lumberjack Industries 0.1.0 predefined cargo categories (2TallTyler)
+- new: Polish translation (qamil95)
+- fix: cargo hash overflow affecting economies with a lot of cargo types (XIS, FIRS 4 Steeltown)
+
 Version 7.1 (2021/08/25)
 - new: OTIS 02 predefined cargo categories (audunmaroey)
 - new: IOTC 0.1.4 predefined cargo categories

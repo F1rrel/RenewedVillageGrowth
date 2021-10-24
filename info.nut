@@ -150,7 +150,7 @@ class MainClass extends GSInfo
                 flags = CONFIG_INGAME, min_value = 20, max_value = 1000, step_size = 20 });
 
         AddSetting({ name = "supply_impacting_part",
-                description = "Expert: minimum supply percentage for TGR growth",
+                description = "Expert: minimum missing percentage for TGR growth",
                 easy_value = 20,
                 medium_value = 50,
                 hard_value = 80,
