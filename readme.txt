@@ -3,7 +3,7 @@
                 *  A GameScript for OpenTTD  *
                 ******************************
 
-Version: 7.0
+Version: 7.2
 
 Usefull URL's:
 - forum topic: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
@@ -214,11 +214,11 @@ they can safely be changed while the game is running:
   rate of a town. Increasing it will result in slower town growth
   and decreasing it will result in faster town growth. The value
   represents the maximum town growth at 0 population.
-- "minimum supply percentage for TGR growth": this value specifies the
-  minimum percentage of fulfillment of cargo categories for which the
-  growth rate is calculated. When this percentage is not fulfilled, the 
-  lowest growth rate is used. The growth is still scaled to 100% of the 
-  fulfillment. 
+- "minimum missing percentage for TGR growth": this value specifies the
+  minimum missing percentage of fulfillment of cargo categories for which 
+  the growth rate is calculated. When this percentage is not fulfilled, 
+  the lowest growth rate is used. The growth is still scaled to 100% of 
+  the fulfillment. 
 - "TGR growth exponentiality factor": when the script scales the town
   growth rate to the percentage of achieved requirement, this relation
   is not linear but exponential. By increasing this setting you can

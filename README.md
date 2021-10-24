@@ -15,7 +15,7 @@ BaNaNaS: https://bananas.openttd.org/package/game-script/52455649
 - Industry sets: you can use any industry NewGRF
     - these are specifically supported industry NewGRF: Baseset (all climates), FIRS 1.4, 2, 3, 4.3
   (all economies), ECS 1.2 (any combination), YETI 0.1.6 
-  (all except Simplified), NAIS 1.0.6, ITI 1.6, XIS 0.6, OTIS 02, IOTC 0.1
+  (all except Simplified), NAIS 1.0.6, ITI 1.6, XIS 0.6, OTIS 02, IOTC 0.1, LJI 0.1
   Using RVG with any other unsupported industry set will contain proceduraly generated categories
 
 ## Translations
@@ -25,6 +25,7 @@ Currently available languages:
 - Slovak
 - Czech
 - Simplified Chinese (SuperCirno)
+- Polish (qamil95)
 
 If you want to contribute to a translation, you can do it by modifying a file [lang.txt](lang.txt) and posting it to the forum topic or creating a new issue with this file included.
 
@@ -46,3 +47,6 @@ Thanks to contributors:
 - rmnvgr
 - pr0saic
 - audunmaroey
+- SuperCirno
+- qamil95
+- 2TallTyler
