@@ -50,6 +50,7 @@ enum Economies
     XIS__THE_LOT, // 0.6
     OTIS, // 02
     IOTC, // 0.1.4
+    LUMBERJACK, // 0.1.0
     END,
 }
 
@@ -211,6 +212,9 @@ function GetEconomyCargoList(economy, cargo_list) {
         return ["PASS","TOUR","MAIL","JAVA","OILD","BEER","SGCN","SUGR","TBCO", null,
                 "MOLS","CIGR","FOOD","OILI","FUEL","RFPR","PIPE","NKOR","NICK","COBL",
                 "FERT","ENSP"];
+    case(Economies.LUMBERJACK): // Lumberjack Industries
+        return ["PASS","COAL","MAIL","OIL_","RFPR","GOOD","GRAI","WOOD","WDPR","PAPR",
+                "MNSP","FERT","FOOD","KAOL","FUEL","COAT"]
     default:
         return [];
     }
@@ -771,6 +775,18 @@ function DefineCargosBySettings(economy)
             ::CargoMinPopDemand <- [0,500,1500,4000];
             ::CargoPermille <- [60,35,25,15];
             ::CargoDecay <- [0.4,0.3,0.2,0.1];
+            break;
+        case(Economies.LUMBERJACK): // Lumberjack Industries 0.1.0
+            ::CargoLimiter <- [2];
+            ::CargoCat <- [[2],
+                       [12],
+                       [5],
+                       [1]];
+            ::CargoCatList <- [CatLabels.CATEGORY_I,CatLabels.CATEGORY_II,CatLabels.CATEGORY_III,
+                       CatLabels.CATEGORY_IV];
+            ::CargoMinPopDemand <- [500,1500,3000,6000];
+            ::CargoPermille <- [25,25,25,25];
+            ::CargoDecay <- [0.3,0.3,0.3,0.3];
             break;
         default:
             CreateDefaultCargoCat();
