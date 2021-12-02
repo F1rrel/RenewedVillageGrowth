@@ -54,6 +54,7 @@ enum Economies
     WRBI, // 1200
     ITI2, // 2.0
     REAL, // Real Industries Beta
+    MINIMALIST, // 1.1
     END,
 }
 
@@ -254,6 +255,8 @@ function GetEconomyCargoList(economy, cargo_list) {
                 "WOOD","MAIZ","WDPR","WORK","STUD","OTI2","TRSH","VEHI","PRIS","FOOD",
                 "PASS","PETR","RUBR","PLAS","TYRE","HVEH"];
 
+    case(Economies.MINIMALIST): // Minimalist Industries
+        return ["PASS", null,"MAIL", null, null,"GOOD"];
     default:
         return [];
     }
@@ -870,6 +873,15 @@ function DefineCargosBySettings(economy)
             ::CargoMinPopDemand <- [0,1000,2000,3000,4000];
             ::CargoPermille <- [60,45,35,15,15];
             ::CargoDecay <- [0.5,0.4,0.3,0.1,0.1];
+            break;
+        case(Economies.MINIMALIST): // Minimalist Industries 1.1
+            ::CargoLimiter <- [0,2];
+            ::CargoCat <- [[0,2],
+                       [5]];
+            ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.PRODUCTS];
+            ::CargoMinPopDemand <- [0,500];
+            ::CargoPermille <- [60,45];
+            ::CargoDecay <- [0.4,0.4];
             break;
         default:
             if (!CreateDefaultCargoCat())
