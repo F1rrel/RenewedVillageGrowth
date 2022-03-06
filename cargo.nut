@@ -51,6 +51,7 @@ enum Economies
     OTIS, // 02
     IOTC, // 0.1.4
     LUMBERJACK, // 0.1.0
+    OTIS03, // 03
     END,
 }
 
@@ -215,6 +216,14 @@ function GetEconomyCargoList(economy, cargo_list) {
     case(Economies.LUMBERJACK): // Lumberjack Industries
         return ["PASS","COAL","MAIL","OIL_","RFPR","GOOD","GRAI","WOOD","WDPR","PAPR",
                 "MNSP","FERT","FOOD","KAOL","FUEL","COAT"]
+    case(Economies.OTIS03): // OTIS 03
+        return ["PASS","COAL","MAIL","OIL_","LIME","GOOD","GRAI","WOOD","IORE","STEL",
+                "MILK","FOOD","PAPR","FISH","WOOL","CLAY","SAND","WDPR","PCL_","GRVL",
+                "FRUT","BDMT","BEER","MAIZ","CMNT","GLAS","LVST","PETR","FRVG","SASH",
+                "OTI1","CORE","SCMT","COPR","URAN","VALU","AORE","OTI2","NICK","SULP",
+                "RUBR","VEHI","BAKE","PIPE","OYST","MEAT","CHSE","FURN","TEXT","SEED",
+                "FERT","BOOM","ACID","CHLO","SLAG","TWOD","SESP","FUEL","ELTR","WATR",
+                "TATO","POWR","MPTS","RFPR"];
     default:
         return [];
     }
@@ -787,6 +796,18 @@ function DefineCargosBySettings(economy)
             ::CargoMinPopDemand <- [500,1500,3000,6000];
             ::CargoPermille <- [25,25,25,25];
             ::CargoDecay <- [0.3,0.3,0.3,0.3];
+            break;
+        case(Economies.OTIS03): // OTIS 03
+            ::CargoLimiter <- [0,2];
+            ::CargoCat <- [[0,2],
+                       [1,4,6,7,8,9,10,11,13,14,15,16,17,19,20,23,26,28,29,30,31,32,40,44,49,51,55,59,60,63],
+                       [3,5,12,22,24,25,27,33,36,38,39,42,43,45,46,48,50,52,53,54,56],
+                       [18,21,34,35,37,41,47,57,58,61,62]];
+            ::CargoCatList <- [CatLabels.CATEGORY_I,CatLabels.CATEGORY_II,CatLabels.CATEGORY_III,
+                       CatLabels.CATEGORY_IV];
+            ::CargoMinPopDemand <- [0,500,1000,4000];
+            ::CargoPermille <- [60,25,25,15];
+            ::CargoDecay <- [0.4,0.2,0.2,0.1];
             break;
         default:
             CreateDefaultCargoCat();
