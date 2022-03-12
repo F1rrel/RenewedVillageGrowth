@@ -9,20 +9,25 @@ function GoalTown::TownBoxText(growth_enabled, text_mode, redraw=false)
         if (display_cargo) {
             text_townbox = GSText(GSText["STR_TOWNBOX_CARGO_"+(::CargoCatNum-1)]);
             text_townbox = this.TownTextContributor(text_townbox);
+            
+            local cargo_mask = 0;
+            foreach (cargo in ::CargoLimiter) {
+                cargo_mask = cargo_mask | 1 << cargo;
+            }
+            text_townbox.AddParam(GSText(GSText.STR_TOWNBOX_NOGROWTH, cargo_mask));
+
             foreach (index, category in this.town_cargo_cat) {
-                local cargo_mask = 0;
+                cargo_mask = 0;
                 foreach (cargo in category) {
-                    cargo_mask += 1 << cargo;
+                    cargo_mask = cargo_mask | 1 << cargo;
                 }
-                if (index == 0)
-                    text_townbox.AddParam(GSText(GSText.STR_TOWNBOX_NOGROWTH, cargo_mask));
                 text_townbox.AddParam(GSText(GSText["STR_CARGOCAT_LABEL_"+::CargoCatList[index]]));
                 text_townbox.AddParam(cargo_mask);
             }
         } else {
             local cargo_mask = 0;
-            foreach (cargo in this.town_cargo_cat[0]) {
-                cargo_mask += 1 << cargo;
+            foreach (cargo in ::CargoLimiter) {
+                cargo_mask = cargo_mask | 1 << cargo;
             }
             text_townbox = GSText(GSText.STR_TOWNBOX_NOGROWTH, cargo_mask);
         }

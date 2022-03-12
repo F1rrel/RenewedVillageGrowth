@@ -171,14 +171,14 @@ function StoryEditor::CreateStoryBook(companies, num_towns)
     foreach (page, _ in sb_list) GSStoryPage.Remove(page);
 
     foreach (company in companies) {
+        // Create basic cargo informations page
+        company.sp_cargo = this.NewStoryPage(company.id, GSText(GSText.STR_SB_TITLE_1));
+        this.CargoInfoPage(company.sp_cargo);
+
         // Create welcome page
         company.sp_welcome = this.NewStoryPage(company.id, GSText(GSText.STR_SB_WELCOME_TITLE, SELF_MAJORVERSION, SELF_MINORVERSION));
         this.WelcomePage(company.sp_welcome);
         GSStoryPage.Show(company.sp_welcome);
-
-        // Create basic cargo informations page
-        company.sp_cargo = this.NewStoryPage(company.id, GSText(GSText.STR_SB_TITLE_1));
-        this.CargoInfoPage(company.sp_cargo);
     }
 
     // Issue a warning if there are more towns on the map than the GS can save
@@ -191,14 +191,14 @@ function StoryEditor::CreateStoryBook(companies, num_towns)
 
 function StoryEditor::CreateNewCompanyStoryBook(company)
 {
+    // Create basic cargo informations page
+    company.sp_cargo = this.NewStoryPage(company.id, GSText(GSText.STR_SB_TITLE_1));
+    this.CargoInfoPage(company.sp_cargo);
+
     // Create welcome page
     company.sp_welcome = this.NewStoryPage(company.id, GSText(GSText.STR_SB_WELCOME_TITLE, SELF_MAJORVERSION, SELF_MINORVERSION));
     this.WelcomePage(company.sp_welcome);
     GSStoryPage.Show(company.sp_welcome);
-
-    // Create basic cargo informations page
-    company.sp_cargo = this.NewStoryPage(company.id, GSText(GSText.STR_SB_TITLE_1));
-    this.CargoInfoPage(company.sp_cargo);
 }
 
 /* Wrapper that creates a new StoryPage but disable date output. */
