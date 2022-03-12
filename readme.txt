@@ -22,7 +22,7 @@ Content:
 1. How the script works
 
 Renewed Village Growth (RVG) is a game script which changes the way towns
-grow in OTTD. Various cargo requirements and passanger/mail percentage 
+grow in OTTD. Various cargo requirements and passenger/mail percentage 
 transported are defined - monthly - for each town. Towns only grow 
 if those requirements are - partially or completely - satisfied. RVG 
 supports all industry sets.
@@ -145,7 +145,7 @@ last 8 months. This feature allows to avoid big gaps in town's growth
 rate. Changes in towns growth rates are smoothened and progressive.
 
 The town growth is stopped completely for that month if the required 
-percentage of passangers and/or mails is not fulfilled.
+percentage of passengers and/or mails is not fulfilled.
 
 Finally, note that towns data (goals, supplies, stockpiles, growth
 rates...) are saved, so that you can safely reload the game without
@@ -161,7 +161,7 @@ Normal settings:
   information 
     - Automatic - switches between pages at 3s interval 
     (higher town count can increase this interval)
-    - Category deliveries - displays passangers/mails transported / 
+    - Category deliveries - displays passengers/mails transported / 
     required and cargo categories required / supplied / stockpiled
     - Cargo list - displays accepted cargo per category
     - Combined - displays cargo categories and accepted cargo per category

@@ -4,6 +4,8 @@ class Company
     points = null;          // achieved points from growing towns
     statistics = null;      // contains texts for statistics in goal gui
     global_goal = null;     // global goal showing achieved points in the goal gui
+    sp_welcome = null;      // story page welcome
+    sp_cargo = null;        // story page cargo
 
     constructor(id, load_data)
     {
