@@ -894,9 +894,9 @@ function InitCargoLists()
 
     // Change cargo min pop demand if specified
     local changed_min_pop_demand = false;
-    foreach (i, min_pop in ::SettingsTable.category_min_pop) {
-        if (min_pop > 0) {
-            ::CargoMinPopDemand[i] = min_pop;
+    for (local i = 0; i < ::CargoCatNum; i++) {
+        if (::SettingsTable.category_min_pop[i] > 0) {
+            ::CargoMinPopDemand[i] = ::SettingsTable.category_min_pop[i];
             changed_min_pop_demand = true;
         }
     }
