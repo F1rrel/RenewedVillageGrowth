@@ -239,6 +239,7 @@ they can safely be changed while the game is running:
   disabling completely town growth but setting it to an extremely low
   rate. The default is 880 (which means that a new house is created
   only each 880 days). It can be increased until 880.
+- "allow_0_days_growth": the town growth rate can go to zero.
 
 
 3. Requirements
