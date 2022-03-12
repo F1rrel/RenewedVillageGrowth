@@ -44,6 +44,7 @@ class MainClass extends GSController
     current_save_version = null;
     actual_town_info_mode = null;
     toy_lib = null;
+    story_editor = null;
 
     constructor() {
         this.companies = [];
@@ -57,6 +58,7 @@ class MainClass extends GSController
         this.load_saved_data = false;
         this.actual_town_info_mode = 0;
         this.toy_lib = null;
+        this.story_editor = null;
         ::TownDataTable <- {};
         ::CompanyDataTable <- {};
         ::SettingsTable <- {};
@@ -96,8 +98,8 @@ function MainClass::Start()
     GSController.Sleep(1);
 
     // Create and fill StoryBook. This can't be done before OTTD is ready.
-    local story_editor = StoryEditor();
-    story_editor.CreateStoryBook(this.towns.len());
+    this.story_editor = StoryEditor();
+    this.story_editor.CreateStoryBook(this.companies, this.towns.len());
 
     if (!this.gs_init_done) {
         GSLog.Error("Game initialisation failed, stopping the game script!");
@@ -302,7 +304,11 @@ function MainClass::UpdateCompanyList()
         if(existing != null) continue;
 
         // Initialize new company
-        this.companies.append(Company(c, false));
+        local company = Company(c, false);
+        this.companies.append(company);
+        
+        if (this.story_editor != null)
+            this.story_editor.CreateNewCompanyStoryBook(company);
     }
 }
 
@@ -388,6 +394,7 @@ function MainClass::ManageTowns()
         return;
     } else {
         GSToyLib.Check();
+        this.story_editor.CheckParameters(this.companies);
         DailyManageTownPopulation();
 
         this.current_date = date;
