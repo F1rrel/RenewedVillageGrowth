@@ -237,7 +237,7 @@ function GoalTown::MonthlyManageTown()
     // The max growth rate and difference between max growth rate and lowest growth rate
     // multiplied by extra growth factor are combined into the resulting growth rate.
     Log.Info("Goal diff: " + goal_diff_percent + "%", Log.LVL_DEBUG);
-    if (goal_diff_percent <= sup_imp_part) {
+    if ((1.0 - goal_diff_percent) >= sup_imp_part) {
         local max_town_growth_rate = g_factor * exp(-cur_pop.tofloat()/10000);
         max_town_growth_rate = max_town_growth_rate < 1 ? 1 : max_town_growth_rate;
         local growth = 1 - (1 - exp(-e_factor * (1 - goal_diff_percent))) / (1 - exp(-e_factor));

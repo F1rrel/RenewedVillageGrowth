@@ -215,8 +215,8 @@ they can safely be changed while the game is running:
   rate of a town. Increasing it will result in slower town growth
   and decreasing it will result in faster town growth. The value
   represents the maximum town growth at 0 population.
-- "minimum missing percentage for TGR growth": this value specifies the
-  minimum missing percentage of fulfillment of cargo categories for which 
+- "minimum fulfilled percentage for TGR growth": this value specifies the
+  minimum fulfillment percentage of cargo categories for which 
   the growth rate is calculated. When this percentage is not fulfilled, 
   the lowest growth rate is used. The growth is still scaled to 100% of 
   the fulfillment. 
