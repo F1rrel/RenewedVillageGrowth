@@ -31,12 +31,12 @@ STR_SB_WARNING_TITLE     :Upozornění
 STR_SB_WARNING_1         :Na mapě sa nachází víc měst než je hrací skript schopen uložit. Aktuální počet měst na mapě je {SILVER}{NUM}{BLACK} a maximum je {SILVER}{NUM}{BLACK}. Hrací skript se vypíná.
 
 ##### GOAL #####
-STR_GOAL_GLOBAL                 :{STRING}{COMPANY}{BLACK} přírastkových bodů{ORANGE}
+STR_STATISTICS_GROWTH_POINTS    :{STRING}{COMPANY}{BLACK} přírastkových bodů{ORANGE}
 STR_STATISTICS_BIGGEST_TOWN     :{BLACK}Nejväčší město {SILVER}{TOWN}{ORANGE}
 STR_STATISTICS_GROWTH_TOWN      :{BLACK}Nejrychleji se rozvýjející město ve dnech {SILVER}{TOWN}{ORANGE}
 STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}Průměrná kategerie měst{ORANGE}
 STR_STATISTICS_NUM_TOWNS        :{BLACK}Počet podporovaných měst{ORANGE}
-STR_STATOSTOCS_NOT_GROWING      :{BLACK}Počet nerostoucích měst{ORANGE}
+STR_STATISTICS_NOT_GROWING      :{BLACK}Počet nerostoucích měst{ORANGE}
 
 ##### TOWNBOX #####
 STR_TOWNBOX_CONTRIBUTOR         :Nejvyšší dosažená populace {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}

@@ -294,8 +294,10 @@ function MainClass::UpdateCompanyList()
 
         if(GSCompany.ResolveCompanyID(c) == GSCompany.COMPANY_INVALID)
         {
-            if(existing != null)
+            if(existing != null) {
+                existing.RemoveGUIGoals();
                 this.companies.remove(existing_idx);
+            }
 
             continue;
         }
