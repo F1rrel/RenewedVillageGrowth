@@ -115,7 +115,7 @@ class MainClass extends GSInfo
         AddSetting({
             name = "limit_min_transport",
             description = "Limit Growth: Minimum percentage of transported cargo from town",
-            easy_value = 30,
+            easy_value = 40,
             medium_value = 50,
             hard_value = 65,
             custom_value = 50,
@@ -150,10 +150,10 @@ class MainClass extends GSInfo
                 flags = CONFIG_INGAME, min_value = 20, max_value = 1000, step_size = 20 });
 
         AddSetting({ name = "supply_impacting_part",
-                description = "Expert: minimum missing percentage for TGR growth",
-                easy_value = 20,
+                description = "Expert: minimum fulfilled percentage for TGR growth",
+                easy_value = 30,
                 medium_value = 50,
-                hard_value = 80,
+                hard_value = 70,
                 custom_value = 50,
                 flags = CONFIG_INGAME, min_value = 0, max_value = 100, step_size = 5 });
 
