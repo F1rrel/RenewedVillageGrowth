@@ -141,6 +141,7 @@ function GoalTown::MonthlyManageTown()
     local e_factor = GSController.GetSetting("exponentiality_factor");
     local sup_imp_part = GSController.GetSetting("supply_impacting_part") / 100.0;
     local lowest_tgr = GSController.GetSetting("lowest_town_growth_rate");
+    local allow_0_days_growth = GSController.GetSetting("allow_0_days_growth");
     // Clearing the arrays
     this.town_supplied_cat = array(::CargoCatNum, 0);
     this.town_goals_cat = array(::CargoCatNum, 0);
@@ -250,7 +251,7 @@ function GoalTown::MonthlyManageTown()
 
     if (new_town_growth_rate > lowest_tgr)
         new_town_growth_rate = lowest_tgr;
-    else if (new_town_growth_rate < 1)
+    else if (new_town_growth_rate < 1 && !allow_0_days_growth)
         new_town_growth_rate = 1;
 
     // Defining the new town growth rate, calculated as the moving average of the TGR array, update only if town growth requirements are fulfilled
@@ -366,7 +367,7 @@ function GoalTown::CheckMonitoring(monitored)
     local delivery_check = 0;
     for (local cid = GSCompany.COMPANY_FIRST; cid <= GSCompany.COMPANY_LAST; cid++) {
         if (GSCompany.ResolveCompanyID(cid) != GSCompany.COMPANY_INVALID) {
-            foreach (cargo in town_cargo_cat[0]) {
+            foreach (cargo in ::CargoLimiter) {
                 delivery_check += GSCargoMonitor.GetTownPickupAmount(cid, cargo, this.id, true);
                 if (delivery_check > 0) break;
             }

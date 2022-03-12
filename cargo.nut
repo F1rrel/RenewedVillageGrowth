@@ -842,6 +842,35 @@ function CompareCargoLists(list1, list2) {
     return true;
 }
 
+function SortCategoriesMinPopDemand()
+{
+    for (local i = 0; i < ::CargoCatNum; i++) {
+        for (local j = 0; j < ::CargoCatNum - 1; j++) {
+            if (::CargoMinPopDemand[j] > ::CargoMinPopDemand[j+1]) {
+                local cargo_cat = ::CargoCat[j];
+                ::CargoCat[j] = ::CargoCat[j+1];
+                ::CargoCat[j+1] = cargo_cat;
+
+                local cargo_cat_list = ::CargoCatList[j];
+                ::CargoCatList[j] = ::CargoCatList[j+1];
+                ::CargoCatList[j+1] = cargo_cat_list;
+
+                local min_pop_demand = ::CargoMinPopDemand[j];
+                ::CargoMinPopDemand[j] = ::CargoMinPopDemand[j+1];
+                ::CargoMinPopDemand[j+1] = min_pop_demand;
+
+                local cargo_permille = ::CargoPermille[j];
+                ::CargoPermille[j] = ::CargoPermille[j+1];
+                ::CargoPermille[j+1] = cargo_permille;
+
+                local cargo_decay = ::CargoDecay[j];
+                ::CargoDecay[j] = ::CargoDecay[j+1];
+                ::CargoDecay[j+1] = cargo_decay;
+            }
+        }
+    }
+}
+
 /* Initialization of cargo data. */
 function InitCargoLists()
 {
@@ -863,6 +892,18 @@ function InitCargoLists()
     ::CargoCatNum <- ::CargoCat.len();
     ::Economy <- economy;
 
+    // Change cargo min pop demand if specified
+    local changed_min_pop_demand = false;
+    foreach (i, min_pop in ::SettingsTable.category_min_pop) {
+        if (min_pop > 0) {
+            ::CargoMinPopDemand[i] = min_pop;
+            changed_min_pop_demand = true;
+        }
+    }
+
+    if (changed_min_pop_demand)
+        SortCategoriesMinPopDemand();
+
     return true;
 }
 
@@ -872,7 +913,7 @@ function RandomizeFixed(number)
     local cargo_cat = array(::CargoCat.len());
     foreach (cat_idx, cat in ::CargoCat)
     {
-        if (cat_idx == 0) {
+        if (::CargoCatList[cat_idx] == CatLabels.PUBLIC_SERVICES || ::CargoCatList[cat_idx] == CatLabels.CATEGORY_I) {
             cargo_cat[cat_idx] = cat;
         } else {
             local cargo_list = clone cat;
@@ -894,7 +935,7 @@ function RandomizeRange(lower, upper)
     local cargo_cat = array(::CargoCat.len());
     foreach (cat_idx, cat in ::CargoCat)
     {
-        if (cat_idx == 0) {
+        if (::CargoCatList[cat_idx] == CatLabels.PUBLIC_SERVICES || ::CargoCatList[cat_idx] == CatLabels.CATEGORY_I) {
             cargo_cat[cat_idx] = cat;
         } else {
             local cargo_list = clone cat;

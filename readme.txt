@@ -204,6 +204,13 @@ Limit growth settings:
 - "Stop growth after set amount of months": keep growing for the amount
   of months after limiter stops the growth
 
+Category settings:
+These settings change the cargo category values and can only be changed
+before the game start.
+- "category_X_min_pop": change the minimum population at which the demand
+  for that category starts. The categories are sorted based on selected
+  values. Choosing value 0 uses the economy's default value.
+
 Expert settings:
 These settings are for people who want finely tweak the script
 behaviour. Most people shouldn't change them and can just change

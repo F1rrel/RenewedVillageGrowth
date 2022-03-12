@@ -141,6 +141,51 @@ class MainClass extends GSInfo
             custom_value = 1,
             flags = CONFIG_INGAME, min_value = 0, max_value = 12, step_size = 1});
 
+        AddSetting({
+            name = "category_1_min_pop",
+            description = "Category 1: Minimum population demand (0 = default)",
+            easy_value = 0,
+            medium_value = 0,
+            hard_value = 0,
+            custom_value = 0,
+            flags = CONFIG_INGAME, min_value = 0, max_value = 50000, step_size = 100});
+        
+        AddSetting({
+            name = "category_2_min_pop",
+            description = "Category 2: Minimum population demand (0 = default)",
+            easy_value = 0,
+            medium_value = 0,
+            hard_value = 0,
+            custom_value = 0,
+            flags = CONFIG_INGAME, min_value = 0, max_value = 50000, step_size = 100});
+        
+        AddSetting({
+            name = "category_3_min_pop",
+            description = "Category 3: Minimum population demand (0 = default)",
+            easy_value = 0,
+            medium_value = 0,
+            hard_value = 0,
+            custom_value = 0,
+            flags = CONFIG_INGAME, min_value = 0, max_value = 50000, step_size = 100});
+        
+        AddSetting({
+            name = "category_4_min_pop",
+            description = "Category 4: Minimum population demand (0 = default)",
+            easy_value = 0,
+            medium_value = 0,
+            hard_value = 0,
+            custom_value = 0,
+            flags = CONFIG_INGAME, min_value = 0, max_value = 50000, step_size = 100});
+
+        AddSetting({
+            name = "category_5_min_pop",
+            description = "Category 5: Minimum population demand (0 = default)",
+            easy_value = 0,
+            medium_value = 0,
+            hard_value = 0,
+            custom_value = 0,
+            flags = CONFIG_INGAME, min_value = 0, max_value = 50000, step_size = 100});
+
         AddSetting({ name = "town_growth_factor",
                 description = "Expert: town growth factor",
                 easy_value = 50,
@@ -172,6 +217,14 @@ class MainClass extends GSInfo
                 hard_value = 880,
                 custom_value = 550,
                 flags = CONFIG_INGAME, min_value = 10, max_value = 880, step_size = 10 });
+
+        AddSetting({ name = "allow_0_days_growth",
+                description = "Expert: allow 0 days growth",
+                easy_value = 0,
+                medium_value = 0,
+                hard_value = 0,
+                custom_value = 0,
+                flags = CONFIG_BOOLEAN | CONFIG_INGAME});
 
         AddSetting({ name = "log_level",
                 description = "Debug: Log level (higher = print more)",
