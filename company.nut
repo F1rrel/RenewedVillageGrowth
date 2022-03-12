@@ -1,3 +1,14 @@
+enum Statistics
+{
+    GROWTH_POINTS,
+    BIGGEST_TOWN,
+    FASTEST_GROWING_TOWN,
+    AVERAGE_CATEGORY,
+    NUM_TOWNS,
+    NUM_NOT_GROWING_TOWNS,
+    END
+}
+
 class Company
 {
     id = null;              // company id
@@ -36,20 +47,29 @@ function Company::SavingCompanyData()
 function Company::InitGUIGoals()
 {
     // global goal
-    this.global_goal = GSGoal.New(GSCompany.COMPANY_INVALID, GSText(GSText.STR_GOAL_GLOBAL, GetColorText(this.id), this.id), GSGoal.GT_NONE, 0);
+    this.global_goal = GSGoal.New(GSCompany.COMPANY_INVALID, GSText(GSText.STR_STATISTICS_GROWTH_POINTS, GetColorText(this.id), this.id), GSGoal.GT_NONE, 0);
     GSGoal.SetProgress(this.global_goal, GSText(GSText.STR_NUM, this.points));
 
     // statistics
-    this.statistics = array(5, -1);
+    this.statistics = array(Statistics.END, -1);
 
-    this.statistics[2] = GSGoal.New(this.id, GSText(GSText.STR_STATISTICS_AVERAGE_CATEGORY), GSGoal.GT_NONE, 0);
-    GSGoal.SetProgress(this.statistics[2], GSText(GSText.STR_COMMA, 0));
+    this.statistics[Statistics.GROWTH_POINTS] = GSGoal.New(this.id, GSText(GSText.STR_STATISTICS_GROWTH_POINTS, GetColorText(this.id), this.id), GSGoal.GT_NONE, 0);
+    GSGoal.SetProgress(this.statistics[Statistics.GROWTH_POINTS], GSText(GSText.STR_NUM, this.points));
 
-    this.statistics[3] = GSGoal.New(this.id, GSText(GSText.STR_STATISTICS_NUM_TOWNS), GSGoal.GT_NONE, 0);
-    GSGoal.SetProgress(this.statistics[3], GSText(GSText.STR_NUM, 0));
+    this.statistics[Statistics.AVERAGE_CATEGORY] = GSGoal.New(this.id, GSText(GSText.STR_STATISTICS_AVERAGE_CATEGORY), GSGoal.GT_NONE, 0);
+    GSGoal.SetProgress(this.statistics[Statistics.AVERAGE_CATEGORY], GSText(GSText.STR_COMMA, 0));
 
-    this.statistics[4] = GSGoal.New(this.id, GSText(GSText.STR_STATOSTOCS_NOT_GROWING), GSGoal.GT_NONE, 0);
-    GSGoal.SetProgress(this.statistics[4], GSText(GSText.STR_NUM, 0));
+    this.statistics[Statistics.NUM_TOWNS] = GSGoal.New(this.id, GSText(GSText.STR_STATISTICS_NUM_TOWNS), GSGoal.GT_NONE, 0);
+    GSGoal.SetProgress(this.statistics[Statistics.NUM_TOWNS], GSText(GSText.STR_NUM, 0));
+
+    this.statistics[Statistics.NUM_NOT_GROWING_TOWNS] = GSGoal.New(this.id, GSText(GSText.STR_STATISTICS_NOT_GROWING), GSGoal.GT_NONE, 0);
+    GSGoal.SetProgress(this.statistics[Statistics.NUM_NOT_GROWING_TOWNS], GSText(GSText.STR_NUM, 0));
+}
+
+function Company::RemoveGUIGoals()
+{
+    // global goal
+    GSGoal.Remove(this.global_goal);
 }
 
 function Company::AddPoints(points)
@@ -95,38 +115,41 @@ function Company::MonthlyUpdateGUIGoals(towns)
     }
 
     // Global
-    GSGoal.SetText(this.global_goal, GSText(GSText.STR_GOAL_GLOBAL, GetColorText(this.id), this.id));
+    GSGoal.SetText(this.global_goal, GSText(GSText.STR_STATISTICS_GROWTH_POINTS, GetColorText(this.id), this.id));
     GSGoal.SetProgress(this.global_goal, GSText(GSText.STR_NUM, this.points));
 
     // Statistics
+    GSGoal.SetText(this.statistics[Statistics.GROWTH_POINTS], GSText(GSText.STR_STATISTICS_GROWTH_POINTS, GetColorText(this.id), this.id));
+    GSGoal.SetProgress(this.statistics[Statistics.GROWTH_POINTS], GSText(GSText.STR_NUM, this.points));
+
     if (GSTown.IsValidTown(biggest_town)) {
-        if (!GSGoal.IsValidGoal(this.statistics[0]))
-            this.statistics[0] = GSGoal.New(this.id, GSText(GSText.STR_STATISTICS_BIGGEST_TOWN, biggest_town), GSGoal.GT_NONE, 0);
+        if (!GSGoal.IsValidGoal(this.statistics[Statistics.BIGGEST_TOWN]))
+            this.statistics[Statistics.BIGGEST_TOWN] = GSGoal.New(this.id, GSText(GSText.STR_STATISTICS_BIGGEST_TOWN, biggest_town), GSGoal.GT_NONE, 0);
         else
-            GSGoal.SetText(this.statistics[0], GSText(GSText.STR_STATISTICS_BIGGEST_TOWN, biggest_town));
-        GSGoal.SetProgress(this.statistics[0], GSText(GSText.STR_NUM, biggest_town_population));
+            GSGoal.SetText(this.statistics[Statistics.BIGGEST_TOWN], GSText(GSText.STR_STATISTICS_BIGGEST_TOWN, biggest_town));
+        GSGoal.SetProgress(this.statistics[Statistics.BIGGEST_TOWN], GSText(GSText.STR_NUM, biggest_town_population));
     }
-    else if (GSGoal.IsValidGoal(this.statistics[0])) {
-        GSGoal.Remove(this.statistics[0]);
-        this.statistics[0] = -1;
+    else if (GSGoal.IsValidGoal(this.statistics[Statistics.BIGGEST_TOWN])) {
+        GSGoal.Remove(this.statistics[Statistics.BIGGEST_TOWN]);
+        this.statistics[Statistics.BIGGEST_TOWN] = -1;
     }
 
     if (GSTown.IsValidTown(fastest_growth_town)) {
-        if (!GSGoal.IsValidGoal(this.statistics[1]))
-            this.statistics[1] = GSGoal.New(this.id, GSText(GSText.STR_STATISTICS_GROWTH_TOWN, fastest_growth_town), GSGoal.GT_NONE, 0);
+        if (!GSGoal.IsValidGoal(this.statistics[Statistics.FASTEST_GROWING_TOWN]))
+            this.statistics[Statistics.FASTEST_GROWING_TOWN] = GSGoal.New(this.id, GSText(GSText.STR_STATISTICS_GROWTH_TOWN, fastest_growth_town), GSGoal.GT_NONE, 0);
         else
-            GSGoal.SetText(this.statistics[1], GSText(GSText.STR_STATISTICS_GROWTH_TOWN, fastest_growth_town));
-        GSGoal.SetProgress(this.statistics[1], GSText(GSText.STR_NUM, fastest_growth));
+            GSGoal.SetText(this.statistics[Statistics.FASTEST_GROWING_TOWN], GSText(GSText.STR_STATISTICS_GROWTH_TOWN, fastest_growth_town));
+        GSGoal.SetProgress(this.statistics[Statistics.FASTEST_GROWING_TOWN], GSText(GSText.STR_NUM, fastest_growth));
     }
-    else if (GSGoal.IsValidGoal(this.statistics[1])) {
-        GSGoal.Remove(this.statistics[1]);
-        this.statistics[1] = -1;
+    else if (GSGoal.IsValidGoal(this.statistics[Statistics.FASTEST_GROWING_TOWN])) {
+        GSGoal.Remove(this.statistics[Statistics.FASTEST_GROWING_TOWN]);
+        this.statistics[Statistics.FASTEST_GROWING_TOWN] = -1;
     }
 
     local average_category = num_towns > 0 ? (average_category_total.tofloat() / num_towns * 1000).tointeger() : 0;
-    GSGoal.SetProgress(this.statistics[2], GSText(GSText.STR_COMMA, average_category));
-    GSGoal.SetProgress(this.statistics[3], GSText(GSText.STR_NUM, num_towns));
-    GSGoal.SetProgress(this.statistics[4], GSText(GSText.STR_NUM, num_not_growing_towns));
+    GSGoal.SetProgress(this.statistics[Statistics.AVERAGE_CATEGORY], GSText(GSText.STR_COMMA, average_category));
+    GSGoal.SetProgress(this.statistics[Statistics.NUM_TOWNS], GSText(GSText.STR_NUM, num_towns));
+    GSGoal.SetProgress(this.statistics[Statistics.NUM_NOT_GROWING_TOWNS], GSText(GSText.STR_NUM, num_not_growing_towns));
 }
 
 function GetColorText(company_id)

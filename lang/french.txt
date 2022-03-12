@@ -36,7 +36,7 @@ STR_STATISTICS_BIGGEST_TOWN     :{BLACK}La plus grande ville {SILVER}{TOWN}{ORAN
 STR_STATISTICS_GROWTH_TOWN      :{BLACK}Ville à la croissance la plus rapide en jours {SILVER}{TOWN}{ORANGE}
 STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}Catégorie de ville moyenne{ORANGE}
 STR_STATISTICS_NUM_TOWNS        :{BLACK}Nombre de villes contribuées{ORANGE}
-STR_STATOSTOCS_NOT_GROWING      :{BLACK}Nombre de villes non en croissance{ORANGE}
+STR_STATISTICS_NOT_GROWING      :{BLACK}Nombre de villes non en croissance{ORANGE}
 
 ##### TOWNBOX #####
 STR_TOWNBOX_CONTRIBUTOR         :La plus grande population {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}

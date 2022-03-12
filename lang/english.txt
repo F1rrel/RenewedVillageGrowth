@@ -36,12 +36,12 @@ STR_SB_WARNING_TITLE     :Warning
 STR_SB_WARNING_1         :There are more towns on the map than the game script can save. The current number of towns is {SILVER}{NUM}{BLACK} and the maximum is {SILVER}{NUM}{BLACK}. The game script is turned off.
 
 ##### GOAL #####
-STR_GOAL_GLOBAL                 :{STRING}{COMPANY}{BLACK} growth points{ORANGE}
+STR_STATISTICS_GROWTH_POINTS    :{STRING}{COMPANY}{BLACK} growth points{ORANGE}
 STR_STATISTICS_BIGGEST_TOWN     :{BLACK}Biggest town {SILVER}{TOWN}{ORANGE}
 STR_STATISTICS_GROWTH_TOWN      :{BLACK}Fastest growing town in days {SILVER}{TOWN}{ORANGE}
 STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}Average town category{ORANGE}
 STR_STATISTICS_NUM_TOWNS        :{BLACK}Number of contributed towns{ORANGE}
-STR_STATOSTOCS_NOT_GROWING      :{BLACK}Number of not growing towns{ORANGE}
+STR_STATISTICS_NOT_GROWING      :{BLACK}Number of not growing towns{ORANGE}
 
 ##### TOWNBOX #####
 STR_TOWNBOX_CONTRIBUTOR         :Largest population {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
