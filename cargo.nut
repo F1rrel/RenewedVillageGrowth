@@ -913,7 +913,7 @@ function RandomizeFixed(number)
     local cargo_cat = array(::CargoCat.len());
     foreach (cat_idx, cat in ::CargoCat)
     {
-        if (cat_idx == 0 && (::CargoCatList[cat_idx] == CatLabels.PUBLIC_SERVICES || ::CargoCatList[cat_idx] == CatLabels.CATEGORY_I)) {
+        if (::CargoCatList[cat_idx] == CatLabels.PUBLIC_SERVICES || ::CargoCatList[cat_idx] == CatLabels.CATEGORY_I) {
             cargo_cat[cat_idx] = cat;
         } else {
             local cargo_list = clone cat;
@@ -935,7 +935,7 @@ function RandomizeRange(lower, upper)
     local cargo_cat = array(::CargoCat.len());
     foreach (cat_idx, cat in ::CargoCat)
     {
-        if (cat_idx == 0 && (::CargoCatList[cat_idx] == CatLabels.PUBLIC_SERVICES || ::CargoCatList[cat_idx] == CatLabels.CATEGORY_I)) {
+        if (::CargoCatList[cat_idx] == CatLabels.PUBLIC_SERVICES || ::CargoCatList[cat_idx] == CatLabels.CATEGORY_I) {
             cargo_cat[cat_idx] = cat;
         } else {
             local cargo_list = clone cat;
@@ -964,7 +964,7 @@ function RandomizePyramid(ascending)
     local number = ascending ? 1 : ::CargoCat.len();
     foreach (cat_idx, cat in ::CargoCat)
     {
-        if (cat_idx == 0 && (::CargoCatList[cat_idx] == CatLabels.PUBLIC_SERVICES || ::CargoCatList[cat_idx] == CatLabels.CATEGORY_I)) {
+        if (::CargoCatList[cat_idx] == CatLabels.PUBLIC_SERVICES || ::CargoCatList[cat_idx] == CatLabels.CATEGORY_I) {
             cargo_cat[cat_idx] = cat;
         } else {
             local cargo_list = clone cat;
