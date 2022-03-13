@@ -5,6 +5,8 @@ class StoryEditor
     limit_min_transport = null;
     limiter_delay = null;
 
+    sp_cargo = null;
+    sp_custom = null;
     sp_warning = null;
 
     constructor() {
@@ -48,6 +50,11 @@ function StoryEditor::CheckParameters(companies)
 function StoryEditor::WelcomePage(sp_welcome)
 {    
     GSStoryPage.NewElement(sp_welcome, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_WELCOME_DESC));
+    
+    if (GSText.STR_SB_CUSTOM_END - GSText.STR_SB_CUSTOM_TITLE > 1) {
+        GSStoryPage.NewElement(sp_welcome, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_CUSTOM_WELCOME, GSText(GSText.STR_SB_CUSTOM_TITLE)));
+    }
+    
     GSStoryPage.NewElement(sp_welcome, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_WELCOME_CARGO, GSText(GSText.STR_ECONOMY_NONE + ::Economy), ::CargoCatNum, this.supply_impacting_part));
     GSStoryPage.NewElement(sp_welcome, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_WELCOME_STATISTICS));
 
@@ -153,6 +160,14 @@ function StoryEditor::CargoInfoPage(sp_cargo)
     }
 }
 
+/* Create a page showing custom information like server rules. */
+function StoryEditor::CustomPage(sp_custom)
+{
+    for (local i = GSText.STR_SB_CUSTOM_TITLE + 1; i < GSText.STR_SB_CUSTOM_END; i++) {
+        GSStoryPage.NewElement(sp_custom, GSStoryPage.SPET_TEXT, 0, GSText(i));
+    }
+}
+
 /* Create the StoryBook if it still doesn't exist. This function is
  * called only when (re)initializing all data, because the existing
  * storybook is stored by OTTD.
@@ -164,11 +179,17 @@ function StoryEditor::CreateStoryBook(companies, num_towns, init_error)
     foreach (page, _ in sb_list) GSStoryPage.Remove(page);
 
     if (!init_error) {
-        foreach (company in companies) {
-            // Create basic cargo informations page
-            company.sp_cargo = this.NewStoryPage(company.id, GSText(GSText.STR_SB_TITLE_1));
-            this.CargoInfoPage(company.sp_cargo);
+        // Create basic cargo informations page
+        this.sp_cargo = this.NewStoryPage(GSCompany.COMPANY_INVALID, GSText(GSText.STR_SB_TITLE_1));
+        this.CargoInfoPage(this.sp_cargo);
 
+        // Create custom page
+        if (GSText.STR_SB_CUSTOM_END - GSText.STR_SB_CUSTOM_TITLE > 1) {
+            this.sp_custom = this.NewStoryPage(GSCompany.COMPANY_INVALID, GSText(GSText.STR_SB_CUSTOM_TITLE));
+            this.CustomPage(this.sp_custom);
+        }
+
+        foreach (company in companies) {
             // Create welcome page
             company.sp_welcome = this.NewStoryPage(company.id, GSText(GSText.STR_SB_WELCOME_TITLE, SELF_MAJORVERSION, SELF_MINORVERSION));
             this.WelcomePage(company.sp_welcome);

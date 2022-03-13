@@ -826,7 +826,7 @@ function DefineCargosBySettings(economy)
                            [9,25,26,27,30],
                            [5,10,11,22,28,29]]
             ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
-            ::CargoMinPopDemand <- [500,1500,3000,6000];
+            ::CargoMinPopDemand <- [0,500,1500,4000];
             ::CargoPermille <- [60,35,25,15];
             ::CargoDecay <- [0.4,0.3,0.2,0.1];
             break;
