@@ -3,7 +3,7 @@
                 *  A GameScript for OpenTTD  *
                 ******************************
 
-Version: 7.2
+Version: 8.0
 
 Usefull URL's:
 - forum topic: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
@@ -114,14 +114,19 @@ The informations that the script gives are:
     - Combined
     - Full cargo list
   See "Town info display mode" GS setting.
-- The StoryBook also gives informations: there you can find a general
-  description of the categories used in the game, according to your
-  settings. It also gives you some additional informations, such as
-  the population limit at which each category becomes necessary for
-  towns to grow.
+- The StoryBook also gives informations: 
+    - Cargo page - there you can find a general description of
+      the categories used in the game, according to your settings. 
+      It also gives you some additional informations, such as the 
+      population limit at which each category becomes necessary for
+      towns to grow.
+    - Welcome page - shows description how this GS works and where 
+      to find more information.
+    - Custom page - if enabled, shows custom information like server
+      rules.
 - The Goals display statistics of a player containing:
-    - Global goal - receive a point for every new habitant of a town 
-                    over the maximum achieved town size
+    - Growth points - receive a point for every new habitant of a town 
+                      over the maximum achieved town size
     - Average town category - average of number of categories of 
                               contributed towns
     - Number of contributed towns
@@ -187,6 +192,8 @@ Randomization settings:
     - 1,2,3,5,7 per category - fixed amount of cargos per category
     - 1-2, 1-3, 2-3, 3-5, 3-7 - minimum to maximum amount of cargos 
       per category
+    - Descending/ascending - the number of cargo types per category
+      is ascending (1 to 5) or descending (5 to 1)
 - "Randomization: Show town cargos from start": if selected, all randomized
   cargos can be visible for each town, otherwise only reached
   categories are displayed
@@ -239,7 +246,7 @@ they can safely be changed while the game is running:
   disabling completely town growth but setting it to an extremely low
   rate. The default is 880 (which means that a new house is created
   only each 880 days). It can be increased until 880.
-- "allow_0_days_growth": the town growth rate can go to zero.
+- "allow_0_days_growth": the town growth rate can go to zero days.
 
 
 3. Requirements
@@ -251,7 +258,7 @@ they can safely be changed while the game is running:
     - these are specifically supported industry NewGRF: Baseset 
     (all climates), FIRS 1.4, 2, 3, 4.3 (all economies), ECS 1.2 
     (any combination), YETI 0.1.6 (all except Simplified), 
-    NAIS 1.0.6, ITI 1.6, XIS 0.6, OTIS 02, IOTC 0.1, LJI 0.1. 
+    NAIS 1.0.6, ITI 1.6, XIS 0.6, OTIS 02, IOTC 0.1, LJI 0.1, WRBI 1200.
   Using RVG with any other unsupported industry set will contain 
   proceduraly generated categories
 
