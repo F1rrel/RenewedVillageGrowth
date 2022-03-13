@@ -73,7 +73,7 @@ class MainClass extends GSInfo
                 medium_value = 2,
                 hard_value = 4,
                 custom_value = 11,
-                flags = CONFIG_INGAME, min_value = 1, max_value = 13 });
+                flags = CONFIG_INGAME, min_value = 1, max_value = 15 });
         AddLabels("cargo_randomization", {
                     _1 = "None",
                     _2 = "Industry descending",
@@ -87,7 +87,9 @@ class MainClass extends GSInfo
                     _10 = "1-3 per category",
                     _11 = "2-3 per category",
                     _12 = "3-5 per category",
-                    _13 = "3-7 per category" });
+                    _13 = "3-7 per category",
+                    _14 = "Descending",
+                    _15 = "Ascending" });
 
         AddSetting({ name = "display_cargo",
                 description = "Randomization: Show town cargos from start",
@@ -143,48 +145,48 @@ class MainClass extends GSInfo
 
         AddSetting({
             name = "category_1_min_pop",
-            description = "Category 1: Minimum population demand (0 = default)",
-            easy_value = 0,
-            medium_value = 0,
-            hard_value = 0,
-            custom_value = 0,
-            flags = CONFIG_INGAME, min_value = 0, max_value = 50000, step_size = 100});
+            description = "Category 1: Minimum population demand (-1 = default)",
+            easy_value = -1,
+            medium_value = -1,
+            hard_value = -1,
+            custom_value = -1,
+            flags = CONFIG_INGAME, min_value = -1, max_value = 50000, step_size = 100});
         
         AddSetting({
             name = "category_2_min_pop",
-            description = "Category 2: Minimum population demand (0 = default)",
-            easy_value = 0,
-            medium_value = 0,
-            hard_value = 0,
-            custom_value = 0,
-            flags = CONFIG_INGAME, min_value = 0, max_value = 50000, step_size = 100});
+            description = "Category 2: Minimum population demand (-1 = default)",
+            easy_value = -1,
+            medium_value = -1,
+            hard_value = -1,
+            custom_value = -1,
+            flags = CONFIG_INGAME, min_value = -1, max_value = 50000, step_size = 100});
         
         AddSetting({
             name = "category_3_min_pop",
-            description = "Category 3: Minimum population demand (0 = default)",
-            easy_value = 0,
-            medium_value = 0,
-            hard_value = 0,
-            custom_value = 0,
-            flags = CONFIG_INGAME, min_value = 0, max_value = 50000, step_size = 100});
+            description = "Category 3: Minimum population demand (-1 = default)",
+            easy_value = -1,
+            medium_value = -1,
+            hard_value = -1,
+            custom_value = -1,
+            flags = CONFIG_INGAME, min_value = -1, max_value = 50000, step_size = 100});
         
         AddSetting({
             name = "category_4_min_pop",
-            description = "Category 4: Minimum population demand (0 = default)",
-            easy_value = 0,
-            medium_value = 0,
-            hard_value = 0,
-            custom_value = 0,
-            flags = CONFIG_INGAME, min_value = 0, max_value = 50000, step_size = 100});
+            description = "Category 4: Minimum population demand (-1 = default)",
+            easy_value = -1,
+            medium_value = -1,
+            hard_value = -1,
+            custom_value = -1,
+            flags = CONFIG_INGAME, min_value = -1, max_value = 50000, step_size = 100});
 
         AddSetting({
             name = "category_5_min_pop",
-            description = "Category 5: Minimum population demand (0 = default)",
-            easy_value = 0,
-            medium_value = 0,
-            hard_value = 0,
-            custom_value = 0,
-            flags = CONFIG_INGAME, min_value = 0, max_value = 50000, step_size = 100});
+            description = "Category 5: Minimum population demand (-1 = default)",
+            easy_value = -1,
+            medium_value = -1,
+            hard_value = -1,
+            custom_value = -1,
+            flags = CONFIG_INGAME, min_value = -1, max_value = 50000, step_size = 100});
 
         AddSetting({ name = "town_growth_factor",
                 description = "Expert: town growth factor",

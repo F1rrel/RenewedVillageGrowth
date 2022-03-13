@@ -209,7 +209,7 @@ These settings change the cargo category values and can only be changed
 before the game start.
 - "category_X_min_pop": change the minimum population at which the demand
   for that category starts. The categories are sorted based on selected
-  values. Choosing value 0 uses the economy's default value.
+  values. Choosing value -1 uses the economy's default value.
 
 Expert settings:
 These settings are for people who want finely tweak the script
