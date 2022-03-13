@@ -226,10 +226,6 @@ function StoryEditor::CreateStoryBook(companies, num_towns, init_error)
 
 function StoryEditor::CreateNewCompanyStoryBook(company)
 {
-    // Create basic cargo informations page
-    company.sp_cargo = this.NewStoryPage(company.id, GSText(GSText.STR_SB_TITLE_1));
-    this.CargoInfoPage(company.sp_cargo);
-
     // Create welcome page
     company.sp_welcome = this.NewStoryPage(company.id, GSText(GSText.STR_SB_WELCOME_TITLE, SELF_MAJORVERSION, SELF_MINORVERSION));
     this.WelcomePage(company.sp_welcome);
