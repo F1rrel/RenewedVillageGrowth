@@ -33,6 +33,14 @@ enum Randomization {
     ASCENDING = 15,
 };
 
+enum InitError {
+    NONE,
+    CARGO_LIST,
+    INDUSTRY_LIST,
+    TOWN_NUMBER,
+    TOWN_GROWTH_RATE,
+}
+
 class MainClass extends GSController
 {
     companies = null;
@@ -50,7 +58,7 @@ class MainClass extends GSController
 
     constructor() {
         this.companies = [];
-        this.towns = null;
+        this.towns = [];
         this.current_date = 0;
         this.current_week = 0;
         this.current_month = 0;
@@ -81,14 +89,16 @@ function MainClass::Start()
     // won't do anything further.
     if (GSGameSettings.IsValid("town_growth_rate")) {
         if (! GSGameSettings.GetValue("town_growth_rate") ) {
-            GSLog.Warning("You must set town growth in advanced setting to something other than None. This script is now exiting.");
+            GSLog.Error("You must set town growth in advanced setting to something other than None. This script is now exiting!");
+            this.story_editor = StoryEditor();
+            this.story_editor.CreateStoryBook([], 0, InitError.TOWN_GROWTH_RATE);
             return;
         }
     }
 
     GSGame.Pause();
     Log.Info("Script initialisation...", Log.LVL_INFO);
-    this.Init();
+    local init_error = this.Init();
     GSGame.Unpause();
 
     local setup_duration = GSController.GetTick() - start_tick;
@@ -101,13 +111,11 @@ function MainClass::Start()
 
     // Create and fill StoryBook. This can't be done before OTTD is ready.
     this.story_editor = StoryEditor();
-    this.story_editor.CreateStoryBook(this.companies, this.towns.len());
+    this.story_editor.CreateStoryBook(this.companies, this.towns.len(), init_error);
 
     if (!this.gs_init_done) {
-        GSLog.Error("Game initialisation failed, stopping the game script!");
-        while(true){
-            GSController.Sleep(30681); // sleep for a year
-        }
+        GSLog.Error("Game initialisation failed. This script is now exiting!");
+        return;
     }
 
     // Main loop
@@ -162,12 +170,13 @@ function MainClass::Init()
 
     if (::SettingsTable.randomization == Randomization.INDUSTRY_DESC
      || ::SettingsTable.randomization == Randomization.INDUSTRY_ASC) {
-        InitIndustryLists();
+        if (!InitIndustryLists())
+            return InitError.INDUSTRY_LIST;
     }
     else {
         // Initialize cargo lists and variables
         if (!InitCargoLists())
-            return;
+            return InitError.CARGO_LIST;
     }
 
     /* Check whether saved data are in the current save
@@ -185,7 +194,7 @@ function MainClass::Init()
     Log.Info("Creating town list ... (can take a while on large maps)", Log.LVL_INFO);
     this.towns = this.CreateTownList();
     if (this.towns.len() > SELF_MAX_TOWNS)
-        return;
+        return InitError.TOWN_NUMBER;
 
     // Run industry stabilizer
     Log.Info("Prospecting raw industries ... (can take a while on large maps)", Log.LVL_INFO);
@@ -193,6 +202,8 @@ function MainClass::Init()
 
     // Ending initialization
     this.gs_init_done = true;
+
+    return InitError.NONE;
 }
 
 function MainClass::HandleEvents()

@@ -153,39 +153,53 @@ function StoryEditor::CargoInfoPage(sp_cargo)
     }
 }
 
-/* Issue an initial warning if game's cargo list doesn't match with settings. */
-function StoryEditor::TownsWarningPage(num_towns)
-{
-    // Creating the page
-    GSStoryPage.NewElement(this.sp_warning, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_WARNING_1, num_towns, SELF_MAX_TOWNS));
-}
-
 /* Create the StoryBook if it still doesn't exist. This function is
  * called only when (re)initializing all data, because the existing
  * storybook is stored by OTTD.
  */
-function StoryEditor::CreateStoryBook(companies, num_towns)
+function StoryEditor::CreateStoryBook(companies, num_towns, init_error)
 {
     // Remove any eventual previous existent storypage
     local sb_list = GSStoryPageList(0);
     foreach (page, _ in sb_list) GSStoryPage.Remove(page);
 
-    foreach (company in companies) {
-        // Create basic cargo informations page
-        company.sp_cargo = this.NewStoryPage(company.id, GSText(GSText.STR_SB_TITLE_1));
-        this.CargoInfoPage(company.sp_cargo);
+    if (!init_error) {
+        foreach (company in companies) {
+            // Create basic cargo informations page
+            company.sp_cargo = this.NewStoryPage(company.id, GSText(GSText.STR_SB_TITLE_1));
+            this.CargoInfoPage(company.sp_cargo);
 
-        // Create welcome page
-        company.sp_welcome = this.NewStoryPage(company.id, GSText(GSText.STR_SB_WELCOME_TITLE, SELF_MAJORVERSION, SELF_MINORVERSION));
-        this.WelcomePage(company.sp_welcome);
-        GSStoryPage.Show(company.sp_welcome);
+            // Create welcome page
+            company.sp_welcome = this.NewStoryPage(company.id, GSText(GSText.STR_SB_WELCOME_TITLE, SELF_MAJORVERSION, SELF_MINORVERSION));
+            this.WelcomePage(company.sp_welcome);
+            GSStoryPage.Show(company.sp_welcome);
+        }
     }
 
-    // Issue a warning if there are more towns on the map than the GS can save
-    if (num_towns > SELF_MAX_TOWNS) {
-        this.sp_warning = this.NewStoryPage(GSCompany.COMPANY_INVALID, GSText(GSText.STR_SB_WARNING_TITLE));
-        this.TownsWarningPage(num_towns);
-        GSStoryPage.Show(this.sp_warning);
+    switch (init_error) {
+        // Issue a warning if there are more towns on the map than the GS can save
+        case InitError.TOWN_NUMBER:
+            this.sp_warning = this.NewStoryPage(GSCompany.COMPANY_INVALID, GSText(GSText.STR_SB_WARNING_TITLE));
+            GSStoryPage.NewElement(this.sp_warning, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_WARNING_1, num_towns, SELF_MAX_TOWNS));
+            GSStoryPage.Show(this.sp_warning);
+            break;
+        // Issue a warning that the cargo list initialization has failed
+        case InitError.CARGO_LIST:
+            this.sp_warning = this.NewStoryPage(GSCompany.COMPANY_INVALID, GSText(GSText.STR_SB_WARNING_TITLE));
+            GSStoryPage.NewElement(this.sp_warning, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_WARNING_2));
+            GSStoryPage.Show(this.sp_warning);
+            break;
+        // Issue a warning that the cargo list initialization has failed
+        case InitError.INDUSTRY_LIST:
+            this.sp_warning = this.NewStoryPage(GSCompany.COMPANY_INVALID, GSText(GSText.STR_SB_WARNING_TITLE));
+            GSStoryPage.NewElement(this.sp_warning, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_WARNING_3));
+            GSStoryPage.Show(this.sp_warning);
+            break;
+        case InitError.TOWN_GROWTH_RATE:
+            this.sp_warning = this.NewStoryPage(GSCompany.COMPANY_INVALID, GSText(GSText.STR_SB_WARNING_TITLE));
+            GSStoryPage.NewElement(this.sp_warning, GSStoryPage.SPET_TEXT, 0, GSText(GSText.STR_SB_WARNING_4));
+            GSStoryPage.Show(this.sp_warning);
+            break;
     }
 }
 

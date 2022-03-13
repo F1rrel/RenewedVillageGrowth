@@ -130,7 +130,8 @@ function GetEconomyCargoList(economy, cargo_list) {
         local list = ["PASS","GRVL","MAIL","WOOD","BDMT",  null,"GRAI","FRUT","FOOD",  null,
                       "OIL_",  null,"STEL","PETR","BATT","VEHI","YETI","CLAY","LVST","URAN",
                       "IORE"];
-        list.append((cargo_list[21] == "YETY") ? "YETY" : null);
+        if (21 < cargo_list.len() && cargo_list[21] == "YETY")
+            list.append("YETY");
         return list;
     }
     /* FIRS version 3 */
@@ -165,11 +166,20 @@ function GetEconomyCargoList(economy, cargo_list) {
     {
         local list = ["PASS","COAL","MAIL","OIL_","WDPR","GOOD","RFPR","WOOD","IORE","STEL",
                         null,  null,"FOOD",  null,  null,  null];
-        list[10] = ((cargo_list[10] == "RCYC") ? "RCYC" : null);
-        list[11] = ((cargo_list[11] == "WSTE") ? "WSTE" : null);
-        list[13] = ((cargo_list[13] == "URAN") ? "URAN" : null);
-        list[14] = ((cargo_list[14] == "NUKF") ? "NUKF" : null);
-        list[15] = ((cargo_list[15] == "NUKW") ? "NUKW" : null);
+
+        list[10] = ((10 < cargo_list.len() && cargo_list[10] == "RCYC") ? "RCYC" : null);
+        list[11] = ((11 < cargo_list.len() && cargo_list[11] == "WSTE") ? "WSTE" : null);
+        list[13] = ((13 < cargo_list.len() && cargo_list[13] == "URAN") ? "URAN" : null);
+        list[14] = ((14 < cargo_list.len() && cargo_list[14] == "NUKF") ? "NUKF" : null);
+        list[15] = ((15 < cargo_list.len() && cargo_list[15] == "NUKW") ? "NUKW" : null);
+
+        // Remove null cargo types at the end of the list
+        local index = 15;
+        while (list[index] == null) {
+            list.remove(index);
+            --index;
+        }
+
         return list;
     }
     /* FIRS version 4.3 */
@@ -208,7 +218,7 @@ function GetEconomyCargoList(economy, cargo_list) {
                       "RUBR","VEHI","BAKE","PIPE","OYST","MEAT","CHSE","FURN","TEXT","SEED",
                       "FERT","BOOM","ACID","CHLO","SLAG","TWOD","SESP","FUEL","ELTR","WATR",
                       "TATO","POWR","MPTS","RFPR"];
-        if (cargo_list[60] == "POTA")
+        if (60 < cargo_list.len() && cargo_list[60] == "POTA")
             list[60] = "POTA";
         return list;
         
@@ -271,7 +281,7 @@ function ConstructECSVectorCargoList(cargo_list) {
     local basic_list = ["COAL","SAND","GLAS","BDMT"];
     local basic_idx = [1,17,18,28];
     foreach (index, id in basic_idx) {
-        if (cargo_list[id] != basic_list[index]) {
+        if (basic_idx[index] >= cargo_list.len() || cargo_list[id] != basic_list[index]) {
             basic = false;
             break;
         }
@@ -288,7 +298,7 @@ function ConstructECSVectorCargoList(cargo_list) {
     local chemical_list = ["OIL_","DYES","RFPR","PETR"];
     local chemical_idx = [3,20,23,25];
     foreach (index, id in chemical_idx) {
-        if (cargo_list[id] != chemical_list[index]) {
+        if (basic_idx[index] >= cargo_list.len() || cargo_list[id] != chemical_list[index]) {
             chemical = false;
             break;
         }
@@ -305,7 +315,7 @@ function ConstructECSVectorCargoList(cargo_list) {
     local machinery_list = ["IORE","STEL","VEHI","AORE"];
     local machinery_idx = [8,9,24,26];
     foreach (index, id in machinery_idx) {
-        if (cargo_list[id] != machinery_list[index]) {
+        if (basic_idx[index] >= cargo_list.len() || cargo_list[id] != machinery_list[index]) {
             machinery = false;
             break;
         }
@@ -322,7 +332,7 @@ function ConstructECSVectorCargoList(cargo_list) {
     local wood_list = ["WOOD","PAPR","WDPR"];
     local wood_idx = [7,12,19];
     foreach (index, id in wood_idx) {
-        if (cargo_list[id] != wood_list[index]) {
+        if (basic_idx[index] >= cargo_list.len() || cargo_list[id] != wood_list[index]) {
             wood = false;
             break;
         }
@@ -339,7 +349,7 @@ function ConstructECSVectorCargoList(cargo_list) {
     local agricultural_list = ["LVST","CERE","FOOD","FRUT","FISH","WOOL","FERT","OLSD","FICR"];
     local agricultural_idx = [4,6,11,13,14,15,21,22,29];
     foreach (index, id in agricultural_idx) {
-        if (cargo_list[id] != agricultural_list[index]) {
+        if (basic_idx[index] >= cargo_list.len() || cargo_list[id] != agricultural_list[index]) {
             agricultural = false;
             break;
         }
@@ -349,6 +359,13 @@ function ConstructECSVectorCargoList(cargo_list) {
         foreach (index, id in agricultural_idx) {
             return_list[id] = agricultural_list[index];
         }
+    }
+
+    // Remove null cargo types at the end of the list
+    local index = 63;
+    while (return_list[index] == null) {
+        return_list.remove(index);
+        --index;
     }
     
     return return_list;
@@ -793,7 +810,8 @@ function DefineCargosBySettings(economy)
             ::CargoDecay <- [0.3,0.3,0.3,0.3];
             break;
         default:
-            CreateDefaultCargoCat();
+            if (!CreateDefaultCargoCat())
+                return false;
             break;
     }
 
@@ -801,7 +819,7 @@ function DefineCargosBySettings(economy)
     if (::CargoIDList) {
         foreach (cat in ::CargoCat) {
             for (local index = 0; index < cat.len(); ++index) {
-                if (::CargoIDList[cat[index]] == null) {
+                if (cat[index] >= ::CargoIDList.len() || ::CargoIDList[cat[index]] == null) {
                     cat.remove(index);
                     --index;
                 }
@@ -809,12 +827,14 @@ function DefineCargosBySettings(economy)
         }
 
         foreach (index, cargo in ::CargoLimiter) {
-            if (::CargoIDList[cargo] == null) {
+            if (cargo >= ::CargoIDList.len() || ::CargoIDList[cargo] == null) {
                 ::CargoLimiter.remove(index);
                 --index;
             }
         }
     }
+
+    return true;
 }
 
 /* This function compares the ingame initial cargo list to the
@@ -833,8 +853,10 @@ function DiscoverEconomyType() {
 }
 
 function CompareCargoLists(list1, list2) {
-    local len = (list1.len() > list2.len()) ? list2.len() : list1.len();
-    for (local i = 0; i < len; i++) {
+    if (list1.len() != list2.len())
+        return false;
+
+    for (local i = 0; i < list1.len(); i++) {
         if (list1[i] != list2[i]) {
             return false;
         }
@@ -878,14 +900,33 @@ function InitCargoLists()
     for(local i = 0; i < 64; ++i) {
         if (GSCargo.GetCargoLabel(i) == "LVPT") // CZTR ZBARVENI
             ::CargoIDList.append(null);
+        else if (GSCargo.GetCargoLabel(i) == null) {
+            local j = i + 1;
+            local list_end = true;
+            while (j < 64) {
+                if (GSCargo.GetCargoLabel(j) != null) {
+                    list_end = false;
+                    break;
+                }
+                j++;
+            }
+
+            if (list_end)
+                break;
+            else
+                ::CargoIDList.append(GSCargo.GetCargoLabel(i));
+        }
         else
             ::CargoIDList.append(GSCargo.GetCargoLabel(i));
     }
 
     DebugCargoLabels();         // Debug info: print cargo labels
 
-    local economy = DiscoverEconomyType();  // Get economy type based on cargo list
-    DefineCargosBySettings(economy);        // Define cargo data accordingly to industry set
+    // Get economy type based on cargo list
+    // Define cargo data accordingly to industry set
+    local economy = DiscoverEconomyType();  
+    if (!DefineCargosBySettings(economy))
+        return false;
     Log.Info("Economy: " + (economy == Economies.NONE ? "generated" : ("predefined " + economy)), Log.LVL_INFO);
 
     // Initializing some useful and often used variables
@@ -1153,4 +1194,11 @@ function CreateDefaultCargoCat()
         }
     }
     Log.Info(cargo_text, Log.LVL_SUB_DECISIONS);
+
+    foreach (cat in ::CargoCat) {
+        if (!cat.len())
+            return false;
+    }
+
+    return true;
 }
