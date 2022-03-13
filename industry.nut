@@ -47,14 +47,38 @@ function InitIndustryLists()
 
     DebugIndustryLists();
 
+    // Require at least one 1-cargo industry and at least two out of three [2-cargo, 3-cargo, 4+cargo] with 3 and more industry types
+    if ((::industries_raw.len() + ::industries_1.len() == 0) || ((::industries_2.len() < 3).tointeger() + (::industries_3.len() < 3).tointeger() + (::industries_4.len() < 3).tointeger() > 1))
+        return false;
+
     // Initialized required global variables
-    local cargo_list = [];
+    ::CargoIDList <- [];
     for(local i = 0; i < 64; ++i) {
-        cargo_list.append(GSCargo.GetCargoLabel(i));
+        if (GSCargo.GetCargoLabel(i) == "LVPT") // CZTR ZBARVENI
+            ::CargoIDList.append(null);
+        else if (GSCargo.GetCargoLabel(i) == null) {
+            local j = i + 1;
+            local list_end = true;
+            while (j < 64) {
+                if (GSCargo.GetCargoLabel(j) != null) {
+                    list_end = false;
+                    break;
+                }
+                j++;
+            }
+
+            if (list_end)
+                break;
+            else
+                ::CargoIDList.append(GSCargo.GetCargoLabel(i));
+        }
+        else
+            ::CargoIDList.append(GSCargo.GetCargoLabel(i));
     }
-    ::CargoIDList <- cargo_list;
+
     ::CargoLimiter <- [0, 2];
     ::CargoCatNum <- (list_4.len() > 0 || (list_3.len() > 6 && (list_1.len() + list_raw.len()) > 9)) ? 5 : 4;
+    ::Economy <- DiscoverEconomyType();
 
     if (::CargoCatNum == 4) {
         ::CargoMinPopDemand <- [0, 1000, 4000, 8000];
@@ -68,6 +92,26 @@ function InitIndustryLists()
         ::CargoPermille <- [60, 10, 25, 40, 60];
         ::CargoDecay <- [0.4, 0.1, 0.1, 0.1, 0.1];
     }
+
+    // Change cargo min pop demand if specified
+    for (local i = 0; i < ::CargoCatNum; i++) {
+        if (::SettingsTable.category_min_pop[i] >= 0) {
+            ::CargoMinPopDemand[i] = ::SettingsTable.category_min_pop[i];
+        }
+    }
+
+    // Sort min pop demand, but not categories
+    for (local i = 0; i < ::CargoCatNum; i++) {
+        for (local j = 0; j < ::CargoCatNum - 1; j++) {
+            if (::CargoMinPopDemand[j] > ::CargoMinPopDemand[j+1]) {
+                local min_pop_demand = ::CargoMinPopDemand[j];
+                ::CargoMinPopDemand[j] = ::CargoMinPopDemand[j+1];
+                ::CargoMinPopDemand[j+1] = min_pop_demand;
+            }
+        }
+    }
+
+    return true;
 }
 
 function RandomizeIndustry(ascending)
