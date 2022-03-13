@@ -895,7 +895,7 @@ function InitCargoLists()
     // Change cargo min pop demand if specified
     local changed_min_pop_demand = false;
     for (local i = 0; i < ::CargoCatNum; i++) {
-        if (::SettingsTable.category_min_pop[i] > 0) {
+        if (::SettingsTable.category_min_pop[i] >= 0) {
             ::CargoMinPopDemand[i] = ::SettingsTable.category_min_pop[i];
             changed_min_pop_demand = true;
         }
@@ -913,7 +913,7 @@ function RandomizeFixed(number)
     local cargo_cat = array(::CargoCat.len());
     foreach (cat_idx, cat in ::CargoCat)
     {
-        if (::CargoCatList[cat_idx] == CatLabels.PUBLIC_SERVICES || ::CargoCatList[cat_idx] == CatLabels.CATEGORY_I) {
+        if (cat_idx == 0 && (::CargoCatList[cat_idx] == CatLabels.PUBLIC_SERVICES || ::CargoCatList[cat_idx] == CatLabels.CATEGORY_I)) {
             cargo_cat[cat_idx] = cat;
         } else {
             local cargo_list = clone cat;
@@ -935,7 +935,7 @@ function RandomizeRange(lower, upper)
     local cargo_cat = array(::CargoCat.len());
     foreach (cat_idx, cat in ::CargoCat)
     {
-        if (::CargoCatList[cat_idx] == CatLabels.PUBLIC_SERVICES || ::CargoCatList[cat_idx] == CatLabels.CATEGORY_I) {
+        if (cat_idx == 0 && (::CargoCatList[cat_idx] == CatLabels.PUBLIC_SERVICES || ::CargoCatList[cat_idx] == CatLabels.CATEGORY_I)) {
             cargo_cat[cat_idx] = cat;
         } else {
             local cargo_list = clone cat;
@@ -953,6 +953,29 @@ function RandomizeRange(lower, upper)
                 cargo_list.remove(index);
             }
         }
+    }
+
+    return cargo_cat;
+}
+
+function RandomizePyramid(ascending)
+{
+    local cargo_cat = array(::CargoCat.len());
+    local number = ascending ? 1 : ::CargoCat.len();
+    foreach (cat_idx, cat in ::CargoCat)
+    {
+        if (cat_idx == 0 && (::CargoCatList[cat_idx] == CatLabels.PUBLIC_SERVICES || ::CargoCatList[cat_idx] == CatLabels.CATEGORY_I)) {
+            cargo_cat[cat_idx] = cat;
+        } else {
+            local cargo_list = clone cat;
+            cargo_cat[cat_idx] = [];
+            for (local i = 0; i < number && cargo_list.len() != 0; i++) {
+                local index = GSBase.RandRange(cargo_list.len());
+                cargo_cat[cat_idx].append(cargo_list[index]);
+                cargo_list.remove(index);
+            }
+        }
+        ascending ? number++ : number--;
     }
 
     return cargo_cat;

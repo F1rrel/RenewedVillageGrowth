@@ -519,6 +519,12 @@ function GoalTown::Randomization()
         case Randomization.RANGE_3_7:
             this.town_cargo_cat = RandomizeRange(3, 7);
             break;
+        case Randomization.DESCENDING:
+            this.town_cargo_cat = RandomizePyramid(false);
+            break;
+        case Randomization.ASCENDING:
+            this.town_cargo_cat = RandomizePyramid(true);
+            break;
         default:
             this.town_cargo_cat = ::CargoCat;
     }

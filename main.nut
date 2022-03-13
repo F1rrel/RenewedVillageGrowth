@@ -28,7 +28,9 @@ enum Randomization {
     RANGE_1_3 = 10,
     RANGE_2_3 = 11,
     RANGE_3_5 = 12,
-    RANGE_3_7 = 13
+    RANGE_3_7 = 13,
+    DESCENDING = 14,
+    ASCENDING = 15,
 };
 
 class MainClass extends GSController
