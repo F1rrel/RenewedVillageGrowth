@@ -51,6 +51,7 @@ enum Economies
     OTIS, // 03
     IOTC, // 0.1.4
     LUMBERJACK, // 0.1.0
+    WRBI, // 1200
     END,
 }
 
@@ -229,6 +230,15 @@ function GetEconomyCargoList(economy, cargo_list) {
     case(Economies.LUMBERJACK): // Lumberjack Industries
         return ["PASS","COAL","MAIL","OIL_","RFPR","GOOD","GRAI","WOOD","WDPR","PAPR",
                 "MNSP","FERT","FOOD","KAOL","FUEL","COAT"]
+    case(Economies.WRBI): // WRBI 1200
+        local list = ["PASS","COAL","MAIL","OIL_","LVST","GOOD","GRAI","WOOD","IORE","STEL",
+                      "VALU","FOOD",  null,  null,  null,  null,  null,  null,  null,  null,
+                        null,"GRVL","BDMT",  null,  null,"PLST","WDPR","RFPR","BEER","PETR"];
+        if (23 < cargo_list.len() && cargo_list[23] == "RCYC")
+            list[23] = "RCYC";
+        if (30 < cargo_list.len() && cargo_list[30] == "WSTE")
+            list.append("WSTE");
+        return list;
     default:
         return [];
     }
@@ -808,6 +818,17 @@ function DefineCargosBySettings(economy)
             ::CargoMinPopDemand <- [500,1500,3000,6000];
             ::CargoPermille <- [25,25,25,25];
             ::CargoDecay <- [0.3,0.3,0.3,0.3];
+            break;
+        case(Economies.WRBI): // WRBI 1200
+            ::CargoLimiter <- [0,2];
+            ::CargoCat <- [[0,2],
+                           [1,3,4,6,7,8,21,23],
+                           [9,25,26,27,30],
+                           [5,10,11,22,28,29]]
+            ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
+            ::CargoMinPopDemand <- [500,1500,3000,6000];
+            ::CargoPermille <- [60,35,25,15];
+            ::CargoDecay <- [0.4,0.3,0.2,0.1];
             break;
         default:
             if (!CreateDefaultCargoCat())
