@@ -46,6 +46,13 @@ STR_SB_WELCOME_STATISTICS           :Company providing the majority of cargo to 
 STR_SB_WELCOME_ETERNAL_LOVE         :{SILVER}Eternal Love{BLACK} changes {ORANGE}local authority rating{BLACK} of each town once per month to at least {SILVER}{STRING}{BLACK}.
 STR_SB_WELCOME_END                  :Have fun!
 
+##### CUSTOM STORY BOOK #####
+STR_SB_CUSTOM_WELCOME       :Please find the server rules in the {ORANGE}{STRING} story book page{BLACK}.
+STR_SB_CUSTOM_TITLE         :Server rules
+# STR_SB_CUSTOM_1             :Rule 1
+# STR_SB_CUSTOM_2             :Rule 2
+STR_SB_CUSTOM_END           :
+
 ##### GOAL #####
 STR_STATISTICS_GROWTH_POINTS    :{STRING}{COMPANY}{BLACK} growth points{ORANGE}
 STR_STATISTICS_BIGGEST_TOWN     :{BLACK}Biggest town {SILVER}{TOWN}{ORANGE}
