@@ -28,7 +28,7 @@ STR_SB_CARGOCAT_POP      :Minimalny rozmiar miasta
 STR_SB_CARGOCAT_DECAY    :Miesięczny spadek
 STR_SB_CARGOCAT_CARGOT   :Typy towarów
 STR_SB_WARNING_TITLE     :UWAGA
-STR_SB_WARNING_1         :Liczba miast na mapie jest zbyt duża, skrypt nie będzie mógł zapisywać zmian. Obecna liczba miast to {SILVER}{NUM}{BLACK}, a maksymalna dozwolona liczba to {SILVER}{NUM}{BLACK}. Skrypt zostaje wyłączony.
+STR_SB_WARNING_1         :Liczba miast na mapie jest zbyt duża, skrypt nie będzie mógł zapisywać zmian. Obecna liczba miast to {SILVER}{NUM}{BLACK}, a maksymalna dozwolona liczba to {SILVER}{NUM}{BLACK}. {RED}Skrypt zostaje wyłączony.{BLACK}
 
 ##### GOAL #####
 STR_STATISTICS_GROWTH_POINTS    :{BLACK}Punkty rozwoju {STRING}{COMPANY}{ORANGE}

@@ -29,7 +29,7 @@ STR_SB_CARGOCAT_POP      :Population requise
 STR_SB_CARGOCAT_DECAY    :Dégradation mensuelle des stocks
 STR_SB_CARGOCAT_CARGOT   :Types de marchandises
 STR_SB_WARNING_TITLE     :Attention
-STR_SB_WARNING_1         :Il y a plus de villes dans la carte que le script de jeu peut en sauvegarder. Il y a actuellement {SILVER}{NUM}{BLACK} villes et le nombre maximum est {SILVER}{NUM}{BLACK}. Le script de jeu est désactivé.
+STR_SB_WARNING_1         :Il y a plus de villes dans la carte que le script de jeu peut en sauvegarder. Il y a actuellement {SILVER}{NUM}{BLACK} villes et le nombre maximum est {SILVER}{NUM}{BLACK}. {RED}Le script de jeu est désactivé.{BLACK}
 
 ##### GOAL #####
 STR_STATISTICS_BIGGEST_TOWN     :{BLACK}La plus grande ville {SILVER}{TOWN}{ORANGE}

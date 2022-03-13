@@ -28,7 +28,7 @@ STR_SB_CARGOCAT_POP      :最少城镇人口
 STR_SB_CARGOCAT_DECAY    :每月衰减
 STR_SB_CARGOCAT_CARGOT   :货物类型
 STR_SB_WARNING_TITLE     :警告
-STR_SB_WARNING_1         :地图上的城镇数量超出了游戏脚本可以保存的数量.当前的城镇数量为 {SILVER}{NUM}{BLACK} .最大数量为{SILVER}{NUM}{BLACK}. 游戏脚本已经关闭
+STR_SB_WARNING_1         :地图上的城镇数量超出了游戏脚本可以保存的数量.当前的城镇数量为 {SILVER}{NUM}{BLACK} .最大数量为{SILVER}{NUM}{BLACK}. {RED}游戏脚本已经关闭{BLACK}
 
 ##### GOAL #####
 STR_STATISTICS_GROWTH_POINTS    :{STRING}{COMPANY}{BLACK} 成长点{ORANGE}

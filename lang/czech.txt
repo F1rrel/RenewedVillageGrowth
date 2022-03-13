@@ -28,7 +28,7 @@ STR_SB_CARGOCAT_POP      :Minimální populáce města
 STR_SB_CARGOCAT_DECAY    :Mesíční úpadek tovaru
 STR_SB_CARGOCAT_CARGOT   :Kategorie nákladu
 STR_SB_WARNING_TITLE     :Upozornění
-STR_SB_WARNING_1         :Na mapě sa nachází víc měst než je hrací skript schopen uložit. Aktuální počet měst na mapě je {SILVER}{NUM}{BLACK} a maximum je {SILVER}{NUM}{BLACK}. Hrací skript se vypíná.
+STR_SB_WARNING_1         :Na mapě sa nachází víc měst než je hrací skript schopen uložit. Aktuální počet měst na mapě je {SILVER}{NUM}{BLACK} a maximum je {SILVER}{NUM}{BLACK}. {RED}Hrací skript se vypíná.{BLACK}
 
 ##### GOAL #####
 STR_STATISTICS_GROWTH_POINTS    :{STRING}{COMPANY}{BLACK} přírastkových bodů{ORANGE}
