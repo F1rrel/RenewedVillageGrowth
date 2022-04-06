@@ -52,6 +52,7 @@ enum Economies
     IOTC, // 0.1.4
     LUMBERJACK, // 0.1.0
     WRBI, // 1200
+    ITI2, // 2.0
     END,
 }
 
@@ -239,6 +240,9 @@ function GetEconomyCargoList(economy, cargo_list) {
         if (30 < cargo_list.len() && cargo_list[30] == "WSTE")
             list.append("WSTE");
         return list;
+    case(Economies.ITI2): // Improved Town Industries 2
+        return ["PASS","COAL","WSTE","OIL_","WDPR","GOOD","RFPR","WOOD","IORE","STEL","PAPR",
+                "PLAS","FOOD","BDMT","VALU","LVST","WDCH","SCMT","SCPR","GRAI"];
     default:
         return [];
     }
@@ -829,6 +833,19 @@ function DefineCargosBySettings(economy)
             ::CargoMinPopDemand <- [0,500,1500,4000];
             ::CargoPermille <- [60,35,25,15];
             ::CargoDecay <- [0.4,0.3,0.2,0.1];
+            break;
+        case(Economies.ITI2): // Improved Town Industries 2
+            ::CargoLimiter <- [0,2];
+            ::CargoCat <- [[0],
+                       [12],
+                       [13],
+                       [5],
+                       [14]];
+            ::CargoCatList <- [CatLabels.CATEGORY_I,CatLabels.CATEGORY_II,CatLabels.CATEGORY_III,
+                       CatLabels.CATEGORY_IV,CatLabels.CATEGORY_V];
+            ::CargoMinPopDemand <- [0,1000,2000,3000,4000];
+            ::CargoPermille <- [60,45,35,25,15];
+            ::CargoDecay <- [0.5,0.4,0.3,0.2,0.1];
             break;
         default:
             if (!CreateDefaultCargoCat())
