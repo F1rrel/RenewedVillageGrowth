@@ -325,7 +325,7 @@ function ConstructECSVectorCargoList(cargo_list) {
     local machinery_list = ["IORE","STEL","VEHI","AORE"];
     local machinery_idx = [8,9,24,26];
     foreach (index, id in machinery_idx) {
-        if (basic_idx[index] >= cargo_list.len() || cargo_list[id] != machinery_list[index]) {
+        if (machinery_idx[index] >= cargo_list.len() || cargo_list[id] != machinery_list[index]) {
             machinery = false;
             break;
         }
@@ -342,7 +342,7 @@ function ConstructECSVectorCargoList(cargo_list) {
     local wood_list = ["WOOD","PAPR","WDPR"];
     local wood_idx = [7,12,19];
     foreach (index, id in wood_idx) {
-        if (basic_idx[index] >= cargo_list.len() || cargo_list[id] != wood_list[index]) {
+        if (wood_idx[index] >= cargo_list.len() || cargo_list[id] != wood_list[index]) {
             wood = false;
             break;
         }
@@ -359,7 +359,7 @@ function ConstructECSVectorCargoList(cargo_list) {
     local agricultural_list = ["LVST","CERE","FOOD","FRUT","FISH","WOOL","FERT","OLSD","FICR"];
     local agricultural_idx = [4,6,11,13,14,15,21,22,29];
     foreach (index, id in agricultural_idx) {
-        if (basic_idx[index] >= cargo_list.len() || cargo_list[id] != agricultural_list[index]) {
+        if (agricultural_idx[index] >= cargo_list.len() || cargo_list[id] != agricultural_list[index]) {
             agricultural = false;
             break;
         }
