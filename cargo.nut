@@ -308,7 +308,7 @@ function ConstructECSVectorCargoList(cargo_list) {
     local chemical_list = ["OIL_","DYES","RFPR","PETR"];
     local chemical_idx = [3,20,23,25];
     foreach (index, id in chemical_idx) {
-        if (basic_idx[index] >= cargo_list.len() || cargo_list[id] != chemical_list[index]) {
+        if (chemical_idx[index] >= cargo_list.len() || cargo_list[id] != chemical_list[index]) {
             chemical = false;
             break;
         }
