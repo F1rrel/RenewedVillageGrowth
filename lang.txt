@@ -5,7 +5,7 @@ forums: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
 github: https://github.com/F1rrel/RenewedVillageGrowth
 
 Language                        :french
-Game script version             :8.0
+Game script version             :8.1
 
 Growth : {NUM} days             :Croissance: {NUM} jours
 Not growing                     :

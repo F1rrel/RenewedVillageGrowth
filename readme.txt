@@ -3,7 +3,7 @@
                 *  A GameScript for OpenTTD  *
                 ******************************
 
-Version: 8.0
+Version: 8.1
 
 Usefull URL's:
 - forum topic: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
@@ -258,7 +258,7 @@ they can safely be changed while the game is running:
     - these are specifically supported industry NewGRF: Baseset 
     (all climates), FIRS 1.4, 2, 3, 4.3 (all economies), ECS 1.2 
     (any combination), YETI 0.1.6 (all except Simplified), 
-    NAIS 1.0.6, ITI 1.6, XIS 0.6, OTIS 02, IOTC 0.1, LJI 0.1, WRBI 1200.
+    NAIS 1.0.6, ITI 1.6, 2, XIS 0.6, OTIS 02, IOTC 0.1, LJI 0.1, WRBI 1200.
   Using RVG with any other unsupported industry set will contain 
   proceduraly generated categories
 
@@ -303,3 +303,11 @@ A: If no industry accepts the cargo, the industry has to be funded
    near the town. The best way to place the industry is to firstly
    place down a few stations and if the stations have the same name
    as the town, the industry placed there will be near enough the town.
+  
+Q: What to do when procedural industry generation fails?
+A: Some industries cannot be proceduraly created. This can be due to 
+   not enough industries with specific number of outputs to create 
+   industry randomization list or economy with not specified 
+   raw/processing industries. You can choose from more than 30 
+   supported economies or submit issue to github/tt-forums stating the
+   unsupported economy.

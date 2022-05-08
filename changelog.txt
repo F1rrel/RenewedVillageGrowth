@@ -1,5 +1,10 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 8.1 (2022/05/08)
+- new: ITI v2 support (2TallTyler)
+- fix: ECS industries discovery causing procedural cargo generation to fail (2TallTyler)
+- fix: Industry descending randomization loading
+
 Version 8.0 (2022/03/13)
 - new: Welcome page with description of how the GS works and where to find information
 - new: Options to change minimum population for unlocking categories. Sorts categories based on selected values
