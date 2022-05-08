@@ -529,7 +529,8 @@ function GoalTown::Randomization()
             this.town_cargo_cat = ::CargoCat;
     }
 
-    if (::SettingsTable.randomization != 2) {
+    if (::SettingsTable.randomization != Randomization.INDUSTRY_ASC &&
+        ::SettingsTable.randomization != Randomization.INDUSTRY_DESC) {
         this.cargo_hash = GetCargoHash(this.town_cargo_cat);
     }
 
