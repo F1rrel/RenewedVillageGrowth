@@ -1,0 +1,161 @@
+##### TOWN SIGN #####
+STR_TOWNSIGN_GROWTHRATE  :Medrando : {NUM} days
+STR_TOWNSIGN_NOTGROWING  :Non medrando
+
+##### CARGO CATEGORIES #####
+STR_CARGOCAT_LABEL_0     :Servizos públicos
+STR_CARGOCAT_LABEL_1     :Alimentos crús
+STR_CARGOCAT_LABEL_2     :Materias primas
+STR_CARGOCAT_LABEL_3     :Materiais procesados
+STR_CARGOCAT_LABEL_4     :Produtos finais
+STR_CARGOCAT_LABEL_5     :Produtos
+STR_CARGOCAT_LABEL_6     :Produción local
+STR_CARGOCAT_LABEL_7     :Bens importados
+STR_CARGOCAT_LABEL_8     :Categoría I
+STR_CARGOCAT_LABEL_9     :Categoría II
+STR_CARGOCAT_LABEL_10    :Categoría III
+STR_CARGOCAT_LABEL_11    :Categoría IV
+STR_CARGOCAT_LABEL_12    :Categoría V
+
+##### STORY BOOK #####
+STR_SB_TITLE_1           :Categorías de cargamento
+STR_SB_EXPLAIN_1         :Estas son as categorías de cargamento para os requerimentos da vila, cada categoría inclúe distintos tipos de carga. Para cumprir os requerimentos dunha categoría, podes entregar calquera carga que pertenza a esta.
+STR_SB_EXPLAIN_2         :Estas son as categorías de cargamento para os requerimentos da vila, cada categoría inclúe distintos tipos de carga. Cada vila ten unha selección de {STRING} de cada categoría. Para cumprir os requerimentos dunha categoría, podes entregar calquera carga que a vila requira para esa categoría como se amosa na fiestra de información da Vila.
+STR_SB_EXPLAIN_RANDOM_0  :{SILVER}{NUM} tipo{P "" s} de carga{BLACK}{STRING}
+STR_SB_EXPLAIN_RANDOM_2  :{SILVER}{NUM} - {NUM} tipos de carga {BLACK}
+STR_SB_CARGOCAT_CAT      :Categoría
+STR_SB_CARGOCAT_POP      :Poboación mínima da vila
+STR_SB_CARGOCAT_DECAY    :Decaimento mensual
+STR_SB_CARGOCAT_CARGOT   :Tipos de carga
+STR_SB_CARGOCAT_0        :{STRING} {NUM} : {LTBLUE}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
+STR_SB_CARGOCAT_1        :{STRING} {NUM} : {GREEN}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
+STR_SB_CARGOCAT_2        :{STRING} {NUM} : {RED}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
+STR_SB_CARGOCAT_3        :{STRING} {NUM} : {BROWN}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
+STR_SB_CARGOCAT_4        :{STRING} {NUM} : {PURPLE}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
+STR_SB_WARNING_TITLE     :Advertencia
+STR_SB_WARNING_1         :Hai máis vilas no mapa das que o script pode gardar. O número actual de vilas é {SILVER}{NUM}{BLACK} e o máximo é de {SILVER}{NUM}{BLACK}. {RED}O script de xogo está apagado.{BLACK}
+STR_SB_WARNING_2         :A inicialización da lista de cargas fallou. Foi causado por un NewGRF de industria descoñecido no cal non é posible crear unha lista de cargas procedurais. {RED}O script de xogo está apagado.{BLACK}
+STR_SB_WARNING_3         :A inicialización da lista de cargas fallou. Foi causado por unha opción de aleatoriedade de industrias no cal non é posible crear unha lista de cargas procedurais. {RED}O script de xogo está apagado.{BLACK}
+STR_SB_WARNING_4         :Debes configurar o parámetro {ORANGE}Contorno->Cidades->Velocidade de crecemento das cidades{BLACK} a outra opción distinta a Ningún. {RED}O script de xogo está apagado.{BLACK}
+STR_SB_WELCOME_TITLE     :Crecemento renovado das vilas {NUM}.{NUM}
+STR_SB_WELCOME_DESC      :{SILVER}Crecemento renovado das vilas (RVG){BLACK} é un script de xogo que {ORANGE}modifica o xeito no que medran as vilas{BLACK} en OpenTTD. Defínense varios requisitos de carga para cada vila que precisan ser - parcial ou totalmente - satisfeitos mensualmente para facer medrar as vilas máis rápido. Podes atopar máis información no {ORANGE}arquivo Leeme{BLACK}.
+STR_SB_WELCOME_CARGO     :A economía de {SILVER}{STRING}{BLACK} consiste en {SILVER}{NUM} categorías{BLACK}. Para cubrir unha categoría, entrega unha ou máis das categorías específicas de carga da categoría a unha {ORANGE}estación preto da vila que acepte ese tipo de carga{BLACK}. Cumpre os requerimentos por enriba dun {SILVER}{NUM}%{BLACK} para {ORANGE}facer que as vilas medren máis rápido{BLACK}. Máis información acerca das categorías de carga amósase na {ORANGE} páxina de categorías de carga do historial (anterior){BLACK}.
+STR_SB_WELCOME_LIMIT_GROWTH         :{SILVER}{CARGO_LIST}{BLACK} dunha vila poden {ORANGE}DETER o crecemento da vila{BLACK}. Transporta polo menos {SILVER}{NUM}%{BLACK} deses tipos de carga para {ORANGE}permitir que a vila medre{BLACK}. {STRING}
+STR_SB_WELCOME_LIMIT_GROWTH_DELAY   :O crecemento detense tras {SILVER}{NUM} meses{BLACK} sen cumprir este requerimento.
+STR_SB_WELCOME_STATISTICS           :A compañía que provea a meirande parte da carga a unha vila convírtese na súa {ORANGE}Contribuidora{BLACK}. Cada nova poboación por enriba do seu máximo histórico conta nos {ORANGE}puntos de crecemento{BLACK} desa compañía. Comproba as estatísticas de puntos de crecemento nos {ORANGE}Obxectivos globais{BLACK}.
+STR_SB_WELCOME_ETERNAL_LOVE         :{SILVER}Fillo pródigo{BLACK} cambia {ORANGE}a puntuación da autoridade local{BLACK} de cada vila unha vez por mes a polo menos {SILVER}{STRING}{BLACK}.
+STR_SB_WELCOME_END                  :Divertídevos!
+
+##### CUSTOM STORY BOOK #####
+STR_SB_CUSTOM_WELCOME       :Por favor consulta as normas do servidor na {ORANGE} páxina {STRING} do historial{BLACK}.
+STR_SB_CUSTOM_TITLE         :Normas do servidor
+# STR_SB_CUSTOM_1             :Norma 1
+# STR_SB_CUSTOM_2             :Norma 2
+STR_SB_CUSTOM_END           :
+
+##### GOAL #####
+STR_STATISTICS_GROWTH_POINTS    :{STRING}{COMPANY}{BLACK} - Puntos de crecemento:{ORANGE}
+STR_STATISTICS_BIGGEST_TOWN     :{BLACK}Vila máis grande {SILVER}{TOWN}{ORANGE}
+STR_STATISTICS_GROWTH_TOWN      :{BLACK}Vila que medra máis rápido en días {SILVER}{TOWN}{ORANGE}
+STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}Categoría media das vilas{ORANGE}
+STR_STATISTICS_NUM_TOWNS        :{BLACK}Número de vilas contribuídas{ORANGE}
+STR_STATISTICS_NOT_GROWING      :{BLACK}Número de vilas que non están medrando{ORANGE}
+
+##### TOWNBOX #####
+STR_TOWNBOX_CONTRIBUTOR         :Poboación máxima acadada: {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
+STR_TOWNBOX_NO_CONTRIBUTOR      :Poboación máxima acadada: {SILVER}{NUM}{BLACK}{STRING}
+
+STR_TOWNBOX_CATEGORY            :Información da carga : dispoñible / requerida{STRING}
+STR_TOWNBOX_CATEGORY_STOP       :Non se transporta o suficiente :{} * {RED}{CARGO_LIST}{BLACK}{}Información da carga :  dispoñible / requerida
+STR_TOWNBOX_CATEGORY_LOW        :Non hai suficiente infraestrutura de transporte :{} * {SILVER}{CARGO_LIST}{BLACK}{}Información da carga :  dispoñible / requerida
+STR_TOWNBOX_CATEGORY_DELAYED    :Non se transporta o suficiente :{} * {GOLD}{CARGO_LIST}{BLACK}{}Información da carga :  dispoñible / requerida
+STR_TOWNBOX_CARGO               :Categorías de carga :{STRING}
+STR_TOWNBOX_CARGO_STOP          :Non se transporta o suficiente :{} * {RED}{CARGO_LIST}{BLACK}{}Categorías de carga :
+STR_TOWNBOX_CARGO_LOW           :Non hai suficiente infraestrutura de transporte :{} * {SILVER}{CARGO_LIST}{BLACK}{}Categorías de carga :
+STR_TOWNBOX_CARGO_DELAYED       :Non se transporta o suficiente :{} * {GOLD}{CARGO_LIST}{BLACK}{}Categorías de carga :
+STR_TOWNBOX_NOGROWTH            :Transporta {SILVER}{CARGO_LIST}{BLACK} nesta vila para facela medrar.
+
+STR_TOWNBOX_CATEGORY_0          :{STRING2}{}{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_CATEGORY_1          :{STRING2}{}{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_CATEGORY_2          :{STRING2}{}{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_CATEGORY_3          :{STRING2}{}{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {BROWN}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_CATEGORY_4          :{STRING2}{}{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {BROWN}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {PURPLE}{STRING}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+
+STR_TOWNBOX_CARGO_0             :{STRING2}{}{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}
+STR_TOWNBOX_CARGO_1             :{STRING2}{}{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}
+STR_TOWNBOX_CARGO_2             :{STRING2}{}{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}
+STR_TOWNBOX_CARGO_3             :{STRING2}{}{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {BROWN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}
+STR_TOWNBOX_CARGO_4             :{STRING2}{}{STRING1}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {BROWN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {PURPLE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}
+
+STR_TOWNBOX_COMBINED_0          :{STRING2}{}{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_COMBINED_1          :{STRING2}{}{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_COMBINED_2          :{STRING2}{}{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_COMBINED_3          :{STRING2}{}{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {BROWN}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+STR_TOWNBOX_COMBINED_4          :{STRING2}{}{STRING1}{} * {LTBLUE}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {RED}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {BROWN}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}{} * {PURPLE}{CARGO_LIST}{BLACK} : {SILVER}{NUM}{BLACK} / {SILVER}{NUM}{BLACK}
+
+##### ECONOMIES #####
+STR_ECONOMY_NONE                :
+STR_ECONOMY_BASESET_TEMPERATE   :Temperado básico
+STR_ECONOMY_BASESET_ARCTIC      :Subártico básico
+STR_ECONOMY_BASESET_TROPICAL    :Tropical básico
+STR_ECONOMY_BASESET_TOYLAND     :Terra dos xoguetes
+STR_ECONOMY_FIRS1_FIRS          :FIRS 1 FIRS
+STR_ECONOMY_FIRS1_TEMPERATE     :FIRS 1 Temperado
+STR_ECONOMY_FIRS1_ARCTIC        :FIRS 1 Subártico
+STR_ECONOMY_FIRS1_TROPIC        :FIRS 1 Tropical
+STR_ECONOMY_FIRS1_HOD           :FIRS 1 Corazón da escuridade
+STR_ECONOMY_ECS                 :ECS
+STR_ECONOMY_FIRS2_TEMPERATE     :FIRS 1 Temperado
+STR_ECONOMY_FIRS2_ARCTIC        :FIRS 1 Subártico
+STR_ECONOMY_FIRS2_TROPIC        :FIRS 1 Tropical
+STR_ECONOMY_FIRS2_IAHC          :FIRS 1 Nunha terra cálida
+STR_ECONOMY_FIRS2_HOD           :FIRS 1 Corazón da escuridade
+STR_ECONOMY_YETI                :YETI
+STR_ECONOMY_FIRS3_TEMPERATE     :FIRS 3 Temperado
+STR_ECONOMY_FIRS3_ARCTIC        :FIRS 3 Subártico
+STR_ECONOMY_FIRS3_TROPIC        :FIRS 3 Tropical
+STR_ECONOMY_FIRS3_STEELTOWN     :FIRS 3 Steeltown
+STR_ECONOMY_FIRS3_IAHC          :FIRS 3 Nunha terra cálida
+STR_ECONOMY_FIRS3_EXTREME       :FIRS 3 Extremo
+STR_ECONOMY_NAIS_NA             :NAIS Norteamérica
+STR_ECONOMY_ITI                 :Improved Town Industries
+STR_ECONOMY_FIRS4_TEMPERATE     :FIRS 4 Temperado
+STR_ECONOMY_FIRS4_ARCTIC        :FIRS 4 Subártico
+STR_ECONOMY_FIRS4_TROPIC        :FIRS 4 Tropical
+STR_ECONOMY_FIRS4_STEELTOWN     :FIRS 4 Steeltown
+STR_ECONOMY_FIRS4_IAHC          :FIRS 4 Nunha terra cálida
+STR_ECONOMY_XIS_LOT             :XIS The Lot
+STR_ECONOMY_OTIS                :OTIS
+STR_ECONOMY_IOTC                :Industries of the Caribbean
+STR_ECONOMY_LUMBERJACK          :Lumberjack Industries
+STR_ECOMONY_WRBI                :Wannaroo Basic Industries
+STR_ECONOMY_ITI2                :Improved Town Industries
+
+##### ETERNAL LOVE #####
+STR_ETERNAL_LOVE_OUTSTANDING    :Excepcional
+STR_ETERNAL_LOVE_GOOD           :Boa
+STR_ETERNAL_LOVE_POOR           :Pobre
+
+##### UTILITY #####
+STR_COMMA                       :{SILVER}{COMMA}{ORANGE}
+STR_NUM                         :{SILVER}{NUM}{ORANGE}
+
+STR_DARK_BLUE                   :{DKBLUE}
+STR_PALE_GREEN                  :{LTBROWN}
+STR_PINK                        :{GOLD}
+STR_YELLOW                      :{YELLOW}
+STR_RED                         :{RED}
+STR_LIGHT_BLUE                  :{LTBLUE}
+STR_GREEN                       :{GREEN}
+STR_DARK_GREEN                  :{DKGREEN}
+STR_BLUE                        :{BLUE}
+STR_CREAM                       :{CREAM}
+STR_MAUVE                       :{BLACK}
+STR_PURPLE                      :{PURPLE}
+STR_ORANGE                      :{ORANGE}
+STR_BROWN                       :{BROWN}
+STR_GREY                        :{GRAY}
+STR_WHITE                       :{WHITE}
+STR_SILVER                      :{SILVER}
+
+STR_EMPTY                       :
