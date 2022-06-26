@@ -47,6 +47,15 @@ function Company::SavingCompanyData()
 
 function Company::InitGUIGoals()
 {
+    // In multiplayer, pause level cannot be changed, so skip initialization of Goals GUI
+    local pause_level = GSGameSettings.GetValue("construction.command_pause_level");
+    if (GSGame.IsPaused() && GSGame.IsMultiplayer() && pause_level < 1)
+        return false;
+
+    // If it is not set, temporarily allow all non-construction actions during pause
+    if (pause_level < 1)
+        GSGameSettings.SetValue("construction.command_pause_level", 1);
+
     // global goal
     this.global_goal = GSGoal.New(GSCompany.COMPANY_INVALID, GSText(GSText.STR_STATISTICS_GROWTH_POINTS, GetColorText(this.id), this.id), GSGoal.GT_NONE, 0);
     GSGoal.SetProgress(this.global_goal, GSText(GSText.STR_NUM, this.points));
@@ -65,6 +74,11 @@ function Company::InitGUIGoals()
 
     this.statistics[Statistics.NUM_NOT_GROWING_TOWNS] = GSGoal.New(this.id, GSText(GSText.STR_STATISTICS_NOT_GROWING), GSGoal.GT_NONE, 0);
     GSGoal.SetProgress(this.statistics[Statistics.NUM_NOT_GROWING_TOWNS], GSText(GSText.STR_NUM, 0));
+
+    // Reset to previous settings
+    GSGameSettings.SetValue("construction.command_pause_level", pause_level);
+
+    return true;
 }
 
 function Company::RemoveGUIGoals()
@@ -80,6 +94,13 @@ function Company::AddPoints(points)
 
 function Company::MonthlyUpdateGUIGoals(towns)
 {
+    // Check if Goals GUI is initialized and can be initialized
+    if (this.statistics == null || this.global_goal == null) {
+        if (!this.InitGUIGoals()) {
+            return;
+        }
+    }
+
     local biggest_town = -1;
     local biggest_town_population = 0;
     local fastest_growth_town = -1;
