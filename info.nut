@@ -45,7 +45,7 @@ class MainClass extends GSInfo
                 medium_value = 100,
                 hard_value = 140,
                 custom_value = 100,
-                flags = CONFIG_INGAME, min_value = 1, max_value = 1000, step_size = 20 });
+                flags = CONFIG_INGAME, min_value = 1, max_value = 50000, step_size = 20 });
 
         AddSetting({ name = "use_town_sign",
                 description = "Show growth rate text under town names",
@@ -121,7 +121,7 @@ class MainClass extends GSInfo
             medium_value = 50,
             hard_value = 65,
             custom_value = 50,
-            flags = CONFIG_INGAME, min_value = 0, max_value = 90, step_size = 5});
+            flags = CONFIG_INGAME, min_value = 0, max_value = 100, step_size = 5});
 
         AddSetting({
             name = "town_size_threshold",
@@ -130,9 +130,7 @@ class MainClass extends GSInfo
             medium_value = 550,
             hard_value = 350,
             custom_value = 350,
-            flags = CONFIG_INGAME, min_value = 0,
-            max_value = 3000,
-            step_size = 25});
+            flags = CONFIG_INGAME, min_value = 0, max_value = 50000, step_size = 25});
 
         AddSetting({
             name = "limiter_delay",
@@ -194,7 +192,7 @@ class MainClass extends GSInfo
                 medium_value = 100,
                 hard_value = 200,
                 custom_value = 100,
-                flags = CONFIG_INGAME, min_value = 20, max_value = 1000, step_size = 20 });
+                flags = CONFIG_INGAME, min_value = 20, max_value = 50000, step_size = 20 });
 
         AddSetting({ name = "supply_impacting_part",
                 description = "Expert: minimum fulfilled percentage for TGR growth",
@@ -218,7 +216,7 @@ class MainClass extends GSInfo
                 medium_value = 550,
                 hard_value = 880,
                 custom_value = 550,
-                flags = CONFIG_INGAME, min_value = 10, max_value = 880, step_size = 10 });
+                flags = CONFIG_INGAME, min_value = 0, max_value = 880, step_size = 10 });
 
         AddSetting({ name = "allow_0_days_growth",
                 description = "Expert: allow 0 days growth",
