@@ -23,6 +23,7 @@ class GoalTown
     limit_delay = null;         // Increments for each limiter false condition until "limiter_delay" setting
     allowGrowth = null;         // limits growth requirement fulfilled
     town_text_scroll = null;    // scroll town text when more than 3 categories are to be displayed
+    initialized = null;         // Town is fully initialized
 
     constructor(town_id, load_town_data, min_transported) {
         this.id = town_id;
@@ -48,8 +49,15 @@ class GoalTown
             this.limit_delay = 0;
             this.Randomization();
             this.DisableOrigCargoGoal();
-            GSTown.SetGrowthRate(this.id, GSTown.TOWN_GROWTH_NONE);
-            GSTown.SetText(this.id, TownBoxText(false, 0));
+
+            // These commands require at least all non-construcion actions during pause allowed
+            if (GSGameSettings.GetValue("construction.command_pause_level") >= 1) {
+                GSTown.SetGrowthRate(this.id, GSTown.TOWN_GROWTH_NONE);
+                GSTown.SetText(this.id, TownBoxText(false, 0));
+                this.initialized = true;
+            }
+            else
+                this.initialized = false;
         } else {
             this.sign_id = ::TownDataTable[this.id].sign_id;
             this.contributor = ::TownDataTable[this.id].contributor;
@@ -72,6 +80,7 @@ class GoalTown
             this.DebugCargoTable(this.town_cargo_cat);
 
             this.UpdateTownText(GSController.GetSetting("town_info_mode"));
+            this.initialized = true;
         }
     }
 }
@@ -129,6 +138,15 @@ function GoalTown::SavingTownData()
 /* Main town management function. Called each month. */
 function GoalTown::MonthlyManageTown()
 {
+    // Finish initialization of the town
+    if (!this.initialized)
+    {
+        GSTown.SetGrowthRate(this.id, GSTown.TOWN_GROWTH_NONE);
+        GSTown.SetText(this.id, TownBoxText(false, 0));
+        this.initialized = true;
+        return;
+    }
+
     local sum_goals = 0;
     local goal_diff = 0;
     local goal_diff_percent = 0.0;

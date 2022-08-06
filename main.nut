@@ -264,7 +264,7 @@ function MainClass::Save()
         {
             save_table.town_data_table[town.id] <- town.SavingTownData();
         }
-        Log.Info("Ocodes per saved town = " + ((start_opcodes - GSController.GetOpsTillSuspend()) / this.towns.len()), Log.LVL_DEBUG);
+        Log.Info("Opcodes per saved town = " + ((start_opcodes - GSController.GetOpsTillSuspend()) / this.towns.len()), Log.LVL_DEBUG);
         // Also store a savegame version flag
         save_table.save_version <- this.current_save_version;
     }
@@ -292,7 +292,7 @@ function MainClass::Load(version, saved_data)
         }
     }
     else {
-        Log.Info("Data format doesn't match with current version. Resetting.", Log.LVL_INFO);
+        Log.Info("Save data format doesn't match with current version (saved " + saved_data.save_version + " vs current " + this.current_save_version + "). Resetting.", Log.LVL_INFO);
     }
 }
 
@@ -338,6 +338,7 @@ function MainClass::CreateCompanyList()
 {
     this.companies = [];
 
+    // Create company list from saved data
     if (this.load_saved_data && ::CompanyDataTable != null) {
         foreach (company_id, company_data in ::CompanyDataTable)
         {
@@ -360,6 +361,14 @@ function MainClass::CreateCompanyList()
  */
 function MainClass::CreateTownList()
 {
+    // In multiplayer, pause level cannot be changed, so monthly update is forced at start to finish initialization
+    // In single player, if it is not set, temporarily allow all non-construction actions during pause
+    local pause_level = GSGameSettings.GetValue("construction.command_pause_level");
+    if (GSGame.IsMultiplayer() && pause_level < 1)
+        this.current_month -= 1;
+    else if (pause_level < 1)
+        GSGameSettings.SetValue("construction.command_pause_level", 1);
+
     local towns_list = GSTownList();
     local towns_array = [];
 
@@ -367,6 +376,9 @@ function MainClass::CreateTownList()
     foreach (t, _ in towns_list) {
         towns_array.append(GoalTown(t, this.load_saved_data, min_transport));
     }
+
+    // Reset to previous settings
+    GSGameSettings.SetValue("construction.command_pause_level", pause_level);
 
     // Now we can free ::TownDataTable
     ::TownDataTable = null;

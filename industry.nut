@@ -319,6 +319,11 @@ function GetIndustryTable(hash)
 
 function ProspectRawIndustry()
 {
+    // In multiplayer, pause level cannot be changed, so skip funding industries
+    local pause_level = GSGameSettings.GetValue("construction.command_pause_level");
+    if (GSGame.IsPaused() && GSGame.IsMultiplayer() && pause_level < 3)
+        return;
+
     local target_count = GetRawIndustryTargetCount();
     if (target_count == 0)
         return;
@@ -330,10 +335,14 @@ function ProspectRawIndustry()
     if (target_count <= industry_list.Count())
         return;
 
-    // If it is not set, set prospecting industry construction type
+    // If it is not set, temporarily set prospecting industry construction type
     local construction_type = GSGameSettings.GetValue("construction.raw_industry_construction");
     if (construction_type != 2)
         GSGameSettings.SetValue("construction.raw_industry_construction", 2);
+
+    // If it is not set, temporarily allow all actions during pause (for prospecting)
+    if (pause_level < 3)
+        GSGameSettings.SetValue("construction.command_pause_level", 3);
 
     local built_count = 0;
     local ignore_list = GSList();
@@ -371,9 +380,9 @@ function ProspectRawIndustry()
 
     Log.Info("Prospected " + (raw_count - industry_list.Count()) + " raw industries up to total number of " + raw_count, Log.LVL_INFO);
 
-    // Reset to previous construction type
-    if (construction_type != 2)
-        GSGameSettings.SetValue("construction.raw_industry_construction", construction_type);
+    // Reset to previous settings
+    GSGameSettings.SetValue("construction.raw_industry_construction", construction_type);
+    GSGameSettings.SetValue("construction.command_pause_level", pause_level);
 }
 
 function IsProcessingIndustry(industry)
