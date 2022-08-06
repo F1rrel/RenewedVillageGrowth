@@ -53,6 +53,7 @@ enum Economies
     LUMBERJACK, // 0.1.0
     WRBI, // 1200
     ITI2, // 2.0
+    REAL, // Real Industries Beta
     END,
 }
 
@@ -128,7 +129,7 @@ function GetEconomyCargoList(economy, cargo_list) {
                 "MILK","OIL_","PETR","FICR","RCYC","SAND","SCMT","GRVL","SGBT","WOOD","WOOL"];
     /* YETI 0.1.6 */
     case(Economies.YETI):
-    { 
+    {
         local list = ["PASS","GRVL","MAIL","WOOD","BDMT",  null,"GRAI","FRUT","FOOD",  null,
                       "OIL_",  null,"STEL","PETR","BATT","VEHI","YETI","CLAY","LVST","URAN",
                       "IORE"];
@@ -223,7 +224,7 @@ function GetEconomyCargoList(economy, cargo_list) {
         if (60 < cargo_list.len() && cargo_list[60] == "POTA")
             list[60] = "POTA";
         return list;
-        
+
     case(Economies.IOTC): // IOTC 0.1.4
         return ["PASS","TOUR","MAIL","JAVA","OILD","BEER","SGCN","SUGR","TBCO", null,
                 "MOLS","CIGR","FOOD","OILI","FUEL","RFPR","PIPE","NKOR","NICK","COBL",
@@ -243,6 +244,12 @@ function GetEconomyCargoList(economy, cargo_list) {
     case(Economies.ITI2): // Improved Town Industries 2
         return ["PASS","COAL","WSTE","OIL_","WDPR","GOOD","RFPR","WOOD","IORE","STEL","PAPR",
                 "PLAS","FOOD","BDMT","VALU","LVST","WDCH","SCMT","SCPR","GRAI"];
+
+    case(Economies.REAL): // Real Industries Beta
+        return ["PASS","COAL","GOOD","GRAI","IORE","MAIL","LVST","OIL_","STEL","VALU",
+                "WOOD","MAIZ","WDPR","WORK","STUD","OTI2","TRSH","VEHI","PRIS","FOOD",
+                "PASS","PETR","RUBR","PLAS","TYRE","HVEH"];
+
     default:
         return [];
     }
@@ -253,7 +260,7 @@ function ConstructECSVectorCargoList(cargo_list) {
     for (local i = 0; i < 64; ++i) {
         return_list.append(null);
     }
-    
+
     // ECS Town
     local town = true;
     local town_list = ["PASS","MAIL","GOOD","GOLD","WATR","TOUR"];
@@ -289,7 +296,7 @@ function ConstructECSVectorCargoList(cargo_list) {
             return_list[index] = cargo;
         }
     }
-    
+
     // ECS Basic
     local basic = true;
     local basic_list = ["COAL","SAND","GLAS","BDMT"];
@@ -306,7 +313,7 @@ function ConstructECSVectorCargoList(cargo_list) {
             return_list[id] = basic_list[index];
         }
     }
-    
+
     // ECS Chemical
     local chemical = true;
     local chemical_list = ["OIL_","DYES","RFPR","PETR"];
@@ -323,7 +330,7 @@ function ConstructECSVectorCargoList(cargo_list) {
             return_list[id] = chemical_list[index];
         }
     }
-    
+
     // ECS Machinery
     local machinery = true;
     local machinery_list = ["IORE","STEL","VEHI","AORE"];
@@ -340,7 +347,7 @@ function ConstructECSVectorCargoList(cargo_list) {
             return_list[id] = machinery_list[index];
         }
     }
-    
+
     // ECS Wood
     local wood = true;
     local wood_list = ["WOOD","PAPR","WDPR"];
@@ -357,7 +364,7 @@ function ConstructECSVectorCargoList(cargo_list) {
             return_list[id] = wood_list[index];
         }
     }
-    
+
     // ECS Agricultural
     local agricultural = true;
     local agricultural_list = ["LVST","CERE","FOOD","FRUT","FISH","WOOL","FERT","OLSD","FICR"];
@@ -381,7 +388,7 @@ function ConstructECSVectorCargoList(cargo_list) {
         return_list.remove(index);
         --index;
     }
-    
+
     return return_list;
 }
 
@@ -847,6 +854,19 @@ function DefineCargosBySettings(economy)
             ::CargoPermille <- [60,45,35,25,15];
             ::CargoDecay <- [0.5,0.4,0.3,0.2,0.1];
             break;
+        case(Economies.REAL): // Real Industries Beta
+            ::CargoLimiter <- [0,2,5];
+            ::CargoCat <- [[0,2,5],
+                       [1,3,4,6,7,9,10,11,16],
+                       [8,12,22,23,24],
+                       [13,14,15,18,20],
+                       [17,19,21,25]];
+            ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.PRODUCTS,
+                       CatLabels.PUBLIC_SERVICES,CatLabels.FINAL_PRODUCTS];
+            ::CargoMinPopDemand <- [0,1000,2000,3000,4000];
+            ::CargoPermille <- [60,45,35,15,15];
+            ::CargoDecay <- [0.5,0.4,0.3,0.1,0.1];
+            break;
         default:
             if (!CreateDefaultCargoCat())
                 return false;
@@ -876,7 +896,7 @@ function DefineCargosBySettings(economy)
 }
 
 /* This function compares the ingame initial cargo list to the
- * industry sets and cargoscheme supported by the script. 
+ * industry sets and cargoscheme supported by the script.
  */
 function DiscoverEconomyType() {
     local economy = Economies.NONE;
@@ -962,7 +982,7 @@ function InitCargoLists()
 
     // Get economy type based on cargo list
     // Define cargo data accordingly to industry set
-    local economy = DiscoverEconomyType();  
+    local economy = DiscoverEconomyType();
     if (!DefineCargosBySettings(economy))
         return false;
     Log.Info("Economy: " + (economy == Economies.NONE ? "generated" : ("predefined " + economy)), Log.LVL_INFO);
@@ -1101,7 +1121,7 @@ function IsRawCargo(cargo)
     local industry_list = GSIndustryList_CargoProducing(cargo);
     industry_list.Valuate(GSIndustry.GetIndustryType);
     industry_list.Sort(GSList.SORT_BY_VALUE, true);
-    
+
     while (industry_list.Count() > 0) {
         local industry_type = industry_list.GetValue(industry_list.Begin());
         if (GSIndustryType.IsRawIndustry(industry_type))
