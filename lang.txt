@@ -1,11 +1,11 @@
-This file is used to provide translations for specific string that are used 
-in Renewed Village Growth. You can post it to the forums topic or create an 
+This file is used to provide translations for specific string that are used
+in Renewed Village Growth. You can post it to the forums topic or create an
 issue with including this file in the github repository:
 forums: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
 github: https://github.com/F1rrel/RenewedVillageGrowth
 
 Language                        :french
-Game script version             :8.1
+Game script version             :8.2
 
 Growth : {NUM} days             :Croissance: {NUM} jours
 Not growing                     :
