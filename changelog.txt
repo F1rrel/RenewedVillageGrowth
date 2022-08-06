@@ -1,5 +1,11 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 8.2 (2022/08/06)
+- new: Galician translation (pvillaverde)
+- new: Real Industries Beta predefined cargo categories
+- change: Adjusted limits of some GS settings to allow adjustments based on daylength
+- fix: Handle commands that require specific command pause level
+
 Version 8.1 (2022/05/08)
 - new: ITI v2 support (2TallTyler)
 - fix: ECS industries discovery causing procedural cargo generation to fail (2TallTyler)
@@ -90,13 +96,13 @@ Version 4.1 (2020/08/04)
 Version 4.0 (2020/08/04)
 * Not compatible with previous versions
 - new: added randomization of cargos to fixed number or variable number per category
-- new: added parameter to display all required cargo by towns from start - "Display immediately 
+- new: added parameter to display all required cargo by towns from start - "Display immediately
 cargos per town"
 - new: added displaying of full cargo list in "Town info display mode" parameter
 - new: added support for Improved Town Industries 1.3
 - new: added support for FIRS 1.4 and FIRS 4 alpha
 - new: added support for 64 cargo types
-- new: added setting to delay limiter stopping town growth by set amount of months - "Limit 
+- new: added setting to delay limiter stopping town growth by set amount of months - "Limit
 Growth: Stop growth after set amount of months"
 - modified: added easy, medium and hard values to some parameters
 - modified: completely reworked town texts
@@ -104,7 +110,7 @@ Growth: Stop growth after set amount of months"
 - modified: changed category names to better represent the cargo
 - modified: town texts are redrawn when new month kicks in
 - fix: funding towns is now working
-- fix: the growth is now enabled properly for towns that were not growing when limiter got 
+- fix: the growth is now enabled properly for towns that were not growing when limiter got
 disabled mid game
 - fix: starting monitoring should be more reliable
 - removed: options to merge categories
@@ -113,7 +119,7 @@ disabled mid game
 Version 3 (2020/05/17)
 * Not compatible with previous versions
 - modified: support for any combination of ECS 1.2 vectors
-- modified: added parameter to game script settings "Town info display mode" to change the mode of 
+- modified: added parameter to game script settings "Town info display mode" to change the mode of
 displaying town information (Automatic, Cargo information, Limiter information)
 - modified: automatic town info mode is now switching pages every 3 seconds instead of scrolling
 - modified: updated YETI to version 0.1.6
@@ -121,12 +127,12 @@ displaying town information (Automatic, Cargo information, Limiter information)
 
 Version 2 (2020/05/13)
 * Not compatible with previous versions
-- modified: "Expert: slowest TGR if requirements are not met" changed to max 880 as it is maximum 
-possible TGR 
+- modified: "Expert: slowest TGR if requirements are not met" changed to max 880 as it is maximum
+possible TGR
 - modified: changed "Eternal love" default value to off
 - modified: updated ECS vector to version 1.2
 - fix: issue with scrambled story book text after loading game
-- fix: display town growth is not limited by the script message when pax and mail requirements changed 
+- fix: display town growth is not limited by the script message when pax and mail requirements changed
 to 0 mid game
 - fix: town categories in town info screen now scroll when there are more than can fit
 - fix: removed duplicite cargo printing

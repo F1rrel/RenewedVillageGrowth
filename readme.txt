@@ -3,7 +3,7 @@
                 *  A GameScript for OpenTTD  *
                 ******************************
 
-Version: 8.1
+Version: 8.2
 
 Usefull URL's:
 - forum topic: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
@@ -22,9 +22,9 @@ Content:
 1. How the script works
 
 Renewed Village Growth (RVG) is a game script which changes the way towns
-grow in OTTD. Various cargo requirements and passenger/mail percentage 
-transported are defined - monthly - for each town. Towns only grow 
-if those requirements are - partially or completely - satisfied. RVG 
+grow in OTTD. Various cargo requirements and passenger/mail percentage
+transported are defined - monthly - for each town. Towns only grow
+if those requirements are - partially or completely - satisfied. RVG
 supports all industry sets.
 
 The script only defines requirements for towns who are exchanging
@@ -47,7 +47,7 @@ of 10 * cargotype requirement). Note that the cargo requirements
 originally defined in the Arctic and Tropical climate (food and
 water/food) are disabled by the script.
 
-Depending on the used industry set, there are 3 to 5 categories. 
+Depending on the used industry set, there are 3 to 5 categories.
 Here are the basic categories:
 *For baseset industries (all climate):*
 - Cat 1: Public services
@@ -66,7 +66,7 @@ Notes about categories:
   cargos per category. More on it in the Settings.
 - There is also added a special randomization, that selects industries instead
   of cargos so that the category is defined as inputs to a specific industry type
-  
+
 Cargo category requirements increase relatively to town population, in
 two ways:
 - for each cargo category, requirement increases linearly depending on
@@ -85,9 +85,9 @@ deliver raw and transformed industrial materials. For details about
 each industry set watch at cargo.nut.
 
 Each town decides on a new Contributor at the start of a new month. This
-Contributor is chosen by the level of contribution to the categories of 
-the town. The contributor then receives points for this town for the 
-next month based on its growth and is displayed in the player's 
+Contributor is chosen by the level of contribution to the categories of
+the town. The contributor then receives points for this town for the
+next month based on its growth and is displayed in the player's
 statistics.
 Example of deciding on the Contributor:
 Player 1 supplies category 1 to 80%, category 2 to 40% and category 3 to 0%.
@@ -114,25 +114,25 @@ The informations that the script gives are:
     - Combined
     - Full cargo list
   See "Town info display mode" GS setting.
-- The StoryBook also gives informations: 
+- The StoryBook also gives informations:
     - Cargo page - there you can find a general description of
-      the categories used in the game, according to your settings. 
-      It also gives you some additional informations, such as the 
+      the categories used in the game, according to your settings.
+      It also gives you some additional informations, such as the
       population limit at which each category becomes necessary for
       towns to grow.
-    - Welcome page - shows description how this GS works and where 
+    - Welcome page - shows description how this GS works and where
       to find more information.
     - Custom page - if enabled, shows custom information like server
       rules.
 - The Goals display statistics of a player containing:
-    - Growth points - receive a point for every new habitant of a town 
+    - Growth points - receive a point for every new habitant of a town
                       over the maximum achieved town size
-    - Average town category - average of number of categories of 
+    - Average town category - average of number of categories of
                               contributed towns
     - Number of contributed towns
     - Number of not growing towns
     - Biggest town - population
-    - Fastest growing town in days 
+    - Fastest growing town in days
 
 Each month, for each town, a new town growth rate is recalculated. Its
 level depends on the part of required cargo which have been
@@ -149,7 +149,7 @@ it: the script uses a moving average of the town growth rates from the
 last 8 months. This feature allows to avoid big gaps in town's growth
 rate. Changes in towns growth rates are smoothened and progressive.
 
-The town growth is stopped completely for that month if the required 
+The town growth is stopped completely for that month if the required
 percentage of passengers and/or mails is not fulfilled.
 
 Finally, note that towns data (goals, supplies, stockpiles, growth
@@ -162,11 +162,11 @@ Have fun !
 2. Settings
 
 Normal settings:
-- "Town info display mode": changes the mode of displaying town 
-  information 
-    - Automatic - switches between pages at 3s interval 
+- "Town info display mode": changes the mode of displaying town
+  information
+    - Automatic - switches between pages at 3s interval
     (higher town count can increase this interval)
-    - Category deliveries - displays passengers/mails transported / 
+    - Category deliveries - displays passengers/mails transported /
     required and cargo categories required / supplied / stockpiled
     - Cargo list - displays accepted cargo per category
     - Combined - displays cargo categories and accepted cargo per category
@@ -176,27 +176,27 @@ Normal settings:
 - "Show growth rate text under town names": disabling this allows to
   discard the signs under town names, which show growth rate. On big
   games, disabling those signs can significantly reduce gamescript's
-  load.
+  load. (locked on start)
 - "Eternal love from towns": Every month, change the rating of all
   local authorities to be at least of the set level
 - "Debug": allows to define the amount of informations which are
-  printed in GS' log. Set it to 2 if you want to see current cargo 
-  labels and their index numbers. Set it to 3 if you want check 
+  printed in GS' log. Set it to 2 if you want to see current cargo
+  labels and their index numbers. Set it to 3 if you want check
   details about calculations.
-  
+
 Randomization settings:
 - "Randomization: Type": all towns will have randomly selected
-  cargos/industries per category based on selection
+  cargos/industries per category based on selection (locked on start)
     - None - no randomization, all cargos per category are accepted
     - Industry ascending/descending - each category represent an industry
     - 1,2,3,5,7 per category - fixed amount of cargos per category
-    - 1-2, 1-3, 2-3, 3-5, 3-7 - minimum to maximum amount of cargos 
+    - 1-2, 1-3, 2-3, 3-5, 3-7 - minimum to maximum amount of cargos
       per category
     - Descending/ascending - the number of cargo types per category
       is ascending (1 to 5) or descending (5 to 1)
 - "Randomization: Show town cargos from start": if selected, all randomized
   cargos can be visible for each town, otherwise only reached
-  categories are displayed
+  categories are displayed (locked on start)
 
 Industry stabilizer:
 - "Raw industry density": maintain a set amount of raw industries on
@@ -204,9 +204,9 @@ Industry stabilizer:
   industries.
 
 Limit growth settings:
-- "Minimum Percentage of transported cargo from town": how much of the 
+- "Minimum Percentage of transported cargo from town": how much of the
   cargo generated by the town that month must be transported
-- "Minimum size of town before the limit rules kicks in": at what 
+- "Minimum size of town before the limit rules kicks in": at what
   population of the town the growth limitation will start
 - "Stop growth after set amount of months": keep growing for the amount
   of months after limiter stops the growth
@@ -230,10 +230,10 @@ they can safely be changed while the game is running:
   and decreasing it will result in faster town growth. The value
   represents the maximum town growth at 0 population.
 - "minimum fulfilled percentage for TGR growth": this value specifies the
-  minimum fulfillment percentage of cargo categories for which 
-  the growth rate is calculated. When this percentage is not fulfilled, 
-  the lowest growth rate is used. The growth is still scaled to 100% of 
-  the fulfillment. 
+  minimum fulfillment percentage of cargo categories for which
+  the growth rate is calculated. When this percentage is not fulfilled,
+  the lowest growth rate is used. The growth is still scaled to 100% of
+  the fulfillment.
 - "TGR growth exponentiality factor": when the script scales the town
   growth rate to the percentage of achieved requirement, this relation
   is not linear but exponential. By increasing this setting you can
@@ -255,11 +255,12 @@ they can safely be changed while the game is running:
 - GS SuperLib, v. 40 (you can find it on BaNaNaS, also accessible
   through OTTD's "Online Content").
 - Industry sets: you can use any industry NewGRF
-    - these are specifically supported industry NewGRF: Baseset 
-    (all climates), FIRS 1.4, 2, 3, 4.3 (all economies), ECS 1.2 
-    (any combination), YETI 0.1.6 (all except Simplified), 
-    NAIS 1.0.6, ITI 1.6, 2, XIS 0.6, OTIS 02, IOTC 0.1, LJI 0.1, WRBI 1200.
-  Using RVG with any other unsupported industry set will contain 
+    - these are specifically supported industry NewGRF: Baseset
+    (all climates), FIRS 1.4, 2, 3, 4.3 (all economies), ECS 1.2
+    (any combination), YETI 0.1.6 (all except Simplified),
+    NAIS 1.0.6, ITI 1.6, 2, XIS 0.6, OTIS 02, IOTC 0.1, LJI 0.1,
+    WRBI 1200, Real Beta.
+  Using RVG with any other unsupported industry set will contain
   proceduraly generated categories
 
 
@@ -286,16 +287,17 @@ Contributors:
 - SuperCirno
 - qamil95
 - 2TallTyler
+- pvillaverde
 
 
 6. FAQ
 
 Q: Where do I have to deliver the required cargo?
 A: Some of the cargo types are accepted by the towns, so they can be
-   directly delivered there. Other cargo types need to be delivered 
-   to a industry which accepts it. The station accepting the cargo 
-   needs to be near the town. The best indicator is that if the name 
-   of the station is same as the town, the cargo will be counted 
+   directly delivered there. Other cargo types need to be delivered
+   to a industry which accepts it. The station accepting the cargo
+   needs to be near the town. The best indicator is that if the name
+   of the station is same as the town, the cargo will be counted
    towards that town.
 
 Q: What to do when no industry accepts that cargo near the town?
@@ -303,11 +305,11 @@ A: If no industry accepts the cargo, the industry has to be funded
    near the town. The best way to place the industry is to firstly
    place down a few stations and if the stations have the same name
    as the town, the industry placed there will be near enough the town.
-  
+
 Q: What to do when procedural industry generation fails?
-A: Some industries cannot be proceduraly created. This can be due to 
-   not enough industries with specific number of outputs to create 
-   industry randomization list or economy with not specified 
-   raw/processing industries. You can choose from more than 30 
+A: Some industries cannot be proceduraly created. This can be due to
+   not enough industries with specific number of outputs to create
+   industry randomization list or economy with not specified
+   raw/processing industries. You can choose from more than 30
    supported economies or submit issue to github/tt-forums stating the
    unsupported economy.
