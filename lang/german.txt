@@ -1,0 +1,115 @@
+##### TOWN SIGN #####
+STR_TOWNSIGN_GROWTHRATE  :Wachstum : {NUM} Tage
+STR_TOWNSIGN_NOTGROWING  :wächst nicht
+
+##### CARGO CATEGORIES #####
+STR_CARGOCAT_LABEL_0     :Öffentliche Dienste
+STR_CARGOCAT_LABEL_1     :Unverarbeitete Lebensmittel
+STR_CARGOCAT_LABEL_2     :Unverarbeitete Rohstoffe
+STR_CARGOCAT_LABEL_3     :Verarbeitete Rohstoffe
+STR_CARGOCAT_LABEL_4     :Endprodukte
+STR_CARGOCAT_LABEL_5     :Produkte
+STR_CARGOCAT_LABEL_6     :Einheimische Produkte
+STR_CARGOCAT_LABEL_7     :Importierte Güter
+STR_CARGOCAT_LABEL_8     :Kategorie I
+STR_CARGOCAT_LABEL_9     :Kategorie II
+STR_CARGOCAT_LABEL_10    :Kategorie III
+STR_CARGOCAT_LABEL_11    :Kategorie IV
+STR_CARGOCAT_LABEL_12    :Kategorie V
+
+##### STORY BOOK #####
+STR_SB_TITLE_1           :Frachtkategorien
+STR_SB_EXPLAIN_1         :Dies sind die Frachtkategorien für die Bedarfe der Städte, jede Kategorie besteht aus unterschiedlichen Frachtarten. Um den Bedarf einer Kategorie zu erfüllen, kann jede Frachtart geliefert werden.
+STR_SB_EXPLAIN_2         :Dies sind die Frachtkategorien für die Bedarfe der Städte, jede Kategorie besteht aus unterschiedlichen Frachtarten. Jeder Stadt ist eine Auswahl von {STRING} Arten jeder Frachtkategorie zugeordnet.  Um den Bedarf einer Kategorie zu erfüllen, kann jede Frachtart geliefert werden, welche die Stadt laut Infofenster für diese Kategorie benötigt.
+STR_SB_EXPLAIN_RANDOM_0  :{SILVER}{NUM} Frachtart{P "" en}{BLACK}{STRING}
+STR_SB_EXPLAIN_RANDOM_2  :{SILVER}{NUM} - {NUM} Frachtarten {BLACK}
+STR_SB_CARGOCAT_CAT      :Kategorie
+STR_SB_CARGOCAT_POP      :Geringste Einwohnerzahl
+STR_SB_CARGOCAT_DECAY    :monatlicher Abfall
+STR_SB_CARGOCAT_CARGOT   :Frachtarten
+STR_SB_WARNING_TITLE     :Warnung
+STR_SB_WARNING_1         :Es existieren mehr Städte auf der Karte als das Spielskript speichern kann. Die aktuelle Anzahl der Städte beträgt {SILVER}{NUM}{BLACK} und das Maxium war {SILVER}{NUM}{BLACK}. {RED}Das Spielskript wurde ausgeschaltet.{BLACK}
+STR_SB_WARNING_2         :Die Initialisierung der Frachtliste ist gescheitert. Dies wurde durch ein unbekanntes Industrie-newGRF bewirkt, für welches eine Erstellung der Frachtliste nicht möglich war. {RED}Das Spielskript wurde ausgeschaltet.{BLACK}
+STR_SB_WARNING_3         :Die Initialisierung der Frachtliste ist gescheitert. Es wurde durch die Option ausgelöst, die Industrien zu randomisieren, wofür eine Frachtliste nicht erstellt werden konnte. {RED}Das Spielskript wurde ausgeschaltet.{BLACK}
+STR_SB_WARNING_4         :Der Parameter {ORANGE}Environment->Towns->Town growth speed{BLACK} muss zu etwas anderem als "None" verändert werden. {RED}Das Spielskript wurde ausgeschaltet.{BLACK}
+STR_SB_WELCOME_TITLE     :Renewed Village Growth {NUM}.{NUM}
+STR_SB_WELCOME_DESC      :{SILVER}Renewed Village Growth (RVG){BLACK} ist ein Spielskript, welches in OpenTTD {ORANGE}die Art des Städtewachstums ändert{BLACK}. Für jede Stadt existieren verschiedene Güterbedürfnisse, welche - teilweise oder komplett - monatlich gestillt werden müssen, um die Städte schneller wachsen zu lassen. Mehr Informationen lassen sich in der {ORANGE}Readme-Datei{BLACK} finden.
+STR_SB_WELCOME_CARGO     :Die Wirtschaft von {SILVER}{STRING}{BLACK} besteht aus {SILVER}{NUM} Kategorien{BLACK}. Um einer Kategorie zu genügen, liefern sie eine oder mehr der kategoriespezifischen Frachtarten zu einem {ORANGE}Bahnhof in der Nähe der Stadt, welche die jeweilige Frachtart akzeptiert{BLACK}. Übererfüllen sie die angeführten Bedürfnisse um {SILVER}{NUM}%{BLACK}, um {ORANGE}die Stadt schneller wachsen zu lassen{BLACK}. Mehr Informationen über die Frachtkategorien befinden sich auf der {ORANGE}Chronikseite der Frachtkategorien{BLACK}.
+STR_SB_WELCOME_LIMIT_GROWTH         :{SILVER}{CARGO_LIST}{BLACK} einer Stadt kann deren {ORANGE}Wachstum stoppen{BLACK}. Transportieren sie mindestens {SILVER}{NUM}%{BLACK} dieser Frachtart um {ORANGE}Städtewachstum zu erlauben{BLACK}. {STRING}
+STR_SB_WELCOME_LIMIT_GROWTH_DELAY   :Das Wachstum stoppt, wennn diese Bedingung {SILVER}{NUM} Monate{BLACK} lang nicht erfüllt wurde.
+STR_SB_WELCOME_STATISTICS           :Das Unternehmen, welches die Mehrheit der Fracht zu einer Stadt befördert, wird ihr {ORANGE}Versorger{BLACK}. Jede neue Einwohnerzahl, welche die bisher größte Einwohnerzahl übertrifft, wird den {ORANGE}Wachstumspunkten{BLACK} des Unternehmens zugerechnet. Die Wachstumspunkte und Statistiken hierzu lassen sich bei den {ORANGE}Spielzielen (gelbe Fahne){BLACK} finden.
+STR_SB_WELCOME_ETERNAL_LOVE         :Der Parameter {SILVER}Eternal Love{BLACK} ändert die {ORANGE}Bewertung der Stadtverwaltung{BLACK} für jede Stadt einmal pro Monat mindestens auf {SILVER}{STRING}{BLACK}.
+STR_SB_WELCOME_END                  :Viel Spaß!
+
+##### CUSTOM STORY BOOK #####
+STR_SB_CUSTOM_WELCOME       :Die Regeln des Servers befinden sich auf der {ORANGE}{STRING} Chronik-Seite{BLACK}.
+STR_SB_CUSTOM_TITLE         :Server-Regeln
+# STR_SB_CUSTOM_1             :Regel 1
+# STR_SB_CUSTOM_2             :Regel 2
+STR_SB_CUSTOM_END           :
+
+##### GOAL #####
+STR_STATISTICS_GROWTH_POINTS    :{STRING}{COMPANY}{BLACK} Wachstumspunkte{ORANGE}
+STR_STATISTICS_BIGGEST_TOWN     :{BLACK}Größte Stadt {SILVER}{TOWN}{ORANGE}
+STR_STATISTICS_GROWTH_TOWN      :{BLACK}Am schnellsten wachsende Stadt in Tagen {SILVER}{TOWN}{ORANGE}
+STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}Durchschnittliche Städte-Kategorie{ORANGE}
+STR_STATISTICS_NUM_TOWNS        :{BLACK}Anzahl der versorgten Städte{ORANGE}
+STR_STATISTICS_NOT_GROWING      :{BLACK}Anzahl der nicht wachsenden Städte{ORANGE}
+
+##### TOWNBOX #####
+STR_TOWNBOX_CONTRIBUTOR         :Größte Einwohnerzahl {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
+STR_TOWNBOX_NO_CONTRIBUTOR      :Größte Einwohnerzahl {SILVER}{NUM}{BLACK}{STRING}
+
+STR_TOWNBOX_CATEGORY            :Frachtinformationen : verfügbar / benötigt {STRING}
+STR_TOWNBOX_CATEGORY_STOP       :Nicht ausreichend aus der Stadt abtransportiert :{} * {RED}{CARGO_LIST}{BLACK}{}Frachtinformationen : verfügbar / benötigt
+STR_TOWNBOX_CATEGORY_LOW        :Unzureichende Versorgung mit Fracht :{} * {SILVER}{CARGO_LIST}{BLACK}{}Frachtinformationen : verfügbar / benötigt
+STR_TOWNBOX_CATEGORY_DELAYED    :Nicht ausreichend aus der Stadt abtransportiert :{} * {GOLD}{CARGO_LIST}{BLACK}{}Frachtinformationen : verfügbar / benötigt
+STR_TOWNBOX_CARGO               :Frachtkategorien :{STRING}
+STR_TOWNBOX_CARGO_STOP          :Nicht ausreichend aus der Stadt abtransportiert :{} * {RED}{CARGO_LIST}{BLACK}{}Frachtkategorien :
+STR_TOWNBOX_CARGO_LOW           :Unzureichende Versorgung mit Fracht :{} * {SILVER}{CARGO_LIST}{BLACK}{}Frachtkategorien :
+STR_TOWNBOX_CARGO_DELAYED       :Nicht ausreichend aus der Stadt abtransportiert :{} * {GOLD}{CARGO_LIST}{BLACK}{}Frachtkategorien :
+STR_TOWNBOX_NOGROWTH            :Transportiere {SILVER}{CARGO_LIST}{BLACK} von dieser Stadt ab, damit diese Stadt wächst.
+
+##### ECONOMIES #####
+STR_ECONOMY_NONE                :
+STR_ECONOMY_BASESET_TEMPERATE   :gemäßigtes Klima
+STR_ECONOMY_BASESET_ARCTIC      :arktisches Klima
+STR_ECONOMY_BASESET_TROPICAL    :tropisches Klima
+STR_ECONOMY_BASESET_TOYLAND     :Spielzeugland
+STR_ECONOMY_FIRS1_FIRS          :FIRS 1 FIRS
+STR_ECONOMY_FIRS1_TEMPERATE     :FIRS 1 Temperate
+STR_ECONOMY_FIRS1_ARCTIC        :FIRS 1 Arctic
+STR_ECONOMY_FIRS1_TROPIC        :FIRS 1 Tropic
+STR_ECONOMY_FIRS1_HOD           :FIRS 1 Herz der Finsternis
+STR_ECONOMY_ECS                 :ECS
+STR_ECONOMY_FIRS2_TEMPERATE     :FIRS 2 Temperate
+STR_ECONOMY_FIRS2_ARCTIC        :FIRS 2 Arctic
+STR_ECONOMY_FIRS2_TROPIC        :FIRS 2 Tropic
+STR_ECONOMY_FIRS2_IAHC          :FIRS 2 In einem heißen Land
+STR_ECONOMY_FIRS2_HOD           :FIRS 2 Herz der Finsternis
+STR_ECONOMY_YETI                :YETI
+STR_ECONOMY_FIRS3_TEMPERATE     :FIRS 3 Temperate
+STR_ECONOMY_FIRS3_ARCTIC        :FIRS 3 Arctic
+STR_ECONOMY_FIRS3_TROPIC        :FIRS 3 Tropic
+STR_ECONOMY_FIRS3_STEELTOWN     :FIRS 3 Stahlstadt
+STR_ECONOMY_FIRS3_IAHC          :FIRS 3 In einem heißen Land
+STR_ECONOMY_FIRS3_EXTREME       :FIRS 3 Extreme
+STR_ECONOMY_NAIS_NA             :NAIS North America
+STR_ECONOMY_ITI                 :Improved Town Industries
+STR_ECONOMY_FIRS4_TEMPERATE     :FIRS 4 Temperate
+STR_ECONOMY_FIRS4_ARCTIC        :FIRS 4 Arctic
+STR_ECONOMY_FIRS4_TROPIC        :FIRS 4 Tropic
+STR_ECONOMY_FIRS4_STEELTOWN     :FIRS 4 Stahlstadt
+STR_ECONOMY_FIRS4_IAHC          :FIRS 4 In einem heißen Land
+STR_ECONOMY_XIS_LOT             :XIS The Lot
+STR_ECONOMY_OTIS                :OTIS
+STR_ECONOMY_IOTC                :Industries of the Caribbean
+STR_ECONOMY_LUMBERJACK          :Lumberjack Industries
+STR_ECOMONY_WRBI                :Wannaroo Basic Industries
+STR_ECONOMY_ITI2                :Improved Town Industries
+STR_ECONOMY_REAL                :Real Industries
+
+##### ETERNAL LOVE #####
+STR_ETERNAL_LOVE_OUTSTANDING    :hervorragend
+STR_ETERNAL_LOVE_GOOD           :gut
+STR_ETERNAL_LOVE_POOR           :schwach
