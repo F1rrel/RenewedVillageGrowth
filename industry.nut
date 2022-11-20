@@ -458,3 +458,36 @@ function GetRawIndustryToProspect(ignore_list)
 
     return industry_type_list.Begin();
 }
+
+/**
+ * @brief Find closest town to each industry on the map.
+ * @return table containing {town_id, [industry_ids]}
+ */
+function GetNearbyIndustriesToTowns()
+{
+    local industry_list = GSIndustryList();
+    local town_list = GSTownList();
+
+    // Initialize town industries table
+    local town_industries = {};
+    foreach (town_id, _ in town_list) {
+        town_industries[town_id] <- [];
+    }
+
+    // Find closest town to each industry
+    foreach (industry_id, _ in industry_list) {
+        local town_list_clone = GSList();
+        town_list_clone.AddList(town_list);
+        local industry_location = GSIndustry.GetLocation(industry_id);
+
+        town_list_clone.Valuate(GSTown.GetDistanceManhattanToTile, industry_location);
+        town_list_clone.Sort(GSList.SORT_BY_VALUE, true);
+
+        town_industries[town_list_clone.Begin()].append(industry_id);
+    }
+
+    // Print town_industries
+    DebugTownIndustries(town_industries);
+
+    return town_industries;
+}

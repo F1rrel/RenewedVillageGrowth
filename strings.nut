@@ -9,7 +9,7 @@ function GoalTown::TownBoxText(growth_enabled, text_mode, redraw=false)
         if (display_cargo) {
             text_townbox = GSText(GSText["STR_TOWNBOX_CARGO_"+(::CargoCatNum-1)]);
             text_townbox = this.TownTextContributor(text_townbox);
-            
+
             local cargo_mask = 0;
             foreach (cargo in ::CargoLimiter) {
                 cargo_mask = cargo_mask | 1 << cargo;
@@ -312,4 +312,45 @@ function GoalTown::DebugRandomizationIndustry(categories)
         }
     }
     Log.Info(GSTown.GetName(this.id) + ": " + str, Log.LVL_SUB_DECISIONS);
+}
+
+function DebugTownIndustries(town_industries)
+{
+    foreach (town, industry_list in town_industries) {
+        local industries_text = "";
+        foreach (industry in industry_list) {
+            industries_text += "    " + GSIndustry.GetName(industry) + ", ";
+        }
+        Log.Info(GSTown.GetName(town) + ": " + industries_text, Log.LVL_DEBUG);
+    }
+}
+
+function DebugSortedTowns(sorted_towns, towns)
+{
+    Log.Info("Not monitored towns:", Log.LVL_SUB_DECISIONS);
+    local text = "";
+    foreach (town in sorted_towns.not_monitored) {
+        text += " \"" + GSTown.GetName(town) + "\"";
+    }
+    Log.Info(text, Log.LVL_SUB_DECISIONS);
+
+    Log.Info("Contributed towns:", Log.LVL_SUB_DECISIONS);
+    foreach (company, town_list in sorted_towns.contributed) {
+        text = GSCompany.GetName(company) + ":";
+        foreach (town_index in town_list) {
+            text += " \"" + GSTown.GetName(towns[town_index].id) + "\"";
+        }
+        Log.Info(text, Log.LVL_SUB_DECISIONS);
+    }
+}
+
+function DebugSubsidies(subsidies)
+{
+    Log.Info("Subsidies:", Log.LVL_SUB_DECISIONS);
+    foreach (company, subs in subsidies) {
+        local text = GSCompany.GetName(company) + ": ";
+        text += "[ Town subsidy: " + GSTown.GetName(subs.town_subsidy.town_1) + " -> " + GSTown.GetName(subs.town_subsidy.town_2) + " ]";
+        text += " [ Cargo subsidy: \"" + GSCargo.GetName(subs.cargo_subsidy.cargo_id) + "\" " + GSIndustry.GetName(subs.cargo_subsidy.providing_industry_id) + " -> " + GSIndustry.GetName(subs.cargo_subsidy.accepting_industry_id) + " ]";
+        Log.Info(text, Log.LVL_SUB_DECISIONS);
+    }
 }
