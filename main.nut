@@ -494,3 +494,7 @@ function MainClass::ManageTowns()
         this.current_year = year;
     }
 }
+
+function Modulo(num, divisor) {
+    return (num - divisor * (num / divisor));
+}

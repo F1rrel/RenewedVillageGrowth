@@ -1164,16 +1164,13 @@ function CreateDefaultCargoCat()
         ::CargoDecay.append(0.2);
         ::CargoDecay.append(0.2);
 
-        raw_list.Valuate(GSBase.RandItem);
-        raw_list.Sort(GSList.SORT_BY_VALUE, GSList.SORT_ASCENDING);
+        // raw_list.Valuate(GSBase.RandItem);
+        // raw_list.Sort(GSList.SORT_BY_VALUE, GSList.SORT_ASCENDING);
 
         local cargo = raw_list.Begin();
         local index = 0;
         while (!raw_list.IsEnd()) {
-            if (index < (raw_list.Count() + 1) / 2)
-                ::CargoCat[1].append(cargo);
-            else
-                ::CargoCat[2].append(cargo);
+            ::CargoCat[1 + Modulo(index, 2)].append(cargo);
             cargo = raw_list.Next();
             ++index;
         }
@@ -1213,17 +1210,14 @@ function CreateDefaultCargoCat()
         ::CargoDecay.append(0.1);
         ::CargoDecay.append(0.1);
 
-        processed_list.Valuate(GSBase.RandItem);
-        processed_list.Sort(GSList.SORT_BY_VALUE, GSList.SORT_ASCENDING);
+        // processed_list.Valuate(GSBase.RandItem);
+        // processed_list.Sort(GSList.SORT_BY_VALUE, GSList.SORT_ASCENDING);
 
         local cargo = processed_list.Begin();
         local index = 0;
         local shift = ::CargoCatList.top() == CatLabels.CATEGORY_V ? 3 : 2;
         while (!processed_list.IsEnd()) {
-            if (index < (processed_list.Count() + 1) / 2)
-                ::CargoCat[shift].append(cargo);
-            else
-                ::CargoCat[shift + 1].append(cargo);
+            ::CargoCat[shift + Modulo(index, 2)].append(cargo);
             cargo = processed_list.Next();
             ++index;
         }
