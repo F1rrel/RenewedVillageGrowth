@@ -3,7 +3,7 @@
                 *  A GameScript for OpenTTD  *
                 ******************************
 
-Version: 8.2
+Version: 9.0
 
 Usefull URL's:
 - forum topic: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
@@ -194,6 +194,9 @@ Randomization settings:
       per category
     - Descending/ascending - the number of cargo types per category
       is ascending (1 to 5) or descending (5 to 1)
+- "Randomization: Probability to use nearby cargo types [%]": when selecting
+  cargos for each category, specifies probability of using a cargo belonging
+  to that category that is accepted by an existing nearby industry
 - "Randomization: Show town cargos from start": if selected, all randomized
   cargos can be visible for each town, otherwise only reached
   categories are displayed (locked on start)
@@ -210,6 +213,12 @@ Limit growth settings:
   population of the town the growth limitation will start
 - "Stop growth after set amount of months": keep growing for the amount
   of months after limiter stops the growth
+
+Subsidies:
+- "Subsidies: Create subsidies for contributed towns": enable/disable/select
+  which type of subsidy should be generated. Passanger subsidy creates link
+  from biggest town to a closest unclaimed town. Cargo subsidy creates link
+  from unused industry to a contributed town's industry.
 
 Category settings:
 These settings change the cargo category values and can only be changed
@@ -288,7 +297,7 @@ Contributors:
 - qamil95
 - 2TallTyler
 - pvillaverde
-
+- pnkrtz
 
 6. FAQ
 
@@ -306,10 +315,17 @@ A: If no industry accepts the cargo, the industry has to be funded
    place down a few stations and if the stations have the same name
    as the town, the industry placed there will be near enough the town.
 
+Q: What to do when procedural cargo generation fails?
+A: Some economies cannot be proceduraly created. You can choose from more
+   than 30 supported economies or submit issue to github/tt-forums stating
+   the unsupported economy. Another cause is that an industry is not
+   considered raw until it is placed on the map. Having at least
+   one of each raw industry on map will improved procedural generation.
+
 Q: What to do when procedural industry generation fails?
-A: Some industries cannot be proceduraly created. This can be due to
-   not enough industries with specific number of outputs to create
-   industry randomization list or economy with not specified
-   raw/processing industries. You can choose from more than 30
-   supported economies or submit issue to github/tt-forums stating the
-   unsupported economy.
+A: Some economies cannot be procedurally industry generated. This can be
+   due to not enough industries with specific number of outputs to create
+   industry randomization list or economy with not specified raw/processing
+   industries. Another cause is that an industry is not considered raw
+   until it is placed on the map. Having at least one of each raw industry
+   on map will improved procedural generation.

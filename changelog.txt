@@ -1,5 +1,13 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 9.0 (2023/02/11)
+- new: German translation (pnkrtz)
+- new: Probability to use nearby cargo types
+- new: Subsidies generation
+- mod: Updated cargoes in XIS economy (qamil95)
+- fix: Changing cargo categories after save/load in procedural generation
+- fix: Corrected STRING parameters in translations
+
 Version 8.2 (2022/08/06)
 - new: Galician translation (pvillaverde)
 - new: Real Industries Beta predefined cargo categories
