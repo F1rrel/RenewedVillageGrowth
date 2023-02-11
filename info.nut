@@ -91,6 +91,14 @@ class MainClass extends GSInfo
                     _14 = "Descending",
                     _15 = "Ascending" });
 
+        AddSetting({ name = "near_cargo_probability",
+                    description = "Randomization: Probability to use nearby cargo types [%]",
+                    easy_value = 100,
+                    medium_value = 50,
+                    hard_value = 0,
+                    custom_value = 50,
+                    flags = CONFIG_INGAME, min_value = 0, max_value = 100, step_size = 10});
+
         AddSetting({ name = "display_cargo",
                 description = "Randomization: Show town cargos from start",
                 easy_value = 1,

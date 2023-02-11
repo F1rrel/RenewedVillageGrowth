@@ -329,7 +329,7 @@ function MainClass::UpdateCompanyList()
         // Initialize new company
         local company = Company(c, false);
         this.companies.append(company);
-        
+
         if (this.story_editor != null)
             this.story_editor.CreateNewCompanyStoryBook(company);
     }
@@ -370,12 +370,21 @@ function MainClass::CreateTownList()
     else if (pause_level < 1)
         GSGameSettings.SetValue("construction.command_pause_level", 1);
 
+    // Create list of cargos/industries near each town
+    local near_town;
+    if (::SettingsTable.randomization == Randomization.INDUSTRY_DESC ||
+        ::SettingsTable.randomization == Randomization.INDUSTRY_ASC)
+        near_town = GetTownsNearbyIndustryPerCategory();
+    else
+        near_town = GetTownsNearbyCargoPerCategory();
+
     local towns_list = GSTownList();
     local towns_array = [];
 
     local min_transport = GSController.GetSetting("limit_min_transport");
+    local near_cargo_probability = GSController.GetSetting("near_cargo_probability");
     foreach (t, _ in towns_list) {
-        towns_array.append(GoalTown(t, this.load_saved_data, min_transport));
+        towns_array.append(GoalTown(t, this.load_saved_data, min_transport, near_town[t], near_cargo_probability));
     }
 
     // Reset to previous settings
@@ -393,8 +402,17 @@ function MainClass::CreateTownList()
  */
 function MainClass::UpdateTownList(town_id)
 {
+    // Create list of cargos/industries near each town
+    local near_town;
+    if (::SettingsTable.randomization == Randomization.INDUSTRY_DESC ||
+        ::SettingsTable.randomization == Randomization.INDUSTRY_ASC)
+        near_town = GetTownsNearbyIndustryPerCategory();
+    else
+        near_town = GetTownsNearbyCargoPerCategory();
+
     local min_transport = GSController.GetSetting("limit_min_transport");
-    this.towns.append(GoalTown(town_id, false, min_transport));
+    local near_cargo_probability = GSController.GetSetting("near_cargo_probability");
+    this.towns.append(GoalTown(town_id, false, min_transport, near_town[town_id], near_cargo_probability));
     Log.Info("New town founded: "+GSTown.GetName(town_id)+" (id: "+town_id+")", Log.LVL_DEBUG);
 }
 
@@ -495,4 +513,8 @@ function MainClass::ManageTowns()
 
         this.current_year = year;
     }
+}
+
+function Modulo(num, divisor) {
+    return (num - divisor * (num / divisor));
 }

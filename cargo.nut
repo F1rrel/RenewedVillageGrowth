@@ -784,10 +784,10 @@ function DefineCargosBySettings(economy)
         case(Economies.XIS__THE_LOT): // XIS 0.6: The Lot
             ::CargoLimiter <- [0,2];
             ::CargoCat <- [[0,2],
-                       [6,23,24,25,29,33,38,43,48,54],
-                       [12,13,16,26,27,28,31,34,35,40,44,46,47,49,50,59,60],
-                       [1,4,8,9,10,14,15,19,21,30,32,37,41,45,51,52,53,55,61],
-                       [3,5,7,11,17,18,20,22,36,39,42,56,57,58]];
+                       [6,11,23,24,25,29,33,38,54],
+                       [4,12,13,16,26,27,28,31,34,35,40,43,44,46,47,48,49,50,52,59,60],
+                       [1,8,9,10,14,15,19,20,21,22,30,32,37,41,45,51,53,55,61],
+                       [3,5,7,17,18,36,39,42,56,57,58]];
             ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
                        CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
             ::CargoMinPopDemand <- [0,500,1000,4000,8000];
@@ -1007,75 +1007,188 @@ function InitCargoLists()
 }
 
 /* Randomize fixed number of cargos per category and return cargo table. */
-function RandomizeFixed(number)
+function RandomizeFixed(number, near_cargos, near_cargo_probability)
 {
+    local cargo_cat_text = "";
     local cargo_cat = array(::CargoCat.len());
     foreach (cat_idx, cat in ::CargoCat)
     {
+        cargo_cat_text += cat_idx + ": [";
+
         if (::CargoCatList[cat_idx] == CatLabels.PUBLIC_SERVICES || ::CargoCatList[cat_idx] == CatLabels.CATEGORY_I) {
             cargo_cat[cat_idx] = cat;
+
+            foreach (cargo in cat) {
+                cargo_cat_text += GSCargo.GetCargoLabel(cargo) + " ";
+            }
         } else {
             local cargo_list = clone cat;
+            local near_cargo_list = clone near_cargos[cat_idx];
             cargo_cat[cat_idx] = [];
             for (local i = 0; i < number && cargo_list.len() != 0; i++) {
-                local index = GSBase.RandRange(cargo_list.len());
-                cargo_cat[cat_idx].append(cargo_list[index]);
-                cargo_list.remove(index);
+                if (near_cargo_list.len() && GSBase.Chance(near_cargo_probability, 100)) { // Use near cargo
+                    local index = GSBase.RandRange(near_cargo_list.len());
+                    cargo_cat[cat_idx].append(near_cargo_list[index]);
+
+                    // Find and remove cargo index from the other array
+                    foreach (idx, cargo in cargo_list) {
+                        if (cargo == near_cargo_list[index]) {
+                            cargo_list.remove(idx);
+                            break;
+                        }
+                    }
+
+                    cargo_cat_text += GSCargo.GetCargoLabel(near_cargo_list[index]) + "(NEAR) ";
+                    near_cargo_list.remove(index);
+                }
+                else { // Use any cargo
+                    local index = GSBase.RandRange(cargo_list.len());
+                    cargo_cat[cat_idx].append(cargo_list[index]);
+
+                    // Find and remove cargo index from the other array
+                    foreach (idx, cargo in near_cargo_list) {
+                        if (cargo == cargo_list[index]) {
+                            near_cargo_list.remove(idx);
+                            break;
+                        }
+                    }
+
+                    cargo_cat_text += GSCargo.GetCargoLabel(cargo_list[index]) + "(RAND) ";
+                    cargo_list.remove(index);
+                }
             }
         }
+
+        cargo_cat_text += "] ";
     }
+
+    Log.Info(GSTown.GetName(this.id) + ": " + cargo_cat_text, Log.LVL_SUB_DECISIONS);
 
     return cargo_cat;
 }
 
 /* Randomize number of cargos per category specified by range and return cargo table. */
-function RandomizeRange(lower, upper)
+function RandomizeRange(lower, upper, near_cargos, near_cargo_probability)
 {
+    local cargo_cat_text = "";
     local cargo_cat = array(::CargoCat.len());
     foreach (cat_idx, cat in ::CargoCat)
     {
+        cargo_cat_text += cat_idx + ": [";
+
         if (::CargoCatList[cat_idx] == CatLabels.PUBLIC_SERVICES || ::CargoCatList[cat_idx] == CatLabels.CATEGORY_I) {
             cargo_cat[cat_idx] = cat;
+
+            foreach (cargo in cat) {
+                cargo_cat_text += GSCargo.GetCargoLabel(cargo) + " ";
+            }
         } else {
             local cargo_list = clone cat;
+            local near_cargo_list = clone near_cargos[cat_idx];
             cargo_cat[cat_idx] = [];
-            for (local i = 0; i < lower && cargo_list.len() != 0; i++) {
-                local index = GSBase.RandRange(cargo_list.len());
-                cargo_cat[cat_idx].append(cargo_list[index]);
-                cargo_list.remove(index);
-            }
-            for (local i = 0; i < upper-lower && cargo_list.len() != 0; i++) {
-                local index = GSBase.RandRange(cargo_list.len()*2); // 50% chance
-                if (index > cargo_list.len() - 1)
+            for (local i = 0; i < upper && cargo_list.len() != 0; i++) {
+                if (cargo_cat[cat_idx].len() >= lower && GSBase.Chance(1, 2)) // 50% chance to
                     break;
-                cargo_cat[cat_idx].append(cargo_list[index]);
-                cargo_list.remove(index);
+
+                if (near_cargo_list.len() && GSBase.Chance(near_cargo_probability, 100)) { // Use near cargo
+                    local index = GSBase.RandRange(near_cargo_list.len());
+                    cargo_cat[cat_idx].append(near_cargo_list[index]);
+
+                    // Find and remove cargo index from the other array
+                    foreach (idx, cargo in cargo_list) {
+                        if (cargo == near_cargo_list[index]) {
+                            cargo_list.remove(idx);
+                            break;
+                        }
+                    }
+
+                    cargo_cat_text += GSCargo.GetCargoLabel(near_cargo_list[index]) + "(NEAR) ";
+                    near_cargo_list.remove(index);
+                }
+                else { // Use any cargo
+                    local index = GSBase.RandRange(cargo_list.len());
+                    cargo_cat[cat_idx].append(cargo_list[index]);
+
+                    // Find and remove cargo index from the other array
+                    foreach (idx, cargo in near_cargo_list) {
+                        if (cargo == cargo_list[index]) {
+                            near_cargo_list.remove(idx);
+                            break;
+                        }
+                    }
+
+                    cargo_cat_text += GSCargo.GetCargoLabel(cargo_list[index]) + "(RAND) ";
+                    cargo_list.remove(index);
+                }
             }
         }
+
+        cargo_cat_text += "] ";
     }
+
+    Log.Info(GSTown.GetName(this.id) + ": " + cargo_cat_text, Log.LVL_SUB_DECISIONS);
 
     return cargo_cat;
 }
 
-function RandomizePyramid(ascending)
+function RandomizePyramid(ascending, near_cargos, near_cargo_probability)
 {
+    local cargo_cat_text = "";
     local cargo_cat = array(::CargoCat.len());
     local number = ascending ? 1 : ::CargoCat.len();
     foreach (cat_idx, cat in ::CargoCat)
     {
+        cargo_cat_text += cat_idx + ": [";
+
         if (::CargoCatList[cat_idx] == CatLabels.PUBLIC_SERVICES || ::CargoCatList[cat_idx] == CatLabels.CATEGORY_I) {
             cargo_cat[cat_idx] = cat;
+
+            foreach (cargo in cat) {
+                cargo_cat_text += GSCargo.GetCargoLabel(cargo) + " ";
+            }
         } else {
             local cargo_list = clone cat;
+            local near_cargo_list = clone near_cargos[cat_idx];
             cargo_cat[cat_idx] = [];
             for (local i = 0; i < number && cargo_list.len() != 0; i++) {
-                local index = GSBase.RandRange(cargo_list.len());
-                cargo_cat[cat_idx].append(cargo_list[index]);
-                cargo_list.remove(index);
+                if (near_cargo_list.len() && GSBase.Chance(near_cargo_probability, 100)) { // Use near cargo
+                    local index = GSBase.RandRange(near_cargo_list.len());
+                    cargo_cat[cat_idx].append(near_cargo_list[index]);
+
+                    // Find and remove cargo index from the other array
+                    foreach (idx, cargo in cargo_list) {
+                        if (cargo == near_cargo_list[index]) {
+                            cargo_list.remove(idx);
+                            break;
+                        }
+                    }
+
+                    cargo_cat_text += GSCargo.GetCargoLabel(near_cargo_list[index]) + "(NEAR) ";
+                    near_cargo_list.remove(index);
+                }
+                else { // Use any cargo
+                    local index = GSBase.RandRange(cargo_list.len());
+                    cargo_cat[cat_idx].append(cargo_list[index]);
+
+                    // Find and remove cargo index from the other array
+                    foreach (idx, cargo in near_cargo_list) {
+                        if (cargo == cargo_list[index]) {
+                            near_cargo_list.remove(idx);
+                            break;
+                        }
+                    }
+
+                    cargo_cat_text += GSCargo.GetCargoLabel(cargo_list[index]) + "(RAND) ";
+                    cargo_list.remove(index);
+                }
             }
         }
         ascending ? number++ : number--;
+
+        cargo_cat_text += "] ";
     }
+
+    Log.Info(GSTown.GetName(this.id) + ": " + cargo_cat_text, Log.LVL_SUB_DECISIONS);
 
     return cargo_cat;
 }
@@ -1164,16 +1277,10 @@ function CreateDefaultCargoCat()
         ::CargoDecay.append(0.2);
         ::CargoDecay.append(0.2);
 
-        raw_list.Valuate(GSBase.RandItem);
-        raw_list.Sort(GSList.SORT_BY_VALUE, GSList.SORT_ASCENDING);
-
         local cargo = raw_list.Begin();
         local index = 0;
         while (!raw_list.IsEnd()) {
-            if (index < (raw_list.Count() + 1) / 2)
-                ::CargoCat[1].append(cargo);
-            else
-                ::CargoCat[2].append(cargo);
+            ::CargoCat[1 + Modulo(index, 2)].append(cargo);
             cargo = raw_list.Next();
             ++index;
         }
@@ -1213,17 +1320,11 @@ function CreateDefaultCargoCat()
         ::CargoDecay.append(0.1);
         ::CargoDecay.append(0.1);
 
-        processed_list.Valuate(GSBase.RandItem);
-        processed_list.Sort(GSList.SORT_BY_VALUE, GSList.SORT_ASCENDING);
-
         local cargo = processed_list.Begin();
         local index = 0;
         local shift = ::CargoCatList.top() == CatLabels.CATEGORY_V ? 3 : 2;
         while (!processed_list.IsEnd()) {
-            if (index < (processed_list.Count() + 1) / 2)
-                ::CargoCat[shift].append(cargo);
-            else
-                ::CargoCat[shift + 1].append(cargo);
+            ::CargoCat[shift + Modulo(index, 2)].append(cargo);
             cargo = processed_list.Next();
             ++index;
         }
@@ -1259,4 +1360,53 @@ function CreateDefaultCargoCat()
     }
 
     return true;
+}
+
+function GetTownsNearbyCargoPerCategory()
+{
+    local town_industries = GetNearbyIndustriesToTowns();
+
+    local town_cargo_category = {};
+    foreach (town, industry_list in town_industries) {
+        // Combine all industry accepting cargos to a single mask value
+        local near_cargo_list = 0;
+        foreach (industry in industry_list) {
+            local cargo_list = GSCargoList_IndustryAccepting(industry);
+            foreach (cargo_id, _ in cargo_list) {
+                near_cargo_list = near_cargo_list | (1 << cargo_id);
+            }
+        }
+
+        // Add town cargos to the mask value using cargo acceptance of 10 tiles around center point of the town
+        local town_location = GSTown.GetLocation(town);
+        if (GSMap.IsValidTile(town_location)) {
+            local cargo_list = GSCargoList();
+            foreach (cargo_id, _ in cargo_list)
+            {
+                if (!GSCargo.IsValidCargo(cargo_id))
+                    continue;
+
+                if (GSTile.GetCargoAcceptance(town_location, cargo_id, 1, 1, 10) >= 8) { // Values below 8 mean no acceptance; the more the better.
+                    near_cargo_list = near_cargo_list | (1 << cargo_id);
+                }
+            }
+        }
+
+        // Compare the mask with cargo categories
+        town_cargo_category[town] <- [];
+        foreach (cat_idx, cat in ::CargoCat)
+        {
+            town_cargo_category[town].append([]);
+            foreach (cargo in cat)
+            {
+                if (near_cargo_list & (1 << cargo))
+                    town_cargo_category[town][cat_idx].append(cargo)
+            }
+        }
+    }
+
+    // Print results
+    DebugNearTownCargos(town_cargo_category);
+
+    return town_cargo_category;
 }

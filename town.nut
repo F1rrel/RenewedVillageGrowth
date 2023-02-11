@@ -25,7 +25,7 @@ class GoalTown
     town_text_scroll = null;    // scroll town text when more than 3 categories are to be displayed
     initialized = null;         // Town is fully initialized
 
-    constructor(town_id, load_town_data, min_transported) {
+    constructor(town_id, load_town_data, min_transported, near_town, near_town_probability) {
         this.id = town_id;
         this.tgr_array_len = 8;
         this.tgr_average = null;
@@ -47,7 +47,7 @@ class GoalTown
             this.tgr_array = array(tgr_array_len, 0);
             this.limit_transported = 0;
             this.limit_delay = 0;
-            this.Randomization();
+            this.Randomization(near_town, near_town_probability);
             this.DisableOrigCargoGoal();
 
             // These commands require at least all non-construcion actions during pause allowed
@@ -250,7 +250,7 @@ function GoalTown::MonthlyManageTown()
     }
 
     // Calculates new town growth rate based on missing cargo percentage
-    // Firstly a maximum growth rate for the town is calculated with g_factor 
+    // Firstly a maximum growth rate for the town is calculated with g_factor
     // being the growth rate at 0 population and exponentially increasing.
     // An exponential extra growth is calculated based on missing cargo requirements.
     // The max growth rate and difference between max growth rate and lowest growth rate
@@ -495,53 +495,52 @@ function GoalTown::UpdateTownText(info_mode)
     }
 }
 
-function GoalTown::Randomization()
+function GoalTown::Randomization(near_town, near_town_probability)
 {
     switch (::SettingsTable.randomization) {
         case Randomization.INDUSTRY_ASC:
         case Randomization.INDUSTRY_DESC:
         {
-            local industry_cat = RandomizeIndustry(::SettingsTable.randomization == Randomization.INDUSTRY_ASC);
+            local industry_cat = RandomizeIndustry(::SettingsTable.randomization == Randomization.INDUSTRY_ASC, near_town, near_town_probability);
             this.town_cargo_cat = GetCargoCatFromIndustryCat(industry_cat);
             this.cargo_hash = GetIndustryHash(industry_cat);
-            this.DebugRandomizationIndustry(industry_cat);
             break;
         }
         case Randomization.FIXED_1:
-            this.town_cargo_cat = RandomizeFixed(1);
+            this.town_cargo_cat = RandomizeFixed(1, near_town, near_town_probability);
             break;
         case Randomization.FIXED_2:
-            this.town_cargo_cat = RandomizeFixed(2);
+            this.town_cargo_cat = RandomizeFixed(2, near_town, near_town_probability);
             break;
         case Randomization.FIXED_3:
-            this.town_cargo_cat = RandomizeFixed(3);
+            this.town_cargo_cat = RandomizeFixed(3, near_town, near_town_probability);
             break;
         case Randomization.FIXED_5:
-            this.town_cargo_cat = RandomizeFixed(5);
+            this.town_cargo_cat = RandomizeFixed(5, near_town, near_town_probability);
             break;
         case Randomization.FIXED_7:
-            this.town_cargo_cat = RandomizeFixed(7);
+            this.town_cargo_cat = RandomizeFixed(7, near_town, near_town_probability);
             break;
         case Randomization.RANGE_1_2:
-            this.town_cargo_cat = RandomizeRange(1, 2);
+            this.town_cargo_cat = RandomizeRange(1, 2, near_town, near_town_probability);
             break;
         case Randomization.RANGE_1_3:
-            this.town_cargo_cat = RandomizeRange(1, 3);
+            this.town_cargo_cat = RandomizeRange(1, 3, near_town, near_town_probability);
             break;
         case Randomization.RANGE_2_3:
-            this.town_cargo_cat = RandomizeRange(2, 3);
+            this.town_cargo_cat = RandomizeRange(2, 3, near_town, near_town_probability);
             break;
         case Randomization.RANGE_3_5:
-            this.town_cargo_cat = RandomizeRange(3, 5);
+            this.town_cargo_cat = RandomizeRange(3, 5, near_town, near_town_probability);
             break;
         case Randomization.RANGE_3_7:
-            this.town_cargo_cat = RandomizeRange(3, 7);
+            this.town_cargo_cat = RandomizeRange(3, 7, near_town, near_town_probability);
             break;
         case Randomization.DESCENDING:
-            this.town_cargo_cat = RandomizePyramid(false);
+            this.town_cargo_cat = RandomizePyramid(false, near_town, near_town_probability);
             break;
         case Randomization.ASCENDING:
-            this.town_cargo_cat = RandomizePyramid(true);
+            this.town_cargo_cat = RandomizePyramid(true, near_town, near_town_probability);
             break;
         default:
             this.town_cargo_cat = ::CargoCat;
@@ -551,6 +550,4 @@ function GoalTown::Randomization()
         ::SettingsTable.randomization != Randomization.INDUSTRY_DESC) {
         this.cargo_hash = GetCargoHash(this.town_cargo_cat);
     }
-
-    this.DebugCargoTable(this.town_cargo_cat);
 }

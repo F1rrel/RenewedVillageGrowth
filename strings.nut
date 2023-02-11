@@ -356,3 +356,33 @@ function DebugSubsidies(subsidies)
         Log.Info(text, Log.LVL_SUB_DECISIONS);
     }
 }
+
+function DebugNearTownCargos(near_town_cargos)
+{
+    foreach (town, categories in near_town_cargos) {
+        local cargos_text = "";
+        foreach (cat_idx, cargos in categories) {
+            cargos_text += cat_idx + " [";
+            foreach (cargo in cargos) {
+                cargos_text += GSCargo.GetCargoLabel(cargo) + ", ";
+            }
+            cargos_text += "] ";
+        }
+        Log.Info(GSTown.GetName(town) + ": " + cargos_text, Log.LVL_DEBUG);
+    }
+}
+
+function DebugNearTownIndustryTypes(near_town_industry_types)
+{
+    foreach (town, categories in near_town_industry_types) {
+        local industry_text = "";
+        foreach (cat_idx, industry_types in categories) {
+            industry_text += cat_idx + " [";
+            foreach (industry in industry_types) {
+                industry_text += GSIndustryType.GetName(industry) + ", ";
+            }
+            industry_text += "] ";
+        }
+        Log.Info(GSTown.GetName(town) + ": " + industry_text, Log.LVL_DEBUG);
+    }
+}

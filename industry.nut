@@ -114,7 +114,7 @@ function InitIndustryLists()
     return true;
 }
 
-function RandomizeIndustry(ascending)
+function RandomizeIndustry(ascending, near_industries, near_industry_probability)
 {
     local categories = [];
 
@@ -124,93 +124,301 @@ function RandomizeIndustry(ascending)
     local list_3 = clone ::industries_3;
     local list_4 = clone ::industries_4;
 
+    local industry_cat_text = "";
+
     // 1. Category (PASS, MAIL)
 
-    // 2. Category
-    {
-        if (list_1.len() == 0) {
+    // 2. Category, pick 1 cargo
+    if ((near_industries[0].len() != 0 || near_industries[1].len() != 0) &&
+            GSBase.Chance(near_industry_probability, 100)) { // Use near industry
+
+        if (near_industries[1].len() == 0) { // Use raw industry for Cat II
+            local rand = GSBase.RandRange(near_industries[0].len());
+            categories.append([near_industries[0][rand]]);
+
+            // Find and remove industry id from the other array
+            foreach (idx, industry in list_raw) {
+                if (industry == near_industries[0][rand]) {
+                    list_raw.remove(idx);
+                    break;
+                }
+            }
+
+            industry_cat_text += " Cat II: [" + GSIndustryType.GetName(near_industries[0][rand]) + "(NEAR)]";
+            near_industries[0].remove(rand);
+        }
+        else { // Use 1 input industry for Cat II
+            local rand = GSBase.RandRange(near_industries[1].len());
+            categories.append([near_industries[1][rand]]);
+
+            // Find and remove industry id from the other array
+            foreach (idx, industry in list_1) {
+                if (industry == near_industries[1][rand]) {
+                    list_1.remove(idx);
+                    break;
+                }
+            }
+
+            industry_cat_text += " Cat II: [" + GSIndustryType.GetName(near_industries[1][rand]) + "(NEAR)]";
+            near_industries[1].remove(rand);
+        }
+    }
+    else { // Use random industry
+        if (list_1.len() == 0) { // Use raw industry for Cat II
             local rand = GSBase.RandRange(list_raw.len());
             categories.append([list_raw[rand]]);
+
+            // Find and remove industry id from the other array
+            foreach (idx, industry in near_industries[0]) {
+                if (industry == list_raw[rand]) {
+                    near_industries[0].remove(idx);
+                    break;
+                }
+            }
+
+            industry_cat_text += " Cat II: [" + GSIndustryType.GetName(list_raw[rand]) + "(RAND)]";
             list_raw.remove(rand);
         }
-        else {
+        else { // Use 1 input industry for Cat II
             local rand = GSBase.RandRange(list_1.len());
             categories.append([list_1[rand]]);
+
+            // Find and remove industry id from the other array
+            foreach (idx, industry in near_industries[1]) {
+                if (industry == list_1[rand]) {
+                    near_industries[1].remove(idx);
+                    break;
+                }
+            }
+
+            industry_cat_text += " Cat II: [" + GSIndustryType.GetName(list_1[rand]) + "(RAND)]";
             list_1.remove(rand);
         }
     }
 
-    // 3. Category
-    if (list_2.len() > 2 || (list_1.len() < 2 && list_2.len() > 0)) {
-        local rand = GSBase.RandRange(list_2.len());
-        categories.append([list_2[rand]]);
-        list_2.remove(rand);
+    // 3. Category, pick 2 cargos
+    if (near_industries[2].len() != 0 && GSBase.Chance(near_industry_probability, 100)) { // Use near industry
+        // Use 2 input industry for Cat III
+        local rand = GSBase.RandRange(near_industries[2].len());
+        categories.append([near_industries[2][rand]]);
+
+        // Find and remove industry id from the other array
+        foreach (idx, industry in list_2) {
+            if (industry == near_industries[2][rand]) {
+                list_2.remove(idx);
+                break;
+            }
+        }
+
+        industry_cat_text += " Cat III: [" + GSIndustryType.GetName(near_industries[2][rand]) + "(NEAR)]";
+        near_industries[2].remove(rand);
     }
-    else {
-        local rand = GSBase.RandRange(3);
-        if (rand < list_2.len()) {
+    else { // Use random industry
+        if (list_2.len() > 2 || (list_1.len() < 2 && list_2.len() > 0)) { // Use 2 input industry for Cat II
+            local rand = GSBase.RandRange(list_2.len());
             categories.append([list_2[rand]]);
+
+            // Find and remove industry id from the other array
+            foreach (idx, industry in near_industries[2]) {
+                if (industry == list_2[rand]) {
+                    near_industries[2].remove(idx);
+                    break;
+                }
+            }
+
+            industry_cat_text += " Cat III: [" + GSIndustryType.GetName(list_2[rand]) + "(RAND)]";
             list_2.remove(rand);
         }
         else {
-            if (list_raw.len() > 0) {
-                local rand_1 = GSBase.RandRange(list_1.len());
-                local rand_raw = GSBase.RandRange(list_raw.len());
-                categories.append([list_1[rand_1], list_raw[rand_raw]]);
-                list_1.remove(rand_1);
-                list_raw.remove(rand_raw);
+            // Prevent using only max 2 industries by giving chance to use 1+1
+            local rand = GSBase.RandRange(3);
+            if (rand < list_2.len()) {
+                categories.append([list_2[rand]]);
+
+                // Find and remove industry id from the other array
+                foreach (idx, industry in near_industries[2]) {
+                    if (industry == list_2[rand]) {
+                        near_industries[2].remove(idx);
+                        break;
+                    }
+                }
+
+                industry_cat_text += " Cat III: [" + GSIndustryType.GetName(list_2[rand]) + "(RAND)]";
+                list_2.remove(rand);
             }
             else {
-                local rand_1 = GSBase.RandRange(list_1.len());
-                local rand_2 = GSBase.RandRange(list_1.len() - 1);
-                categories.append([list_1[rand_1], list_1[rand_2 >= rand_1 ? rand_2 + 1 : rand_2]]);
-                list_1.remove(rand_1);
-                list_1.remove(rand_2);
+                if (list_raw.len() > 0) {
+                    local rand_1 = GSBase.RandRange(list_1.len());
+                    local rand_raw = GSBase.RandRange(list_raw.len());
+                    categories.append([list_1[rand_1], list_raw[rand_raw]]);
+
+                    // Find and remove industry id from the other array
+                    foreach (idx, industry in near_industries[1]) {
+                        if (industry == list_1[rand_1]) {
+                            near_industries[1].remove(idx);
+                            break;
+                        }
+                    }
+                    foreach (idx, industry in near_industries[0]) {
+                        if (industry == list_raw[rand_raw]) {
+                            near_industries[0].remove(idx);
+                            break;
+                        }
+                    }
+
+                    industry_cat_text += " Cat III: [" + GSIndustryType.GetName(list_1[rand_1]) + ", " + GSIndustryType.GetName(list_raw[rand_raw]) + "(RAND)]";
+                    list_1.remove(rand_1);
+                    list_raw.remove(rand_raw);
+                }
+                else {
+                    local rand_1 = GSBase.RandRange(list_1.len());
+                    local rand_1_ind = list_1[rand_1];
+                    list_1.remove(rand_1);
+                    local rand_2 = GSBase.RandRange(list_1.len() - 1);
+                    categories.append([rand_1_ind, list_1[rand_2]]);
+
+                    // Find and remove industry id from the other array
+                    foreach (idx, industry in near_industries[1]) {
+                        if (industry == list_1[rand_2] || industry == rand_1_ind) {
+                            near_industries[1].remove(idx);
+                        }
+                    }
+
+                    industry_cat_text += " Cat III: [" + GSIndustryType.GetName(rand_1_ind) + ", " + GSIndustryType.GetName(list_1[rand_2]) + "(RAND)]";
+                    list_1.remove(rand_2);
+                }
             }
         }
     }
 
-    // 4. Category
-    if (list_3.len() > 2 || ((list_2.len() == 0 || (list_1.len() + list_raw.len() == 0)) && list_3.len() > 0)) {
-        local rand = GSBase.RandRange(list_3.len());
-        categories.append([list_3[rand]]);
-        list_3.remove(rand);
+    // 4. Category, pick 3 cargos
+    if (near_industries[3].len() != 0 && GSBase.Chance(near_industry_probability, 100)) { // Use near industry
+        // Use 3 input industry for Cat IV
+        local rand = GSBase.RandRange(near_industries[3].len());
+        categories.append([near_industries[3][rand]]);
+
+        // Find and remove industry id from the other array
+        foreach (idx, industry in list_3) {
+            if (industry == near_industries[3][rand]) {
+                list_3.remove(idx);
+                break;
+            }
+        }
+
+        industry_cat_text += " Cat IV: [" + GSIndustryType.GetName(near_industries[3][rand]) + "(NEAR)]";
+        near_industries[3].remove(rand);
     }
-    else {
-        local rand = GSBase.RandRange(3);
-        if (rand < list_3.len()) {
+    else { // Use random industry
+        if (list_3.len() > 2 || ((list_2.len() == 0 || (list_1.len() + list_raw.len() == 0)) && list_3.len() > 0)) {
+            local rand = GSBase.RandRange(list_3.len());
             categories.append([list_3[rand]]);
+
+            // Find and remove industry id from the other array
+            foreach (idx, industry in near_industries[3]) {
+                if (industry == list_3[rand]) {
+                    near_industries[3].remove(idx);
+                    break;
+                }
+            }
+
+            industry_cat_text += " Cat IV: [" + GSIndustryType.GetName(list_3[rand]) + "(RAND)]";
             list_3.remove(rand);
         }
         else {
-            local list = clone list_1;
-            list.extend(list_raw);
+            // Prevent using only max 2 industries by giving chance to use 1+2
+            local rand = GSBase.RandRange(3);
+            if (rand < list_3.len()) {
+                categories.append([list_3[rand]]);
 
-            local rand_1 = GSBase.RandRange(list.len());
-            local rand_2 = GSBase.RandRange(list_2.len());
+                // Find and remove industry id from the other array
+                foreach (idx, industry in near_industries[3]) {
+                    if (industry == list_3[rand]) {
+                        near_industries[3].remove(idx);
+                        break;
+                    }
+                }
 
-            categories.append([list[rand_1], list_2[rand_2]]);
-            if (rand_1 < list_1.len())
-                list_1.remove(rand_1);
-            else
-                list_raw.remove(rand_1 - list_1.len());
-            list_2.remove(rand_2);
+                industry_cat_text += " Cat IV: [" + GSIndustryType.GetName(list_3[rand]) + "(RAND)]";
+                list_3.remove(rand);
+            }
+            else {
+                local list = clone list_1;
+                list.extend(list_raw);
+
+                local rand_1 = GSBase.RandRange(list.len());
+                local rand_2 = GSBase.RandRange(list_2.len());
+
+                categories.append([list[rand_1], list_2[rand_2]]);
+                industry_cat_text += " Cat III: [" + GSIndustryType.GetName(list[rand_1]) + ", " + GSIndustryType.GetName(list_2[rand_2]) + "(RAND)]";
+                if (rand_1 < list_1.len()) {
+                    // Find and remove industry id from the other array
+                    foreach (idx, industry in near_industries[1]) {
+                        if (industry == list[rand_1]) {
+                            near_industries[1].remove(idx);
+                            break;
+                        }
+                    }
+
+                    list_1.remove(rand_1);
+                }
+                else {
+                    // Find and remove industry id from the other array
+                    foreach (idx, industry in near_industries[0]) {
+                        if (industry == list[rand_1]) {
+                            near_industries[0].remove(idx);
+                            break;
+                        }
+                    }
+
+                    list_raw.remove(rand_1 - list_1.len());
+                }
+
+                // Find and remove industry id from the other array
+                foreach (idx, industry in near_industries[2]) {
+                    if (industry == list[rand_2]) {
+                        near_industries[2].remove(idx);
+                        break;
+                    }
+                }
+
+                list_2.remove(rand_2);
+            }
         }
     }
 
-    // 5. Category
-    if (list_4.len() > 2 || ((list_3.len() < 5 || (list_1.len() + list_raw.len() < 5)) && list_4.len() > 0)) {
-        local rand = GSBase.RandRange(list_4.len());
-        categories.append([list_4[rand]]);
-        list_4.remove(rand);
+    // 5. Category, pick 4 or more cargos
+    // Dont need to remove used ids in the last category
+    if (near_industries[4].len() != 0 && GSBase.Chance(near_industry_probability, 100)) { // Use near industry
+        // Use 4+ input industry for Cat V
+        local rand = GSBase.RandRange(near_industries[4].len());
+        categories.append([near_industries[4][rand]]);
+
+        industry_cat_text += " Cat V: [" + GSIndustryType.GetName(near_industries[4][rand]) + "(NEAR)]";
     }
-    else if (list_4.len() > 0) {
-        local rand = GSBase.RandRange(3);
-        if (rand < list_4.len()) {
+    else { // Use random industry
+        if (list_4.len() > 2 || ((list_3.len() < 5 || (list_1.len() + list_raw.len() < 5)) && list_4.len() > 0)) {
+            local rand = GSBase.RandRange(list_4.len());
             categories.append([list_4[rand]]);
-            list_4.remove(rand);
+            industry_cat_text += " Cat V: [" + GSIndustryType.GetName(list_4[rand]) + "(RAND)]";
         }
-        else {
+        else if (list_4.len() > 0 && (list_1.len() + list_raw.len() > 0) && list_3.len() > 0) {
+            local rand = GSBase.RandRange(3);
+            if (rand < list_4.len()) {
+                categories.append([list_4[rand]]);
+                industry_cat_text += " Cat V: [" + GSIndustryType.GetName(list_4[rand]) + "(RAND)]";
+            }
+            else {
+                local list = clone list_1;
+                list.extend(list_raw);
+
+                local rand_1 = GSBase.RandRange(list.len());
+                local rand_3 = GSBase.RandRange(list_3.len());
+
+                categories.append([list[rand_1], list_3[rand_3]]);
+                industry_cat_text += " Cat V: [" + GSIndustryType.GetName(list[rand_1]) + ", " + GSIndustryType.GetName(list_3[rand_3]) + "(RAND)]";
+            }
+        }
+        else if (list_3.len() > 4 && (list_1.len() + list_raw.len() > 4)) {
             local list = clone list_1;
             list.extend(list_raw);
 
@@ -218,27 +426,11 @@ function RandomizeIndustry(ascending)
             local rand_3 = GSBase.RandRange(list_3.len());
 
             categories.append([list[rand_1], list_3[rand_3]]);
-            if (rand_1 < list_1.len())
-                list_1.remove(rand_1);
-            else
-                list_raw.remove(rand_1 - list_1.len());
-            list_3.remove(rand_3);
+            industry_cat_text += " Cat V: [" + GSIndustryType.GetName(list[rand_1]) + ", " + GSIndustryType.GetName(list_3[rand_3]) + "(RAND)]";
         }
     }
-    else if (list_3.len() > 4 && (list_1.len() + list_raw.len() > 4)) {
-        local list = clone list_1;
-        list.extend(list_raw);
 
-        local rand_1 = GSBase.RandRange(list.len());
-        local rand_3 = GSBase.RandRange(list_3.len());
-
-        categories.append([list[rand_1], list_3[rand_3]]);
-        if (rand_1 < list_1.len())
-            list_1.remove(rand_1);
-        else
-            list_raw.remove(rand_1 - list_1.len());
-        list_3.remove(rand_3);
-    }
+    Log.Info(GSTown.GetName(this.id) + ":" + industry_cat_text, Log.LVL_SUB_DECISIONS);
 
     if (!ascending) {
         local category_reverse = [];
@@ -259,6 +451,10 @@ function GetCargoCatFromIndustryCat(industry_cat)
         foreach (ind_idx, ind in cat) {
             local cargo_list = GSIndustryType.GetAcceptedCargo(ind);
             foreach (cargo, _ in cargo_list) {
+                // Ignore PASS and MAIL
+                if (cargo == 0 || cargo == 2)
+                    continue;
+
                 local found = false;
                 foreach (c in cargo_cat.top()) {
                     if (cargo == c) {
@@ -490,4 +686,72 @@ function GetNearbyIndustriesToTowns()
     DebugTownIndustries(town_industries);
 
     return town_industries;
+}
+
+function GetTownsNearbyIndustryPerCategory()
+{
+    local town_industries = GetNearbyIndustriesToTowns();
+    local town_industry_category = {};
+
+    foreach (town_id, industry_ids in town_industries) {
+        town_industry_category[town_id] <- [];
+
+        for (local i = 0; i < 5; ++i) {
+            town_industry_category[town_id].append([]);
+        }
+
+        foreach (industry_id in industry_ids) {
+            local industry_type_id = GSIndustry.GetIndustryType(industry_id);
+
+            // Determine the category of this industry type
+            local cargo_list = GSIndustryType.GetAcceptedCargo(industry_type_id);
+            cargo_list.RemoveItem(0); // exclude PASS
+            cargo_list.RemoveItem(2); // exclude MAIL
+            local category = -1;
+            switch (cargo_list.Count())
+            {
+                case 0:
+                    break;
+                case 1:
+                    if (GSIndustryType.IsRawIndustry(industry_type_id))
+                        category = 0;
+                    else
+                        category = 1;
+                    break;
+                case 2:
+                    if (GSIndustryType.IsRawIndustry(industry_type_id))
+                        category = 0;
+                    else
+                        category = 2;
+                    break;
+                case 3:
+                    category = 3;
+                    break;
+                default:
+                    category = 4;
+            }
+
+            // No accepting cargo
+            if (category < 0)
+                continue;
+
+            // Check if it already exists in the list, if not, add it there
+            local found = false;
+            foreach (saved_industry_type in town_industry_category[town_id][category]) {
+                if (saved_industry_type == industry_type_id) {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                town_industry_category[town_id][category].append(industry_type_id);
+            }
+        }
+    }
+
+    // Print results
+    DebugNearTownIndustryTypes(town_industry_category);
+
+    return town_industry_category;
 }
