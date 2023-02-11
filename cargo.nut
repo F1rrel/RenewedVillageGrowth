@@ -784,10 +784,10 @@ function DefineCargosBySettings(economy)
         case(Economies.XIS__THE_LOT): // XIS 0.6: The Lot
             ::CargoLimiter <- [0,2];
             ::CargoCat <- [[0,2],
-                       [6,23,24,25,29,33,38,43,48,54],
-                       [12,13,16,26,27,28,31,34,35,40,44,46,47,49,50,59,60],
-                       [1,4,8,9,10,14,15,19,21,30,32,37,41,45,51,52,53,55,61],
-                       [3,5,7,11,17,18,20,22,36,39,42,56,57,58]];
+                       [6,11,23,24,25,29,33,38,54],
+                       [4,12,13,16,26,27,28,31,34,35,40,43,44,46,47,48,49,50,52,59,60],
+                       [1,8,9,10,14,15,19,20,21,22,30,32,37,41,45,51,53,55,61],
+                       [3,5,7,17,18,36,39,42,56,57,58]];
             ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
                        CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
             ::CargoMinPopDemand <- [0,500,1000,4000,8000];
