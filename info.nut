@@ -142,6 +142,20 @@ class MainClass extends GSInfo
             flags = CONFIG_INGAME, min_value = 0, max_value = 12, step_size = 1});
 
         AddSetting({
+            name = "subsidies_type",
+            description = "Subsidies: Create subsidies for contributed towns",
+            easy_value = 1,
+            medium_value = 1,
+            hard_value = 1,
+            custom_value = 1,
+            flags = CONFIG_INGAME, min_value = 0, max_value = 3});
+        AddLabels("subsidies_type", {
+                _0 = "None",
+                _1 = "All",
+                _2 = "Passanger",
+                _3 = "Cargo"});
+
+        AddSetting({
             name = "category_1_min_pop",
             description = "Category 1: Minimum population demand (-1 = default)",
             easy_value = -1,
@@ -149,7 +163,7 @@ class MainClass extends GSInfo
             hard_value = -1,
             custom_value = -1,
             flags = CONFIG_INGAME, min_value = -1, max_value = 50000, step_size = 100});
-        
+
         AddSetting({
             name = "category_2_min_pop",
             description = "Category 2: Minimum population demand (-1 = default)",
@@ -158,7 +172,7 @@ class MainClass extends GSInfo
             hard_value = -1,
             custom_value = -1,
             flags = CONFIG_INGAME, min_value = -1, max_value = 50000, step_size = 100});
-        
+
         AddSetting({
             name = "category_3_min_pop",
             description = "Category 3: Minimum population demand (-1 = default)",
@@ -167,7 +181,7 @@ class MainClass extends GSInfo
             hard_value = -1,
             custom_value = -1,
             flags = CONFIG_INGAME, min_value = -1, max_value = 50000, step_size = 100});
-        
+
         AddSetting({
             name = "category_4_min_pop",
             description = "Category 4: Minimum population demand (-1 = default)",

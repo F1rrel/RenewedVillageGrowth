@@ -349,8 +349,10 @@ function DebugSubsidies(subsidies)
     Log.Info("Subsidies:", Log.LVL_SUB_DECISIONS);
     foreach (company, subs in subsidies) {
         local text = GSCompany.GetName(company) + ": ";
-        text += "[ Town subsidy: " + GSTown.GetName(subs.town_subsidy.town_1) + " -> " + GSTown.GetName(subs.town_subsidy.town_2) + " ]";
-        text += " [ Cargo subsidy: \"" + GSCargo.GetName(subs.cargo_subsidy.cargo_id) + "\" " + GSIndustry.GetName(subs.cargo_subsidy.providing_industry_id) + " -> " + GSIndustry.GetName(subs.cargo_subsidy.accepting_industry_id) + " ]";
+        if (subs.town_subsidy != null)
+            text += "[ Town subsidy: " + GSTown.GetName(subs.town_subsidy.town_1) + " -> " + GSTown.GetName(subs.town_subsidy.town_2) + " ]";
+        if (subs.cargo_subsidy != null)
+            text += " [ Cargo subsidy: \"" + GSCargo.GetName(subs.cargo_subsidy.cargo_id) + "\" " + GSIndustry.GetName(subs.cargo_subsidy.providing_industry_id) + " -> " + GSIndustry.GetName(subs.cargo_subsidy.accepting_industry_id) + " ]";
         Log.Info(text, Log.LVL_SUB_DECISIONS);
     }
 }

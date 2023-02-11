@@ -1,3 +1,11 @@
+enum SubsidiesType
+{
+    NONE = 0,
+    ALL = 1,
+    PASSANGER = 2,
+    CARGO = 3
+}
+
 function SortTowns(towns, companies)
 {
     // sorted_towns
@@ -127,6 +135,13 @@ function GetNotProvidedCargo(town_list, towns)
 
 function CreateSubsidies(towns, companies)
 {
+    if (GSGameSettings.GetValue("difficulty.subsidy_duration") == 0)
+        return;
+
+    local subsidies_type = GSController.GetSetting("subsidies_type");
+    if (subsidies_type == SubsidiesType.NONE)
+        return;
+
     local subsidies = {};
 
     // Sort industries per towns
@@ -141,22 +156,26 @@ function CreateSubsidies(towns, companies)
         };
 
         // Create town subsidy
-        local biggest_town_id = GetBiggestPopulationTown(town_list, towns);
-        if (biggest_town_id != null) {
-            local closest_town_id = FindClosestTown(sorted_towns.not_monitored, biggest_town_id);
-            if (closest_town_id != null) {
-                subsidies[company].town_subsidy = {
-                    town_1 = biggest_town_id,
-                    town_2 = closest_town_id
-                };
+        if (subsidies_type == SubsidiesType.ALL || subsidies_type == SubsidiesType.PASSANGER) {
+            local biggest_town_id = GetBiggestPopulationTown(town_list, towns);
+            if (biggest_town_id != null) {
+                local closest_town_id = FindClosestTown(sorted_towns.not_monitored, biggest_town_id);
+                if (closest_town_id != null) {
+                    subsidies[company].town_subsidy = {
+                        town_1 = biggest_town_id,
+                        town_2 = closest_town_id
+                    };
+                }
             }
         }
 
         // Create cargo subsidy
-        local not_provided_cargo = GetNotProvidedCargo(town_list, towns);
-        if (not_provided_cargo.len()) {
-            local random_index = GSBase.RandRange(not_provided_cargo.len());
-            subsidies[company].cargo_subsidy = not_provided_cargo[random_index];
+        if (subsidies_type == SubsidiesType.ALL || subsidies_type == SubsidiesType.CARGO) {
+            local not_provided_cargo = GetNotProvidedCargo(town_list, towns);
+            if (not_provided_cargo.len()) {
+                local random_index = GSBase.RandRange(not_provided_cargo.len());
+                subsidies[company].cargo_subsidy = not_provided_cargo[random_index];
+            }
         }
     }
 
