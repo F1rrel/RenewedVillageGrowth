@@ -19,8 +19,8 @@ STR_CARGOCAT_LABEL_12    :Kategorie V
 
 ##### STORY BOOK #####
 STR_SB_TITLE_1           :Frachtkategorien
-STR_SB_EXPLAIN_1         :Dies sind die Frachtkategorien für die Bedarfe der Städte, jede Kategorie besteht aus unterschiedlichen Frachtarten. Um den Bedarf einer Kategorie zu erfüllen, kann jede Frachtart geliefert werden.
-STR_SB_EXPLAIN_2         :Dies sind die Frachtkategorien für die Bedarfe der Städte, jede Kategorie besteht aus unterschiedlichen Frachtarten. Jeder Stadt ist eine Auswahl von {STRING} Arten jeder Frachtkategorie zugeordnet.  Um den Bedarf einer Kategorie zu erfüllen, kann jede Frachtart geliefert werden, welche die Stadt laut Infofenster für diese Kategorie benötigt.
+STR_SB_EXPLAIN_1         :Alle Bedarfe einer Stadt sind eingeteilt in bestimmte Frachtkategorien und jede Kategorie besteht aus unterschiedlichen Frachtarten. Um den Bedarf einer Kategorie zu erfüllen, kann jede Frachtart geliefert werden.
+STR_SB_EXPLAIN_2         :Alle Bedarfe einer Stadt sind eingeteilt in bestimmte Frachtkategorien und jede Kategorie besteht aus unterschiedlichen Frachtarten. Jeder Stadt ist eine Auswahl von {STRING} jeder Frachtkategorie zugeordnet.  Um den Bedarf einer Kategorie zu erfüllen, kann jede Frachtart geliefert werden, welche die Stadt laut Infofenster für diese Kategorie benötigt.
 STR_SB_EXPLAIN_RANDOM_0  :{SILVER}{NUM} Frachtart{P "" en}{BLACK}{STRING}
 STR_SB_EXPLAIN_RANDOM_2  :{SILVER}{NUM} - {NUM} Frachtarten {BLACK}
 STR_SB_CARGOCAT_CAT      :Kategorie
@@ -34,7 +34,7 @@ STR_SB_WARNING_3         :Die Initialisierung der Frachtliste ist gescheitert. E
 STR_SB_WARNING_4         :Der Parameter {ORANGE}Environment->Towns->Town growth speed{BLACK} muss zu etwas anderem als "None" verändert werden. {RED}Das Spielskript wurde ausgeschaltet.{BLACK}
 STR_SB_WELCOME_TITLE     :Renewed Village Growth {NUM}.{NUM}
 STR_SB_WELCOME_DESC      :{SILVER}Renewed Village Growth (RVG){BLACK} ist ein Spielskript, welches in OpenTTD {ORANGE}die Art des Städtewachstums ändert{BLACK}. Für jede Stadt existieren verschiedene Güterbedürfnisse, welche - teilweise oder komplett - monatlich gestillt werden müssen, um die Städte schneller wachsen zu lassen. Mehr Informationen lassen sich in der {ORANGE}Readme-Datei{BLACK} finden.
-STR_SB_WELCOME_CARGO     :Die Wirtschaft von {SILVER}{STRING}{BLACK} besteht aus {SILVER}{NUM} Kategorien{BLACK}. Um einer Kategorie zu genügen, liefern sie eine oder mehr der kategoriespezifischen Frachtarten zu einem {ORANGE}Bahnhof in der Nähe der Stadt, welche die jeweilige Frachtart akzeptiert{BLACK}. Übererfüllen sie die angeführten Bedürfnisse um {SILVER}{NUM}%{BLACK}, um {ORANGE}die Stadt schneller wachsen zu lassen{BLACK}. Mehr Informationen über die Frachtkategorien befinden sich auf der {ORANGE}Chronikseite der Frachtkategorien{BLACK}.
+STR_SB_WELCOME_CARGO     :Die Wirtschaft von {SILVER}{STRING}{BLACK} besteht aus {SILVER}{NUM} Kategorien{BLACK}. Um einer Kategorie zu genügen, liefern sie eine oder mehr der kategoriespezifischen Frachtarten zu einem {ORANGE}Bahnhof in der Nähe der Stadt, welcher die jeweilige Frachtart akzeptiert{BLACK}. Übererfüllen sie die angeführten Bedürfnisse um {SILVER}{NUM}%{BLACK}, um {ORANGE}die Stadt schneller wachsen zu lassen{BLACK}. Mehr Informationen über die Frachtkategorien befinden sich auf der {ORANGE}Chronikseite der Frachtkategorien{BLACK}.
 STR_SB_WELCOME_LIMIT_GROWTH         :{SILVER}{CARGO_LIST}{BLACK} einer Stadt kann deren {ORANGE}Wachstum stoppen{BLACK}. Transportieren sie mindestens {SILVER}{NUM}%{BLACK} dieser Frachtart um {ORANGE}Städtewachstum zu erlauben{BLACK}. {STRING}
 STR_SB_WELCOME_LIMIT_GROWTH_DELAY   :Das Wachstum stoppt, wennn diese Bedingung {SILVER}{NUM} Monate{BLACK} lang nicht erfüllt wurde.
 STR_SB_WELCOME_STATISTICS           :Das Unternehmen, welches die Mehrheit der Fracht zu einer Stadt befördert, wird ihr {ORANGE}Versorger{BLACK}. Jede neue Einwohnerzahl, welche die bisher größte Einwohnerzahl übertrifft, wird den {ORANGE}Wachstumspunkten{BLACK} des Unternehmens zugerechnet. Die Wachstumspunkte und Statistiken hierzu lassen sich bei den {ORANGE}Spielzielen (gelbe Fahne){BLACK} finden.
@@ -57,8 +57,8 @@ STR_STATISTICS_NUM_TOWNS        :{BLACK}Anzahl der versorgten Städte{ORANGE}
 STR_STATISTICS_NOT_GROWING      :{BLACK}Anzahl der nicht wachsenden Städte{ORANGE}
 
 ##### TOWNBOX #####
-STR_TOWNBOX_CONTRIBUTOR         :Größte Einwohnerzahl {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
-STR_TOWNBOX_NO_CONTRIBUTOR      :Größte Einwohnerzahl {SILVER}{NUM}{BLACK}{STRING}
+STR_TOWNBOX_CONTRIBUTOR         :Größte Einwohnerzahl : {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
+STR_TOWNBOX_NO_CONTRIBUTOR      :Größte Einwohnerzahl : {SILVER}{NUM}{BLACK}{STRING}
 
 STR_TOWNBOX_CATEGORY            :Frachtinformationen : verfügbar / benötigt {STRING}
 STR_TOWNBOX_CATEGORY_STOP       :Nicht ausreichend aus der Stadt abtransportiert :{} * {RED}{CARGO_LIST}{BLACK}{}Frachtinformationen : verfügbar / benötigt
@@ -68,7 +68,7 @@ STR_TOWNBOX_CARGO               :Frachtkategorien :{STRING}
 STR_TOWNBOX_CARGO_STOP          :Nicht ausreichend aus der Stadt abtransportiert :{} * {RED}{CARGO_LIST}{BLACK}{}Frachtkategorien :
 STR_TOWNBOX_CARGO_LOW           :Unzureichende Versorgung mit Fracht :{} * {SILVER}{CARGO_LIST}{BLACK}{}Frachtkategorien :
 STR_TOWNBOX_CARGO_DELAYED       :Nicht ausreichend aus der Stadt abtransportiert :{} * {GOLD}{CARGO_LIST}{BLACK}{}Frachtkategorien :
-STR_TOWNBOX_NOGROWTH            :Transportiere {SILVER}{CARGO_LIST}{BLACK} von dieser Stadt ab, damit diese Stadt wächst.
+STR_TOWNBOX_NOGROWTH            :Transportiere {SILVER}{CARGO_LIST}{BLACK} von dieser Stadt ab, damit sie wächst.
 
 ##### ECONOMIES #####
 STR_ECONOMY_NONE                :
