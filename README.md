@@ -28,6 +28,7 @@ Currently available languages:
 - Simplified Chinese (SuperCirno)
 - Polish (qamil95)
 - Galician (pvillaverde)
+- German (pnkrtz)
 
 If you want to contribute to a translation, you can do it by modifying a file [english.txt](lang/english.txt) and posting it to the forum topic or creating a new issue/pull request with this file included.
 
@@ -53,3 +54,4 @@ Thanks to contributors:
 - qamil95
 - 2TallTyler
 - pvillaverde
+- pnkrtz
