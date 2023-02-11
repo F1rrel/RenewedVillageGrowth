@@ -20,7 +20,7 @@ STR_CARGOCAT_LABEL_12    :Kategoria V
 ##### STORY BOOK #####
 STR_SB_TITLE_1           :Kategorie towarów
 STR_SB_EXPLAIN_1         :Aby miasto mogło się rozwijać, wymagane jest dostarczanie do niego towarów z danych kategorii. Każda kategoria zawiera różne typy towarów. Aby zaspokoić wymagania konkretnej kategorii, należy dostarczyć dowolny należący do niej typ towaru, do stacji należącej do miasta (tzn. której domyślna nazwa zawiera nazwę miasta).
-STR_SB_EXPLAIN_2         :Aby miasto mogło się rozwijać, wymagane jest dostarczanie do niego towarów z danych kategorii. Każda kategoria zawiera różne typy towarów. Każde miasto ma wybór {STRING2} z każdej kategorii. Aby zaspokoić wymagania konkretnej kategorii, należy dostarczyć dowolny należący do niej typ towaru akceptowany przez dane miasto, do stacji należącej do miasta (tzn. której domyślna nazwa zawiera nazwę miasta). Lista wymaganych towarów dostępna jest w oknie informacji o mieście.
+STR_SB_EXPLAIN_2         :Aby miasto mogło się rozwijać, wymagane jest dostarczanie do niego towarów z danych kategorii. Każda kategoria zawiera różne typy towarów. Każde miasto ma wybór {STRING} z każdej kategorii. Aby zaspokoić wymagania konkretnej kategorii, należy dostarczyć dowolny należący do niej typ towaru akceptowany przez dane miasto, do stacji należącej do miasta (tzn. której domyślna nazwa zawiera nazwę miasta). Lista wymaganych towarów dostępna jest w oknie informacji o mieście.
 STR_SB_EXPLAIN_RANDOM_0  :{SILVER}{NUM} {P "typu towarów" "typów towarów"}{BLACK}{STRING}
 STR_SB_EXPLAIN_RANDOM_2  :{SILVER}{NUM} - {NUM} typów towarów {BLACK}
 STR_SB_CARGOCAT_CAT      :Kategoria
