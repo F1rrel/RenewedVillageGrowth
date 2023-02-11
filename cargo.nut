@@ -1164,9 +1164,6 @@ function CreateDefaultCargoCat()
         ::CargoDecay.append(0.2);
         ::CargoDecay.append(0.2);
 
-        // raw_list.Valuate(GSBase.RandItem);
-        // raw_list.Sort(GSList.SORT_BY_VALUE, GSList.SORT_ASCENDING);
-
         local cargo = raw_list.Begin();
         local index = 0;
         while (!raw_list.IsEnd()) {
@@ -1209,9 +1206,6 @@ function CreateDefaultCargoCat()
         ::CargoPermille.append(15);
         ::CargoDecay.append(0.1);
         ::CargoDecay.append(0.1);
-
-        // processed_list.Valuate(GSBase.RandItem);
-        // processed_list.Sort(GSList.SORT_BY_VALUE, GSList.SORT_ASCENDING);
 
         local cargo = processed_list.Begin();
         local index = 0;
