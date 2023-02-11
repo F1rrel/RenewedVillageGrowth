@@ -3,6 +3,7 @@ require("cargo.nut");
 require("industry.nut");
 require("town.nut");
 require("company.nut");
+require("subsidies.nut")
 require("story.nut");
 require("strings.nut");
 
@@ -508,6 +509,7 @@ function MainClass::ManageTowns()
         Log.Info("Starting Yearly Updates...", Log.LVL_INFO);
 
         ProspectRawIndustry();
+        CreateSubsidies(towns, companies);
 
         this.current_year = year;
     }
