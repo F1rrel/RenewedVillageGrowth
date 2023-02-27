@@ -28,11 +28,6 @@ STR_SB_CARGOCAT_CAT      :Catégorie
 STR_SB_CARGOCAT_POP      :Population requise
 STR_SB_CARGOCAT_DECAY    :Dégradation mensuelle des stocks
 STR_SB_CARGOCAT_CARGOT   :Types de marchandises
-STR_SB_CARGOCAT_0        :{STRING} {NUM} : {LTBLUE}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
-STR_SB_CARGOCAT_1        :{STRING} {NUM} : {GREEN}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
-STR_SB_CARGOCAT_2        :{STRING} {NUM} : {RED}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
-STR_SB_CARGOCAT_3        :{STRING} {NUM} : {BROWN}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
-STR_SB_CARGOCAT_4        :{STRING} {NUM} : {PURPLE}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
 STR_SB_WARNING_TITLE     :Attention
 STR_SB_WARNING_1         :Il y a plus de villes dans la carte que le script de jeu peut en sauvegarder. Il y a actuellement {SILVER}{NUM}{BLACK} villes et le nombre maximum est {SILVER}{NUM}{BLACK}. {RED}Le script de jeu est désactivé.{BLACK}
 STR_SB_WARNING_2         :L’initialisation de la liste des marchandises a échoué. Cela est dû à un newGRF industriel inconnu, pour lequel une liste des marchandises n’a pas pu être générée. {RED}Le script de jeu est désactivé.{BLACK}
