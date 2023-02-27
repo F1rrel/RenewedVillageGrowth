@@ -58,9 +58,9 @@ STR_SB_CUSTOM_END           :
 STR_STATISTICS_GROWTH_POINTS    :{BLACK}Points de croissance de {ORANGE}{STRING}{COMPANY}
 STR_STATISTICS_BIGGEST_TOWN     :{BLACK}La plus grande ville {SILVER}{TOWN}{ORANGE}
 STR_STATISTICS_GROWTH_TOWN      :{BLACK}Ville à la croissance la plus rapide en jours {SILVER}{TOWN}{ORANGE}
-STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}Catégorie de ville moyenne{ORANGE}
-STR_STATISTICS_NUM_TOWNS        :{BLACK}Nombre de villes contribuées{ORANGE}
-STR_STATISTICS_NOT_GROWING      :{BLACK}Nombre de villes non en croissance{ORANGE}
+STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}Catégorie moyenne des villes{ORANGE}
+STR_STATISTICS_NUM_TOWNS        :{BLACK}Nombre de villes fournies{ORANGE}
+STR_STATISTICS_NOT_GROWING      :{BLACK}Nombre de villes ne croissant pas{ORANGE}
 
 ##### TOWNBOX #####
 STR_TOWNBOX_CONTRIBUTOR         :La plus grande population {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
@@ -74,7 +74,7 @@ STR_TOWNBOX_CARGO               :Catégories de marchandise :{STRING}
 STR_TOWNBOX_CARGO_STOP          :Pas assez d’exportations :{} * {RED}{CARGO_LIST}{BLACK}{}Catégories de marchandise :
 STR_TOWNBOX_CARGO_LOW           :Infrastructures de transport insuffisantes :{} * {SILVER}{CARGO_LIST}{BLACK}{}Catégories de marchandise :
 STR_TOWNBOX_CARGO_DELAYED       :Pas assez d’exportations :{} * {GOLD}{CARGO_LIST}{BLACK}{}Catégories de marchandises:
-STR_TOWNBOX_NOGROWTH            :Transporter {SILVER}{CARGO_LIST}{BLACK} depuis cette ville pour la faire croître.
+STR_TOWNBOX_NOGROWTH            :Transportez {SILVER}{CARGO_LIST}{BLACK} depuis cette ville pour la faire croître.
 
 ##### ECONOMIES #####
 STR_ECONOMY_NONE                :
