@@ -50,7 +50,7 @@ STR_SB_CUSTOM_TITLE         :Règles du serveur
 STR_SB_CUSTOM_END           :
 
 ##### GOAL #####
-STR_STATISTICS_GROWTH_POINTS    :{BLACK}Points de croissance de {ORANGE}{STRING}{COMPANY}
+STR_STATISTICS_GROWTH_POINTS    :{BLACK}Points de croissance de {STRING}{COMPANY}{ORANGE}
 STR_STATISTICS_BIGGEST_TOWN     :{BLACK}La plus grande ville {SILVER}{TOWN}{ORANGE}
 STR_STATISTICS_GROWTH_TOWN      :{BLACK}Ville à la croissance la plus rapide en jours {SILVER}{TOWN}{ORANGE}
 STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}Catégorie moyenne des villes{ORANGE}
