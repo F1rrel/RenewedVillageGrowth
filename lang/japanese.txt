@@ -1,0 +1,78 @@
+##### TOWN SIGN #####
+STR_TOWNSIGN_GROWTHRATE  :成長：毎{NUM}日
+STR_TOWNSIGN_NOTGROWING  :成長しない
+
+##### CARGO CATEGORIES #####
+STR_CARGOCAT_LABEL_0     :公共サービス
+STR_CARGOCAT_LABEL_1     :食品原料
+STR_CARGOCAT_LABEL_2     :原材料
+STR_CARGOCAT_LABEL_3     :加工材料
+STR_CARGOCAT_LABEL_4     :最終製品
+STR_CARGOCAT_LABEL_5     :製品
+STR_CARGOCAT_LABEL_6     :現地生産
+STR_CARGOCAT_LABEL_7     :輸入品
+STR_CARGOCAT_LABEL_8     :カテゴリーI
+STR_CARGOCAT_LABEL_9     :カテゴリーII
+STR_CARGOCAT_LABEL_10    :カテゴリーIII
+STR_CARGOCAT_LABEL_11    :カテゴリーIV
+STR_CARGOCAT_LABEL_12    :カテゴリーV
+
+##### STORY BOOK #####
+STR_SB_TITLE_1           :貨物カテゴリー
+STR_SB_EXPLAIN_1         :街の成長に必要な貨物は以下のカテゴリーに分けられます。それぞれ貨物の種類が違います。各カテゴリーのいずれかの貨物を輸送すれば、街の成長条件は満たされます。
+STR_SB_EXPLAIN_2         :街の成長に必要な貨物は以下のカテゴリーに分けられます。それぞれ貨物の種類が違います。各街には各カテゴリー内で最大{STRING}まで設定されます。必要貨物は街情報ウィンドウに表示されます。各カテゴリーのいずれかの貨物を輸送すれば、街の成長条件は満たされます。
+STR_SB_EXPLAIN_RANDOM_0  :{SILVER}{NUM}種{BLACK}{STRING}
+STR_SB_EXPLAIN_RANDOM_2  :{SILVER}{NUM}〜{NUM}種{BLACK}
+STR_SB_CARGOCAT_CAT      :カテゴリー
+STR_SB_CARGOCAT_POP      :最低人口
+STR_SB_CARGOCAT_DECAY    :月減衰
+STR_SB_CARGOCAT_CARGOT   :貨物種類
+STR_SB_WARNING_TITLE     :注意
+STR_SB_WARNING_1         :街数がゲームスクリプトの限界を超えています。現在の街数は{SILVER}{NUM}{BLACK}で、上限は{SILVER}{NUM}{BLACK}です。{RED}ゲームスクリプトは無効になりました。{BLACK}
+STR_SB_WARNING_2         :対応できないNewGRFの産業により、貨物リストの読み込みは失敗しました。{RED}ゲームスクリプトは無効になりました。{BLACK}
+STR_SB_WARNING_3         :産業のランダム化設定により、貨物カテゴリーの割り当ては失敗しました。{RED}ゲームスクリプトは無効になりました。{BLACK}
+STR_SB_WARNING_4         :設定「環境→街→街の成長速度」の「成長しない」値に対応できません。{RED}ゲームスクリプトは無効になりました。{BLACK}
+STR_SB_WELCOME_DESC      :{SILVER}Renewed Village Growth (RVG){BLACK} は{ORANGE}街の成長を変える{BLACK}、OpenTTDのゲームスクリプトです。各街には様々な貨物輸送需要が設けられます。その需要の毎月の供給次第で、街の成長が早くなります。詳細は{ORANGE}Readmeファイル{BLACK}を参照ください。
+STR_SB_WELCOME_CARGO     :経済 {SILVER}{STRING}{BLACK} では{SILVER}{NUM}個の貨物カテゴリー{BLACK}が設定されます。カテゴリーの貨物一種以上を{ORANGE}その貨物を受け入れる街内の荷役所{BLACK}に輸送すると、カテゴリーの需要は満たされます。需要の{SILVER}{NUM}%{BLACK}以上を供給すると、{ORANGE}街の成長速度は上がります{BLACK}。貨物カテゴリーの詳細は{ORANGE}ゲーム背景の貨物カテゴリー{BLACK}ページを参照ください。
+STR_SB_WELCOME_LIMIT_GROWTH         :街の{SILVER}{CARGO_LIST}{BLACK}の輸送が足りないと{ORANGE}街の成長は止まります{BLACK}。{SILVER}{NUM}%{BLACK}以上輸送すれば{ORANGE}街は成長できるようになります{BLACK}。{STRING}
+STR_SB_WELCOME_LIMIT_GROWTH_DELAY   :成長条件が満たされないと{SILVER}{NUM}ヶ月後{BLACK}、街の成長は止まります。
+STR_SB_WELCOME_STATISTICS           :街の貨物輸送の多数を供給する会社はこの街の{ORANGE}貢献者{BLACK}となります。街の最大人口を超える新人口は貢献者の{ORANGE}成長ポイント{BLACK}に足されます。成長ポイントや統計はゲームの{ORANGE}目標一覧{BLACK}を参照ください。
+STR_SB_WELCOME_ETERNAL_LOVE         :{SILVER}Eternal Love{BLACK}ですべての街での{ORANGE}会社の評価{BLACK}を毎月、最低{SILVER}{STRING}{BLACK}に変更します。
+STR_SB_WELCOME_END                  :どうぞお楽しみください。
+
+##### CUSTOM STORY BOOK #####
+STR_SB_CUSTOM_WELCOME       :サーバーのルールは{ORANGE} {STRING} ゲーム背景ページ{BLACK}を参照ください。
+STR_SB_CUSTOM_TITLE         :サーバーのルール
+
+##### GOAL #####
+STR_STATISTICS_GROWTH_POINTS    :{STRING}{COMPANY}{BLACK}の成長ポイント{ORANGE}
+STR_STATISTICS_BIGGEST_TOWN     :{BLACK}最大の街人口 {SILVER}{TOWN}{ORANGE}
+STR_STATISTICS_GROWTH_TOWN      :{BLACK}最速成長（日）{SILVER}{TOWN}{ORANGE}
+STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}平均カテゴリー{ORANGE}
+STR_STATISTICS_NUM_TOWNS        :{BLACK}貢献した街数{ORANGE}
+STR_STATISTICS_NOT_GROWING      :{BLACK}成長しない街数{ORANGE}
+
+##### TOWNBOX #####
+STR_TOWNBOX_CONTRIBUTOR         :最大人口 {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
+STR_TOWNBOX_NO_CONTRIBUTOR      :最大人口 {SILVER}{NUM}{BLACK}{STRING}
+
+STR_TOWNBOX_CATEGORY            :輸送: 供給 / 需要{STRING}
+STR_TOWNBOX_CATEGORY_STOP       :輸出不足:{} * {RED}{CARGO_LIST}{BLACK}{}輸送: 供給 / 需要
+STR_TOWNBOX_CATEGORY_LOW        :輸送不足:{} * {SILVER}{CARGO_LIST}{BLACK}{}輸送: 供給 / 需要
+STR_TOWNBOX_CATEGORY_DELAYED    :輸出不足:{} * {GOLD}{CARGO_LIST}{BLACK}{}輸送: 供給 / 需要
+STR_TOWNBOX_CARGO               :貨物カテゴリー：{STRING}
+STR_TOWNBOX_CARGO_STOP          :輸送不足:{} * {RED}{CARGO_LIST}{BLACK}{}貨物カテゴリー:
+STR_TOWNBOX_CARGO_LOW           :輸送不足:{} * {SILVER}{CARGO_LIST}{BLACK}{}貨物カテゴリー:
+STR_TOWNBOX_CARGO_DELAYED       :輸送不足:{} * {GOLD}{CARGO_LIST}{BLACK}{}貨物カテゴリー:
+STR_TOWNBOX_NOGROWTH            :街の成長に {SILVER}{CARGO_LIST}{BLACK} の輸送が必要です。
+
+##### ECONOMIES #####
+STR_ECONOMY_BASESET_TEMPERATE   :ベース温帯
+STR_ECONOMY_BASESET_ARCTIC      :ベース亜寒帯
+STR_ECONOMY_BASESET_TROPICAL    :ベース亜熱帯
+STR_ECONOMY_BASESET_TOYLAND     :ベースおもちゃの国
+
+##### ETERNAL LOVE #####
+STR_ETERNAL_LOVE_OUTSTANDING    :最高
+STR_ETERNAL_LOVE_GOOD           :良い
+STR_ETERNAL_LOVE_POOR           :悪い
