@@ -29,6 +29,23 @@ STR_SB_CARGOCAT_DECAY    :Mesíční úpadek tovaru
 STR_SB_CARGOCAT_CARGOT   :Kategorie nákladu
 STR_SB_WARNING_TITLE     :Upozornění
 STR_SB_WARNING_1         :Na mapě sa nachází víc měst než je hrací skript schopen uložit. Aktuální počet měst na mapě je {SILVER}{NUM}{BLACK} a maximum je {SILVER}{NUM}{BLACK}. {RED}Hrací skript se vypíná.{BLACK}
+STR_SB_WARNING_2         :Inicializáce seznamu druhú zboží selhala. Bylo to spůsobeno neznámým typem newGRF průmyslu pro které procedurálně generování kategorií zboží není možné. {RED}Hrací skript se vypíná.{BLACK}
+STR_SB_WARNING_3         :Inicializáce seznamu druhú zboží selhala. Bylo to spůsobeno náhodnou tvorbou kategorií sboží podle průmyslových vstupů, pričem pro tento typ newGRF průmyslu není taková náhodní tvorba kategorií možná. {RED}}Hrací skript se vypíná.{BLACK}
+STR_SB_WARNING_4         :Parametr {ORANGE}Prostředí->Města->Rychlost růstu měst{BLACK} musí být nastaveno na jinou hodnotu než na nulová. {RED}Hrací skript se vypíná.{BLACK}
+STR_SB_WELCOME_DESC      :{SILVER}Renewed Village Growth (RVG){BLACK} je hrací skript, který {ORANGE}mění jak rostou města{BLACK} v OpenTTD. Každé město má definováno různe požadavky na dodávano zboží, které musá být - částečne nebo plne - měsíčne splňováno, aby mohli městá rychleji růst. Více informací se dá najít v {ORANGE}Readme souboru{BLACK}.
+STR_SB_WELCOME_CARGO     :Průmysl {SILVER}{STRING}{BLACK} pozestáva z {SILVER}{NUM} kategorií{BLACK}. Na splnění kategorie, dovez jeden nebo více zadefinovaných typů zboží pro danou kategorii do {ORANGE}stanice blízko daného města, která přijímá daný typ zboží{BLACK}. Splň požiadavky alespoň nad {SILVER}{NUM}%{BLACK} aby {ORANGE}město rástlo rychleji{BLACK}. Více informací ohledně akceptovaných kategorií jsou zobrazené v {ORANGE}Kategorie nákladu globální knihy příbéhú{BLACK}.
+STR_SB_WELCOME_LIMIT_GROWTH         :{SILVER}{CARGO_LIST}{BLACK} z tohto města dokáží {ORANGE}zastavit růst města{BLACK}. Převez alespoň {SILVER}{NUM}%{BLACK} těchto typů zboží vytvořeného v tomto městě pro {ORANGE}povolení růstu města{BLACK}. {STRING}
+STR_SB_WELCOME_LIMIT_GROWTH_DELAY   :Růst města se zastaví po {SILVER}{NUM} měsíc{P i ích}{BLACK} bez splnění týto požadavky.
+STR_SB_WELCOME_STATISTICS           :Společnosť, která dodáva většinu zboží do města se stává jejím {ORANGE}Dodávatelem{BLACK}. Každá nová populáce města nad její dosavadní největší hodnotu se ráta ako {ORANGE}rastové body{BLACK} té společnosti. Viď statistiku rastových bodů v {ORANGE}Globálních cílech{BLACK}.
+STR_SB_WELCOME_ETERNAL_LOVE         :{SILVER}Eternal Love{BLACK} mění {ORANGE}hodnocení místní správy{BLACK} každého města jednou za měsíc na alespoň {SILVER}{STRING}{BLACK}.
+STR_SB_WELCOME_END                  :Bavte sa!
+
+##### CUSTOM STORY BOOK #####
+STR_SB_CUSTOM_WELCOME       :Pravidla serveru nájdete v {ORANGE}{STRING} globální knize příběhú{BLACK}.
+STR_SB_CUSTOM_TITLE         :Pravidla serveru
+# STR_SB_CUSTOM_1             :Pravidlo 1
+# STR_SB_CUSTOM_2             :Pravidlo 2
+STR_SB_CUSTOM_END           :
 
 ##### GOAL #####
 STR_STATISTICS_GROWTH_POINTS    :{STRING}{COMPANY}{BLACK} přírastkových bodů{ORANGE}
@@ -42,12 +59,17 @@ STR_STATISTICS_NOT_GROWING      :{BLACK}Počet nerostoucích měst{ORANGE}
 STR_TOWNBOX_CONTRIBUTOR         :Nejvyšší dosažená populace {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
 STR_TOWNBOX_NO_CONTRIBUTOR      :Nejvyšší dosažená populace {SILVER}{NUM}{BLACK}{STRING}
 
-STR_TOWNBOX_CATEGORY            :Statistika dovozu : disponibilní / požadované{STRING}
-STR_TOWNBOX_CATEGORY_STOP       :Nefunkční vývoz ze města :{} * {RED}{CARGO_LIST}{BLACK}{}Statistika dovozu : disponibilní / požadované
-STR_TOWNBOX_CATEGORY_LOW        :Nedostatečná infraštruktura dopravy :{} * {SILVER}{CARGO_LIST}{BLACK}{}Statistika dovozu : disponibilní / požadované
-STR_TOWNBOX_CATEGORY_DELAYED    :Nefunkční vývoz ze města :{} * {GOLD}{CARGO_LIST}{BLACK}{}Statistika dovozu : disponibilní / požadované
+STR_TOWNBOX_CATEGORY            :Statistika dovozu : disponibilní / požadováno{STRING}
+STR_TOWNBOX_CATEGORY_STOP       :Nefunkční vývoz ze města :{} * {RED}{CARGO_LIST}{BLACK}{}Statistika dovozu : disponibilní / požadováno
+STR_TOWNBOX_CATEGORY_LOW        :Nedostatečná infraštruktura dopravy :{} * {SILVER}{CARGO_LIST}{BLACK}{}Statistika dovozu : disponibilní / požadováno
+STR_TOWNBOX_CATEGORY_DELAYED    :Nefunkční vývoz ze města :{} * {GOLD}{CARGO_LIST}{BLACK}{}Statistika dovozu : disponibilní / požadováno
 STR_TOWNBOX_CARGO               :Kategorie nákladu :{STRING}
 STR_TOWNBOX_CARGO_STOP          :Nefunkční vývoz ze města :{} * {RED}{CARGO_LIST}{BLACK}{}Kategorie nákladu :
 STR_TOWNBOX_CARGO_LOW           :Nedostatečná infraštruktura dopravy :{} * {SILVER}{CARGO_LIST}{BLACK}{}Kategorie nákladu :
 STR_TOWNBOX_CARGO_DELAYED       :Nefunkční vývoz ze města :{} * {GOLD}{CARGO_LIST}{BLACK}{}Kategorie nákladu :
 STR_TOWNBOX_NOGROWTH            :Převez {SILVER}{CARGO_LIST}{BLACK} z tohoto města, aby město začalo růst.
+
+##### ETERNAL LOVE #####
+STR_ETERNAL_LOVE_OUTSTANDING    :perfektní
+STR_ETERNAL_LOVE_GOOD           :dobré
+STR_ETERNAL_LOVE_POOR           :zlé
