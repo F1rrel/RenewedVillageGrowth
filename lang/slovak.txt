@@ -29,6 +29,23 @@ STR_SB_CARGOCAT_DECAY    :Mesačný úpadok tovaru
 STR_SB_CARGOCAT_CARGOT   :Kategórie nákladu
 STR_SB_WARNING_TITLE     :Upozornenie
 STR_SB_WARNING_1         :Na mape sa nachádza viac miest ako je hrací skript schopný uložiť. Aktuálny počet miest na mape je {SILVER}{NUM}{BLACK} a maximum je {SILVER}{NUM}{BLACK}. {RED}Hrací skript sa vypína.{BLACK}
+STR_SB_WARNING_2         :Inicializácia zoznamu druhov tovarov zlyhala. Bolo to spôsobené neznámym typom newGRF priemyslu pre ktoré procedurálne generovanie kategórií tovarov nie je možné. {RED}Hrací skript sa vypína.{BLACK}
+STR_SB_WARNING_3         :Inicializácia zoznamu druhov tovarov zlyhala. Bolo to spôsobené náhodnou tvorbou kategórií tovaru podľa priemyslových vstupov, pričom pre tento typ newGRF priemyslu nie je takáto náhodná tvorba kategórií možná. {RED}}Hrací skript sa vypína.{BLACK}
+STR_SB_WARNING_4         :Parameter {ORANGE}Prostredie->Mestá->Rozvoj miest{BLACK} musí byť nastavené na inú hodnotu ako na žiadny. {RED}Hrací skript sa vypína.{BLACK}
+STR_SB_WELCOME_DESC      :{SILVER}Renewed Village Growth (RVG){BLACK} je hrací skript, ktorý {ORANGE}mení ako rastú mestá{BLACK} v OpenTTD. Každé mesto má definované rôzne požiadavky na dodávaný tovar, ktoré musia byť - čiastočne alebo kompletne - mesačne spĺňané, aby mohli mestá rýchlejšie rásť. Viac informácií sa dá nájsť v {ORANGE}Readme súbore{BLACK}.
+STR_SB_WELCOME_CARGO     :Priemysel {SILVER}{STRING}{BLACK} pozostáva z {SILVER}{NUM} kategórií{BLACK}. Na splnenie kategórie, dovez jeden alebo viac zadefinovaných typov tovaru pre danú kategóriu do {ORANGE}stanice blízko daného mesta, ktorá prijíma daný typ tovaru{BLACK}. Splň požiadavky aspoň nad {SILVER}{NUM}%{BLACK} aby {ORANGE}mesto rástlo rýchlejšie{BLACK}. Viac informácií ohľadom akceptovaných kategórií sú zobrazené v {ORANGE}Kategórie nákladu globálnej knihe príbehu{BLACK}.
+STR_SB_WELCOME_LIMIT_GROWTH         :{SILVER}{CARGO_LIST}{BLACK} z tohto mesta dokážu {ORANGE}zastaviť rast mesta{BLACK}. Prevez aspoň {SILVER}{NUM}%{BLACK} týchto typov nákladu vytvoreného v tomto meste pre {ORANGE}povolenie rastu mesta{BLACK}. {STRING}
+STR_SB_WELCOME_LIMIT_GROWTH_DELAY   :Rast mesta sa zastaví po {SILVER}{NUM} mesiac{P i och}{BLACK} bez splnenia tejto požiadavky.
+STR_SB_WELCOME_STATISTICS           :Spoločnosť, ktorá dodáva väčšinu tovaru do mesta sa stáva jej {ORANGE}Dodávateľom{BLACK}. Každá nová populácia mesta nad jej doterajšiu najväčšiu hodnotu sa ráta ako {ORANGE}rastové body{BLACK} tej spoločnosti. Viď štatistiku rastových bodov v {ORANGE}Globálnych cieľoch{BLACK}.
+STR_SB_WELCOME_ETERNAL_LOVE         :{SILVER}Eternal Love{BLACK} mení {ORANGE}hodnotenie miestnej správy{BLACK} každého mesta raz za mesiac na aspoň {SILVER}{STRING}{BLACK}.
+STR_SB_WELCOME_END                  :Bavte sa!
+
+##### CUSTOM STORY BOOK #####
+STR_SB_CUSTOM_WELCOME       :Pravidlá serveru nájdete v {ORANGE}{STRING} globálnej knihe príbehov{BLACK}.
+STR_SB_CUSTOM_TITLE         :Pravidlá serveru
+# STR_SB_CUSTOM_1             :Pravidlo 1
+# STR_SB_CUSTOM_2             :Pravidlo 2
+STR_SB_CUSTOM_END           :
 
 ##### GOAL #####
 STR_STATISTICS_GROWTH_POINTS    :{STRING}{COMPANY}{BLACK} prírastkových bodov{ORANGE}
@@ -51,3 +68,8 @@ STR_TOWNBOX_CARGO_STOP          :Nefunkčný vývoz z mesta :{} * {RED}{CARGO_LI
 STR_TOWNBOX_CARGO_LOW           :Nedostatočná infraštruktúra dopravy :{} * {SILVER}{CARGO_LIST}{BLACK}{}Kategórie nákladu :
 STR_TOWNBOX_CARGO_DELAYED       :Nefunkčný vývoz z mesta :{} * {GOLD}{CARGO_LIST}{BLACK}{}Kategórie nákladu :
 STR_TOWNBOX_NOGROWTH            :Prevez {SILVER}{CARGO_LIST}{BLACK} z tohto mesta, aby mesto začalo rásť.
+
+##### ETERNAL LOVE #####
+STR_ETERNAL_LOVE_OUTSTANDING    :perfektné
+STR_ETERNAL_LOVE_GOOD           :dobré
+STR_ETERNAL_LOVE_POOR           :zlé
