@@ -30,13 +30,32 @@ STR_SB_CARGOCAT_DECAY    :Dégradation mensuelle des stocks
 STR_SB_CARGOCAT_CARGOT   :Types de marchandises
 STR_SB_WARNING_TITLE     :Attention
 STR_SB_WARNING_1         :Il y a plus de villes dans la carte que le script de jeu peut en sauvegarder. Il y a actuellement {SILVER}{NUM}{BLACK} villes et le nombre maximum est {SILVER}{NUM}{BLACK}. {RED}Le script de jeu est désactivé.{BLACK}
+STR_SB_WARNING_2         :L’initialisation de la liste des marchandises a échoué. Cela est dû à un newGRF industriel inconnu, pour lequel une liste des marchandises n’a pas pu être générée. {RED}Le script de jeu est désactivé.{BLACK}
+STR_SB_WARNING_3         :L’initialisation de la liste des marchandises a échoué. L’option de randomisation des industries a causé un échec de la génération procédurale des catégories d’industrie. {RED}Le script de jeu est désactivé.{BLACK}
+STR_SB_WARNING_4         :Vous devez définir le paramètre {ORANGE}Environnement->Villes->Vitesse de croissance des villes{BLACK} à une autre valeur que Aucun. {RED}Le script de jeu est désactivé.{BLACK}
+STR_SB_WELCOME_TITLE     :Renewed Village Growth {NUM}.{NUM}
+STR_SB_WELCOME_DESC      :{SILVER}Renewed Village Growth (RVG){BLACK} est un script de jeu qui {ORANGE}change la logique de croissance des villes{BLACK} dans OpenTTD. Des marchandises diverses sont demandées par chaque ville, qui doivent être approvisionnées mensuellement - partiellement ou complètement - pour accélérer la croissance urbaine. Pour plus d’information, lire le {ORANGE}fichier Readme (en anglais){BLACK}.
+STR_SB_WELCOME_CARGO     :L’économie {SILVER}{STRING}{BLACK} consiste en {SILVER}{NUM} catégories{BLACK}. Pour satisfaire la demande pour une catégorie, délivrez-en au moins une marchandise à une {ORANGE}station qui accepte cette marchandise près de la ville{BLACK}. Satisfaites plus de {SILVER}{NUM}%{BLACK} de la demande pour {ORANGE}faire croître la ville plus vite{BLACK}. Plus d’information sur les catégories de marchandises peuvent être trouvées dans {ORANGE}la page des catégories de marchandises du Livre d’histoire{BLACK}.
+STR_SB_WELCOME_LIMIT_GROWTH         :Les demandes en {SILVER}{CARGO_LIST}{BLACK} de cette ville {ORANGE}peuvent bloquer sa croissance{BLACK}. Transportez au moins {SILVER}{NUM}%{BLACK} de ces types de marchandises {ORANGE}pour débloquer la croissance de la ville{BLACK}. {STRING}
+STR_SB_WELCOME_LIMIT_GROWTH_DELAY   :La croissance s’arrête après {SILVER}{NUM} mois{BLACK} sans que la demande n’ait été satisfaite.
+STR_SB_WELCOME_STATISTICS           :La société fournissant le plus de marchandises à une ville devient son {ORANGE}Fournisseur{BLACK}. Chaque nouvel habitant au dessus du record de population de cette ville est compté dans les {ORANGE}points de croissance{BLACK} de cette société. Consultez les points de croissances et les statistiques dans la {ORANGE}Liste des objectifs{BLACK}.
+STR_SB_WELCOME_ETERNAL_LOVE         :Le paramètre {SILVER}Eternal Love{BLACK} verrouille chaque mois {ORANGE}la qualité de service{BLACK} d’une ville à {SILVER}{STRING}{BLACK} au minimum.
+STR_SB_WELCOME_END                  :Amusez-vous bien !
+
+##### CUSTOM STORY BOOK #####
+STR_SB_CUSTOM_WELCOME       :Veuillez trouver les règles du serveur dans {ORANGE}{STRING} le livre d’histoire{BLACK}.
+STR_SB_CUSTOM_TITLE         :Règles du serveur
+# STR_SB_CUSTOM_1             :Règle 1
+# STR_SB_CUSTOM_2             :Règle 2
+STR_SB_CUSTOM_END           :
 
 ##### GOAL #####
+STR_STATISTICS_GROWTH_POINTS    :{BLACK}Points de croissance de {STRING}{COMPANY}{ORANGE}
 STR_STATISTICS_BIGGEST_TOWN     :{BLACK}La plus grande ville {SILVER}{TOWN}{ORANGE}
 STR_STATISTICS_GROWTH_TOWN      :{BLACK}Ville à la croissance la plus rapide en jours {SILVER}{TOWN}{ORANGE}
-STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}Catégorie de ville moyenne{ORANGE}
-STR_STATISTICS_NUM_TOWNS        :{BLACK}Nombre de villes contribuées{ORANGE}
-STR_STATISTICS_NOT_GROWING      :{BLACK}Nombre de villes non en croissance{ORANGE}
+STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}Catégorie moyenne des villes{ORANGE}
+STR_STATISTICS_NUM_TOWNS        :{BLACK}Nombre de villes fournies{ORANGE}
+STR_STATISTICS_NOT_GROWING      :{BLACK}Nombre de villes ne croissant pas{ORANGE}
 
 ##### TOWNBOX #####
 STR_TOWNBOX_CONTRIBUTOR         :La plus grande population {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
@@ -50,4 +69,48 @@ STR_TOWNBOX_CARGO               :Catégories de marchandise :{STRING}
 STR_TOWNBOX_CARGO_STOP          :Pas assez d’exportations :{} * {RED}{CARGO_LIST}{BLACK}{}Catégories de marchandise :
 STR_TOWNBOX_CARGO_LOW           :Infrastructures de transport insuffisantes :{} * {SILVER}{CARGO_LIST}{BLACK}{}Catégories de marchandise :
 STR_TOWNBOX_CARGO_DELAYED       :Pas assez d’exportations :{} * {GOLD}{CARGO_LIST}{BLACK}{}Catégories de marchandises:
-STR_TOWNBOX_NOGROWTH            :Transporter {SILVER}{CARGO_LIST}{BLACK} depuis cette ville pour la faire croître.
+STR_TOWNBOX_NOGROWTH            :Transportez {SILVER}{CARGO_LIST}{BLACK} depuis cette ville pour la faire croître.
+
+##### ECONOMIES #####
+STR_ECONOMY_NONE                :
+STR_ECONOMY_BASESET_TEMPERATE   :Basique - Environnement tempéré
+STR_ECONOMY_BASESET_ARCTIC      :Basique - Environnement arctique
+STR_ECONOMY_BASESET_TROPICAL    :Basique - Environnement tropical
+STR_ECONOMY_BASESET_TOYLAND     :Basique - Environnement Monde des Jouets
+STR_ECONOMY_FIRS1_FIRS          :FIRS 1 FIRS
+STR_ECONOMY_FIRS1_TEMPERATE     :FIRS 1 Tempéré
+STR_ECONOMY_FIRS1_ARCTIC        :FIRS 1 Arctique
+STR_ECONOMY_FIRS1_TROPIC        :FIRS 1 Tropical
+STR_ECONOMY_FIRS1_HOD           :FIRS 1 Au cœur des ténèbres
+STR_ECONOMY_ECS                 :ECS
+STR_ECONOMY_FIRS2_TEMPERATE     :FIRS 2 Tempéré
+STR_ECONOMY_FIRS2_ARCTIC        :FIRS 2 Arctique
+STR_ECONOMY_FIRS2_TROPIC        :FIRS 2 Tropical
+STR_ECONOMY_FIRS2_IAHC          :FIRS 2 Dans un pays chaud
+STR_ECONOMY_FIRS2_HOD           :FIRS 2 Au cœur des ténèbres
+STR_ECONOMY_YETI                :YETI
+STR_ECONOMY_FIRS3_TEMPERATE     :FIRS 3 Tempéré
+STR_ECONOMY_FIRS3_ARCTIC        :FIRS 3 Arctique
+STR_ECONOMY_FIRS3_TROPIC        :FIRS 3 Tropical
+STR_ECONOMY_FIRS3_STEELTOWN     :FIRS 3 Cité de l’acier
+STR_ECONOMY_FIRS3_IAHC          :FIRS 3 Dans un pays chaud
+STR_ECONOMY_FIRS3_EXTREME       :FIRS 3 Extrême
+STR_ECONOMY_NAIS_NA             :NAIS North America
+STR_ECONOMY_ITI                 :Improved Town Industries
+STR_ECONOMY_FIRS4_TEMPERATE     :FIRS 4 Tempéré
+STR_ECONOMY_FIRS4_ARCTIC        :FIRS 4 Arctique
+STR_ECONOMY_FIRS4_TROPIC        :FIRS 4 Tropical
+STR_ECONOMY_FIRS4_STEELTOWN     :FIRS 4 Cité de l’acier
+STR_ECONOMY_FIRS4_IAHC          :FIRS 4 Dans un pays chaud
+STR_ECONOMY_XIS_LOT             :XIS The Lot
+STR_ECONOMY_OTIS                :OTIS
+STR_ECONOMY_IOTC                :Industries of the Caribbean
+STR_ECONOMY_LUMBERJACK          :Lumberjack Industries
+STR_ECOMONY_WRBI                :Wannaroo Basic Industries
+STR_ECONOMY_ITI2                :Improved Town Industries
+STR_ECONOMY_REAL                :Real Industries
+
+##### ETERNAL LOVE #####
+STR_ETERNAL_LOVE_OUTSTANDING    :exceptionnel
+STR_ETERNAL_LOVE_GOOD           :bon
+STR_ETERNAL_LOVE_POOR           :mauvais
