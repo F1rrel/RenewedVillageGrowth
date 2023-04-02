@@ -22,13 +22,14 @@ BaNaNaS: https://bananas.openttd.org/package/game-script/52455649
 ## Translations
 Currently available languages:
 - English
-- French (rmnvgr)
+- French (rmnvgr, Elarcis)
 - Slovak
 - Czech
 - Simplified Chinese (SuperCirno)
 - Polish (qamil95)
 - Galician (pvillaverde)
 - German (pnkrtz)
+- Japanese (fmang)
 
 If you want to contribute to a translation, you can do it by modifying a file [english.txt](lang/english.txt) and posting it to the forum topic or creating a new issue/pull request with this file included.
 
@@ -55,3 +56,5 @@ Thanks to contributors:
 - 2TallTyler
 - pvillaverde
 - pnkrtz
+- fmang
+- Elarcis
