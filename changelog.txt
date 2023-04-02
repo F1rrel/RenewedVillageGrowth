@@ -1,5 +1,12 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 9.1 (2023/04/02)
+- new: Japanese translation (fmang)
+- mod: Updated french translation (Elarcis)
+- mod: Updated slovak and czech translations
+- fix: STR_SB_WELCOME_LIMIT_GROWTH_DELAY substitution (fmang)
+- fix: Is raw cargo categorization
+
 Version 9.0 (2023/02/11)
 - new: German translation (pnkrtz)
 - new: Probability to use nearby cargo types

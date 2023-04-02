@@ -69,10 +69,10 @@ class MainClass extends GSInfo
 
         AddSetting({ name = "cargo_randomization",
                 description = "Randomization: Type",
-                easy_value = 7,
-                medium_value = 2,
-                hard_value = 4,
-                custom_value = 11,
+                easy_value = 1,
+                medium_value = 7,
+                hard_value = 10,
+                custom_value = 10,
                 flags = CONFIG_INGAME, min_value = 1, max_value = 15 });
         AddLabels("cargo_randomization", {
                     _1 = "None",
