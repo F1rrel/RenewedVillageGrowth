@@ -1,5 +1,8 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 9.2 (2023/04/02)
+- fix: Funding failed continuously when no industry could be funded
+
 Version 9.1 (2023/04/02)
 - new: Japanese translation (fmang)
 - mod: Updated french translation (Elarcis)
