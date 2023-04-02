@@ -1231,15 +1231,16 @@ function GetCargoTable(hash)
 /* Checks if one of the industry types that produce this cargo is a raw industry */
 function IsRawCargo(cargo)
 {
-    local industry_list = GSIndustryList_CargoProducing(cargo);
-    industry_list.Valuate(GSIndustry.GetIndustryType);
-    industry_list.Sort(GSList.SORT_BY_VALUE, true);
+    local industry_type_list= GSIndustryTypeList();
+    industry_type_list.Valuate(GSIndustryType.IsRawIndustry);
+    industry_type_list.KeepValue(1);
 
-    while (industry_list.Count() > 0) {
-        local industry_type = industry_list.GetValue(industry_list.Begin());
-        if (GSIndustryType.IsRawIndustry(industry_type))
-            return 1;
-        industry_list.RemoveValue(industry_type);
+    foreach (industry_type, _ in industry_type_list) {
+        local cargo_list = GSIndustryType.GetProducedCargo(industry_type);
+        foreach (accepted, _ in cargo_list) {
+            if (accepted == cargo)
+                return 1;
+        }
     }
 
     return 0;
@@ -1264,6 +1265,7 @@ function CreateDefaultCargoCat()
     raw_list.AddList(cargo_list);
     raw_list.KeepValue(1);
 
+    Log.Info("Raw industries: " + raw_list.Count(), Log.LVL_INFO);
     if (raw_list.Count() > 10) {
         ::CargoCat.append([]);
         ::CargoCat.append([]);
