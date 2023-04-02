@@ -551,6 +551,9 @@ function ProspectRawIndustry()
         }
 
         local industry_type = GetRawIndustryToProspect(ignore_list);
+        if (industry_type == null)
+            break;
+
         Log.Info("Funding industry " + GSIndustryType.GetName(industry_type), Log.LVL_DEBUG);
         if (GSIndustryType.ProspectIndustry(industry_type)) {
             if (GSIndustryList().Count() == (industry_count + built_count + 1)) {
@@ -652,7 +655,7 @@ function GetRawIndustryToProspect(ignore_list)
     industry_type_list.Valuate(GetIndustryTypeCount);
     industry_type_list.Sort(GSList.SORT_BY_VALUE, GSList.SORT_ASCENDING);
 
-    return industry_type_list.Begin();
+    return industry_type_list.Count() ? industry_type_list.Begin() : null;
 }
 
 /**
