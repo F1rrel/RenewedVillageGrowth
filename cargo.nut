@@ -216,8 +216,8 @@ function GetEconomyCargoList(economy, cargo_list) {
     case(Economies.OTIS): // OTIS 03
         local list = ["PASS","COAL","MAIL","OIL_","LIME","GOOD","GRAI","WOOD","IORE","STEL",
                       "MILK","FOOD","PAPR","FISH","WOOL","CLAY","SAND","WDPR","PCL_","GRVL",
-                      "FRUT","BDMT","BEER","MAIZ","CMNT","GLAS","LVST","PETR","FRVG","SASH",
-                      "OTI1","CORE","SCMT","COPR","URAN","VALU","AORE","OTI2","NICK","SULP",
+                      "FRUT","BDMT","BEER","MAIZ","CMNT","GLAS","LVST","PETR","FRVG","FICR",
+                      "OTI1","CORE","SCMT","COPR","URAN","VALU","AORE","OTI2","NKOR","SULP",
                       "RUBR","VEHI","BAKE","PIPE","OYST","MEAT","CHSE","FURN","TEXT","SEED",
                       "FERT","BOOM","ACID","CHLO","SLAG","TWOD","SESP","FUEL","ELTR","WATR",
                       "TATO","POWR","MPTS","RFPR"];
