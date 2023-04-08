@@ -223,6 +223,10 @@ function GetEconomyCargoList(economy, cargo_list) {
                       "TATO","POWR","MPTS","RFPR"];
         if (60 < cargo_list.len() && cargo_list[60] == "POTA")
             list[60] = "POTA";
+        if (38 < cargo_list.len() && cargo_list[38] == "NICK")
+            list[38] = "NICK";
+        if (29 < cargo_list.len() && cargo_list[29] == "SASH")
+            list[29] = "SASH";
         return list;
 
     case(Economies.IOTC): // IOTC 0.1.4
