@@ -48,7 +48,7 @@ enum Economies
     FIRS4__STEELTOWN, // 4.3.0
     FIRS4__IN_A_HOT_COUNTRY, // 4.3.0
     XIS__THE_LOT, // 0.6
-    OTIS, // 03
+    OTIS, // 05
     IOTC, // 0.1.4
     LUMBERJACK, // 0.1.0
     WRBI, // 1200
@@ -213,7 +213,7 @@ function GetEconomyCargoList(economy, cargo_list) {
                 "PHOS","IRON","PIPE","FICR","PORE","QLME","RCYC","RUBR","SALT","SAND",
                 "SCMT","SLAG","SASH","STEL","SGBT","SULP","VBOD","VPTS","VEHI","WOOD",
                 "WOOL","ZINC"];
-    case(Economies.OTIS): // OTIS 03
+    case(Economies.OTIS): // OTIS 05
         local list = ["PASS","COAL","MAIL","OIL_","LIME","GOOD","GRAI","WOOD","IORE","STEL",
                       "MILK","FOOD","PAPR","FISH","WOOL","CLAY","SAND","WDPR","PCL_","GRVL",
                       "FRUT","BDMT","BEER","MAIZ","CMNT","GLAS","LVST","PETR","FRVG","FICR",
