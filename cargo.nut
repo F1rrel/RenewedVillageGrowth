@@ -270,7 +270,7 @@ function ConstructECSVectorCargoList(cargo_list) {
     local town_list = ["PASS","MAIL","GOOD","GOLD","WATR","TOUR"];
     local town_idx = [0,2,5,10,27,31];
     foreach (index, id in town_idx) {
-        if (cargo_list[id] != town_list[index]) {
+        if (town_idx[index] >= cargo_list.len() || cargo_list[id] != town_list[index]) {
             town = false;
             break;
         }
