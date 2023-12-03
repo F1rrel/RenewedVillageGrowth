@@ -55,6 +55,7 @@ enum Economies
     ITI2, // 2.0
     REAL, // Real Industries Beta
     MINIMALIST, // 1.1
+    PIRS, // PIRS 2022
     END,
 }
 
@@ -257,6 +258,10 @@ function GetEconomyCargoList(economy, cargo_list) {
 
     case(Economies.MINIMALIST): // Minimalist Industries
         return ["PASS", null,"MAIL", null, null,"GOOD"];
+
+    case(Economies.PIRS): // PIRS 2022
+        return ["PASS","COAL","MAIL","OIL_","FISH","GOOD","GRAI","WOOD","IORE","STEL","WDPR",
+                "FOOD","FRUT","ENSP","FMSP","RFPR","PETR"];
     default:
         return [];
     }
@@ -882,6 +887,17 @@ function DefineCargosBySettings(economy)
             ::CargoMinPopDemand <- [0,500];
             ::CargoPermille <- [60,45];
             ::CargoDecay <- [0.4,0.4];
+            break;
+        case(Economies.PIRS): // PIRS 2022
+            ::CargoLimiter <- [0,2];
+            ::CargoCat <- [[0,2],
+                       [1,3,4,6,7,8,12],
+                       [9,10,13,14,15,16],
+                       [5,11]];
+            ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
+            ::CargoMinPopDemand <- [0,500,1500,4000];
+            ::CargoPermille <- [60,35,25,15];
+            ::CargoDecay <- [0.4,0.3,0.2,0.1];
             break;
         default:
             if (!CreateDefaultCargoCat())
