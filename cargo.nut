@@ -637,8 +637,8 @@ function DefineCargosBySettings(economy)
             ::CargoCat <- [[0,2],
                        [8,11,14],
                        [1,7,10,17,18],
-                       [3,4,9,13,15,16],
-                       [6,8,12,16]];
+                       [3,4,9,13,15],
+                       [5,6,12,16]];
             ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
                        CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
             ::CargoMinPopDemand <- [0,500,1000,4000,8000];
