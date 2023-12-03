@@ -1,5 +1,5 @@
 ##### TOWN SIGN #####
-STR_TOWNSIGN_GROWTHRATE  :成长中: {NUM} 天成长一次
+STR_TOWNSIGN_GROWTHRATE  :每 {NUM} 天成长一次
 STR_TOWNSIGN_NOTGROWING  :停止成长
 
 ##### CARGO CATEGORIES #####
@@ -19,8 +19,8 @@ STR_CARGOCAT_LABEL_12    :类别 V
 
 ##### STORY BOOK #####
 STR_SB_TITLE_1           :货物类别
-STR_SB_EXPLAIN_1         :这些是城镇要求的货物类别,每个类别都包括不同的货物类型.为了达到某个类别的要求.您可以交付任何属于该类别的货物.
-STR_SB_EXPLAIN_2         :这些是城镇要求的货物类别,每个类别都包括不同的货物类型.每个城镇从每个类别中选择{STRING}.要达到某个类别的要求,您可以交付城镇所需的任何货物,如"城镇信息"窗口中所示.
+STR_SB_EXPLAIN_1         :这些是被城镇需求的货物类别，每个类别都包括不同的货物类型。为了达到某个类别的需求，你可以交付任何属于该类别的货物。
+STR_SB_EXPLAIN_2         :这些是被城镇需求的货物类别，每个类别都包括不同的货物类型。每个城镇从每个类别中选择{STRING}。要达到某个类别的需求，你可以交付城镇所需的任何货物，如"城镇信息"窗口中所示。
 STR_SB_EXPLAIN_RANDOM_0  :{SILVER}{NUM} 货物类型 {BLACK}{STRING}
 STR_SB_EXPLAIN_RANDOM_2  :{SILVER}{NUM} - {NUM} 货物类型 {BLACK}
 STR_SB_CARGOCAT_CAT      :类别
@@ -28,26 +28,87 @@ STR_SB_CARGOCAT_POP      :最少城镇人口
 STR_SB_CARGOCAT_DECAY    :每月衰减
 STR_SB_CARGOCAT_CARGOT   :货物类型
 STR_SB_WARNING_TITLE     :警告
-STR_SB_WARNING_1         :地图上的城镇数量超出了游戏脚本可以保存的数量.当前的城镇数量为 {SILVER}{NUM}{BLACK} .最大数量为{SILVER}{NUM}{BLACK}. {RED}游戏脚本已经关闭{BLACK}
+STR_SB_WARNING_1         :地图上的城镇数量超出了游戏脚本可以保存的数量.当前的城镇数量为 {SILVER}{NUM}{BLACK} .最大数量为{SILVER}{NUM}{BLACK}. {RED}已禁用游戏脚本.{BLACK}
+STR_SB_WARNING_2         :货物列表初始化失败.存在未知的工业NewGRF导致无法进行程序性的货物列表创建.{RED}已禁用游戏脚本.{BLACK}
+STR_SB_WARNING_3         :货物列表初始化失败.存在工业随机化选项导致无法创建程序性工业类别.{RED}已禁用游戏脚本.{BLACK}
+STR_SB_WARNING_4         :必须将参数{ORANGE}环境->城镇->城镇增长速度 (Environment->Towns->Town groth speed){BLACK}设置为其他选项.{RED}已禁用游戏脚本.{BLACK}
+STR_SB_WELCOME_TITLE     :新发展 (Renewed Village Growth) {NUM}.{NUM}
+STR_SB_WELCOME_DESC      :{SILVER}　　新发展 (RVG) {BLACK}是一款游戏脚本。{ORANGE}RVG改变了OpenTTD中城镇的发展模式{BLACK}且为每个城镇增加了货物需求。更多信息请参阅{ORANGE}README文件{BLACK}。
+STR_SB_WELCOME_CARGO     :　　当前选择的经济系统"{SILVER}{STRING}{BLACK}"包括{SILVER}{NUM}个类别的货物{BLACK}。要满足一个类别的货物的需求，须将一个或多个该类别的货物运输至{ORANGE}接受该货物类型的城镇附近的车站{BLACK}。若需求被满足的百分比高于{SILVER}{NUM}%{BLACK}将{ORANGE}加速城镇增长{BLACK}。有关货物类别的更多信息，请参阅{ORANGE}货物类别说明书页{BLACK}。
+STR_SB_WELCOME_LIMIT_GROWTH         :{SILVER}　　来自城镇的{CARGO_LIST}{BLACK}若未被运输将{ORANGE}暂停城镇发展{BLACK}。须运输至少{SILVER}{NUM}%{BLACK}的货物以开始{ORANGE}城镇发展{BLACK}。{STRING}
+STR_SB_WELCOME_LIMIT_GROWTH_DELAY   :若此需求未被满足则将在{SILVER}{NUM}个月后暂停城镇发展。
+STR_SB_WELCOME_STATISTICS           :　　为城镇提供大部分货物的公司将成为其{ORANGE}贡献者{BLACK}。该城镇的最大人口之上的每个新人口将计入该公司的{ORANGE}贡献点{BLACK}。请参阅{ORANGE}目标清单{BLACK}中的贡献点和统计信息。
+STR_SB_WELCOME_ETERNAL_LOVE         :{SILVER}　　永恒之爱 (Eternal Love) {BLACK}将更改公司的{ORANGE}地方评级{BLACK}为{SILVER}{STRING}{BLACK}，每月一次。
+STR_SB_WELCOME_END                  :　　游戏愉快!
 
+##### CUSTOM STORY BOOK #####
+STR_SB_CUSTOM_WELCOME       :Please find the server rules in the {ORANGE}{STRING} story book page{BLACK}.
+STR_SB_CUSTOM_TITLE         :Server rules
+# STR_SB_CUSTOM_1             :Rule 1
+# STR_SB_CUSTOM_2             :Rule 2
+STR_SB_CUSTOM_END           :
 ##### GOAL #####
-STR_STATISTICS_GROWTH_POINTS    :{STRING}{COMPANY}{BLACK} 成长点{ORANGE}
+STR_STATISTICS_GROWTH_POINTS    :{STRING}{COMPANY}{BLACK} 贡献点{ORANGE}
 STR_STATISTICS_BIGGEST_TOWN     :{BLACK}最大的城镇 {SILVER}{TOWN}{ORANGE}
 STR_STATISTICS_GROWTH_TOWN      :{BLACK}过去几天成长最快的城镇 {SILVER}{TOWN}{ORANGE}
 STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}平均城镇类别{ORANGE}
-STR_STATISTICS_NUM_TOWNS        :{BLACK}以贡献的城镇数量{ORANGE}
+STR_STATISTICS_NUM_TOWNS        :{BLACK}已贡献的城镇数量{ORANGE}
 STR_STATISTICS_NOT_GROWING      :{BLACK}未成长的城镇数量{ORANGE}
 
 ##### TOWNBOX #####
 STR_TOWNBOX_CONTRIBUTOR         :最大人口 {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
 STR_TOWNBOX_NO_CONTRIBUTOR      :最大人口 {SILVER}{NUM}{BLACK}{STRING}
 
-STR_TOWNBOX_CATEGORY            :货物信息 : 可用的 / 需要{STRING}
-STR_TOWNBOX_CATEGORY_STOP       :运出城镇的货物数量不足 :{} * {RED}{CARGO_LIST}{BLACK}{}货物信息 : 可用的 / 需要
-STR_TOWNBOX_CATEGORY_LOW        :交通基础设施不足 :{} * {SILVER}{CARGO_LIST}{BLACK}{}货物信息 : 可用的 / 需要
-STR_TOWNBOX_CATEGORY_DELAYED    :运出城镇的货物数量不足 :{} * {GOLD}{CARGO_LIST}{BLACK}{}货物信息 : 可用的 / 需要
+STR_TOWNBOX_CATEGORY            :货物信息 : 可用 / 需要{STRING}
+STR_TOWNBOX_CATEGORY_STOP       :运出城镇的货物数量不足 :{} * {RED}{CARGO_LIST}{BLACK}{}货物信息 : 可用 / 需要
+STR_TOWNBOX_CATEGORY_LOW        :交通基础设施不足 :{} * {SILVER}{CARGO_LIST}{BLACK}{}货物信息 : 可用 / 需要
+STR_TOWNBOX_CATEGORY_DELAYED    :运出城镇的货物数量不足 :{} * {GOLD}{CARGO_LIST}{BLACK}{}货物信息 : 可用 / 需要
 STR_TOWNBOX_CARGO               :货物类别 :{STRING}
 STR_TOWNBOX_CARGO_STOP          :运出城镇的货物数量不足 :{} * {RED}{CARGO_LIST}{BLACK}{}货物类别 :
 STR_TOWNBOX_CARGO_LOW           :交通基础设施不足 :{} * {SILVER}{CARGO_LIST}{BLACK}{}货物类别 :
 STR_TOWNBOX_CARGO_DELAYED       :运出城镇的货物数量不足 :{} * {GOLD}{CARGO_LIST}{BLACK}{}货物类别 :
 STR_TOWNBOX_NOGROWTH            :从该镇运输 {SILVER}{CARGO_LIST}{BLACK} 使其成长
+
+##### ECONOMIES #####
+STR_ECONOMY_NONE                :
+STR_ECONOMY_BASESET_TEMPERATE   :原版温带
+STR_ECONOMY_BASESET_ARCTIC      :原版亚寒带
+STR_ECONOMY_BASESET_TROPICAL    :原版亚热带
+STR_ECONOMY_BASESET_TOYLAND     :原版童话国
+STR_ECONOMY_FIRS1_FIRS          :FIRS 1 FIRS
+STR_ECONOMY_FIRS1_TEMPERATE     :FIRS 1 Temperate
+STR_ECONOMY_FIRS1_ARCTIC        :FIRS 1 Arctic
+STR_ECONOMY_FIRS1_TROPIC        :FIRS 1 Tropic
+STR_ECONOMY_FIRS1_HOD           :FIRS 1 Hearth Of Darkness
+STR_ECONOMY_ECS                 :ECS
+STR_ECONOMY_FIRS2_TEMPERATE     :FIRS 1 Temperate
+STR_ECONOMY_FIRS2_ARCTIC        :FIRS 1 Arctic
+STR_ECONOMY_FIRS2_TROPIC        :FIRS 1 Tropic
+STR_ECONOMY_FIRS2_IAHC          :FIRS 1 In A Hot Country
+STR_ECONOMY_FIRS2_HOD           :FIRS 1 Hearth Of Darkness
+STR_ECONOMY_YETI                :YETI
+STR_ECONOMY_FIRS3_TEMPERATE     :FIRS 3 温带
+STR_ECONOMY_FIRS3_ARCTIC        :FIRS 3 寒带
+STR_ECONOMY_FIRS3_TROPIC        :FIRS 3 热带
+STR_ECONOMY_FIRS3_STEELTOWN     :FIRS 3 钢铁城
+STR_ECONOMY_FIRS3_IAHC          :FIRS 3 进阶级
+STR_ECONOMY_FIRS3_EXTREME       :FIRS 3 专家级
+STR_ECONOMY_NAIS_NA             :NAIS North America
+STR_ECONOMY_ITI                 :Improved Town Industries
+STR_ECONOMY_FIRS4_TEMPERATE     :FIRS 4 温带
+STR_ECONOMY_FIRS4_ARCTIC        :FIRS 4 寒带
+STR_ECONOMY_FIRS4_TROPIC        :FIRS 4 热带
+STR_ECONOMY_FIRS4_STEELTOWN     :FIRS 4 钢铁城
+STR_ECONOMY_FIRS4_IAHC          :FIRS 4 进阶级
+STR_ECONOMY_XIS_LOT             :XIS The Lot
+STR_ECONOMY_OTIS                :OTIS
+STR_ECONOMY_IOTC                :Industries of the Caribbean
+STR_ECONOMY_LUMBERJACK          :Lumberjack Industries
+STR_ECOMONY_WRBI                :Wannaroo Basic Industries
+STR_ECONOMY_ITI2                :Improved Town Industries
+STR_ECONOMY_REAL                :Real Industries
+
+##### ETERNAL LOVE #####
+STR_ETERNAL_LOVE_OUTSTANDING    :完美
+STR_ETERNAL_LOVE_GOOD           :较好
+STR_ETERNAL_LOVE_POOR           :较差
