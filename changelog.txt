@@ -1,5 +1,14 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 9.3 (2023/12/03)
+- new: Traditional Chinese translation (WenSimEHRP)
+- new: OTIS 05 support
+- new: Minimalist Industries support
+- new: Pikka's Industry Redux Set (PIRS 2022) support
+- fix: Simplified Chinese translation (WenSimEHRP)
+- fix: FIRS 3 Arctic Basic cargo categories
+- fix: Crash in ECS Town vector discovery
+
 Version 9.2 (2023/04/02)
 - fix: Funding failed continuously when no industry could be funded
 
