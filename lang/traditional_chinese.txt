@@ -1,0 +1,114 @@
+##### TOWN SIGN #####
+STR_TOWNSIGN_GROWTHRATE  :每 {NUM} 天成長一次
+STR_TOWNSIGN_NOTGROWING  :停止成長
+
+##### CARGO CATEGORIES #####
+STR_CARGOCAT_LABEL_0     :公共服務
+STR_CARGOCAT_LABEL_1     :基礎食物
+STR_CARGOCAT_LABEL_2     :基礎材料
+STR_CARGOCAT_LABEL_3     :加工材料
+STR_CARGOCAT_LABEL_4     :最終產品
+STR_CARGOCAT_LABEL_5     :產品
+STR_CARGOCAT_LABEL_6     :本地生產
+STR_CARGOCAT_LABEL_7     :進口貨物
+STR_CARGOCAT_LABEL_8     :類別 I
+STR_CARGOCAT_LABEL_9     :類別 II
+STR_CARGOCAT_LABEL_10    :類別 III
+STR_CARGOCAT_LABEL_11    :類別 IV
+STR_CARGOCAT_LABEL_12    :類別 V
+
+##### STORY BOOK #####
+STR_SB_TITLE_1           :貨物類別
+STR_SB_EXPLAIN_1         :這些是被城鎮需求的貨物類別，每個類別都包括不同的貨物類型。為了達到某個類別的需求，你可以交付任何屬於該類別的貨物。
+STR_SB_EXPLAIN_2         :這些是被城鎮需求的貨物類別，每個類別都包括不同的貨物類型。每個城鎮從每個類別中選擇{STRING}。要達到某個類別的需求，你可以交付城鎮所需的任何貨物，如"城鎮信息"視窗中所示。
+STR_SB_EXPLAIN_RANDOM_0  :{SILVER}{NUM} 貨物類型 {BLACK}{STRING}
+STR_SB_EXPLAIN_RANDOM_2  :{SILVER}{NUM} - {NUM} 貨物類型 {BLACK}
+STR_SB_CARGOCAT_CAT      :類別
+STR_SB_CARGOCAT_POP      :最少城鎮人口
+STR_SB_CARGOCAT_DECAY    :每月衰減
+STR_SB_CARGOCAT_CARGOT   :貨物類型
+STR_SB_WARNING_TITLE     :警告
+STR_SB_WARNING_1         :地圖上的城鎮數量超出了遊戲腳本可以保存的數量.當前的城鎮數量為 {SILVER}{NUM}{BLACK} .最大數量為{SILVER}{NUM}{BLACK}. {RED}已禁用遊戲腳本.{BLACK}
+STR_SB_WARNING_2         :貨物列表初始化失敗.存在未知的工業NewGRF導致無法進行程序性的貨物列表創建.{RED}已禁用遊戲腳本.{BLACK}
+STR_SB_WARNING_3         :貨物列表初始化失敗.存在工業隨機化選項導致無法創建程序性工業類別.{RED}已禁用遊戲腳本.{BLACK}
+STR_SB_WARNING_4         :必須將參數{ORANGE}環境->城鎮->城鎮增長速度 (Environment->Towns->Town groth speed){BLACK}設為其他選項.{RED}已禁用遊戲腳本.{BLACK}
+STR_SB_WELCOME_TITLE     :新發展 (Renewed Village Growth) {NUM}.{NUM}
+STR_SB_WELCOME_DESC      :{SILVER}　　新發展 (RVG) {BLACK}是一款遊戲腳本。{ORANGE}RVG改變了OpenTTD中城鎮的發展模式{BLACK}且為每個城鎮增加了貨物需求。更多信息請參閱{ORANGE}README文件{BLACK}。
+STR_SB_WELCOME_CARGO     :　　當前選擇的經濟系統"{SILVER}{STRING}{BLACK}"包括{SILVER}{NUM}個類別的貨物{BLACK}。要滿足一個類別的貨物的需求，須將一個或多個該類別的貨物運輸至{ORANGE}接受該貨物類型的城鎮附近的車站{BLACK}。若需求被滿足的百分比高於{SILVER}{NUM}%{BLACK}將{ORANGE}加速城鎮增長{BLACK}。有關貨物類別的更多信息，請參閱{ORANGE}貨物類別說明書頁{BLACK}。
+STR_SB_WELCOME_LIMIT_GROWTH         :{SILVER}　　來自城鎮的{CARGO_LIST}{BLACK}若未被運輸將{ORANGE}暫停城鎮發展{BLACK}。須運輸至少{SILVER}{NUM}%{BLACK}的貨物以開始{ORANGE}城鎮發展{BLACK}。{STRING}
+STR_SB_WELCOME_LIMIT_GROWTH_DELAY   :若此需求未被滿足則將在{SILVER}{NUM}個月後暫停城鎮發展。
+STR_SB_WELCOME_STATISTICS           :　　為城鎮提供大部分貨物的公司將成為其{ORANGE}貢獻者{BLACK}。該城鎮的最大人口之上的每個新人口將計入該公司的{ORANGE}貢獻點{BLACK}。請參閱{ORANGE}目標清單{BLACK}中的貢獻點和統計信息。
+STR_SB_WELCOME_ETERNAL_LOVE         :{SILVER}　　永恆之愛 (Eternal Love) {BLACK}將更改公司的{ORANGE}地方評級{BLACK}為{SILVER}{STRING}{BLACK}，每月一次。
+STR_SB_WELCOME_END                  :　　遊戲愉快!
+
+##### CUSTOM STORY BOOK #####
+STR_SB_CUSTOM_WELCOME       :Please find the server rules in the {ORANGE}{STRING} story book page{BLACK}.
+STR_SB_CUSTOM_TITLE         :Server rules
+# STR_SB_CUSTOM_1             :Rule 1
+# STR_SB_CUSTOM_2             :Rule 2
+STR_SB_CUSTOM_END           :
+##### GOAL #####
+STR_STATISTICS_GROWTH_POINTS    :{STRING}{COMPANY}{BLACK} 貢獻点{ORANGE}
+STR_STATISTICS_BIGGEST_TOWN     :{BLACK}最大的城鎮 {SILVER}{TOWN}{ORANGE}
+STR_STATISTICS_GROWTH_TOWN      :{BLACK}過去幾天成長最快的城鎮 {SILVER}{TOWN}{ORANGE}
+STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}平均城鎮類別{ORANGE}
+STR_STATISTICS_NUM_TOWNS        :{BLACK}已貢獻的城鎮數量{ORANGE}
+STR_STATISTICS_NOT_GROWING      :{BLACK}未成長的城鎮數量{ORANGE}
+
+##### TOWNBOX #####
+STR_TOWNBOX_CONTRIBUTOR         :最大人口 {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
+STR_TOWNBOX_NO_CONTRIBUTOR      :最大人口 {SILVER}{NUM}{BLACK}{STRING}
+
+STR_TOWNBOX_CATEGORY            :貨物信息 : 可用 / 需要{STRING}
+STR_TOWNBOX_CATEGORY_STOP       :運出城鎮的貨物數量不足 :{} * {RED}{CARGO_LIST}{BLACK}{}貨物信息 : 可用 / 需要
+STR_TOWNBOX_CATEGORY_LOW        :交通基礎設施不足 :{} * {SILVER}{CARGO_LIST}{BLACK}{}貨物信息 : 可用 / 需要
+STR_TOWNBOX_CATEGORY_DELAYED    :運出城鎮的貨物數量不足 :{} * {GOLD}{CARGO_LIST}{BLACK}{}貨物信息 : 可用 / 需要
+STR_TOWNBOX_CARGO               :貨物類別 :{STRING}
+STR_TOWNBOX_CARGO_STOP          :運出城鎮的貨物數量不足 :{} * {RED}{CARGO_LIST}{BLACK}{}貨物類別 :
+STR_TOWNBOX_CARGO_LOW           :交通基礎設施不足 :{} * {SILVER}{CARGO_LIST}{BLACK}{}貨物類別 :
+STR_TOWNBOX_CARGO_DELAYED       :運出城鎮的貨物數量不足 :{} * {GOLD}{CARGO_LIST}{BLACK}{}貨物類別 :
+STR_TOWNBOX_NOGROWTH            :從該鎮運輸 {SILVER}{CARGO_LIST}{BLACK} 使其成長
+
+##### ECONOMIES #####
+STR_ECONOMY_NONE                :
+STR_ECONOMY_BASESET_TEMPERATE   :原版溫帶
+STR_ECONOMY_BASESET_ARCTIC      :原版亞寒帶
+STR_ECONOMY_BASESET_TROPICAL    :原版亞熱帶
+STR_ECONOMY_BASESET_TOYLAND     :原版童話國
+STR_ECONOMY_FIRS1_FIRS          :FIRS 1 FIRS
+STR_ECONOMY_FIRS1_TEMPERATE     :FIRS 1 Temperate
+STR_ECONOMY_FIRS1_ARCTIC        :FIRS 1 Arctic
+STR_ECONOMY_FIRS1_TROPIC        :FIRS 1 Tropic
+STR_ECONOMY_FIRS1_HOD           :FIRS 1 Hearth Of Darkness
+STR_ECONOMY_ECS                 :ECS
+STR_ECONOMY_FIRS2_TEMPERATE     :FIRS 1 Temperate
+STR_ECONOMY_FIRS2_ARCTIC        :FIRS 1 Arctic
+STR_ECONOMY_FIRS2_TROPIC        :FIRS 1 Tropic
+STR_ECONOMY_FIRS2_IAHC          :FIRS 1 In A Hot Country
+STR_ECONOMY_FIRS2_HOD           :FIRS 1 Hearth Of Darkness
+STR_ECONOMY_YETI                :YETI
+STR_ECONOMY_FIRS3_TEMPERATE     :FIRS 3 温带
+STR_ECONOMY_FIRS3_ARCTIC        :FIRS 3 寒带
+STR_ECONOMY_FIRS3_TROPIC        :FIRS 3 热带
+STR_ECONOMY_FIRS3_STEELTOWN     :FIRS 3 钢铁城
+STR_ECONOMY_FIRS3_IAHC          :FIRS 3 进阶级
+STR_ECONOMY_FIRS3_EXTREME       :FIRS 3 专家级
+STR_ECONOMY_NAIS_NA             :NAIS North America
+STR_ECONOMY_ITI                 :Improved Town Industries
+STR_ECONOMY_FIRS4_TEMPERATE     :FIRS 4 温带
+STR_ECONOMY_FIRS4_ARCTIC        :FIRS 4 寒带
+STR_ECONOMY_FIRS4_TROPIC        :FIRS 4 热带
+STR_ECONOMY_FIRS4_STEELTOWN     :FIRS 4 钢铁城
+STR_ECONOMY_FIRS4_IAHC          :FIRS 4 进阶级
+STR_ECONOMY_XIS_LOT             :XIS The Lot
+STR_ECONOMY_OTIS                :OTIS
+STR_ECONOMY_IOTC                :Industries of the Caribbean
+STR_ECONOMY_LUMBERJACK          :Lumberjack Industries
+STR_ECOMONY_WRBI                :Wannaroo Basic Industries
+STR_ECONOMY_ITI2                :Improved Town Industries
+STR_ECONOMY_REAL                :Real Industries
+
+##### ETERNAL LOVE #####
+STR_ETERNAL_LOVE_OUTSTANDING    :完美
+STR_ETERNAL_LOVE_GOOD           :較好
+STR_ETERNAL_LOVE_POOR           :較差
