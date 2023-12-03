@@ -300,6 +300,7 @@ Contributors:
 - pnkrtz
 - fmang
 - Elarcis
+- lezzano000
 - WenSimEHRP
 
 6. FAQ

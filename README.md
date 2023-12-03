@@ -59,4 +59,5 @@ Thanks to contributors:
 - pnkrtz
 - fmang
 - Elarcis
+- lezzano000
 - WenSimEHRP
