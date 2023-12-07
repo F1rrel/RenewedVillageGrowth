@@ -160,7 +160,7 @@ class MainClass extends GSInfo
         AddLabels("subsidies_type", {
                 _0 = "None",
                 _1 = "All",
-                _2 = "Passanger",
+                _2 = "Passenger",
                 _3 = "Cargo"});
 
         AddSetting({
