@@ -2,7 +2,7 @@ enum SubsidiesType
 {
     NONE = 0,
     ALL = 1,
-    PASSANGER = 2,
+    PASSENGER = 2,
     CARGO = 3
 }
 
@@ -156,7 +156,7 @@ function CreateSubsidies(towns, companies)
         };
 
         // Create town subsidy
-        if (subsidies_type == SubsidiesType.ALL || subsidies_type == SubsidiesType.PASSANGER) {
+        if (subsidies_type == SubsidiesType.ALL || subsidies_type == SubsidiesType.PASSENGER) {
             local biggest_town_id = GetBiggestPopulationTown(town_list, towns);
             if (biggest_town_id != null) {
                 local closest_town_id = FindClosestTown(sorted_towns.not_monitored, biggest_town_id);
