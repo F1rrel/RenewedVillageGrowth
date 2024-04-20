@@ -1,0 +1,75 @@
+##### TOWN SIGN #####
+STR_TOWNSIGN_GROWTHRATE  :Город растёт раз в {NUM} дней
+STR_TOWNSIGN_NOTGROWING  :{BLACK}Город {RED}не{BLACK} развивается
+
+##### CARGO CATEGORIES #####
+STR_CARGOCAT_LABEL_0     :Услуги
+STR_CARGOCAT_LABEL_1     :Сырая пища
+STR_CARGOCAT_LABEL_2     :Сырье
+STR_CARGOCAT_LABEL_3     :Обработанные материалы
+STR_CARGOCAT_LABEL_4     :Готовая продукция
+STR_CARGOCAT_LABEL_5     :Продукты
+STR_CARGOCAT_LABEL_6     :Местное производство
+STR_CARGOCAT_LABEL_7     :Импортные товары
+STR_CARGOCAT_LABEL_8     :Категория I
+STR_CARGOCAT_LABEL_9     :Категория II
+STR_CARGOCAT_LABEL_10    :Категория III
+STR_CARGOCAT_LABEL_11    :Категория IV
+STR_CARGOCAT_LABEL_12    :Категория V
+
+##### STORY BOOK #####
+STR_SB_TITLE_1           :Категории грузов
+STR_SB_EXPLAIN_1         :Это категории грузов для городских требований, каждая категория, включает различные типы грузов. Для удовлетворения требований категории вы можете доставить любой груз из этой категории.
+STR_SB_EXPLAIN_2         :Это категории грузов для городских требований, каждая категория, включая различные типы грузов. Каждый город имеет выбор {STRING} из каждой категории. Для удовлетворения требований категории вы можете доставить любой груз из этой категории, как показано в окне «Информация города».
+STR_SB_EXPLAIN_RANDOM_0  :{SILVER}{NUM} cargo type{P "" s}{BLACK}{STRING}
+STR_SB_EXPLAIN_RANDOM_2  :{SILVER}{NUM} - {NUM} типы грузов {BLACK}
+STR_SB_CARGOCAT_CAT      :Категория
+STR_SB_CARGOCAT_POP      :Минимальное население города
+STR_SB_CARGOCAT_DECAY    :Ежемесячный спад
+STR_SB_CARGOCAT_CARGOT   :Типы грузов
+STR_SB_WARNING_TITLE     :Предупреждение
+STR_SB_WARNING_1         :На карте больше городов, чем сценарий игры.Текущее количество городов равно {SILVER} {NUM} {BLACK} и максимум {BLACK} {NUM} {BLACK}.{RED} сценарий игры выключен. {BLACK}
+STR_SB_WARNING_2         :Инициализация списка грузов не удалась.Он был вызван неизвестной отраслью Newgrf, для которой было невозможно создать процедурное составление списка грузов. {RED}Игровой сценарий выключен.{BLACK}
+STR_SB_WARNING_3         :Инициализация списка грузов не удалась.Это было вызвано вариантом рандомизации отрасли, для которого категории процедурной отрасли не могли быть созданы. {RED}Игровой сценарий выключен.{BLACK}
+STR_SB_WARNING_4         :Вы должны установить параметр{ORANGE}Окружающая среда-> Города-> Скорость роста города{BLACK}на что -то другое, кроме ничего. {RED}Игровой сценарий выключен.{BLACK}
+STR_SB_WELCOME_DESC      :{SILVER}Renewed Village Growth (RVG){BLACK} это сценарий игры, который {ORANGE} меняет способ роста городов {BLACK} в OpenTTD.Для каждого города определены различные требования к грузу, которые должны выполняться - частично или полностью - ежемесячно, чтобы города росли быстрее. Более подробную информацию можно найти в файле {ORANGE} Readme {BLACK}.
+STR_SB_WELCOME_CARGO     :Экономика {SILVER}{STRING}{BLACK} состоит из {SILVER}{NUM} категорий{BLACK}.Чтобы соответствовать категории, доставьте один или несколько грузов, относящихся к определенной категории, на станцию {ORANGE} недалеко от города, которая принимает груз этого типа{BLACK}. Выполните указанные выше требования {SILVER}{NUM}%{BLACK}, чтобы {ORANGE} ускорял рост городов{BLACK}. Более подробная информация о категориях грузов приведена на странице сборника рассказов {ORANGE}Категории грузов {BLACK}.
+STR_SB_WELCOME_LIMIT_GROWTH         :{SILVER}{CARGO_LIST}{BLACK} из этого города могут {ORANGE}остановить развитие{BLACK}.  Перевози по крайней мере {SILVER}{NUM}%{BLACK} этих типов грузов {ORANGE}, чтобы обеспечить рост города{BLACK}. {STRING}
+STR_SB_WELCOME_LIMIT_GROWTH_DELAY   :Рост прекращается после {SILVER}{NUM} месяцев {BLACK} невыполнения этого требования.
+STR_SB_WELCOME_STATISTICS           :Компания, доставляющая большую часть грузов в город, становится его {ORANGE} вкладчиком {BLACK}. Каждое новое население, превышающее численность населения этого города, засчитывается в {ORANGE} очки роста {BLACK} этой компании. Смотрите очки роста и статистику в {ORANGE}Список целей{BLACK}.
+STR_SB_WELCOME_ETERNAL_LOVE         :{SILVER}Вечная любовь{BLACK} меняет {ORANGE}рейтинг местных властей{BLACK} каждого города как минимум раз в месяц на {SILVER}{STRING}{BLACK}.
+STR_SB_WELCOME_END                  :Развлекайся!
+
+##### CUSTOM STORY BOOK #####
+STR_SB_CUSTOM_WELCOME       :Пожалуйста, ознакомьтесь с правилами сервера на странице сборника рассказов {ORANGE}{STRING}{BLACK}.
+STR_SB_CUSTOM_TITLE         :Правила сервера
+# STR_SB_CUSTOM_1             :Правило 1
+# STR_SB_CUSTOM_2             :Правило 2
+STR_SB_CUSTOM_END           :
+
+##### GOAL #####
+STR_STATISTICS_GROWTH_POINTS    :{STRING}{COMPANY}{BLACK} очков роста{ORANGE}
+STR_STATISTICS_BIGGEST_TOWN     :{BLACK}Самый большой город {SILVER}{TOWN}{ORANGE}
+STR_STATISTICS_GROWTH_TOWN      :{BLACK}Самый быстрорастущий город за последние дни {SILVER}{TOWN}{ORANGE}
+STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}Частая категория города{ORANGE}
+STR_STATISTICS_NUM_TOWNS        :{BLACK}Количество городов, внесших вклад{ORANGE}
+STR_STATISTICS_NOT_GROWING      :{BLACK}Число не развивающихся городов{ORANGE}
+
+##### TOWNBOX #####
+STR_TOWNBOX_CONTRIBUTOR         :Самое большое население {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
+STR_TOWNBOX_NO_CONTRIBUTOR      :Самое большое население {SILVER}{NUM}{BLACK}{STRING}
+
+STR_TOWNBOX_CATEGORY            :Информация о грузе: имеется/требуется{STRING}
+STR_TOWNBOX_CATEGORY_STOP       :Недостаточно вывезено из города :{} * {RED}{CARGO_LIST}{BLACK}{}Информация о грузе: имеется/требуется
+STR_TOWNBOX_CATEGORY_LOW        :Недостаточная транспортная инфраструктура :{} * {SILVER}{CARGO_LIST}{BLACK}{}Информация о грузе: имеется/требуется
+STR_TOWNBOX_CATEGORY_DELAYED    :Недостаточно вывезено из города :{} * {GOLD}{CARGO_LIST}{BLACK}{}Информация о грузе: имеется/требуется
+STR_TOWNBOX_CARGO               :Категории груза :{STRING}
+STR_TOWNBOX_CARGO_STOP          :Недостаточно вывезено из города :{} * {RED}{CARGO_LIST}{BLACK}{}Категории груза :
+STR_TOWNBOX_CARGO_LOW           :Недостаточная транспортная инфраструктура :{} * {SILVER}{CARGO_LIST}{BLACK}{}Категории груза :
+STR_TOWNBOX_CARGO_DELAYED       :Недостаточно вывезено из города :{} * {GOLD}{CARGO_LIST}{BLACK}{}Категории груза :
+STR_TOWNBOX_NOGROWTH            :Перевозите {SILVER}{CARGO_LIST}{BLACK} для роста города.
+
+##### ETERNAL LOVE #####
+STR_ETERNAL_LOVE_OUTSTANDING    :Великолепный
+STR_ETERNAL_LOVE_GOOD           :Хороший
+STR_ETERNAL_LOVE_POOR           :Плохой
