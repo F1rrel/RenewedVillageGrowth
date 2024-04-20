@@ -1,6 +1,10 @@
 ##### TOWN SIGN #####
-STR_TOWNSIGN_GROWTHRATE  :Růst města : {NUM} {P den dnů}
-STR_TOWNSIGN_NOTGROWING  :Město neroste
+STR_TOWNSIGN_GROWTHRATE     :Růst města : {NUM} {STRING}
+STR_TOWNSIGN_MONTHS         :měsíců
+STR_TOWNSIGN_DAYS           :dnů
+STR_TOWNSIGN_MINUTES        :minut
+STR_TOWNSIGN_SECONDS        :sekund
+STR_TOWNSIGN_NOTGROWING     :Město neroste
 
 ##### CARGO CATEGORIES #####
 STR_CARGOCAT_LABEL_0     :Veřejné služby

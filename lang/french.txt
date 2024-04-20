@@ -1,7 +1,11 @@
 
 ##### TOWN SIGN #####
-STR_TOWNSIGN_GROWTHRATE  :Croissance: {NUM} jours
-STR_TOWNSIGN_NOTGROWING  :Ne croît pas
+STR_TOWNSIGN_GROWTHRATE     :Croissance: {NUM} {STRING}
+STR_TOWNSIGN_MONTHS         :mois
+STR_TOWNSIGN_DAYS           :jours
+STR_TOWNSIGN_MINUTES        :minutes
+STR_TOWNSIGN_SECONDS        :secondes
+STR_TOWNSIGN_NOTGROWING     :Ne croît pas
 
 ##### CARGO CATEGORIES #####
 STR_CARGOCAT_LABEL_0     :Services publics
