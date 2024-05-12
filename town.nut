@@ -69,9 +69,9 @@ class GoalTown
             this.town_supplied_cat = ::TownDataTable[this.id].town_supplied_cat;
             this.town_stockpiled_cat = ::TownDataTable[this.id].town_stockpiled_cat;
             this.tgr_array = ::TownDataTable[this.id].tgr_array;
-            this.limit_transported = (::TownDataTable[this.id].limit_transported_upper + 0x7FFFFFFF << 32) | (::TownDataTable[this.id].limit_transported_lower + 0X7FFFFFFF);
+            this.limit_transported = ::TownDataTable[this.id].limit_transported;
             this.limit_delay = ::TownDataTable[this.id].limit_delay;
-            this.cargo_hash = (::TownDataTable[this.id].cargo_hash_upper + 0x7FFFFFFF << 32) | (::TownDataTable[this.id].cargo_hash_lower + 0X7FFFFFFF);
+            this.cargo_hash = ::TownDataTable[this.id].cargo_hash;
             if (::SettingsTable.randomization == Randomization.INDUSTRY_DESC
              || ::SettingsTable.randomization == Randomization.INDUSTRY_ASC)
                 this.town_cargo_cat = GetCargoCatFromIndustryCat(GetIndustryTable(this.cargo_hash));
@@ -127,11 +127,9 @@ function GoalTown::SavingTownData()
     town_data.town_supplied_cat <- this.town_supplied_cat;
     town_data.town_stockpiled_cat <- this.town_stockpiled_cat;
     town_data.tgr_array <- this.tgr_array;
-    town_data.limit_transported_upper <- ((this.limit_transported >> 32) - 0X7FFFFFFF);
-    town_data.limit_transported_lower <- ((this.limit_transported & 0xFFFFFFFF) - 0X7FFFFFFF);
+    town_data.limit_transported <- this.limit_transported;
     town_data.limit_delay <- this.limit_delay;
-    town_data.cargo_hash_upper <- ((this.cargo_hash >> 32) - 0X7FFFFFFF);
-    town_data.cargo_hash_lower <- ((this.cargo_hash & 0xFFFFFFFF) - 0X7FFFFFFF);
+    town_data.cargo_hash <- this.cargo_hash;
     return town_data;
 }
 

@@ -20,7 +20,7 @@ class MainClass extends GSInfo
     function GetURL()                   { return "https://www.tt-forums.net/viewtopic.php?f=65&t=87052"; }
     function GetVersion()               { return SELF_VERSION; }
     function GetDate()                  { return SELF_DATE; }
-    function GetAPIVersion()            { return "1.10"; }
+    function GetAPIVersion()            { return "12"; }
     function MinVersionToLoad()         { return SELF_MINLOADVERSION; }
     function CreateInstance()           { return "MainClass"; }
     function GetSettings() {
