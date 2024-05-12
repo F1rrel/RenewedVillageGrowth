@@ -152,6 +152,7 @@ function MainClass::Init()
     // Check game settings
     GSGameSettings.SetValue("economy.town_growth_rate", 2);
     GSGameSettings.SetValue("economy.fund_buildings", 0);
+    ::SettingsTable.wallclock_timekeeping <- GSGameSettings.GetValue("economy.timekeeping_units");
 
     if (!this.load_saved_data) { // Disallow changing these in a running game
         ::SettingsTable.use_town_sign <- GSController.GetSetting("use_town_sign");

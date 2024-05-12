@@ -1,6 +1,10 @@
 ##### TOWN SIGN #####
-STR_TOWNSIGN_GROWTHRATE  :Город растёт раз в {NUM} дней
-STR_TOWNSIGN_NOTGROWING  :{BLACK}Город {RED}не{BLACK} развивается
+STR_TOWNSIGN_GROWTHRATE     :Город растёт раз в {NUM} {STRING}
+STR_TOWNSIGN_MONTHS         :месяцев
+STR_TOWNSIGN_DAYS           :дней
+STR_TOWNSIGN_MINUTES        :минут
+STR_TOWNSIGN_SECONDS        :секунд
+STR_TOWNSIGN_NOTGROWING     :{BLACK}Город {RED}не{BLACK} развивается
 
 ##### CARGO CATEGORIES #####
 STR_CARGOCAT_LABEL_0     :Услуги

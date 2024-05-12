@@ -1,6 +1,10 @@
 ##### TOWN SIGN #####
-STR_TOWNSIGN_GROWTHRATE  :Medrando : {NUM} days
-STR_TOWNSIGN_NOTGROWING  :Non medrando
+STR_TOWNSIGN_GROWTHRATE     :Medrando : {NUM} {STRING}
+STR_TOWNSIGN_MONTHS         :meses
+STR_TOWNSIGN_DAYS           :días
+STR_TOWNSIGN_MINUTES        :minutos
+STR_TOWNSIGN_SECONDS        :segundos
+STR_TOWNSIGN_NOTGROWING     :Non medrando
 
 ##### CARGO CATEGORIES #####
 STR_CARGOCAT_LABEL_0     :Servizos públicos

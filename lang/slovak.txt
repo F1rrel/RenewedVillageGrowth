@@ -1,6 +1,10 @@
 ##### TOWN SIGN #####
-STR_TOWNSIGN_GROWTHRATE  :Rast mesta : {NUM} {P deň dní}
-STR_TOWNSIGN_NOTGROWING  :Mesto nerastie
+STR_TOWNSIGN_GROWTHRATE     :Rast mesta : {NUM} {STRING}
+STR_TOWNSIGN_MONTHS         :mesiacov
+STR_TOWNSIGN_DAYS           :dní
+STR_TOWNSIGN_MINUTES        :minút
+STR_TOWNSIGN_SECONDS        :sekúnd
+STR_TOWNSIGN_NOTGROWING     :Mesto nerastie
 
 ##### CARGO CATEGORIES #####
 STR_CARGOCAT_LABEL_0     :Verejné služby

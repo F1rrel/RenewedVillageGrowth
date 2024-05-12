@@ -193,7 +193,18 @@ function GoalTown::TownSignText()
     if (GSTown.GetGrowthRate(this.id) > 880) {
         text_townsign = GSText(GSText.STR_TOWNSIGN_NOTGROWING);
     } else {
-        text_townsign = GSText(GSText.STR_TOWNSIGN_GROWTHRATE, GSTown.GetGrowthRate(this.id));
+        local growth_rate = GSTown.GetGrowthRate(this.id);
+        if (::SettingsTable.wallclock_timekeeping == 1) { // Wallclock Timekeeping
+            if (growth_rate > 300)
+                text_townsign = GSText(GSText.STR_TOWNSIGN_GROWTHRATE, GSTown.GetGrowthRate(this.id) / 30, GSText(GSText.STR_TOWNSIGN_MINUTES));
+            else
+                text_townsign = GSText(GSText.STR_TOWNSIGN_GROWTHRATE, GSTown.GetGrowthRate(this.id) * 2, GSText(GSText.STR_TOWNSIGN_SECONDS));
+        } else {
+            if (growth_rate > 360)
+                text_townsign = GSText(GSText.STR_TOWNSIGN_GROWTHRATE, GSTown.GetGrowthRate(this.id) / 30, GSText(GSText.STR_TOWNSIGN_MONTHS));
+            else
+                text_townsign = GSText(GSText.STR_TOWNSIGN_GROWTHRATE, GSTown.GetGrowthRate(this.id), GSText(GSText.STR_TOWNSIGN_DAYS));
+        }
     }
     return text_townsign;
 }
