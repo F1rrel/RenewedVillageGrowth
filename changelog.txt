@@ -1,5 +1,12 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 10.0 (2024/05/12)
+- new: Russian translation (Shkarlatov)
+- mod: Improve performance of GetNearbyIndustriesToTowns (JGRennison)
+- mod: Growth label based on timekeeping
+- mod: Optimized save/load functions, now 2000 towns can be on the map
+- fix: Misspelling of "Passenger" in subsidy type setting (2TallTyler)
+
 Version 9.3 (2023/12/03)
 - new: Traditional Chinese translation (WenSimEHRP)
 - new: OTIS 05 support (lezzano000)
