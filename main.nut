@@ -197,6 +197,7 @@ function MainClass::Init()
     this.towns = this.CreateTownList();
     if (this.towns.len() > SELF_MAX_TOWNS)
         return InitError.TOWN_NUMBER;
+    Log.Info("Setup " + this.towns.len() + " towns", Log.LVL_INFO);
 
     // Run industry stabilizer
     Log.Info("Prospecting raw industries ... (can take a while on large maps)", Log.LVL_INFO);
