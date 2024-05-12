@@ -9,7 +9,7 @@ BaNaNaS: https://bananas.openttd.org/package/game-script/52455649
 
 ## Requirements
 
-- OpenTTD, v. 1.10.x or newer.
+- OpenTTD, v. 12.x or newer.
 - GS SuperLib v. 40, ToyLib v. 1, Script Communication for GS v. 45 (you can find it on BaNaNaS, also accessible
   through OTTD's "Online Content").
 - Industry sets: you can use any industry NewGRF
@@ -31,8 +31,9 @@ Currently available languages:
 - German (pnkrtz)
 - Japanese (fmang)
 - Traditional Chinese (WenSimEHRP)
+- Russian (Shkarlatov)
 
-If you want to contribute to a translation, you can do it by modifying a file [english.txt](lang/english.txt) and posting it to the forum topic or creating a new issue/pull request with this file included.
+If you want to contribute to a translation, you can do it by modifying a file [english.txt](lang/english.txt) and posting it to the forum topic or creating a new issue/pull request with this file included. All instances of `{STRING[number]}` need to be replaced by `{STRING}` in all other languages.
 
 ## License
 
@@ -61,3 +62,5 @@ Thanks to contributors:
 - Elarcis
 - lezzano000
 - WenSimEHRP
+- Shkarlatov
+- JGRennison
