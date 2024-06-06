@@ -47,6 +47,7 @@ enum Economies
     FIRS4__TROPIC_BASIC, // 4.3.0
     FIRS4__STEELTOWN, // 4.3.0
     FIRS4__IN_A_HOT_COUNTRY, // 4.3.0
+    FIRS5__STEELTOWN, // 5.0.0
     XIS__THE_LOT, // 0.6
     OTIS, // 05
     IOTC, // 0.1.4
@@ -56,7 +57,6 @@ enum Economies
     REAL, // Real Industries Beta
     MINIMALIST, // 1.1
     PIRS, // PIRS 2022
-    FIRS5__STEELTOWN, // 5.0.0
     END,
 }
 
@@ -210,12 +210,12 @@ function GetEconomyCargoList(economy, cargo_list) {
                 "MAIZ","MNO2","NUTS","OIL_","PETR","PHOS","RUBR","SAND","GRVL"];
     /* FIRS version 5.0 */
     case(Economies.FIRS5__STEELTOWN):
-        return ["ACID","ALUM","CBLK","CCPR","CHLO","CMNT","COAL","COAT","COKE","CSTI",
-                "CTAR","ENSP","FEAL","FMSP","FOCA","FOOD","GLAS","GOOD","GRVL","HWAR",
-                "IORE","IRON","LIME","LYE_","MAIL","N7__","O2__","PASS","POTA","POWR",
-                "PPWK","PUMP","QLME","RBAR","RUBR","SALT","SAND","SASH","SCMT","SEAL",
-                "SLAG","SOAP","STBL","STBR","STIG","STPP","STSE","STSH","STSL","STTB",
-                "STWR","SULP","TYCO","TYRE","VBOD","VEHI","VENG","VPTS","WELD","ZINC"];
+        return ["ACID","GRVL","ALUM","CBLK","CSTI","CMNT","FOOD","CHLO","SOAP","COAL",
+                "CTAR","COKE","CCPR","POWR","ENSP","FMSP","FEAL","FOCA","GLAS","GOOD",
+                "HWAR","IORE","LIME","LYE_","MAIL","N7__","O2__","COAT","PASS","IRON",
+                "POTA","PPWK","PUMP","QLME","RBAR","RUBR","SALT","SAND","SCMT","SEAL",
+                "SLAG","SASH","STBL","STIG","STBR","STPP","STSE","STSH","STSL","STTB",
+                "STWR","SULP","TYCO","TYRE","VEHI","VBOD","VENG","VPTS","WELD","ZINC"];
     case(Economies.XIS__THE_LOT): // XIS 0.6: The Lot
         return ["PASS","ACID","MAIL","BEER","AORE","GOOD","BEAN","BDMT","CMNT","RFPR",
                 "CHLO","FOOD","CLAY","COAL","COKE","COPR","CORE","EOIL","POWR","ENSP",
@@ -803,13 +803,13 @@ function DefineCargosBySettings(economy)
             ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
             break;
         case(Economies.FIRS5__STEELTOWN): // FIRS 5.0: Steeltown
-            ::CargoLimiter <- [0,2];
-            ::CargoCat <- [[0,2],
-                       [3,10,17,22,23,25,26,30,36,37,38,41,52],
-                       [4,9,13,16,27,35,59],
-                       [1,5,6,8,11,12,14,15,19,24,28,29,32,33,34,39,40,42,43,44,45,47,48,49,50,51,52],
-                       [7,20,21,31,46,53,54,55,56,57]];
-            ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.LOCAL_PRODUCTION,CatLabels.IMPORTED_GOODS,
+            ::CargoLimiter <- [24,28];
+            ::CargoCat <- [[24,28],
+                       [1,9,10,11,21,22,25,26,30,36,37,38,40,41],
+                       [2,8,13,16,27,35,59],
+                       [0,3,4,14,15,17,18,29,32,33,34,39,42,43,44,45,47,48,49,50,52,53,58],
+                       [5,6,7,12,19,20,23,31,46,51,54,55,56,57]];
+            ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.IMPORTED_GOODS,
                        CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
             ::CargoMinPopDemand <- [0,500,1000,4000,8000];
             ::CargoPermille <- [60,25,25,15,10];

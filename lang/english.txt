@@ -128,6 +128,7 @@ STR_ECONOMY_FIRS4_ARCTIC        :FIRS 4 Arctic
 STR_ECONOMY_FIRS4_TROPIC        :FIRS 4 Tropic
 STR_ECONOMY_FIRS4_STEELTOWN     :FIRS 4 Steeltown
 STR_ECONOMY_FIRS4_IAHC          :FIRS 4 In A Hot Country
+STR_ECONOMY_FIRS5_STEELTOWN     :FIRS 5 Steeltown
 STR_ECONOMY_XIS_LOT             :XIS The Lot
 STR_ECONOMY_OTIS                :OTIS
 STR_ECONOMY_IOTC                :Industries of the Caribbean
@@ -137,7 +138,6 @@ STR_ECONOMY_ITI2                :Improved Town Industries
 STR_ECONOMY_REAL                :Real Industries
 STR_ECONOMY_MINIMALIST          :Minimalist Industries
 STR_ECONOMY_PIRS                :Pikka's Industries Redux Set (PIRS 2022)
-STR_ECONOMY_FIRS5_STEELTOWN     :FIRS 5 Steeltown
 
 ##### ETERNAL LOVE #####
 STR_ETERNAL_LOVE_OUTSTANDING    :outstanding
