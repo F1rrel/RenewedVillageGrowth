@@ -220,7 +220,6 @@ function GetEconomyCargoList(economy, cargo_list) {
                 "POTA","PPWK","PUMP","QLME","RBAR","RUBR","SALT","SAND","SCMT","SEAL",
                 "SLAG","SASH","STBL","STIG","STBR","STPP","STSE","STSH","STSL","STTB",
                 "STWR","SULP","TYCO","TYRE","VEHI","VBOD","VENG","VPTS","WELD","ZINC"];
-    /* FIRS version 4.3 */
     case(Economies.FIRS5__TEMPERATE_BASIC): // Temperate Basic
         return ["BEER","RFPR","COAL","ENSP","FMSP","FISH","FRUT","GOOD","IORE","FOOD",
                 "KAOL","LVST","MAIL","MILK","PASS","SAND","SCMT","STEL"];
