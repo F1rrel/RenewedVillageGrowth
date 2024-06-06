@@ -210,13 +210,12 @@ function GetEconomyCargoList(economy, cargo_list) {
                 "MAIZ","MNO2","NUTS","OIL_","PETR","PHOS","RUBR","SAND","GRVL"];
     /* FIRS version 5.0 */
     case(Economies.FIRS5__STEELTOWN):
-        return ["PASS","ACID","MAIL","GRVL","ALUM","CBLK","CSTI","CMNT","CHLO",
-                "SOAP","COAL","CTAR","COKE","POWR","ENSP","FMSP","FEAL","FOOD",
-                "FOCA","GLAS","GOOD","HWAR","IORE","LIME","LYE_","N7__","O2__",
-                "COAT","IRON","PPWK","POTA","CCPR","PUMP","QLME","RBAR","RUBR",
-                "SAND","SALT","SCMT","SEAL","SLAG","SASH","STBL","STIG","STBR",
-                "STPP","STSE","STSH","STSL","STTB","STWR","SULP","TYCO","TYRE",
-                "VBOD","VENG","VPTS","VEHI","WELD","ZINC"];
+        return ["ACID","ALUM","CBLK","CCPR","CHLO","CMNT","COAL","COAT","COKE","CSTI",
+                "CTAR","ENSP","FEAL","FMSP","FOCA","FOOD","GLAS","GOOD","GRVL","HWAR",
+                "IORE","IRON","LIME","LYE_","MAIL","N7__","O2__","PASS","POTA","POWR",
+                "PPWK","PUMP","QLME","RBAR","RUBR","SALT","SAND","SASH","SCMT","SEAL",
+                "SLAG","SOAP","STBL","STBR","STIG","STPP","STSE","STSH","STSL","STTB",
+                "STWR","SULP","TYCO","TYRE","VBOD","VEHI","VENG","VPTS","WELD","ZINC"];
     case(Economies.XIS__THE_LOT): // XIS 0.6: The Lot
         return ["PASS","ACID","MAIL","BEER","AORE","GOOD","BEAN","BDMT","CMNT","RFPR",
                 "CHLO","FOOD","CLAY","COAL","COKE","COPR","CORE","EOIL","POWR","ENSP",
