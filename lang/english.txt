@@ -137,6 +137,7 @@ STR_ECONOMY_ITI2                :Improved Town Industries
 STR_ECONOMY_REAL                :Real Industries
 STR_ECONOMY_MINIMALIST          :Minimalist Industries
 STR_ECONOMY_PIRS                :Pikka's Industries Redux Set (PIRS 2022)
+STR_ECONOMY_FIRS5_STEELTOWN     :FIRS 5 Steeltown
 
 ##### ETERNAL LOVE #####
 STR_ETERNAL_LOVE_OUTSTANDING    :outstanding

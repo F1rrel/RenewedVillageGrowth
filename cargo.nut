@@ -56,6 +56,7 @@ enum Economies
     REAL, // Real Industries Beta
     MINIMALIST, // 1.1
     PIRS, // PIRS 2022
+    FIRS5__STEELTOWN, // 5.0.0
     END,
 }
 
@@ -207,6 +208,15 @@ function GetEconomyCargoList(economy, cargo_list) {
         return ["PASS","BEER","MAIL","BDMT","CASS","GOOD","RFPR","CLAY","JAVA","COPR",
                 "CORE","FOOD","DIAM","EOIL","ENSP","FMSP","FRUT","LVST","WOOD","WDPR",
                 "MAIZ","MNO2","NUTS","OIL_","PETR","PHOS","RUBR","SAND","GRVL"];
+    /* FIRS version 5.0 */
+    case(Economies.FIRS5__STEELTOWN):
+        return ["PASS","ACID","MAIL","GRVL","ALUM","CBLK","CSTI","CMNT","CHLO",
+                "SOAP","COAL","CTAR","COKE","POWR","ENSP","FMSP","FEAL","FOOD",
+                "FOCA","GLAS","GOOD","HWAR","IORE","LIME","LYE_","N7__","O2__",
+                "COAT","IRON","PPWK","POTA","CCPR","PUMP","QLME","RBAR","RUBR",
+                "SAND","SALT","SCMT","SEAL","SLAG","SASH","STBL","STIG","STBR",
+                "STPP","STSE","STSH","STSL","STTB","STWR","SULP","TYCO","TYRE",
+                "VBOD","VENG","VPTS","VEHI","WELD","ZINC"];
     case(Economies.XIS__THE_LOT): // XIS 0.6: The Lot
         return ["PASS","ACID","MAIL","BEER","AORE","GOOD","BEAN","BDMT","CMNT","RFPR",
                 "CHLO","FOOD","CLAY","COAL","COKE","COPR","CORE","EOIL","POWR","ENSP",
@@ -788,6 +798,19 @@ function DefineCargosBySettings(economy)
                        [6,13,14,15,19,24],
                        [1,3,5,9,11]];
             ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
+                       CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
+            ::CargoMinPopDemand <- [0,500,1000,4000,8000];
+            ::CargoPermille <- [60,25,25,15,10];
+            ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
+            break;
+        case(Economies.FIRS5__STEELTOWN): // FIRS 5.0: Steeltown
+            ::CargoLimiter <- [0,2];
+            ::CargoCat <- [[0,2],
+                       [3,10,17,22,23,25,26,30,36,37,38,41,52],
+                       [4,9,13,16,27,35,59],
+                       [1,5,6,8,11,12,14,15,19,24,28,29,32,33,34,39,40,42,43,44,45,47,48,49,50,51,52],
+                       [7,20,21,31,46,53,54,55,56,57]];
+            ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.LOCAL_PRODUCTION,CatLabels.IMPORTED_GOODS,
                        CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
             ::CargoMinPopDemand <- [0,500,1000,4000,8000];
             ::CargoPermille <- [60,25,25,15,10];
