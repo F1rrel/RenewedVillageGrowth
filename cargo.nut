@@ -47,7 +47,11 @@ enum Economies
     FIRS4__TROPIC_BASIC, // 4.3.0
     FIRS4__STEELTOWN, // 4.3.0
     FIRS4__IN_A_HOT_COUNTRY, // 4.3.0
+    FIRS5__TEMPERATE_BASIC, // 5.0.0
+    FIRS5__ARCTIC_BASIC, // 5.0.0
+    FIRS5__TROPIC_BASIC, // 5.0.0
     FIRS5__STEELTOWN, // 5.0.0
+    FIRS5__IN_A_HOT_COUNTRY, // 5.0.0
     XIS__THE_LOT, // 0.6
     OTIS, // 05
     IOTC, // 0.1.4
@@ -216,6 +220,20 @@ function GetEconomyCargoList(economy, cargo_list) {
                 "POTA","PPWK","PUMP","QLME","RBAR","RUBR","SALT","SAND","SCMT","SEAL",
                 "SLAG","SASH","STBL","STIG","STBR","STPP","STSE","STSH","STSL","STTB",
                 "STWR","SULP","TYCO","TYRE","VEHI","VBOD","VENG","VPTS","WELD","ZINC"];
+    /* FIRS version 4.3 */
+    case(Economies.FIRS5__TEMPERATE_BASIC): // Temperate Basic
+        return ["BEER","RFPR","COAL","ENSP","FMSP","FISH","FRUT","GOOD","IORE","FOOD",
+                "KAOL","LVST","MAIL","MILK","PASS","SAND","SCMT","STEL"];
+    case(Economies.FIRS5__ARCTIC_BASIC): // Arctic Basic
+        return ["NH3_","ENSP","BOOM","FMSP","FERT","FISH","FOOD","KAOL","WOOD","MAIL",
+                "PAPR","PASS","PEAT","PHOS","POTA","PORE","SULP","WDPR","ZINC"];
+    case(Economies.FIRS5__TROPIC_BASIC): // Tropic Basic
+        return ["BEER","BEAN","RFPR","JAVA","COPR","CORE","ENSP","FMSP","FISH","FOOD",
+                "FRUT","GOOD","GRAI","LVST","MAIL","NITR","OIL_","PASS","WOOL"];
+    case(Economies.FIRS5__IN_A_HOT_COUNTRY): // In A Hot Country
+        return ["GRVL","BEER","BDMT","CASS","RFPR","CLAY","JAVA","COPR","CORE","DIAM",
+                "EOIL","ENSP","FMSP","FOOD","FRUT","GOOD","LVST","WOOD","MAIL","MAIZ",
+                "MNO2","NUTS","OIL_","PASS","PETR","PHOS","RUBR","SAND","WDPR"];
     case(Economies.XIS__THE_LOT): // XIS 0.6: The Lot
         return ["PASS","ACID","MAIL","BEER","AORE","GOOD","BEAN","BDMT","CMNT","RFPR",
                 "CHLO","FOOD","CLAY","COAL","COKE","COPR","CORE","EOIL","POWR","ENSP",
@@ -810,6 +828,58 @@ function DefineCargosBySettings(economy)
                        [0,3,4,14,15,17,18,29,32,33,34,39,42,43,44,45,47,48,49,50,52,53,58],
                        [5,6,7,12,19,20,23,31,46,51,54,55,56,57]];
             ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_MATERIALS,CatLabels.IMPORTED_GOODS,
+                       CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
+            ::CargoMinPopDemand <- [0,500,1000,4000,8000];
+            ::CargoPermille <- [60,25,25,15,10];
+            ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
+            break;
+        case(Economies.FIRS5__TEMPERATE_BASIC): // FIRS 5.0: Temperate Basic
+            ::CargoLimiter <- [14,12];
+            ::CargoCat <- [[14,12],
+                       [5,6,11,13],
+                       [2,8,10,15,16],
+                       [1,3,4,17],
+                       [0,7,9]];
+            ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
+                       CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
+            ::CargoMinPopDemand <- [0,500,1000,4000,8000];
+            ::CargoPermille <- [60,25,25,15,10];
+            ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
+            break;
+        case(Economies.FIRS5__ARCTIC_BASIC): // FIRS 5.0: Arctic Basic
+            ::CargoLimiter <- [11,9];
+            ::CargoCat <- [[11,9],
+                       [0,5,6,14],
+                       [7,8,12,13,15],
+                       [1,3,17,16],
+                       [2,4,10,18]];
+            ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
+                       CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
+            ::CargoMinPopDemand <- [0,500,1000,4000,8000];
+            ::CargoPermille <- [60,25,25,15,10];
+            ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
+            break;
+        case(Economies.FIRS5__TROPIC_BASIC): // FIRS 5.0: Tropic Basic
+            ::CargoLimiter <- [17,14];
+            ::CargoCat <- [[17,14],
+                       [0,1,3,8,10,12,13],
+                       [5,15,16,18],
+                       [2,6,7],
+                       [11,4,9]];
+            ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
+                       CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
+            ::CargoMinPopDemand <- [0,500,1000,4000,8000];
+            ::CargoPermille <- [60,25,25,15,10];
+            ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
+            break;
+        case(Economies.FIRS5__IN_A_HOT_COUNTRY): // FIRS 5.0 -In A Hot Coutry
+            ::CargoLimiter <- [23,18];
+            ::CargoCat <- [[23,18],
+                       [3,6,14,16,19,21],
+                       [5,8,9,17,20,22,25,26,27,0],
+                       [4,10,11,12,28,24],
+                       [1,2,15,7,13]];
+            ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
                        CatLabels.PROCESSED_MATERIALS,CatLabels.FINAL_PRODUCTS];
             ::CargoMinPopDemand <- [0,500,1000,4000,8000];
             ::CargoPermille <- [60,25,25,15,10];
