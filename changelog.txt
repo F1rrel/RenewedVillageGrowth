@@ -1,5 +1,8 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 10.1 (2024/07/06)
+- new: FIRS 4 support (bigyihsuan)
+
 Version 10.0 (2024/05/12)
 - new: Russian translation (Shkarlatov)
 - mod: Improve performance of GetNearbyIndustriesToTowns (JGRennison)
