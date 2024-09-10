@@ -12,7 +12,11 @@ enum CatLabels
     CATEGORY_II = 9,
     CATEGORY_III = 10,
     CATEGORY_IV = 11,
-    CATEGORY_V = 12
+    CATEGORY_V = 12,
+    RAW_AND_FOOD = 13,
+    REFINED_MATS = 14,
+    MANUFACTORING_COMPS = 15,
+    FINAL_AND_VEHICLES = 16
 }
 
 enum Economies
@@ -53,6 +57,7 @@ enum Economies
     FIRS5__STEELTOWN, // 5.0.0
     FIRS5__IN_A_HOT_COUNTRY, // 5.0.0
     XIS__THE_LOT, // 0.6
+    AXIS__STEELTOWN, // 2.2.0
     OTIS, // 05
     IOTC, // 0.1.4
     LUMBERJACK, // 0.1.0
@@ -241,6 +246,14 @@ function GetEconomyCargoList(economy, cargo_list) {
                 "PHOS","IRON","PIPE","FICR","PORE","QLME","RCYC","RUBR","SALT","SAND",
                 "SCMT","SLAG","SASH","STEL","SGBT","SULP","VBOD","VPTS","VEHI","WOOD",
                 "WOOL","ZINC"];
+    case (Economies.AXIS__STEELTOWN): //AXIS 2.2.0 Steel City
+        return ["PASS","ACID","MAIL","STAL","ALO_","GOOD","ALUM","NH3_","NHNO","AORE",
+                "CBLK","FOOD","STCB","CMNT","RFPR","CHLO","SOAP","COAL","CTAR","COKE",
+                "COPR","COCO","POWR","ENSP","C2H4","FMSP","FECR","FISH","FRUT","GLAS",
+                "GRAI", "H2__", "IORE", "LIME", "LVST", "LYE_", "N7__", "OIL_", "O2__", "MNSP",
+                "COAT","PETR","IRON","PLAS","PPAR","PORE","QLME","RCYC","RUBR","SALT",
+                "SAND","SCMT","SLAG","SASH","STSE","STSH","STWR","SULP","TYRE","VBOD",
+                "VENG", "VPTS", "VEHI", "ZINC"];
     case(Economies.OTIS): // OTIS 05
         local list = ["PASS","COAL","MAIL","OIL_","LIME","GOOD","GRAI","WOOD","IORE","STEL",
                       "MILK","FOOD","PAPR","FISH","WOOL","CLAY","SAND","WDPR","PCL_","GRVL",
@@ -896,6 +909,36 @@ function DefineCargosBySettings(economy)
             ::CargoMinPopDemand <- [0,500,1000,4000,8000];
             ::CargoPermille <- [60,25,25,15,10];
             ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
+            break;
+        case(Economies.AXIS__STEELTOWN): // AXIS 2.2.0: Steel City
+            if (::SettingsTable.axis_food_separate) {
+                ::CargoLimiter <- [0,2];
+                ::CargoCat <- [[0,2],
+                        [11, 27, 28, 30, 34, 49], //food
+                        [9, 17, 18, 32, 33, 36, 37, 38, 45, 47, 50, 51, 52, 53], //raw
+                        [1, 4, 10, 14, 15, 19, 21, 24, 26, 31, 35, 41, 42, 46, 57, 63], //processed
+                        [3, 6, 7, 8, 12, 13, 20, 29, 39, 43, 48, 55, 56], //intermediate
+                        [5, 16, 22, 23, 25, 40, 44, 54, 58, 59, 60, 61, 62] //complex
+                    ];
+                ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_FOOD,CatLabels.RAW_MATERIALS,
+                        CatLabels.REFINED_MATS, CatLabels.MANUFACTORING_COMPS, CatLabels.FINAL_AND_VEHICLES ];
+                ::CargoMinPopDemand <- [0, 500, 1000, 4000, 8000, 12000];
+                ::CargoPermille <- [60, 20, 20, 15, 15, 10];
+                ::CargoDecay <- [0.4, 0.2, 0.2, 0.15, 0.15, 0.1];
+            } else {
+                ::CargoLimiter <- [0,2];
+                ::CargoCat <- [[0,2],
+                        [11, 27, 28, 30, 34, 49, 9, 17, 18, 32, 33, 36, 37, 38, 45, 47, 50, 51, 52, 53], //raw & food
+                        [1, 4, 10, 14, 15, 19, 21, 24, 26, 31, 35, 41, 42, 46, 57, 63], //processed
+                        [3, 6, 7, 8, 12, 13, 20, 29, 39, 43, 48, 55, 56], //intermediate
+                        [5, 16, 22, 23, 25, 40, 44, 54, 58, 59, 60, 61, 62] //complex
+                    ];
+                ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_AND_FOOD,CatLabels.REFINED_MATS,
+                        CatLabels.MANUFACTORING_COMPS, CatLabels.FINAL_AND_VEHICLES ];
+                ::CargoMinPopDemand <- [0,500,1000,4000,8000];
+                ::CargoPermille <- [60,25,25,15,10];
+                ::CargoDecay <- [0.4,0.2,0.2,0.1,0.1];
+            }
             break;
         case(Economies.OTIS): // OTIS 03
             ::CargoLimiter <- [0,2];

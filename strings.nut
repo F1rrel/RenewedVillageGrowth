@@ -111,7 +111,7 @@ function GoalTown::TownTextContributor(text_townbox)
 function GoalTown::TownTextCategories()
 {
     local max_cat = 0;
-    while (max_cat < ::CargoCatNum-1) {
+    while (max_cat <::CargoCatNum - 1) {
         if (this.town_goals_cat[max_cat + 1] == 0) break;
         max_cat++;
     }
@@ -122,8 +122,7 @@ function GoalTown::TownTextCategories()
 
     for (local i = 0; i <= max_cat; i++) {
         text_townbox.AddParam(GSText(GSText["STR_CARGOCAT_LABEL_" + ::CargoCatList[i]]));
-        text_townbox.AddParam(this.town_supplied_cat[i]);
-        text_townbox.AddParam(this.town_goals_cat[i]);
+        text_townbox.AddParam(this.town_supplied_cat[i] + " / " + this.town_goals_cat[i]);
     }
 
     return text_townbox;
@@ -151,8 +150,7 @@ function GoalTown::TownTextCategoriesCombined(display_all)
             cargo_mask += 1 << cargo;
         }
         text_townbox.AddParam(cargo_mask);
-        text_townbox.AddParam(this.town_supplied_cat[index]);
-        text_townbox.AddParam(this.town_goals_cat[index]);
+        text_townbox.AddParam(this.town_supplied_cat[index] + " / " + this.town_goals_cat[index]);
     }
 
     return text_townbox;
