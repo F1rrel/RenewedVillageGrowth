@@ -1,7 +1,13 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 11.0 (2024/10/06)
+- new: AXIS 2.2 Steel City support with 6 categories (rhoun)
+- new: 6 categories support for FIRS 4 and 5 Steeltown
+- fix: Adding towns to a savegame via scenario editor
+- fix: Updated GSToyLib
+
 Version 10.1 (2024/07/06)
-- new: FIRS 4 support (bigyihsuan)
+- new: FIRS 5 support (bigyihsuan)
 
 Version 10.0 (2024/05/12)
 - new: Russian translation (Shkarlatov)

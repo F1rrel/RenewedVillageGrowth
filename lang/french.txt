@@ -21,6 +21,10 @@ STR_CARGOCAT_LABEL_9     :Catégorie II
 STR_CARGOCAT_LABEL_10    :Catégorie III
 STR_CARGOCAT_LABEL_11    :Catégorie IV
 STR_CARGOCAT_LABEL_12    :Catégorie V
+STR_CARGOCAT_LABEL_13    :Matériaux et nouritures bruts
+STR_CARGOCAT_LABEL_14    :Matériaux raffinés
+STR_CARGOCAT_LABEL_15    :Composants de fabrication
+STR_CARGOCAT_LABEL_16    :Produits finis et véhicules
 
 ##### STORY BOOK #####
 STR_SB_TITLE_1           :Catégories de marchandises
