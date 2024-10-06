@@ -13,7 +13,7 @@ Log <- SuperLib.Log;
 Helper <- SuperLib.Helper;
 
 // Import ToyLib
-import("Library.GSToyLib", "GSToyLib", 1);
+import("Library.GSToyLib", "GSToyLib", 2);
 import("Library.SCPLib", "SCPLib", 45);
 
 enum Randomization {
