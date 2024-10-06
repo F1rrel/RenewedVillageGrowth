@@ -67,6 +67,15 @@ class MainClass extends GSInfo
                     _2 = "Good",
                     _3 = "Poor" });
 
+        AddSetting({
+                name = "cargo_6_category",
+                description = "Cargo: Use 6 cargo categories for supported economies",
+                easy_value = 1,
+                medium_value = 1,
+                hard_value = 1,
+                custom_value = 1,
+                flags = CONFIG_BOOLEAN | CONFIG_INGAME });
+
         AddSetting({ name = "cargo_randomization",
                 description = "Randomization: Type",
                 easy_value = 1,
@@ -208,24 +217,14 @@ class MainClass extends GSInfo
             custom_value = -1,
             flags = CONFIG_INGAME, min_value = -1, max_value = 100000, step_size = 100});
 
-
         AddSetting({
             name = "category_6_min_pop",
-            description = "Category 6: Minimum population demand. For AXIS with separate food category.",
+            description = "Category 6: Minimum population demand (-1 = default)",
             easy_value = -1,
             medium_value = -1,
             hard_value = -1,
             custom_value = -1,
             flags = CONFIG_INGAME, min_value = -1, max_value = 100000, step_size = 100});
-
-        AddSetting({
-            name = "axis_food_separate",
-            description = "AXIS: Separate food category (when off, food and raw mats are merged)",
-            easy_value = 1,
-            medium_value = 1,
-            hard_value = 1,
-            custom_value = 1,
-            flags = CONFIG_BOOLEAN | CONFIG_INGAME });
 
         AddSetting({ name = "town_growth_factor",
                 description = "Expert: town growth factor",
