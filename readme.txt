@@ -3,7 +3,7 @@
                 *  A GameScript for OpenTTD  *
                 ******************************
 
-Version: 10.1
+Version: 11.0
 
 Usefull URL's:
 - forum topic: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
@@ -184,6 +184,10 @@ Normal settings:
   labels and their index numbers. Set it to 3 if you want check
   details about calculations.
 
+Cargo settings:
+- "Cargo: Use 6 cargo categories for supported economies": supported
+  economies are: AXIS 2.2 Steel City, FIRS4/5 Steeltown
+
 Randomization settings:
 - "Randomization: Type": all towns will have randomly selected
   cargos/industries per category based on selection (locked on start)
@@ -260,15 +264,16 @@ they can safely be changed while the game is running:
 
 3. Requirements
 
-- OpenTTD, v. 1.10.x or newer.
-- GS SuperLib, v. 40 (you can find it on BaNaNaS, also accessible
-  through OTTD's "Online Content").
+- OpenTTD, v. 14.x or newer.
+- GS SuperLib, v. 40, ToyLib v. 2, Script Communication for GS v. 45 
+  (you can find it on BaNaNaS, also accessible through OTTD's "Online 
+  Content").
 - Industry sets: you can use any industry NewGRF
     - these are specifically supported industry NewGRF: Baseset
-    (all climates), FIRS 1.4, 2, 3, 4.3 (all economies), ECS 1.2
+    (all climates), FIRS 1.4, 2, 3, 4.3, 5 (all economies), ECS 1.2
     (any combination), YETI 0.1.6 (all except Simplified),
-    NAIS 1.0.6, ITI 1.6, 2, XIS 0.6, OTIS 05, IOTC 0.1, LJI 0.1,
-    WRBI 1200, Real Beta, Minimalist, PIRS 2022.
+    NAIS 1.0.6, ITI 1.6, 2, XIS 0.6 AXIS 2.2, OTIS 05, IOTC 0.1,
+    LJI 0.1, WRBI 1200, Real Beta, Minimalist, PIRS 2022.
   Using RVG with any other unsupported industry set will contain
   proceduraly generated categories
 
@@ -305,6 +310,7 @@ Contributors:
 - Shkarlatov
 - JGRennison
 - bigyihsuan
+- rhoun
 
 6. FAQ
 

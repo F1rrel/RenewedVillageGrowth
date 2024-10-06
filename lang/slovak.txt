@@ -20,6 +20,10 @@ STR_CARGOCAT_LABEL_9     :Kategória II
 STR_CARGOCAT_LABEL_10    :Kategória III
 STR_CARGOCAT_LABEL_11    :Kategória IV
 STR_CARGOCAT_LABEL_12    :Kategória V
+STR_CARGOCAT_LABEL_13    :Suroviny a potraviny
+STR_CARGOCAT_LABEL_14    :Rafinované materiály
+STR_CARGOCAT_LABEL_15    :Výrobné komponenty
+STR_CARGOCAT_LABEL_16    :Finálne výrobky a vozidlá
 
 ##### STORY BOOK #####
 STR_SB_TITLE_1           :Kategórie nákladu
