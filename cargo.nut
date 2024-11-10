@@ -966,7 +966,7 @@ function DefineCargosBySettings(economy)
                 ::CargoDecay <- [0.4, 0.2, 0.2, 0.1, 0.1];
             }
             break;
-        case(Economies.AXIS__STEELTOWN): // AXIS 2.2.0: Tropical Paradise
+        case(Economies.AXIS__TROPICAL_PARADISE): // AXIS 2.2.0: Tropical Paradise
             ::CargoLimiter <- [0,2];
             ::CargoCat <- [[0,2],
                     [8, 10, 15, 27, 28, 30, 33, 34, 35, 39, 42, 46, 47, 48, 49, 50], // "Raw materials"
