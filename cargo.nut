@@ -954,6 +954,7 @@ function DefineCargosBySettings(economy)
 
             local cat_6 = [11, 27, 28, 30, 34, 49]; // food
             if (::SettingsTable.cargo_6_category) {
+                ::CargoCatList[1] = CatLabels.RAW_MATERIALS;
                 ::CargoCat.insert(1, cat_6);
                 ::CargoCatList.insert(1, CatLabels.RAW_FOOD);
                 ::CargoMinPopDemand <- [0, 500, 1000, 4000, 8000, 12000];
@@ -979,6 +980,7 @@ function DefineCargosBySettings(economy)
 
             local cat_6 = [3, 11, 21, 22, 23, 24, 26, 29, 31, 32, 55, 56]; // "Raw food"
             if (::SettingsTable.cargo_6_category) {
+                ::CargoCatList[1] = CatLabels.RAW_MATERIALS;
                 ::CargoCat.insert(1, cat_6);
                 ::CargoCatList.insert(1, CatLabels.RAW_FOOD);
                 ::CargoMinPopDemand <- [0, 500, 1000, 4000, 8000, 12000];
