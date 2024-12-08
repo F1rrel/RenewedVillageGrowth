@@ -58,6 +58,7 @@ enum Economies
     FIRS5__IN_A_HOT_COUNTRY, // 5.0.0
     XIS__THE_LOT, // 0.6
     AXIS__STEELTOWN, // 2.2.0
+    AXIS__TROPICAL_PARADISE, // 2.2.0
     OTIS, // 05
     IOTC, // 0.1.4
     LUMBERJACK, // 0.1.0
@@ -254,6 +255,14 @@ function GetEconomyCargoList(economy, cargo_list) {
                 "COAT","PETR","IRON","PLAS","PPAR","PORE","QLME","RCYC","RUBR","SALT",
                 "SAND","SCMT","SLAG","SASH","STSE","STSH","STWR","SULP","TYRE","VBOD",
                 "VENG", "VPTS", "VEHI", "ZINC"];
+    case (Economies.AXIS__TROPICAL_PARADISE): // AXIS 2.2.0 Tropical Paradise
+        return ["PASS","ACET","MAIL","BEER","BIOM","GOOD","BDMT","RFPR","CLAY","SOAP",
+                "COAL","FOOD","COKE","COPR","COCO","CORE","EOIL","ENSP","BOOM","FMSP",
+                "FERT","FISH","BAKE","ENUM","FRUT","GLAS","GRAI","IORE","LIME","LVST",
+                "WOOD","MEAT","MILK","NITR","OIL_","OLSD","MNSP","COAT","PETR","PHOS",
+                "PHAC","IRON","FICR","PLAS","QLME","RAMT","RCYC","RUBR","SALT","SAND",
+                "SCMT","SLAG","SASH","STEL","STSE","SGCN","SUGR","SULP","SUAC","TEXT",
+                "WDPR","TYRE","VPTS","VEHI"];
     case(Economies.OTIS): // OTIS 05
         local list = ["PASS","COAL","MAIL","OIL_","LIME","GOOD","GRAI","WOOD","IORE","STEL",
                       "MILK","FOOD","PAPR","FISH","WOOL","CLAY","SAND","WDPR","PCL_","GRVL",
@@ -945,6 +954,33 @@ function DefineCargosBySettings(economy)
 
             local cat_6 = [11, 27, 28, 30, 34, 49]; // food
             if (::SettingsTable.cargo_6_category) {
+                ::CargoCatList[1] = CatLabels.RAW_MATERIALS;
+                ::CargoCat.insert(1, cat_6);
+                ::CargoCatList.insert(1, CatLabels.RAW_FOOD);
+                ::CargoMinPopDemand <- [0, 500, 1000, 4000, 8000, 12000];
+                ::CargoPermille <- [60, 20, 20, 15, 15, 10];
+                ::CargoDecay <- [0.4, 0.2, 0.2, 0.15, 0.15, 0.1];
+            } else {
+                ::CargoCat[1].extend(cat_6);
+                ::CargoMinPopDemand <- [0, 500, 1000, 4000, 8000];
+                ::CargoPermille <- [60, 25, 25, 15, 10];
+                ::CargoDecay <- [0.4, 0.2, 0.2, 0.1, 0.1];
+            }
+            break;
+        case(Economies.AXIS__TROPICAL_PARADISE): // AXIS 2.2.0: Tropical Paradise
+            ::CargoLimiter <- [0,2];
+            ::CargoCat <- [[0,2],
+                    [8, 10, 15, 27, 28, 30, 33, 34, 35, 39, 42, 46, 47, 48, 49, 50], // "Raw materials"
+                    [1, 4, 7, 38, 57, 12, 14, 16, 25, 60, 40, 41, 44, 51, 52, 58, 59], // "Refined materials"
+                    [13, 9, 18, 20, 36, 37, 43, 45, 53, 54, 61, 62], // "Manufacturing components"
+                    [5, 6, 17, 19, 63] // "Finished goods and vehicles"
+                ];
+            ::CargoCatList <- [CatLabels.PUBLIC_SERVICES,CatLabels.RAW_AND_FOOD,CatLabels.REFINED_MATS,
+                    CatLabels.MANUFACTORING_COMPS, CatLabels.FINAL_AND_VEHICLES ];
+
+            local cat_6 = [3, 11, 21, 22, 23, 24, 26, 29, 31, 32, 55, 56]; // "Raw food"
+            if (::SettingsTable.cargo_6_category) {
+                ::CargoCatList[1] = CatLabels.RAW_MATERIALS;
                 ::CargoCat.insert(1, cat_6);
                 ::CargoCatList.insert(1, CatLabels.RAW_FOOD);
                 ::CargoMinPopDemand <- [0, 500, 1000, 4000, 8000, 12000];
