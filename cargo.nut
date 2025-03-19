@@ -246,8 +246,8 @@ function GetEconomyCargoList(economy, cargo_list) {
             list.append("WSTE");
         return list;
     case(Economies.ITI2): // Improved Town Industries 2
-        return ["PASS","COAL","WSTE","OIL_","WDPR","GOOD","RFPR","WOOD","IORE","STEL","PAPR",
-                "PLAS","FOOD","BDMT","VALU","LVST","WDCH","SCMT","SCPR","GRAI"];
+        return ["PASS","COAL","MAIL","OIL_","WDPR","GOOD","RFPR","WOOD","IORE","STEL","PAPR",
+                "PLAS","FOOD","BDMT","VALU","LVST","WDCH","SCMT","SCPR","GRAI","WSTE"];
 
     case(Economies.REAL): // Real Industries Beta
         return ["PASS","COAL","GOOD","GRAI","IORE","MAIL","LVST","OIL_","STEL","VALU",
@@ -846,7 +846,7 @@ function DefineCargosBySettings(economy)
             ::CargoDecay <- [0.4,0.3,0.2,0.1];
             break;
         case(Economies.ITI2): // Improved Town Industries 2
-            ::CargoLimiter <- [0,2];
+            ::CargoLimiter <- [0,2,20];
             ::CargoCat <- [[0],
                        [12],
                        [13],
