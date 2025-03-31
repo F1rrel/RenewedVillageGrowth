@@ -15,7 +15,7 @@ BaNaNaS: https://bananas.openttd.org/package/game-script/52455649
 - Industry sets: you can use any industry NewGRF
     - these are specifically supported industry NewGRF: Baseset (all climates), FIRS 1.4, 2, 3, 4.3
   (all economies), ECS 1.2 (any combination), YETI 0.1.6
-  (all except Simplified), NAIS 1.0.6, ITI 1.6, 2, XIS 0.6, AXIS 2.2, OTIS 05, IOTC 0.1, LJI 0.1, WRBI 1200,
+  (all except Simplified), NAIS 1.0.6, ITI 1.6, 2.14, XIS 0.6, AXIS 2.2, OTIS 05, IOTC 0.1, LJI 0.1, WRBI 1200,
   Real Beta, Minimalist, PIRS 2022
     - using RVG with any other unsupported industry set will contain proceduraly generated categories
 
@@ -66,3 +66,4 @@ Thanks to contributors:
 - JGRennison
 - bigyihsuan
 - rhoun
+- skye0e
