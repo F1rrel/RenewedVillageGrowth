@@ -1,5 +1,11 @@
 *** Renewed Village Growth GS Changelog ***
 
+Version 12.0 (2025/03/31)
+- new: AXIS Tropical Paradise support (skye0e)
+- mod: ITI 2.14 waste town cargo (2TallTyler)
+  - ITI < 2.14 no longer supported
+- fix: Simplified Chinese translation (WenSimEHRP)
+
 Version 11.0 (2024/10/06)
 - new: AXIS 2.2 Steel City support with 6 categories (rhoun)
 - new: 6 categories support for FIRS 4 and 5 Steeltown
