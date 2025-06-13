@@ -1,0 +1,184 @@
+##### TOWN SIGN #####
+STR_TOWNSIGN_GROWTHRATE  :Зростання : {NUM} {STRING}
+STR_TOWNSIGN_MONTHS      :місяців
+STR_TOWNSIGN_DAYS        :днів
+STR_TOWNSIGN_MINUTES     :хвилин
+STR_TOWNSIGN_SECONDS     :секунд
+STR_TOWNSIGN_NOTGROWING  :Не розвивається
+
+##### CARGO CATEGORIES #####
+STR_CARGOCAT_LABEL_0     :Громадські послуги
+STR_CARGOCAT_LABEL_1     :Сировинна їжа
+STR_CARGOCAT_LABEL_2     :Сировина
+STR_CARGOCAT_LABEL_3     :Оброблені матеріали
+STR_CARGOCAT_LABEL_4     :Готові вироби
+STR_CARGOCAT_LABEL_5     :Продукція
+STR_CARGOCAT_LABEL_6     :Місцеве виробництво
+STR_CARGOCAT_LABEL_7     :Імпортні товари
+STR_CARGOCAT_LABEL_8     :Категорія I
+STR_CARGOCAT_LABEL_9     :Категорія II
+STR_CARGOCAT_LABEL_10    :Категорія III
+STR_CARGOCAT_LABEL_11    :Категорія IV
+STR_CARGOCAT_LABEL_12    :Категорія V
+STR_CARGOCAT_LABEL_13    :Сировина та їжа
+STR_CARGOCAT_LABEL_14    :Очищені матеріали
+STR_CARGOCAT_LABEL_15    :Виробничі компоненти
+STR_CARGOCAT_LABEL_16    :Готові товари та транспорт
+
+##### STORY BOOK #####
+STR_SB_TITLE_1           :Категорії вантажів
+STR_SB_EXPLAIN_1         :Це категорії вантажів, необхідних місту. Кожна з них містить різні типи вантажів, що задовольнять потребу міста. Щоб виконати вимоги категорії, ви можете доставити будь-який із цих вантажів.
+STR_SB_EXPLAIN_2         :Це категорії вантажів, необхідних місту. Кожна категорія містить кілька типів вантажів на вибір. Місто потребує {STRING} з кожної категорії. Щоб задовольнити ці потреби, ви можете доставити будь-які з них — всі вони показані у вікні інформації про місто.
+STR_SB_EXPLAIN_RANDOM_0  :{SILVER}{NUM} тип{P и ів} вантажу{BLACK}{STRING}
+STR_SB_EXPLAIN_RANDOM_2  :{SILVER}{NUM} - {NUM} тип{P и ів} вантажу {BLACK}
+STR_SB_CARGOCAT_CAT      :Категорія
+STR_SB_CARGOCAT_POP      :Мінімальне населення міста
+STR_SB_CARGOCAT_DECAY    :Щомісячне зниження
+STR_SB_CARGOCAT_CARGOT   :Типи вантажів
+STR_SB_CARGOCAT_0        :{STRING} {NUM} : {LTBLUE}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
+STR_SB_CARGOCAT_1        :{STRING} {NUM} : {GREEN}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
+STR_SB_CARGOCAT_2        :{STRING} {NUM} : {RED}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
+STR_SB_CARGOCAT_3        :{STRING} {NUM} : {BROWN}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
+STR_SB_CARGOCAT_4        :{STRING} {NUM} : {PURPLE}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
+STR_SB_CARGOCAT_5        :{STRING} {NUM} : {YELLOW}{STRING}{BLACK}{}{STRING} : {SILVER}{NUM}{BLACK} {STRING} : {SILVER}{NUM}%{BLACK}{}{STRING} : {CARGO_LIST}
+STR_SB_WARNING_TITLE     :Попередження
+STR_SB_WARNING_1         :На карті більше міст, ніж може зберегти ігровий скрипт. Поточна кількість міст {SILVER}{NUM}{BLACK}, а максимальна {SILVER}{NUM}{BLACK}. {RED}Ігровий скрипт вимкнено.{BLACK}
+STR_SB_WARNING_2         :Не вдалося ініціалізувати список вантажів. Це сталося через невідомий промисловий newGRF, для якого неможливо створити процедурний список вантажів. {RED}Ігровий скрипт вимкнено.{BLACK}
+STR_SB_WARNING_3         :Не вдалося ініціалізувати список вантажів. Це сталося через опцію рандомізації промисловості, для якої неможливо створити процедурні промислові категорії. {RED}Ігровий скрипт вимкнено.{BLACK}
+STR_SB_WARNING_4         :Ви повинні встановити параметр {ORANGE}Середовище->Міста->Швидкість зростання міст{BLACK} на щось інше, ніж Жодна. {RED}Ігровий скрипт вимкнено.{BLACK}
+STR_SB_WELCOME_TITLE     :Renewed Village Growth {NUM}.{NUM}
+STR_SB_WELCOME_DESC      :{SILVER}Renewed Village Growth (RVG){BLACK} - це ігровий скрипт, який {ORANGE}змінює спосіб зростання міст{BLACK} в OpenTTD. Для кожного міста визначено різні вимоги до вантажів, які потрібно - частково або повністю - щомісячно задовольняти, щоб міста росли швидше. Більше інформації можна знайти в {ORANGE}файлі Readme{BLACK}.
+STR_SB_WELCOME_CARGO     :Економіка {SILVER}{STRING}{BLACK} складається з {SILVER}{NUM} категорій{BLACK}. Щоб виконати категорію, доставте один або кілька специфічних для категорії вантажів на {ORANGE}станцію поблизу міста, яка приймає цей тип вантажу{BLACK}. Виконайте вимоги вище {SILVER}{NUM}%{BLACK}, щоб {ORANGE}міста росли швидше{BLACK}. Більше інформації про категорії вантажів показано на сторінці {ORANGE}Категорії вантажів{BLACK} книги історій.
+STR_SB_WELCOME_LIMIT_GROWTH         :Транспорт {SILVER}{CARGO_LIST}{BLACK} з цього міста може {ORANGE}зупинити зростання міста{BLACK}. Транспортуйте принаймні {SILVER}{NUM}%{BLACK} цих типів вантажів, щоб {ORANGE}дозволити зростання міста{BLACK}. {STRING}
+STR_SB_WELCOME_LIMIT_GROWTH_DELAY   :Зростання зупиняється після {SILVER}{NUM} місяців{BLACK} невиконання цієї вимоги.
+STR_SB_WELCOME_STATISTICS           :Компанія, яка постачає більшість вантажів до міста, стає його {ORANGE}Спонсором{BLACK}. Кожен новий мешканець понад найбільше населення цього міста зараховується як {ORANGE}бали зростання{BLACK} цієї компанії. Дивіться бали зростання та статистику в {ORANGE}Списку цілей{BLACK}.
+STR_SB_WELCOME_ETERNAL_LOVE         :{SILVER}Вічна любов{BLACK} змінює {ORANGE}рейтинг місцевої влади{BLACK} кожного міста раз на місяць щонайменше до {SILVER}{STRING}{BLACK}.
+STR_SB_WELCOME_END                  :Веселої гри!
+
+##### CUSTOM STORY BOOK #####
+STR_SB_CUSTOM_WELCOME       :Будь ласка, знайдіть правила сервера на сторінці {ORANGE}{STRING} книги історій{BLACK}.
+STR_SB_CUSTOM_TITLE         :Правила сервера
+# STR_SB_CUSTOM_1             :Правило 1
+# STR_SB_CUSTOM_2             :Правило 2
+STR_SB_CUSTOM_END           :
+
+##### GOAL #####
+STR_STATISTICS_GROWTH_POINTS    :{STRING}{COMPANY}{BLACK} бали зростання{ORANGE}
+STR_STATISTICS_BIGGEST_TOWN     :{BLACK}Найбільше місто {SILVER}{TOWN}{ORANGE}
+STR_STATISTICS_GROWTH_TOWN      :{BLACK}Найшвидше зростаюче місто за днями {SILVER}{TOWN}{ORANGE}
+STR_STATISTICS_AVERAGE_CATEGORY :{BLACK}Середня категорія міста{ORANGE}
+STR_STATISTICS_NUM_TOWNS        :{BLACK}Кількість міст, що допомагають{ORANGE}
+STR_STATISTICS_NOT_GROWING      :{BLACK}Кількість міст, що не ростуть{ORANGE}
+
+##### TOWNBOX #####
+STR_TOWNBOX_CONTRIBUTOR         :Найбільше населення {SILVER}{NUM}{BLACK}{} * {SILVER}{COMPANY}{BLACK}
+STR_TOWNBOX_NO_CONTRIBUTOR      :Найбільше населення {SILVER}{NUM}{BLACK}{STRING}
+
+STR_TOWNBOX_CATEGORY            :Інформація про вантажі : доступно / потрібно{STRING}
+STR_TOWNBOX_CATEGORY_STOP       :Недостатньо вивезено з міста :{} * {RED}{CARGO_LIST}{BLACK}{}Інформація про вантажі : доступно / потрібно
+STR_TOWNBOX_CATEGORY_LOW        :Недостатня транспортна інфраструктура :{} * {SILVER}{CARGO_LIST}{BLACK}{}Інформація про вантажі : доступно / потрібно
+STR_TOWNBOX_CATEGORY_DELAYED    :Недостатньо вивезено з міста :{} * {GOLD}{CARGO_LIST}{BLACK}{}Інформація про вантажі : доступно / потрібно
+STR_TOWNBOX_CARGO               :Категорії вантажів :{STRING}
+STR_TOWNBOX_CARGO_STOP          :Недостатньо вивезено з міста :{} * {RED}{CARGO_LIST}{BLACK}{}Категорії вантажів :
+STR_TOWNBOX_CARGO_LOW           :Недостатня транспортна інфраструктура :{} * {SILVER}{CARGO_LIST}{BLACK}{}Категорії вантажів :
+STR_TOWNBOX_CARGO_DELAYED       :Недостатньо вивезено з міста :{} * {GOLD}{CARGO_LIST}{BLACK}{}Категорії вантажів :
+STR_TOWNBOX_NOGROWTH            :Транспортуйте {SILVER}{CARGO_LIST}{BLACK} з цього міста, щоб воно росло.
+
+STR_TOWNBOX_CATEGORY_0          :{STRING}{}{STRING}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}
+STR_TOWNBOX_CATEGORY_1          :{STRING}{}{STRING}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}
+STR_TOWNBOX_CATEGORY_2          :{STRING}{}{STRING}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}
+STR_TOWNBOX_CATEGORY_3          :{STRING}{}{STRING}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {BROWN}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}
+STR_TOWNBOX_CATEGORY_4          :{STRING}{}{STRING}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {BROWN}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {PURPLE}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}
+STR_TOWNBOX_CATEGORY_5          :{STRING}{}{STRING}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {BROWN}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {PURPLE}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {YELLOW}{STRING}{BLACK} : {SILVER}{RAW_STRING}{BLACK}
+
+STR_TOWNBOX_CARGO_0             :{STRING}{}{STRING}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}
+STR_TOWNBOX_CARGO_1             :{STRING}{}{STRING}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}
+STR_TOWNBOX_CARGO_2             :{STRING}{}{STRING}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}
+STR_TOWNBOX_CARGO_3             :{STRING}{}{STRING}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {BROWN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}
+STR_TOWNBOX_CARGO_4             :{STRING}{}{STRING}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {BROWN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {PURPLE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}
+STR_TOWNBOX_CARGO_5             :{STRING}{}{STRING}{} * {LTBLUE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {GREEN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {RED}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {BROWN}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {PURPLE}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}{} * {YELLOW}{STRING}{BLACK} : {SILVER}{CARGO_LIST}{BLACK}
+
+STR_TOWNBOX_COMBINED_0          :{STRING}{}{STRING}{} * {LTBLUE}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}
+STR_TOWNBOX_COMBINED_1          :{STRING}{}{STRING}{} * {LTBLUE}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}
+STR_TOWNBOX_COMBINED_2          :{STRING}{}{STRING}{} * {LTBLUE}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {RED}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}
+STR_TOWNBOX_COMBINED_3          :{STRING}{}{STRING}{} * {LTBLUE}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {RED}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {BROWN}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}
+STR_TOWNBOX_COMBINED_4          :{STRING}{}{STRING}{} * {LTBLUE}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {RED}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {BROWN}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {PURPLE}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}
+STR_TOWNBOX_COMBINED_5          :{STRING}{}{STRING}{} * {LTBLUE}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {GREEN}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {RED}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {BROWN}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {PURPLE}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}{} * {YELLOW}{CARGO_LIST}{BLACK} : {SILVER}{RAW_STRING}{BLACK}
+
+##### ECONOMIES #####
+STR_ECONOMY_NONE                :
+STR_ECONOMY_BASESET_TEMPERATE   :Базова помірна
+STR_ECONOMY_BASESET_ARCTIC      :Базова арктична
+STR_ECONOMY_BASESET_TROPICAL    :Базова тропічна
+STR_ECONOMY_BASESET_TOYLAND     :Базова іграшкова
+STR_ECONOMY_FIRS1_FIRS          :FIRS 1 FIRS
+STR_ECONOMY_FIRS1_TEMPERATE     :FIRS 1 Помірна
+STR_ECONOMY_FIRS1_ARCTIC        :FIRS 1 Арктична
+STR_ECONOMY_FIRS1_TROPIC        :FIRS 1 Тропічна
+STR_ECONOMY_FIRS1_HOD           :FIRS 1 Серце темряви
+STR_ECONOMY_ECS                 :ECS
+STR_ECONOMY_FIRS2_TEMPERATE     :FIRS 2 Помірна
+STR_ECONOMY_FIRS2_ARCTIC        :FIRS 2 Арктична
+STR_ECONOMY_FIRS2_TROPIC        :FIRS 2 Тропічна
+STR_ECONOMY_FIRS2_IAHC          :FIRS 2 У жаркій країні
+STR_ECONOMY_FIRS2_HOD           :FIRS 2 Серце темряви
+STR_ECONOMY_YETI                :YETI
+STR_ECONOMY_FIRS3_TEMPERATE     :FIRS 3 Помірна
+STR_ECONOMY_FIRS3_ARCTIC        :FIRS 3 Арктична
+STR_ECONOMY_FIRS3_TROPIC        :FIRS 3 Тропічна
+STR_ECONOMY_FIRS3_STEELTOWN     :FIRS 3 Сталеве місто
+STR_ECONOMY_FIRS3_IAHC          :FIRS 3 У жаркій країні
+STR_ECONOMY_FIRS3_EXTREME       :FIRS 3 Екстремальна
+STR_ECONOMY_NAIS_NA             :NAIS Північна Америка
+STR_ECONOMY_ITI                 :Покращені міські індустрії
+STR_ECONOMY_FIRS4_TEMPERATE     :FIRS 4 Помірна
+STR_ECONOMY_FIRS4_ARCTIC        :FIRS 4 Арктична
+STR_ECONOMY_FIRS4_TROPIC        :FIRS 4 Тропічна
+STR_ECONOMY_FIRS4_STEELTOWN     :FIRS 4 Сталеве місто
+STR_ECONOMY_FIRS4_IAHC          :FIRS 4 У жаркій країні
+STR_ECONOMY_FIRS5_TEMPERATE     :FIRS 5 Помірна
+STR_ECONOMY_FIRS5_ARCTIC        :FIRS 5 Арктична
+STR_ECONOMY_FIRS5_TROPIC        :FIRS 5 Тропічна
+STR_ECONOMY_FIRS5_STEELTOWN     :FIRS 5 Сталеве місто
+STR_ECONOMY_FIRS5_IAHC          :FIRS 5 У жаркій країні
+STR_ECONOMY_XIS_LOT             :XIS Усе разом
+STR_ECONOMY_AXIS_STEELTOWN      :AXIS Сталеве місто
+STR_ECONOMY_AXIS_TROPICAL       :AXIS Тропічний рай
+STR_ECONOMY_OTIS                :OTIS
+STR_ECONOMY_IOTC                :Індустрії Карибських островів
+STR_ECONOMY_LUMBERJACK          :Лісорубні індустрії
+STR_ECOMONY_WRBI                :Ваннару базові індустрії
+STR_ECONOMY_ITI2                :Покращені міські індустрії 2
+STR_ECONOMY_REAL                :Реальні індустрії
+STR_ECONOMY_MINIMALIST          :Мінімалістичні індустрії
+STR_ECONOMY_PIRS                :Набір переробних індустрій Пікки (PIRS 2022)
+
+##### ETERNAL LOVE #####
+STR_ETERNAL_LOVE_OUTSTANDING    :відмінного
+STR_ETERNAL_LOVE_GOOD           :хорошого
+STR_ETERNAL_LOVE_POOR           :поганого
+
+##### UTILITY #####
+STR_COMMA                       :{SILVER}{COMMA}{ORANGE}
+STR_NUM                         :{SILVER}{NUM}{ORANGE}
+
+STR_DARK_BLUE                   :{DKBLUE}
+STR_PALE_GREEN                  :{LTBROWN}
+STR_PINK                        :{GOLD}
+STR_YELLOW                      :{YELLOW}
+STR_RED                         :{RED}
+STR_LIGHT_BLUE                  :{LTBLUE}
+STR_GREEN                       :{GREEN}
+STR_DARK_GREEN                  :{DKGREEN}
+STR_BLUE                        :{BLUE}
+STR_CREAM                       :{CREAM}
+STR_MAUVE                       :{BLACK}
+STR_PURPLE                      :{PURPLE}
+STR_ORANGE                      :{ORANGE}
+STR_BROWN                       :{BROWN}
+STR_GREY                        :{GRAY}
+STR_WHITE                       :{WHITE}
+STR_SILVER                      :{SILVER}
+
+STR_EMPTY                       :
+STR_STRING                      :{STRING}
