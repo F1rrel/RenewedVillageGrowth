@@ -32,6 +32,7 @@ Currently available languages:
 - Japanese (fmang)
 - Traditional Chinese (WenSimEHRP)
 - Russian (Shkarlatov)
+- Ukrainian (mortiy)
 
 If you want to contribute to a translation, you can do it by modifying a file [english.txt](lang/english.txt) and posting it to the forum topic or creating a new issue/pull request with this file included. All instances of `{STRING[number]}` need to be replaced by `{STRING}` in all other languages.
 
@@ -67,3 +68,4 @@ Thanks to contributors:
 - bigyihsuan
 - rhoun
 - skye0e
+- mortiy
