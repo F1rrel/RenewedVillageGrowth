@@ -3,7 +3,7 @@
                 *  A GameScript for OpenTTD  *
                 ******************************
 
-Version: 12.0
+Version: 12.1
 
 Usefull URL's:
 - forum topic: https://www.tt-forums.net/viewtopic.php?f=65&t=87052
@@ -312,6 +312,7 @@ Contributors:
 - bigyihsuan
 - rhoun
 - skye0e
+- mortiy
 
 6. FAQ
 
